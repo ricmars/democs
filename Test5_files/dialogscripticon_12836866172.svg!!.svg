@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Artboard</title>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="Group-6-Copy-2" transform="translate(1.000000, 1.000000)" stroke="#231F20">
+            <line x1="4.01526522" y1="4.74304368" x2="10.4509005" y2="4.74304368" id="Stroke-1"></line>
+            <line x1="8.12215132" y1="8.70305255" x2="4.01517653" y2="8.70305255" id="Stroke-2"></line>
+            <line x1="4.20107911" y1="12.5089556" x2="10.4509005" y2="12.5089556" id="Stroke-3"></line>
+            <path d="M16.3631526,8.4245978 C17.2673877,8.4245978 18,9.15765355 18,10.0614452 L18,16.7241371 C18,17.6283722 17.2673877,18.3609845 16.3631526,18.3609845 L2.91581463,18.3609845 C1.30513193,18.3609845 0,17.0554091 0,15.4447264 L0,2.9162581 C0,1.3055754 1.30513193,0 2.91581463,0 L11.4690187,0 C13.0792579,0 14.3848333,1.3055754 14.3848333,2.9162581 L14.3848333,18.3609845" id="Stroke-4"></path>
+        </g>
+    </g>
+</svg>
