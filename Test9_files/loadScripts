@@ -1,0 +1,12 @@
+(function() {
+    window.fireflyAPI = window.fireflyAPI || {};
+    fireflyAPI.version = "8.7.1";
+    fireflyAPI.assetHostUrl = "https://usassets.cobrowse.pega.com/assets" || fireflyAPI.serverHostUrl; 
+    (function loadJavascript() {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.async = true;
+      script.src = fireflyAPI.assetHostUrl + "/scripts/final/customer.js?v="+fireflyAPI.version;
+      document.head.appendChild(script);
+    })();
+  })();
