@@ -1,0 +1,229 @@
+﻿/* Tabs Styling for MDC */
+.mdc-tab-container .mdc-header ul {
+    padding: 0 0 3px;
+    margin: 0;
+    font-size: 0;
+    width: auto;
+    display: flex;
+}
+
+.mdc-tab-container .mdc-header li {
+    opacity: .9;
+    font-size: 16px;
+    justify-content: center;
+    padding: 7px 14px;
+    text-decoration: none;
+    list-style: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    color: #10132e;
+    font-weight: 400;
+    border-right: 1px solid #eef;
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+    outline: none;
+    min-width: 90px;
+}
+
+.mdc-tab-container .mdc-header li.active {
+    opacity: 1;
+}
+
+.mdc-tab-container .header li:hover {
+    opacity: 1;
+    box-shadow: 0 3px 0 rgba(255, 255, 255, .8);
+}
+
+.mdc-tab-container .mdc-content-body div[data-mdc-recordid] {
+    float: left;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    vertical-align: top;
+    padding: 7px;
+}
+
+div[data-mdc-recordid] {
+  overflow-x: auto !important;
+}
+
+.mdc-tab-container .arrow {
+    background: #ccc;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    height: 45px;
+    padding: 0 14px!important;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    overflow: hidden;
+    position: absolute;
+    display: none;
+    z-index: 1;
+    visibility: hidden;
+    margin: 0;
+}
+
+.mdc-tab-container .arrow[class*='left'],
+.mdc-tab-container .arrow[class*='right'] {
+    width: 30px;
+    height: 45px;
+}
+
+.mdc-tab-container .mdc-header li.blur-tab-name {
+    color: transparent;
+    background: url(webwb/pxLoadingDots_12271550234.gif!!.gif) center;
+    background-size: 200px;
+    opacity: .7;
+}
+
+.mdc-tab-container .mdc-header li.blur-tab-name:hover {
+    color: transparent;
+}
+
+.mdc-tab-container .mdc-header li .close {
+    font-family: "Pega Icons"!important;
+    font-style: normal!important;
+    font-weight: 400!important;
+    font-variant: normal!important;
+    text-transform: none!important;
+    speak: none;
+    line-height: inherit;
+    height: 16px;
+    order: 2;
+    margin-left: 7px;
+    opacity: 0;
+    min-width: 16px;
+    min-height: 16px;
+}
+
+.mdc-tab-container .mdc-header li .close:hover {
+    opacity: 1;
+    background-color: #eef1ff;
+    color: #00f;
+}
+
+.mdc-tab-container .mdc-header .close:before {
+    content: "\e1f4";
+}
+
+.mdc-tab-container {
+    line-height: 24px;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, .1);
+    background-color: #fff;
+}
+
+.mdc-tab-container .mdc-header {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    position: relative;
+    background: #fff;
+    visibility: hidden;
+    border-bottom: 1px solid #ccc;
+}
+
+.mdc-tab-container .mdc-content-body::-webkit-scrollbar,
+.mdc-tab-container .mdc-header::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: 0 0;
+}
+
+.mdc-tab-container .mdc-header li .open-work {
+    order: -1;
+    height: 16px;
+    margin-right: 7px;
+    min-width: 16px;
+    min-height: 16px;
+}
+
+.mdc-tab-container .mdc-header li.active,
+.mdc-tab-container .mdc-header li:hover {
+    color: #295ed9;
+}
+
+.mdc-tab-container .mdc-header .underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: #295ed9;
+    -webkit-transition: .3s linear;
+    -moz-transition: .3s linear;
+    -o-transition: .3s linear;
+    -ms-transition: .3s linear;
+    transition: .3s linear;
+}
+
+.mdc-tab-container .arrow:hover {
+    background-color: #eef1ff;
+}
+
+.mdc-tab-container .arrow>* {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 50%;
+}
+
+.mdc-tab-container .arrow img {
+    filter: drop-shadow(-1px -1px 3px #000);
+}
+
+.mdc-tab-container .mdc-content-body {
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding-bottom: 8px;
+    line-height: normal;
+    visibility: hidden;
+}
+
+.mdc-tab-container .mdc-content-body .mdc-tabs {
+    min-height: 1px;
+}
+
+.mdc-visible {
+    visibility: visible;
+    height: 100%;
+}
+
+.mdc-hidden {
+    visibility: hidden;
+    height: 300px;
+}
+
+.mdc-tab-container .arrow[class*='left'] {
+    left: 0;
+}
+
+.mdc-tab-container .arrow[class*='right'] {
+    right: 40px;
+}
+
+.mdc-tab-container .mdc-header li:hover>.close {
+    opacity: 1;
+    background-color: #eef1ff;
+}
+
+.mdc-tab-container .arrow[class*='down'] {
+    right: 0;
+}
+
+/* alignment of menu when icon is not present */
+[data-menu-id='-microdc_menu'] .menu-item-anchor > .menu-item-title-wrap:only-child {
+    padding-left: 29px;
+}
+
+[data-menu-id='-microdc_menu'] .menu-item-image-wrapper > .menu-item-icon-image {
+    min-width: 16px;
+    max-width: 16px;
+}
