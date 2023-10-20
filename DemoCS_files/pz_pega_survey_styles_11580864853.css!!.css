@@ -1,0 +1,29 @@
+﻿div.questionsdiv{
+margin-bottom:12px;
+}
+
+.hide-label > label {
+   display:none !important;
+}
+
+/* Added styles for advanced view table */
+
+.complex-advanced-view div.gridDefault div table[uniqueid]:not([uniqueid=""]) tr.cellCont > th.cellCont:not(:last-child) {
+  border-right:0 !important;
+}
+
+.complex-advanced-view  div.gridDefault div table[uniqueid]:not([uniqueid=""]) tr.cellCont > td.gridCell {
+  padding-bottom:7px !important;
+}
+
+.complex-advanced-view div.gridDefault div.transparent div#gridBody_right td.gridCellSelected{
+  background-color :#F4F4F4 !important;
+}
+
+.complex-advanced-view div.gridDefault div.transparent div#gridBody_right td input[type="text"]{
+  min-height :28px !important;
+}
+
+.survey-textarea textarea{
+  height:auto !important;
+}

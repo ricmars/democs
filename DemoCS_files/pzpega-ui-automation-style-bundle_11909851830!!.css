@@ -1,0 +1,928 @@
+﻿.edge-panel.runtime-recorder-panel {
+  background: #2F393D;
+  z-index: 11;
+}
+
+.runtime-recorder-panel .runtime-panel-body{
+  padding-left: 10px;
+  height:100%;
+}
+
+/* RuntimeTools overrides*/
+.runtime-recorder-panel .dataValueWrite{
+  color: grey;
+}
+.runtime-recorder-panel .flex.layout-content-pz-inline-middle{
+  flex-flow:row nowrap;
+}
+
+.runtime-recorder-panel .flex.content-pz-inline-middle>.flex.content-item.width-100-pct{
+  width: 100%;
+}
+
+.runtime-recorder-panel .flex-grow-1 > .content-item, .content-item.flex-grow-1, .flex-grow-1-item-1 > .content-item.item-1, .flex-grow-1-item-2 > .content-item.item-2, .flex-grow-1-item-3 > .content-item.item-3 {
+    flex-grow: 1;
+    min-height: 20.0px;
+}
+
+div[node_name="pxAutomationFunctionalTests"] {
+  width: auto !important;
+}
+
+div[node_name="pxAutomationRecorderContent"] {
+  overflow-x: hidden;
+}
+
+div[node_name='pxAutomationRecorderHeader'] .pz-gap-panel-header, .pz-gap-footer-quick-actions {
+  white-space: nowrap !important;
+}
+
+.min-width3 {
+  min-width: 30px !important;
+}
+
+.min-width10 {
+  min-width: 100px !important;
+}
+/*DOM Tree - Base style*/
+
+@font-face {
+  font-family: "Recorder-Icons";
+}
+
+/* Generic hidden class to hide element */
+.recorder-hidden {
+  /* Setting important tag to allow this to simply hide any element this is applied too */
+  display: none !important;
+  /* Setting important tag to allow this to simply hide any element this is applied too */
+  visibility: hidden !important;
+}
+
+/*base highlight element style*/
+
+/* HIGHLIGHT DIVS */
+.automation-Element-Highlighter{
+  border-color: orange;
+  z-index: 10000;
+ }
+
+/*No unique selector highlighter*/
+.highlighter-warning {
+  border-color: #FFCD5F;
+}
+/* Hovered info bar style */
+.automation-Element-Infobar {
+  background-color: orange;
+  z-index: 10000;
+}
+
+/* Hovered info bar text has default cursor */
+.automation-Element-Infobar .idpanel-text span {
+  cursor: default;
+}
+
+/*No unique selector infobar*/
+.infobar-warning {
+  background-color: #FFCD5F;
+  height: 42px;
+}
+
+.infobar-warning .runtime-tree-prefix {
+   color: black;
+}
+
+div[node_name="pxAutomationEdgePaneWrapper"],
+div[node_name="pxAutomationEdgePaneWrapper"]> span
+{
+  height:100%;
+}
+
+
+div[node_name="pxAutomationTestCasesList"] {
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  width:100%;
+}
+
+div[node_name="pxAutomationTestCasesList"] > span:nth-child(2) {
+  flex:1;
+  overflow:auto;
+  margin:0;
+  background-color:#354043;
+}
+
+div[node_name="pzEditAutomationRecorderPanelWrapper"] {
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  width:100%;
+}
+div[node_name="pzEditAutomationRecorderPanelWrapper"]>span,
+div[node_name="pzEditAutomationRecorderPanelWrapper"]>span>div,
+div[node_name="pzEditAutomationRecorderPanelWrapper"]>span>div>span,
+div[node_name="pzEditAutomationRecorderPanelWrapper"]>span>div>span>div,
+div[node_name="pzEditAutomationRecorderPanelWrapper"]>span>div>span>div>div,
+div[node_name="pzEditAutomationRecorderPanelWrapper"]>span>div>span>div>div>div {
+  height: 100%;
+  margin: 0px !important;
+}
+
+div[node_name="pxNewFunctionalTest"]{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+div[node_name="pxNewFunctionalTest"]>div,
+div[node_name="pxNewFunctionalTest"]>div>div,
+div[node_name="pxNewFunctionalTest"]>div>div>div,
+div[node_name="pxNewFunctionalTest"]>div>div> div:nth-child(1) {
+  height: 100%;
+  margin: 0px !important;
+}
+
+.content-new-functional-test{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+.content-new-functional-test > div:nth-child(2){
+  flex:1;
+  overflow:auto;
+  margin:0 !important;
+  background-color:#FFFFFF;
+}
+
+.content-new-functional-test > div:nth-child(1), .content-new-functional-test > div:nth-child(2) > div.layout{
+  margin: 0 !important;
+}
+
+div[node_name='pyDefaultStepBuilder']{
+  display: flex;
+  flex-direction: column;
+}
+div[node_name='pyDefaultStepBuilder'] > div:nth-child(2){
+  flex-grow: 1;
+  overflow: auto !important;
+}
+
+
+div[node_name="pzEditAutomationRecorderPanelWrapper"] > span:nth-child(2) {
+  flex-direction:row;
+  flex-wrap: wrap;
+  overflow:auto;
+  width:100%;
+}
+
+div[node_name="pxAutomationFunctionalTests"] th {
+  color: white;
+}
+
+div[node_name="pzAutomationRecorderWrapper"] > span:nth-child(1) {
+  background-color:#354044;
+}
+
+div[node_name='pyAutomationStepWrapper'] > span > .layout-noheader > .layout-body{
+  padding: 0px;
+}
+
+.pz-automation-footer{
+  padding: 14px !important;
+  background-color: bisque;
+}
+
+div.id-recorder-icon-container {
+  display: inline;
+  padding-left: 25px;
+}
+
+div.id-recorder-icon-container > .mark-for-assertion{
+  color: white;
+  cursor: pointer;
+}
+div.id-recorder-icon-container img{
+  width: 20px;
+  height:20px;
+  vertical-align:middle;
+  
+}
+.fillbluedots .pi-circle-filled{
+   color: #4169E1;
+   font-size: 10px;
+}
+
+.pz-pi-gap-doing{
+  font-size: 12px;
+}
+
+div[node_name='pyFunctionalTestCaseRow'] a.pz-standard, div[node_name='pyFunctionalTestCaseRow'] a.pz-standard:link, div[node_name='pyFunctionalTestCaseRow'] a.pz-standard:visited, div[node_name='pyFunctionalTestCaseRow'] a.iconDelete{
+  color: white !important;
+}
+
+
+div[node_name='pxAutomationFunctionalTests'] .border-s-1x{
+  
+  border-bottom: 1px solid rgba(0,0,0,.15) !important;
+}
+
+div[aria-label='pyDefaultStepBuilderOverlayFA'] {
+  z-index: 1000000 !important;  
+}
+
+div[node_name='pyFunctionalTestCaseRow']{
+  /*height: 50px !important;
+  margin-top: 10px;*/
+  background-color: #354043;
+}
+
+/*ellipses for long testcase names*/
+div[node_name='pyFunctionalTestCaseRow'] a.pz-standard{
+  white-space: nowrap; 
+  width: 100%; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+div[node_name='pyFunctionalTestCaseRow'] .pz-gap-item-row .content-item .content .content-field .pz-button-block {
+	  border-right: 1px solid rgba(255,255,255,.15);
+  	margin:1px;
+}
+
+div[node_name='pyFunctionalTestCaseRow'] .pz-gap-item-row .content-item .content .content-field .pz-button-block  > div:last-child {
+  border-right: none;
+}
+
+.flex.pz-gap-item-row > .flex.item-2 .layout-content-pz-inline-middle > div:last-child   {
+  border-right: none;
+}
+
+.pz-gap-item-row .item-4{
+  	margin-bottom:8px;
+}
+
+div[node_name='pyFunctionalTestCaseRow'] .pz-gap-item-row.visible .pz-content-flex-grow-1 > div {
+  color: white;  
+}
+
+div[node_name='pyFunctionalTestCaseRow'] .pz-button-block button.pz-icon.pzhc.pzbutton{
+  font-size: 13px !important;
+}
+
+div[node_name='pyRunStatusWrapper'] div.badge_text_dataLabelWrite {
+    border-radius: 3px;
+    text-align: center;
+    border: none;
+    background-image: none;
+    height: 24px;
+    padding: 6px 4px !important;
+}
+
+div[node_name='pxTestCaseDetails'] div.badge_text_dataLabelWrite {
+    border-radius: 3px;
+    text-align: center;
+    border: none;
+    background-image: none;
+    height: 24px;
+    padding: 6px 4px !important;
+    min-height: 0px !important;
+    margin-top: 12px !important;
+    
+}
+
+div[node_name='pyRunStatusWrapper'] div.passed, div[node_name='pxTestCaseDetails'] div.passed {
+    background-color: #079246;
+}
+
+div[node_name='pyRunStatusWrapper'] div.failed, div[node_name='pxTestCaseDetails'] div.failed {
+    background-color: #C70F18;
+    
+}
+
+
+div[node_name='pyRunStatusWrapper'] button.Success.pzhc.pzbutton, div[node_name='pxTestCaseDetails'] button.Success.pzhc.pzbutton{
+    border-radius: 3px;
+    border: none;
+    background-image: none;
+    background-color: #079246;
+    height: 24px;
+    padding: 0 7px 0 7px;
+}
+
+div[node_name='pyRunStatusWrapper'] button.Error.pzhc.pzbutton, div[node_name='pxTestCaseDetails'] button.Error.pzhc.pzbutton{
+    border-radius: 3px;
+    border: none;
+    background-image: none;
+    background-color: #C70F18;
+    height: 24px;
+    padding: 0 7px 0 7px;
+}
+div[node_name='pxTestCaseDetails'] button.Error.pzhc.pzbutton, div[node_name='pxTestCaseDetails'] button.Success.pzhc.pzbutton{
+  padding: 0 7px 0 7px;
+  color: white;
+}
+div[node_name='pyRunStatusWrapper'] button.pzbutton{
+  border-radius: 2px;
+  color: white;
+  height: 24px;
+}
+
+div[node_name="pxTestCaseDetails"]  {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.automation-recorder img{
+  width: 20px;
+  height: 20px;
+}
+
+div[node_name="pxTestCaseDetails"] > div:nth-last-child(1){
+  flex-grow: 1;
+  overflow: auto !important;
+  background-color: white;
+}
+
+.text-style,
+.application_name_dataLabelRead,
+.pz-standard_dataLabelWrite {
+  color: white !important;
+}
+
+.info-style{
+  color: #808080 !important;
+  font-size: 13px !important;
+}
+
+.bg-orange-color{
+  color: #FFA500 !important;
+}
+
+.pz-pi-dark-green-bg{
+  background-color: green;
+}
+
+.pz-pi-dark-green{
+  color: green;
+}
+
+.pz-pi-dark-red{
+  color: red;
+}
+
+.pz-pi-blue-bg{
+  background-color: #00BFFF;
+}
+
+/*start floating icon*/
+.pz-recorder-tool> div> span {
+    font-family: "Pega Icons";
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    padding-right: 5px;
+    padding-left: 6px;
+    margin: 0;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+.pz-recorder-tool> div {
+    font-family: OpenSans, sans-serif;
+    line-height: 1.15;
+    vertical-align: top;
+    font-size: 14px;
+    color: white;
+    padding: 6px 0;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: move;
+    height:100%;
+    display:flex;
+    align-items:center;
+}
+.recoderid_icon.active {
+    color: #01aeef;
+}
+.recoderid_icon img {
+    width: 20px;
+    height:20px;
+}
+.pz-recorder-tool {
+    background-color: black;
+    height: 30px;
+    width: 78px;
+    position: fixed;
+    left: 0;
+    bottom: 85px;
+    z-index: 375;
+    opacity: 1;
+}
+/*end*/
+
+.button-style{
+  background-color:black !important;
+}
+
+/*timeline start*/
+.content-timeline {
+  position: absolute;
+  height: 38px;
+  border-left: 2px solid;
+  margin-left: 13px;
+  margin-top: 10px;
+}
+
+/*timeline end*/
+
+.assertor-popover {
+  z-index: 100000 !important;
+}
+
+.fillbluedots .pi-circle-filled {
+  animation-name: throbCircle;
+  animation-duration: .9s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@-webkit-keyframes throbCircle {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@keyframes throbCircle {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+.automation-message {
+  font-size: 12px !important;
+}
+
+.content-functional-test-steps {
+  position: relative;
+}
+
+.content-functional-test-steps .timeline {
+    position: absolute;
+    transform: rotate(90deg);
+    font-size: 31px;
+    margin: 0 -3.5px 0;
+}
+.btn-stop-recording img{
+    border-radius: 50%;
+    padding: 5px 5px;
+    background-color: red;
+    margin-right: 5px;
+}
+/*.aft-stage-minus i{
+  margin-top:4px !important;
+}*/
+.icon-aft-stage-label:before{
+  content: "\e0a4";
+  font-size: 1.5em !important;
+  margin-left: -2px;
+  margin-top: -1px;
+}
+.aft-tc-row{
+  min-height:32px;
+}
+div[node_name='pyRDLCategoryHeader'][pyClassName='Rule-Test-Functional-Case']{
+  margin-bottom:7px;
+  min-height:32px;
+}
+
+div[data-node-id='pzRuntimeToolsTopBar'] .automation-recorder.active button {
+  background-color: #111928;
+  color: #FFFFFF;
+}
+
+div[node_name="pyRecordingTestStepRow"] .pi-pencil-edit {
+  color: #3352FF;
+}
+
+button[data-test-id="201712120555260336126288"].pzhc.pzbutton { 
+  height: 28px !important;
+  min-width: 0px;
+  margin: 16px 0px;
+  font-size: 14px;
+}
+
+
+
+.circle-outlined {
+  width: 17px;
+  height: 17px;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  /* border-radius: 13px; */
+  background-color: #fff;
+  border: .1em solid gray;
+  position: relative; 
+  left: 0px; 
+  top: 2px;
+}
+
+.vertical-line{
+  border-left: 6px solid gray;
+  height: 50px;
+  position: relative; 
+  left: 15px; 
+  top: 32px;
+  border-left-width: 0px;
+}
+
+div[node_name="pyRecordingTestStepRow"]:hover .pi-pencil-edit::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+div[node_name="pyRecordingTestStepRow"] .pi-pencil-edit::before  {
+  opacity: 0;
+  visibility: hidden;
+}
+
+div[node_name="pyRecordingTestStepRow"]:hover .pi-more::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+div[node_name="pyRecordingTestStepRow"] .pi-more::before  {
+  opacity: 0;
+  visibility: hidden;
+}
+
+div[show_when=".pyStepRunStatus == 'Passed'"][style="display: block;"] > span > i
+{
+  top: 14px;
+  position: relative;
+}
+
+.update-info{
+  margin-left:42px;
+}
+div.runtime-control-tree-tab label.cb_explorer_secondary.cb_standard {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+  font-size: 13px;
+}
+
+.runtime-control-panel, .edge-panel {
+  width: 0px;
+  height: 100%;
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  background-color: #151515;
+  z-index: 300;
+}
+
+.runtime-control-panel .tabContent, .runtime-recorder-panel .tabContent {
+  background-color: #525559;
+  height: calc(100% - 90px) !important; /* 100% height is added to the element directly through generation. This causes the element
+  											have a height that exceeds the window height and needs to be calculated to account for the publish/discard
+  											and the tabs themselves above */
+  overflow: auto;
+}
+
+.runtime-control-panel.runtime-panel-below-351 .tabContent, .runtime-recorder-panel.runtime-panel-below-351 .tabContent {
+  height: calc(100% - 129px) !important; /* 100% height is added to the element directly through generation. This causes the element
+  											have a height that exceeds the window height and needs to be calculated to account for the publish/discard
+  											and the tabs themselves above */
+}
+
+.runtime-control-panel.runtime-panel-below-261 .tabContent, .runtime-recorder-panel.runtime-panel-below-261 .tabContent {
+  height: calc(100% - 153px) !important; /* 100% height is added to the element directly through generation. This causes the element
+  											have a height that exceeds the window height and needs to be calculated to account for the publish/discard
+  											and the tabs themselves above */
+}
+
+div.runtime-control-panel div.tStrCntr {
+  background-color: #293135;
+}
+
+#runtime-property-panel .iconOpenRule {
+  display: none;
+}
+
+#runtime-property-panel .pi-target {
+  display: none;
+}
+
+/* Style for allow interaction and undo buttons */
+div.runtime-control-panel div.runtime-control-undo-disabled {
+  opacity: 0.25;
+}
+
+div.runtime-control-panel div.runtime-control-undo-enabled {
+  opacity: 0.50;
+  cursor: pointer;
+}
+
+div.runtime-control-panel div.runtime-control-undo-enabled:hover {
+  opacity: 1;
+}
+
+div.runtime-control-allowinteraction img {
+  background-color: #969696;
+  border-radius: 5px;
+  padding: 3px;
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+div.runtime-control-allowinteraction img:hover {
+  opacity: 1;
+}
+
+div.interaction-enabled div.runtime-control-allowinteraction img {
+  background-color: #98CA45;
+  border-radius: 5px;
+  padding: 3px;
+  opacity: 1;
+}
+
+.runtime-control-panel .runtime-control-filter .content-inner {
+  min-height: 0px;
+}
+
+.runtime-control-panel .runtime-control-filter .content-item {
+  margin: 0px;
+}
+
+.runtime-control-panel .runtime-control-filter .layout-body {
+  padding: 0px 15px 0px 15px;
+}
+
+/* DOM Tree - When showing */
+.runtime-control-panel.showing, .runtime-recorder-panel.showing {
+  width: 300px;
+  margin-left: 10px;
+}
+
+div.runtime-control-body {
+  overflow: hidden;
+}
+
+div.runtime-control-panel div.runtime-control-body {
+  padding-left: 10px;
+}
+
+.runtime-control-panel div.layout-outline {
+  border-left: 0px solid #fff;
+  border-right: 0px solid #fff;
+}
+
+.runtime-control-panel div.layout-outline div.layout-outline {
+  border: 0px solid #fff;
+}
+
+.runtime-control-panel .meta-title .iconExplore {
+  vertical-align: middle;
+  margin: 0px;
+  display: none;
+}
+
+.runtime-control-pending-tab,
+.runtime-control-history-tab,
+.runtime-control-settings-tab {
+  margin-top: 15px;
+  margin-left: 0px;
+  /* BUG-171176: used to be 15px but it caused a strange truncation of the text */
+  padding-left: 15px;
+  /* ...using padding instead of margin and added a right padding fixed it      */
+  padding-right: 15px;
+}
+
+.runtime-control-tree-tab {
+  margin-top: 0px;
+  background-color: #525559;
+  position: relative;
+}
+
+/* Information text */
+.runtime-control-panel .runtime-control-pending-tab tr.cellCont td.runtime-control-info-text,
+.runtime-control-panel .runtime-control-history-tab tr.cellCont td.runtime-control-info-text {
+  color: #B3B3AF;
+  font-style: italic;
+  font-size: 13px;
+}
+
+.runtime-control-pending-tab tr.cellCont td,
+.runtime-control-history-tab tr.cellCont td,
+.runtime-control-settings-tab tr.cellCont td {
+  color: white;
+}
+
+.runtime-control-pending-tab em {
+  color: #B3B3AF;
+}
+
+/* Cells in a grid */
+.runtime-control-pending-tab div.gridDefault div.default tr.cellCont td.gridCell,
+.runtime-control-history-tab div.gridDefault div.default tr.cellCont td.gridCell {
+  color: white;
+  background-color: #525559 !important;
+  border-left: none;
+  border-right: none;
+}
+
+.runtime-control-pending-tab div.gridDefault div.default tr.cellCont td.gridCell {
+  border-top: none;
+  border-bottom: 1px solid #666666;
+}
+
+.runtime-control-history-tab div.gridDefault div.default tr.cellCont td.gridCell {
+  border-bottom: none;
+  border-top: 1px solid #666666;
+}
+
+/* Remove the top border of the second row (first row is an empty placeholder) */
+.runtime-control-history-tab div.gridDefault div.default tr:nth-of-type(2) td.gridCell {
+  border-top: none;
+}
+
+.runtime-control-history-tab div.gridDefault div.default tr.cellCont td.gridCell div#RULE_KEY {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+/* Selected cells in grid */
+.runtime-control-pending-tab td.gridCellSelected,
+.runtime-control-history-tab td.gridCellSelected {
+  color: white !important;
+  background-color: #525559 !important;
+}
+
+/* Top most table in a grid */
+.runtime-control-pending-tab div.gridDefault div.default #gridLayoutTable,
+.runtime-control-history-tab div.gridDefault div.default #gridLayoutTable {
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  border-top: 0px solid #666666;
+}
+
+.runtime-control-history-tab div.gridDefault div.default #gridLayoutTable #gridLayoutTable {
+  width: 100%;
+}
+
+div.runtime-control-panel div.runtime-control-history-tab div#PEGA_GRID_CONTENT div#PEGA_GRID_CONTENT {
+  width: 100%;
+}
+
+.runtime-control-history-tab div.gridDefault div.default div#gridBody_right table.gridTable tr.oddRow td.rowHandle,
+.runtime-control-history-tab div.gridDefault div.default div#gridBody_right table.gridTable tr.evenRow td.rowHandle {
+  background-color: #525559;
+  border: none;
+}
+
+/* Expanded area on history tab */
+.runtime-control-history-tab div.gridDefault div.default div#gridBody_right table.gridTable tr>td>div>div>table>tbody>tr>td {
+  border: none !important;
+  background-color: #525559 !important;
+  padding-left: 30px;
+}
+
+.runtime-control-history-tab div.gridDefault div.default div#gridBody_right table.gridTable tr>td>div>div>table>tbody>tr>td td {
+  color: #B3B3AF;
+  border: none;
+  padding-right: 10px;
+}
+
+/* Embedded tables */
+.runtime-control-history-tab div.gridDefault div.default div#gridBody_right table.gridTable tr>td>div>div>table {
+  background-color: #525559;
+  border: none;
+}
+
+/* Header cells */
+.runtime-control-history-tab div.gridDefault div.default div#gridBody_right table.gridTable>tbody>tr>th {
+  border: none;
+}
+
+div.runtime-control-panel div.runtime-control-body div.sectionDivStyle div#CT div.content div.content-item div.content-inner div.dataValueWrite {
+  padding-top: 5px;
+  padding-bottom: 7px;
+}
+
+.runtime-control-skinName {
+  vertical-align: text-top;
+  font-size: 13px;
+  color: #A9AAAC;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  border-bottom: 1px solid black;
+}
+
+.runtime-edit-icon-skin.CellNode {
+  display: none;
+}
+
+/* ID Panel Icons */
+.runtime-edit-icon-skin {
+  vertical-align: sub;
+  cursor: pointer;
+  margin: 3px 3px 1px 19px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+/* Tweak to get rid of some extra grey spaces */
+div.runtime-control-panel div.runtime-control-history-tab div.gridDefault div.default div#gridBody_right table.gridTable tr th.expandPaneHeader,
+div.runtime-control-panel div.headerTabbed .rightborder {
+  background-color: transparent;
+}
+
+div.runtime-control-panel div.runtime-records-counter-link a,
+div.runtime-control-panel div.runtime-records-counter-link a:hover,
+div.runtime-control-panel div.runtime-records-counter-link a:visited,
+div.runtime-control-panel div.runtime-records-counter-link a:active {
+  text-decoration: none;
+  min-height: 0%;
+  margin: 0px auto;
+  overflow: hidden;
+}
+
+div.runtime-control-panel div.content-simple_inline> div.runtime-records-counter-link.content-item> div.content-inner,
+div.runtime-control-panel div.content-simple_inline> div.runtime-records-counter-link.content-item> div.content-inner> div.field-item {
+  width: auto;
+}
+
+/* Live UI Panel Tabs - Hide the menu that appears when the panel is small
+ * enough that not all tabs display */
+.runtime-control-body .headerTabbed> .scrlCntr> ol.tsb-menu.tab-ul li a#TABANCHOR {
+  display: none;
+}
+
+.runtime-property-panel .runtime-control-pending-tab .runtime-undo-button button {
+  width: 100%;
+  padding-right: 30px;
+}
+
+div.runtime-property-panel div.runtime-control-history-tab .content-simple_inline>div.runtime-publish-event-user span {
+  font-style: normal;
+}
+
+div.runtime-control-panel div.runtime-control-history-tab div#PEGA_GRID_CONTENT div#PEGA_GRID_CONTENT table#gridLayoutTable {
+  padding-top: 0px;
+}
+
+div.runtime-control-panel div.runtime-control-history-tab div#PEGA_GRID_CONTENT div#PEGA_GRID_CONTENT table#gridLayoutTable table.gridTable>tbody>tr.cellCont,
+div.runtime-control-panel div.runtime-control-history-tab div#PEGA_GRID_CONTENT div#PEGA_GRID_CONTENT table#gridLayoutTable table.gridTable>tbody>tr.cellCont td {
+  height: auto;
+  color: #ffffff;
+  cursor: default;
+}
+
+.runtime-control-tab, .edge-panel .runtime-panel-tab {
+  font-family: "LiveUI-Icons";
+  font-size: 16px;
+  color: white;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  z-index: 300;
+  top: 100px;
+  position: absolute;
+  background-color: #444444;
+  border-radius: 4px 0px 0px 4px;
+  cursor: pointer;
+  float: left;
+  left: -1em;
+  display: none;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 0.1em;
+}
+
+.runtime-control-tab.runtime-control-tab-min,
+.runtime-control-tab.runtime-control-tab-max,
+.edge-panel .runtime-panel-tab.runtime-panel-tab-min,
+.edge-panel .runtime-panel-tab.runtime-panel-tab-max {
+  display: block;
+}
+
+/*In Application Guide rule, grey color will be added to the description*/
+
+.content-item.content-field.item-6.remove-bottom-spacing.remove-right-spacing.dataValueRead.flex.flex-row.appguide-chapterdescription
+{
+ color: #6D6D6D;
+}
