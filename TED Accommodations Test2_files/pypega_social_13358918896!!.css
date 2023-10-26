@@ -1,0 +1,3059 @@
+﻿.pulse-comment-area > .content-item.item-2 {
+  width:85%;  
+}
+
+.pulse-post-area > .content-item.item-2,
+.pulse-comment-area > .content-item.item-2 > .content-item.item-1 {
+  width:100%;  
+}
+
+/* Added this style to remove the space between post and replies.Removing */
+
+.postsGridCell .layout-noheader-default{
+  margin-bottom:0;
+}
+
+/*To remove the margin for all error containers */
+
+.postsGridCell .layout-noheader-errors{
+  margin: 0;
+}
+
+/*BUG-190521*/
+
+div[node_name='pzShowMessagesInner'] table.gridTable[pl_prop='.pxResults'] { 
+  table-layout: fixed; 
+}
+
+.pulse-file-comment {
+  margin-top: 2px;
+}
+
+/* Mentions prompting */
+
+.mentions-input-box textarea {
+  width: 100%;
+  display: block;
+  padding: 9px;  
+  overflow: hidden;
+  background: transparent;
+  position: relative; 
+  box-sizing: border-box;
+}  
+
+.mentions-input-box .mentions-autocomplete-list {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 1000000;
+  margin-top: -2px;
+
+  border-radius:5px;
+  border-top-right-radius:0;
+  border-top-left-radius:0;
+
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.148438);
+}
+
+.mentions-input-box .mentions-autocomplete-list ul {
+  margin: 0;
+  padding: 0;
+}
+
+.mentions-input-box .mentions-autocomplete-list li { 
+  padding: 0 12px;
+  margin: 0;
+  width: auto;  
+  height: 45px;
+  line-height: 45px;
+  overflow: hidden;
+  cursor: pointer;
+  list-style: none;
+  white-space: nowrap;
+  border-bottom:0px;
+}
+
+
+.mentions-input-box .mentions-autocomplete-list li > img,
+.mentions-input-box .mentions-autocomplete-list li > div.icon {
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-top:5px;
+  margin-right: 5px;
+  -moz-background-origin:3px;
+  border-radius:50%;
+}
+.mentions-input-box .mentions-autocomplete-list li > div.caseIcon {
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-top:5px;
+  margin-right: 5px;
+  -moz-background-origin:3px;
+  border-radius:50%;
+  background-color: #EFEFEF;
+}
+
+.mentions-input-box .mentions-autocomplete-list li > div.caseIcon > img {
+  margin-top:6px;
+  margin-left:7px;
+}
+
+.mentions-input-box .mentions-autocomplete-list li > div.ellipsesM {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.mentions-input-box .mentions-autocomplete-list li > div.noAdditionalInfo {
+  padding-top:8px; 
+}
+
+.mentions-input-box .mentions {
+  position: absolute;
+  margin-left: 1px;
+  margin-right: 0;
+  margin-top: 1px;
+  margin-bottom: 0;
+  padding: 9px;  
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.mentions-input-box .mentions > div {
+  white-space: pre-wrap;
+  width: 100%;
+}
+
+/* Upload control */
+/* BUG-354576 pxFileUpload control visibility fix */
+.pulse-add-comment input.file-upload, .create-new-pulse input.file-upload, .pulse-file-upload input.file-upload, .create-new-task-post input.file-upload {	
+  display: none;
+}
+
+input.file-upload {
+  position: absolute;		
+  opacity: 0;
+  z-index: 2;
+  height:27px;
+  /* BUG-354576 commenting as they could cause size issue for widget
+  max-width:170px;
+  min-width:170px;*/
+  vertical-align:top;
+}
+
+.file-input {
+  position: relative;
+}
+
+.file-input-comments {
+  position:relative;
+  overflow:hidden
+}
+
+
+.file-input-comments input.file-upload {
+  /* BUG-354576 commenting as they will not be needed.
+  max-width:21px;
+  min-width:21px;*/
+  position: relative;
+  opacity: unset;
+}
+
+.visible-file {
+  cursor: pointer;
+}
+
+/* US-193005 changes */
+.pulse-file-upload :hover {
+  background-color: #EBEFF9 ;
+  color: #FFFFFF ;
+}
+
+
+.pulse-file-upload button.Simple {
+  background-color: transparent ;
+  color: #000000 ;
+  padding-left: 14px;
+}
+
+.pulse-file-upload button.Simple.pzbutton:not([disabled]):hover{
+  border-radius:0;
+}
+
+.pulse-attach-content :hover {
+  background-color: #005BAD ;
+  color: #FFFFFF ;
+}
+
+.pulse-attach-content button.Simple {
+  background-color: transparent ;
+  color: #000000 ;  
+}
+
+.pulse-external-upload :hover {
+  background-color: #005BAD ;
+  color: #FFFFFF ;
+}
+/* US-193005 changes end */
+
+.pulse-add-comment > .column-1 {
+  line-height: 28px;
+}
+
+.pulse-file-comment .pi {
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.pulse-file-comment .content-item > .content-inner > .field-item {
+  padding:0px;
+}
+
+.phone .pulse-add-comment .two-col-sidebar-main_icon_content {
+  padding-left: 30px
+}
+
+.phone .pulse-add-comment .two-col-sidebar-main_icon_content > .column-2 {
+  left: -30px;
+  width: 30px;
+}
+
+.phone .pulse-file-comment > .column-1 {
+  padding-left: 7px;
+}
+
+.phone .pulse-add-comment > .column-1 {
+  line-height: 44px;
+}
+
+.phone .pulse-file-comment .pi {
+  font-size: 22px;
+}
+
+.phone .pulse-add-comment .operator-image {
+  margin-top: 10px;
+}
+
+.phone .content-inline > .pulse-post-icon {
+  display: none;
+}
+
+.iOS .content-inline > .pulse-post-icon {
+  display: none;
+}
+
+.tablet .content-inline > .pulse-post-icon {
+  display: none;
+}
+
+/* pulse real time feed */
+
+div[data-node-id="pyContextPostsInner"] > div:nth-child(1), div[data-node-id="pyFeed"] > div:nth-child(3) {
+  position: sticky;
+  top: 7px;
+  z-index: 4;
+}
+
+/* BUG-328757 removed outline to show the look as button*/
+.PulseNotificationContainer a:focus {
+  outline: none;
+} 
+
+.PulseNotificationContainer {
+  text-align: center;
+}
+
+/* BUG-328757 changed color scheme*/
+.PulseNotificationContainer > div span {
+  padding: 4px 8px;
+  border-radius: 30px;
+  background-color: rgba(0,0,0,0.80);
+}
+
+/* BUG-328757 added color scheme*/
+.PulseNotificationContainer > div span:hover {
+  background-color: #003399;
+}
+
+
+.PulseNotificationContainer a, .PulseNotificationContainer a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* US-192646 begin tirus*/
+.Pulse-header  {
+  background-color: #F0F0F1;
+  padding-left: 14px;
+  padding-top: 14px;
+}
+
+.Pulse-post-link a {
+  font-size: large;
+  color: #706E6F;
+  text-decoration: none;
+  font-weight: 600;
+  padding-bottom: 7px;
+}
+
+.Pulse-post-link a:hover {
+  color: #706E6F;
+  text-decoration: none;
+}
+/* US-192646 end*/
+
+.menu-format-pulse-menu {
+  background: #fff;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.7);
+}
+
+.menu-format-pulse-menu.menu .menu-item.menu-item-active, .menu-format-pulse-menu .menu .menu-item.menu-item-active {
+    background-color: #EBEFF9;
+}
+
+.menu-format-pulse-menu.menu .menu-item > .menu-item-anchor, .menu-format-pulse-menu .menu .menu-item > .menu-item-anchor{
+  padding: 7px;
+}
+
+.menu-format-pulse-menu > .menu-item > .menu-item-anchor > .menu-item-image-wrapper {
+    display: inline-block;
+}
+
+.menu-format-pulse-menu > .menu-item > .menu-item-anchor > .menu-item-image-wrapper ~ .menu-item-image-wrapper {
+    display: none;
+}
+
+.menu-format-pulse-menu.menu .menu-item > .menu-item-anchor .menu-item-icon-imageclass, .menu-format-pulse-menu .menu .menu-item > .menu-item-anchor .menu-item-icon-imageclass {
+    font-size: 14px;
+    color: #10132E;
+}
+.menu-format-pulse-menu.menu > .menu-item > .menu-item-anchor > .menu-item-title-wrap {
+    padding: 0 0 0 3.5px;
+}
+.menu-format-pulse-menu.menu .menu-item > .menu-item-anchor .menu-item-title, .menu-format-pulse-menu .menu .menu-item > .menu-item-anchor .menu-item-title {
+    font-size: 14px;
+    color: #10132E;
+}
+.menu-format-pulse-menu .menu-item > .menu-item-anchor .menu-item-description {
+    font-size: 11px;
+    color: rgba(16,19,46,0.66);
+}
+
+
+/*US-192643 begin*/
+
+.link-black  a {
+  color: black;
+}
+
+.link-black a:hover {
+  text-decoration: none;
+  color: #0062e6;
+}
+
+
+.font-bright  a {
+  font-weight: 600;
+}
+
+.blue-onclick  a {
+  color: #0062e6;
+}
+
+/*US-192643 end*/
+
+
+
+.pulse-icon.pi{
+  border: 1px solid #ccc;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  color: #666;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size:15px; 
+}
+
+.phone .pulse-icon.pi{
+  border: 1px solid #ccc;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  color: #666;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size:15px;   
+}
+
+.PulseComment .Icon.pzbutton{
+  padding:0;
+}
+
+
+.PulseMenu i[class=" icons pi pi-caret-down pi-right"] {
+  padding-top: 6px;
+}
+
+.PulseActions > div {
+  padding-right: 3px !important;
+}
+
+/*Classes for compatability for ios and android devices*/
+
+.iOS .PulseComment BUTTON.pzhc.Icon.pzbutton, .android .PulseComment BUTTON.pzhc.Icon.pzbutton{
+  min-width: initial;
+}
+.iOS .PulseComment BUTTON.pzhc.Icon.pzbutton:focus, .android .PulseComment BUTTON.pzhc.Icon.pzbutton:focus{
+  height:initial;
+}
+
+.feed-item > div:nth-child(1) > div:nth-child(1) {
+  min-height: 0 !important;
+}
+
+@keyframes pulse-bounce {
+  0% {
+    transform: translateY(-5px);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: translateY(0px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(-5px);
+    animation-timing-function: ease-in;
+  }
+}
+
+.pulse-notification-bounce {
+  animation: pulse-bounce .2s;
+}
+
+.pulse-reply-post	{
+  padding:7px 7px 7px 14px;
+}
+.pulse-replies-header	{
+  border-top:1px solid #CCCCCC;
+}
+@media (hover: hover) {
+  .feed-header .PulseMenu, .pulse-reply-post .PulseMenu {
+    opacity: 0;
+    transition: .2s opacity;
+  }
+  .feed-header:hover .PulseMenu,  .pulse-reply-post:hover .PulseMenu  {
+    opacity:1;
+  }
+  .feed-header:focus-within .PulseMenu, .pulse-reply-post:focus-within .PulseMenu  {
+    opacity:1;
+  }
+}
+.pulse-reply-comment	{
+  padding: 0 14px;
+}
+.pulse-reply-message	{
+  padding-left:14px;
+}
+
+div[data-node-id='pyPostMessage'] > div.flex:nth-child(1) {
+    border: none;
+    padding: 0;
+    margin-top: 0;
+}
+
+div[data-node-id='pyPostDetails'] > .layout.layout-noheader-default {
+    margin: 7px 0;
+    padding: 0 14px;
+}
+
+div[node_name="pxFeed"] div.layout .content-item > div[data-node-id='pzFeed'], 
+div[node_name="pxFeed"] div.layout div[data-node-id='pyPostActions'] {
+    box-shadow: none;
+    border-radius: 8px;
+    padding: 0;
+    background: #FFF;
+}
+
+.select-post-type {
+    padding: 0 0 7px 0;
+}
+
+.feed-item.flex.content>.flex.content-item.item-1 {
+    padding: 14px 14px 0 14px;
+}
+
+.content-items-maxwidth .feed-item .content-field {
+  max-width:none;
+}
+/** Pulse inline image & video viewer **/
+div[data-node-id="pzFeed"] div.content-inner div.pulse-inline-image-video > div.flex {
+  width: 100%;
+}
+
+div[data-node-id="pyDisplayReply"] div.pulse-reply-message div.pulse-inline-image-video > div.flex {
+  width: 100%;
+}
+
+div.pulse-inline-image-viewer-wrapper {
+  width: 100%;
+  min-height: 54px;
+  display: block;
+  position: relative;
+  z-index: 2;
+  border:1px solid rgba(0,0,0,0.1);
+}
+
+div.pulse-inline-image-viewer {
+  max-width: 100%;
+  min-height: 54px;
+  /*display: flex;
+  justify-content: center;
+  align-items: center;*/
+  margin-bottom: -4px;
+}
+
+div.pulse-inline-image-viewer-pdf {
+  background: rgb(234, 76, 58);
+  margin-bottom: 0;
+}
+
+div.pulse-inline-image-viewer-img {
+  background: #764bdd;
+  margin-bottom: 0;
+}
+
+div.pulse-inline-image-viewer-video {
+  background: #09a;
+  margin-bottom: 0;
+}
+
+div.pulse-inline-image-viewer-wide {
+  padding-top:14px;
+  padding-bottom:14px;
+}
+
+div.pulse-inline-image-viewer > a {
+  display: inline-block;
+  width:100%;
+}
+
+div.pulse-inline-image-viewer > div.pulse-inline-video-overlay {
+  height: 154px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  font-size: x-large;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+div.pulse-inline-image-viewer-wide > div.pulse-inline-video-overlay-wide {
+  height: 182px;    
+}
+
+div.pulse-inline-image-viewer > div.pulse-inline-video-overlay > a {
+  text-decoration: none;
+  margin-left: -25px;
+}
+
+div.pulse-inline-image-viewer > div.pulse-inline-video-overlay > a:focus {
+  outline: 0;
+}
+
+
+/*div.pulse-inline-image-viewer > div.pulse-inline-video-overlay > a > span.play-outer-circle {
+width: 90px;
+height: 90px;
+border-radius: 50%;
+background: rgba(31, 37, 85, .8);
+display: block;
+border: 7px solid white;
+}
+
+div.pulse-inline-image-viewer > div.pulse-inline-video-overlay > a > span.play-outer-circle > span.play-inner-triangle {
+display: block;
+width: 0;
+height: 0;
+border-top: 14px solid transparent;
+border-bottom: 14px solid transparent;
+border-left: 28px solid white;
+margin-left: 26px;
+margin-top: 23px;
+}*/
+
+div.pulse-inline-image-viewer > div.pulse-inline-video-overlay > a > span.play-outer-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(31, 37, 85, .8);
+  display: block;
+  border: 5px solid white;
+}
+
+div.pulse-inline-image-viewer > div.pulse-inline-video-overlay > a > span.play-outer-circle > span.play-inner-triangle {
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-left: 18px solid white;
+  margin-left: 14px;
+  margin-top: 11px;
+}
+
+img.inline-image {
+  max-width: 100%;
+  max-height: 400px;
+}
+
+div.pulse-inline-image-viewer-img img.inline-image{    
+  margin-bottom: -3px;
+}
+
+img.inline-pdf {
+  max-width: 100%;
+  max-height: 150px;
+}
+
+div.pulse-inline-image-viewer-pdf img.inline-pdf{    
+  margin-bottom: -3px;
+}
+
+video.inline-video {
+  max-width: 100%;
+  max-height: 400px;
+}
+
+/*BUG-502733 --> height set to !important*/
+div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-download-icon > button.pzbutton,
+div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-expand-icon > button.pzbutton{
+  width: 30px;
+  height: 30px!important;
+  right: 0;
+  border-radius: 50%;
+  position: absolute;
+  background: #666699;
+  color: #fff;
+  padding: 0;
+  z-index:1;
+}
+
+html:not(.phone) div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-expand-icon > button.pzbutton {
+  right: 37px;
+}
+
+/* BUG-516298 : introduced to avoid overlapping between expand icon and download icon*/
+.phone div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-expand-icon > button.pzbutton {
+  right: 46px;
+}
+
+/*div.pulse-inline-attachment-download-icon,
+div.pulse-inline-attachment-expand-icon {
+  width: 30px;
+  height: 30px;
+  right: 0;
+  border-radius: 50%;
+  position: absolute;
+  background: #666699;
+  margin: 7px 7px;
+  text-align: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+div.pulse-inline-attachment-expand-icon {
+  right: 37px;
+}
+
+div[data-node-id="pyPostDetails"] div.content-inner div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-download-icon > button.pzbutton {
+  color: #fff;
+  padding: 0 0;
+  height: auto;
+  font-size: 14px;
+  background: transparent;
+  min-width: 0;
+}
+
+div[data-node-id="pyPostDetails"] div.content-inner div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-expand-icon > button.pzbutton {
+  color: #fff;
+  padding: 0 0;
+  margin-top: 3px;
+  height: auto;
+  font-size: 14px;
+  background: transparent;
+  min-width: 0;
+}
+*/
+div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-download-icon > button.pzbutton:focus,
+div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-expand-icon > button.pzbutton:focus{
+  /*padding: 0 7px;
+  height: 30px;
+  margin-top: 0;*/
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+}
+
+.Icon.pzbutton > .pi {
+  margin: 0 0;
+}
+
+span.pulse-inline-video-load-error {
+  padding-top: 14px;
+  display: block;
+}
+
+span.pulse-inline-video-load-error-wide {
+  padding-top: 0;    
+}
+
+span.pulse-inline-video-load-error-narrow {
+  margin-left: -63px;    
+}
+/*BUG-502733 --> margin-top: 2px; included in expand-icon to maintain consistency*/
+@media screen and (max-width: 567px) {
+  div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-download-icon > button.pzbutton {
+    margin-top: 2px;
+    /*margin-left: -7px;*/
+  }
+  div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-expand-icon > button.pzbutton {
+    margin-top: 2px;
+    /*margin-left: -7px;*/
+  }
+}
+
+@media only screen and (device-width: 768px) {
+  div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-download-icon > button.pzbutton {
+    /*margin-left: -7px;*/
+  }
+  div.pulse-inline-image-viewer-wrapper > div.pulse-inline-attachment-expand-icon > button.pzbutton {
+    /*margin-left: -7px;*/
+  }
+}
+/*	##### US-187017 #####
+Icons color and font are customized for
+feed. this class is set to icon class in
+pzEmbedFeedToResult activity.
+*/
+.pi-feed-icon-custom {
+  color: #FFFFFF;
+  font-size: 20px;
+  margin-right: 0;
+}
+
+/*	##### US-187017 #####
+Div that includes feed image is set to round
+border-radius:50% is commented to see if  we 
+really need a round shape for image
+*/
+.pi-feed-image-custom .icons > img {
+  /*border-radius:50%*/
+}
+
+/*	##### US-187017 #####
+Used in to display Icon in pyDisplayFeedIcon
+background is set to blue color,
+icon shape is set to round and center
+*/
+.feedIcon-background {
+  background-color:#2E9ED8;
+  border-radius:50%;
+  justify-content:center;
+  height:40px;
+  width:40px !important;
+}
+
+div[data-node-id="pzFeed"] > .layout-noheader {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  border-radius: 8px;
+}
+
+/*US-202412 changes for markdown help icon, to remove extra spacing for html browser styles*/
+.pulse-markdown-label {
+  background-color: transparent;
+  padding-right : 7px;
+  padding-left : 7px;
+}
+
+/* BUG-378699 - remove top and bottom margins for any first and last child element respectively */
+.pulse-display-post > *:first-child {
+  margin-top: 0;
+}
+.pulse-display-post > *:last-child {
+  margin-bottom: 0;
+}
+
+/* BUG-381975*/
+.pulse-display-post img {
+   max-width:100%;
+   max-height: 400px;
+}
+
+/*BUG-585502 */
+.pulse-display-post pre {
+  white-space: pre-wrap; 
+    overflow:hidden;
+}
+
+/* pulse post interaction */
+
+.create-new-pulse {
+  background-color: #FFF;
+}
+.create-new-pulse .TextAreaContainer .textAreaExpandStyle TEXTAREA {
+  border: none;
+  margin: 7px 0;
+  min-height: 30px;
+  transition: min-height .25s linear;
+}
+.phone .create-new-pulse .TextAreaContainer #CTRL_TA textarea, .tablet .create-new-pulse .TextAreaContainer #CTRL_TA textarea {
+  border: none;
+  margin: 0;
+}
+
+.create-new-pulse.focused .TextAreaContainer .textAreaExpandStyle TEXTAREA {
+  min-height: 80px;
+}
+.create-new-pulse textarea:active,
+.create-new-pulse textarea:hover,
+.create-new-pulse textarea:focus {
+  outline: none !important;
+  background-color: #FFF !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.create-new-pulse span.textAreaExpandStyle {
+  display:inline-table;
+}
+.create-new-pulse textarea:active {
+  background-color: #FFF;
+}
+.flex.content.create-new-pulse > .flex.content-item.item-1 {
+  display: none;
+}
+
+.phone .mobile-task-post-field {
+  margin-bottom:7px !important;
+}
+
+.phone div[node_name="pyEditTaskDetails"] .content-stacked>.flex.content-item{
+  margin-bottom:0px !important;
+}
+
+.flex.content.create-new-pulse.focused > .flex.content-item.item-1, .flex.content.create-new-task-post.focused > .flex.content-item.item-1 {
+  display: flex;
+}
+.flex.content.create-new-pulse > .flex.content-item.item-3 {
+  display: none;
+}
+.flex.content.create-new-pulse.focused > .flex.content-item.item-3, .flex.content.create-new-task-post > .flex.content-item.item-3 {
+  display: flex;
+}
+.create-new-pulse .flex.content > .flex.content-item.pulse-collapse-post, .create-new-task-post .flex.content > .flex.content-item.pulse-collapse-post {
+  display:none;
+}
+.create-new-pulse.focused .flex.content > .flex.content-item.pulse-collapse-post, .create-new-task-post.focused .flex.content > .flex.content-item.pulse-collapse-post {
+  display:block;
+}
+.pulse-direct-to-list .container-multiselect {
+  border: none;
+  min-width: 200px;
+}
+div[data-node-id="pyPostMessageHeader"] .pulse-direct-to-list .container-multiselect {
+  border: 0.1em solid rgb(211, 211, 211);
+  margin-bottom:4px;
+}
+.pulse-direct-to-list .container-multiselect input {
+  padding-left: 7px;
+}
+.pulse-direct-to-list .multiselect-readOnly {
+  border: none;
+}
+.pulse-direct-to-list .multiselect-readOnly span.token, 
+.pulse-direct-to-list .multiselect-readOnly span.token:hover {
+  background-color: transparent;
+}
+.pulse-direct-to-list .pi-caret-down {
+  display: none;
+}
+.feed-title {
+  padding: 7px;
+  background-color: rgb(244,244,244);
+}
+
+/* BUG-349214 - pulse interaction accessibility fix */
+.create-new-pulse .textAreaExpandStyle {
+  border: none;
+}
+
+/* BUG-348500 - reply textarea size issue for non-end user portals - agile workbench in designer studio and express */
+.pulse-reply-comment textarea {
+  line-height: 26px;
+  min-height: 26px;
+  padding: 0 7px;
+}
+
+.pulse-initial-post.flex.content-simple_list > div.flex.content-item {
+  min-height: 0;
+}
+
+.flex.content>.flex.content-item.remove-top-spacing.direct-to-label {
+  margin-top: 4px;
+}
+
+div[data-node-id='pyPostDetailsHeader'] i.icons {
+  color: #295ED9;
+}
+
+/*Start BUG-626442 : a11y - Hide the button caption but show the icon*/
+.hide-pulse-button-caption BUTTON.pz-icon {
+  font-size:0;
+}
+
+.hide-pulse-button-caption BUTTON.pz-icon i{
+ font-size:16px;
+}
+
+/*End BUG-626442*/
+
+/* US-223837 changes for external source comments section */
+.non-pulse-reply-comment {
+  background: #f0f0f0;
+  padding-top:14px;
+  padding-right:14px;
+  margin-top: -7px;
+}
+
+.caseIconForMentions {
+  background-color: #408080 !important;
+  color:#ffffff;
+}
+.groupIconForMentions {
+  background-color: #ff6600 !important;
+  color:#ffffff;
+}
+.documentIconForMentions {
+  background-color: #ffcc33 !important;
+  color:#ffffff;
+}
+.userIconForMentions {
+  background-color: #08C !important;
+  color:#ffffff;
+}
+.urlIconForMentions {
+  background-color: #41206f !important;
+  color:#ffffff;
+}
+.fileIconForMentions {
+  background-color: #6f9902 !important;
+  color:#ffffff;
+}
+
+.mentionItemIcon {
+  margin-top: 5px;
+}
+
+.wordDocMentionIcon {
+  background-color:#3366cc !important;
+}
+.videoDocMentionIcon {
+  background-color:#0099aa !important;
+}
+.pdfDocMentionIcon {
+  background-color:#0099aa !important;
+}
+.pptDocMentionIcon {
+  background-color:#dd5b26 !important;
+}
+.xlsxDocMentionIcon {
+  background-color:#006633 !important;
+}
+
+.docMentionsIcon {
+  width: 30px;
+  height: 30px;
+  float: left;
+  margin-top:5px;
+  margin-right: 5px;
+  -moz-background-origin:3px; 
+  background-color: #EFEFEF;
+}
+
+.mentions-input-box .divIcon {
+  margin-right: 5px;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  float:left;
+  padding-top: 5px;
+}
+
+/* create pin */
+
+.select-pin-title {
+  font-size: 13px;
+  color: #888;
+}
+
+.pin-type-icon .pi-pin {
+  color: #737576 !important;
+}
+
+.pin-type-icon {
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  float: left;
+  padding-top: 5px;
+  color: #FFFFFF !important;
+}
+
+div[data-node-id="pyPostMessage"] .container-multiselect .caret-down-img {
+  margin-right: 14px;
+}
+
+div[data-node-id="pyTagDashboardNavigation"] .recently-added-byme .tag-bashboard-result .content-item.content-sub_section ,  
+div[data-node-id="pyTagDashboardNavigation"] .recently-added-byanyone .tag-bashboard-result .content-item.content-sub_section ,
+div[data-node-id="pyTagDashboardNavigation"] .mosy-usedbyme .tag-bashboard-result .content-item.content-sub_section ,
+div[data-node-id="pyTagDashboardNavigation"] .most-used-byanyone .tag-bashboard-result .content-item.content-sub_section ,
+div[data-node-id="pyTagDashboardNavigation"] .recently-viewed-byme .tag-bashboard-result .content-item.content-sub_section {
+  margin: 0px 7px 7px 0px;
+}
+
+/* BUG-383854 hide close icon for post pin modal */
+div[data-node-id="pzPostPinModalTemplate"] button.container-close {
+  display: none;
+}
+
+.create-new-task-post {
+  background-color: #FFF;
+}
+
+/* styles for actions icons for task post type */
+
+div.task-edit-icon button.Icon.pzbutton:not([disabled]):hover, 
+div.task-edit-icon .Icon button.buttonTdButton:not([disabled]):hover, 
+div.task-edit-icon button.Icon:not([disabled]):hover,
+div.task-reopen-icon button.Icon.pzbutton:not([disabled]):hover, 
+div.task-reopen-icon .Icon button.buttonTdButton:not([disabled]):hover, 
+div.task-reopen-icon button.Icon:not([disabled]):hover {
+	background-color: #0062E6;
+}
+
+div.task-complete-icon button.Icon.pzbutton:not([disabled]):hover, 
+div.task-complete-icon .Icon button.buttonTdButton:not([disabled]):hover, 
+div.task-complete-icon button.Icon:not([disabled]):hover {
+	background-color: #32CD32;
+}
+
+div.task-icon button.Icon.pzbutton:not([disabled]):hover, 
+div.task-icon .Icon button.buttonTdButton:not([disabled]):hover, 
+div.task-icon button.Icon:not([disabled]):hover {
+  color: #FFFFFF;
+}
+
+div.task-icon button.Icon.pzbutton:not([disabled]),
+div.task-icon .Icon button.buttonTdButton:not([disabled]),
+div.task-icon button.Icon:not([disabled]) {
+  border: 1px solid;
+}
+
+.edit-task-details-header {
+  margin:-7px;
+}
+
+.flex.task-post-grid-double>.flex.content-item {
+  margin-bottom: 0;
+}
+.flex.task-post-grid-double>.flex.content-item.item-1, .phone .flex.task-post-grid-double>.flex.content-item.item-2 {
+  margin-left: 0;
+  margin-right: 14px;
+}
+.flex.task-post-grid-double>.flex.content-item.item-2 {
+  margin-right: 0;
+  margin-left: 14px;
+}
+
+/* BUG-484843 Edit task modal alignment issues fix*/
+.flex.task-post-grid-triple {
+  justify-content: space-between;
+}
+
+.flex.task-post-grid-triple>.flex.content-item {
+  margin: 0;
+}
+
+.tablet .PulseMenu > span >button{
+  height:initial !important;
+}
+
+.filter-apply-button{
+  top: 10px;
+    position: fixed !important;
+    right: 7px;
+}
+
+ #modalOverlay div[node_name="pyModalTemplateNoOKCancelButtons"] .container-close{
+ left: 14px !important;
+   position:relative !important;
+}
+ #modalOverlay div[node_name="pyModalTemplateNoOKCancelButtons"]  > table.customTableBoxStyle{
+  margin:0;
+}
+
+#modalOverlay div[data-node-id="pyModalTemplateNoOKCancelButtons"] > table.customTableBoxStyle  div.modal-scroll-panel{
+  padding:0;
+}
+
+#modalOverlay div[data-node-id="pyModalTemplateNoOKCancelButtons"] > table.customTableBoxStyle  div.hd{
+  padding:0;
+  background-color:#FFFFFF !important;
+}
+
+/* BUG-485613 task categories caret image css*/
+html:not(.phone) div[data-node-id="pzAssociatedCategories"] .container-multiselect .caret-down-img {
+  margin-right: 3.5px;
+}
+
+
+/*For tag mentions */
+
+.mentions-input-box .mentions-autocomplete-list  li.mentions-tag-item { 
+  font-family: OpenSans,sans-serif;
+  font-size:16px;
+  padding:0px;
+ /* padding-left:5px;*/
+ /* padding-bottom:7px;*/
+  padding:2px 5px;
+  color:#295ED9;
+  font-weight:600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mentions-input-box .mentions-autocomplete-list .mentions-tag-wrapper li.active { 
+ color:#fff;
+}
+
+.mentions-input-box .mentions-autocomplete-list .mentions-tag-wrapper{
+  display: flex;
+    flex-direction: row;     
+    justify-content: flex-start;
+   flex-wrap: wrap;
+  padding-left:7px;
+}
+
+.mentions-input-box .mentions-autocomplete-list .mentions-tag-header {
+  font-family: OpenSans,sans-serif;
+  font-size:14px;
+  padding:2px 12px;
+  padding-left:7px;
+  color:#909090;
+  font-weight:600
+}
+
+
+/*classs for user notification*/
+.user-notif-min-width .layout {
+  min-width: 700px;
+}
+div[node_name="pyDisplayReplies"] .layout-noheader-case_secondary_content {
+  padding-top: 0;
+}
+
+div[data-node-id="pyDisplayContextPosts"] {
+  margin-top: 7px;
+}
+
+.date-display.dataValueRead {
+  font-size: 12px;
+  color: rgba(97, 103, 112,1);
+  line-height: 1.34;
+}
+
+
+.clear-top-margin div[data-node-id="pyDisplayContextPosts"] {
+  margin-top: 0;
+}
+
+
+.adjust-layout-group-default .layout-outline-case_secondary_content, 
+.adjust-layout-group-default .layout-fieldset-case_secondary_content, 
+.adjust-layout-group-default .layout-noheader-case_secondary_content,
+.adjust-layout-group-default .layout-outline-default, 
+.adjust-layout-group-default .layout-fieldset-default, 
+.adjust-layout-group-default .layout-noheader-default {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+
+div[data-node-id="pyPostMessage"] > .layout-outline-case_secondary_content, 
+div[data-node-id="pyPostMessage"] > .layout-fieldset-case_secondary_content, 
+div[data-node-id="pyPostMessage"] > .layout-noheader-case_secondary_content,
+div[data-node-id="pyDisplayReplies"] > .layout-outline-case_secondary_content, 
+div[data-node-id="pyDisplayReplies"] > .layout-fieldset-case_secondary_content, 
+div[data-node-id="pyDisplayReplies"] > .layout-noheader-case_secondary_content {
+  margin-bottom: 0;
+} 
+
+.pulse-initial-post.padding-0 {
+  padding-top:0;
+}
+
+
+div[data-node-id="pyPostDetails"] > .pulse-initial-post {
+  padding:7px 14px;
+}
+
+.pulse-initial-post .layout-outline-errors, 
+.pulse-initial-post .layout-fieldset-errors, 
+.pulse-initial-post .layout-noheader-errors {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.pulse-initial-post img, .pulse-display-post img {
+  max-width:100% !important;
+}
+
+.pulse-post-filename a {
+  font-size: 16px; 
+  font-weight: normal;
+  color: #0062e6;
+  overflow-wrap: break-word;
+}
+
+.pulse-post-area textarea {
+  outline: none;
+}
+
+.pulse-replies-header	{
+  border-top:1px solid #CCCCCC;
+  padding-top: 8px;
+}
+
+div.pulse-reply-message {
+    padding: 8px 16px;
+    border-radius: 16px;
+    background: #f6f6f6;
+    align-items: center;
+}
+
+.comments-reply-text-area {
+    border-radius: 16px;
+    background: #f6f6f6;
+    border: 1px solid #D5DBE2;
+    padding: 0 0 0 16px;
+}
+html.phone  .comments-reply-text-area {
+    border-radius: 0;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.comments-reply-text-area span #CTRL_TA > TEXTAREA:not([disabled]),
+.comments-reply-text-area span #CTRL_TA > TEXTAREA:not([disabled]):hover,
+.comments-reply-text-area span #CTRL_TA > TEXTAREA:not([disabled]):focus,
+.comments-reply-text-area span #CTRL_TA > TEXTAREA:not([disabled]):active {
+   margin: 0;
+    border: none;
+    background: #f6f6f6;
+    line-height: 1.5;
+    padding: 4px 0 0 0;
+    outline:none;
+}
+
+#pyReplyText {
+  outline: none;
+}
+
+@supports (-ms-accelerator:true) { 
+  .pulse-post-area textarea {
+    outline: none;
+  }
+}
+
+/* BUG-264553: remove indentation for pulse post text area for mobile & tabs */
+.phone .pulse-post-area textarea, .tablet .pulse-post-area textarea {
+  text-indent: 0;
+}
+
+.layout-noheader-workarea div[data-node-id="pxContextFeed"] {
+  padding-bottom: 21px;
+}
+
+.ie9 .pulse-post-area input {
+  /*text-indent is not working for IE9.Placeholder text is overlapping with the chat icon.Changing to padding-left*/
+  padding-left: 0;
+}
+
+.pulse-post-area {
+  position: relative;  
+}
+
+select-post-type {
+  padding:0 0 7px 0;
+}
+.pulse-initial-post .two-col-sidebar-main_profile_display {
+  padding-left: 50px;
+}
+
+.pulse-initial-post .two-col-sidebar-main_profile_display > .column-2 {
+  width: 50px;
+  left: -50px
+}
+
+.pulse-post {
+  margin-bottom: 1px;
+}
+
+.pulse-refresh a.List_link {
+  background: #F0F0F0;
+  padding: 3px 14px;
+  margin-right: 7px;
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.content-inline > .pulse-post-icon,
+.content-inline > .pulse-comment-icon {
+  color: #ccc;
+  position: absolute;
+  left: 8px;
+  height: 21px;
+  top: 5px;
+}
+
+/* BUG-259426: align pulse post chat icon to right in pulse post textarea for rtl localization */
+html[dir="rtl"] .content-inline > .pulse-post-icon,
+html[dir="rtl"] .content-inline > .pulse-comment-icon {
+  right: 7px;
+}
+
+.content-inline > .pulse-comment-icon {
+  top: 1px;
+}
+
+.phone .content-inline > .pulse-comment-icon {
+  display: none;
+}
+
+div[data-node-id="pyPostMessageInner"] .layout-noheader-assignment_supporting{
+  border-left: none;
+}
+
+div[data-node-id="pyDisplayReplies"] .layout-noheader-assignment_supporting{
+  border-left: none;
+}
+
+div[data-node-id="pyTaggedPosts"] .subTabbed {
+  font-size: 16px; 
+}
+
+.pulse-file-uploaded {
+  display:flex;
+  align-items: center;
+}
+
+/* For BUG-560250 */
+.pulse-file-uploaded > .content-item img {
+  max-width: 100%;
+}
+
+.work-tags , .tags-model {
+   min-width: 500px !important;
+  max-width: 700px !important;
+}
+
+html.phone .work-tags , html.phone .tags-model {
+    min-width: 100% !important;
+  max-width:100% !important;
+}
+
+.work-tag {
+   background-color: #F0F0F0;
+   padding: 4px;
+}
+
+.work-tags .flex.content.work-tag .content-item.work-tag-label {
+  margin-left: 0.3em;
+}
+
+.content > .tag-tile,
+.content > .tag-tile-selected{
+  background-color: #E6E6E6;
+  padding: 3px 7px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.content > .tag-tile-selected {
+  background-color: #009245;
+  font-size: 16px; 
+}
+
+.no-tags {
+  margin-top: 10%;
+  padding-bottom: 25%;
+}
+
+/* For BUG-560250 word-break*/
+/* For BUG-545456 */
+.pulse-display-post {
+  word-wrap: break-word;
+  white-space: normal; 
+  line-height: 1.3;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  font-size:14px;
+  overflow:hidden;
+  display:inline-block;
+}
+
+html.phone .pulse-display-post {
+  max-width: calc(100vw - 66px);
+  padding:0;
+}
+
+div[data-node-id="pyDisplayContextPostsFeed"] .displayPost {
+  margin-bottom: 0;
+}
+
+.refreshFeedIcon {
+  font-size: 12px;
+}
+
+.feed-header .PulseActions .Icon.pzbutton {
+  height:auto;
+}
+
+div[data-node-id="pyDisplayReplies"] .content-inline_middle > .content-item{
+  margin-right:0;
+}
+
+.flex.content > .post-username.flex.content-item {
+  display: inline;
+}
+.post-username a {
+  font-weight: 600;
+  display:block;
+  color: #000;
+}
+.post-username a,
+.post-context a,
+.post-context .dataLabelRead,
+.post-context .dataValueRead {
+   font-size: 14px;
+  line-height: 1.3;
+}
+div[node_name="pxFeed"] div.layout .content-item > div[data-node-id='pzFeed'], 
+div[node_name="pxFeed"] div.layout div[data-node-id='pyPostActions'] {
+    box-shadow: none;
+    border-radius: 8px;
+    padding: 0;
+    background: #FFF;
+}
+
+div[node_name="pxFeed"] div.layout div[data-node-id='pyPostActions'] {
+    padding: 14px;
+ }
+
+div[data-node-id='pzFeed'] .layout-noheader-default > div.layout-body {
+    padding: 0;
+}
+
+div[data-node-id="pzFeed"] > div.layout-noheader {
+    margin-top: 0;
+    padding:0;
+}
+
+div[data-node-id="pzFeedHeader"] > .flex.content  .content-item.item-3.dataValueRead > span{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
+}
+
+div[data-node-id="pyDisplayReplies"] .layout-noheader-case_secondary_content {
+  background-color: #F4F4F4;
+}
+
+/*Epic-24637 MultipleAttachments*/
+
+
+.pagination-tile {
+  background:#E0E0E0;
+  font-size:120%;
+  height:60px;
+  }
+.pagination-tile::before {
+  content:"+";
+}
+.pagination-tile a:hover {
+  color:black;
+}
+
+
+.multiple-attachments-filename a.Case_tools {
+ max-width:182px !important;
+}
+ 
+
+div[data-node-id="pyAttachmentDetails"] .layout-noheader-assignment_supporting {
+  border-left:none !important;
+  padding-left:0px;
+  padding-right:0px;
+  
+}
+
+div[data-node-id="pyAttachmentDetailsForReplies"] .layout-noheader-assignment_supporting {
+  border-left:none !important;
+  padding-left:0px;
+  padding-right:0px;
+  
+}
+/* end of Epic-24637 styling */
+
+.mentions-input-box,
+.mentions-input-box .mentions-autocomplete-list,
+.mentions-input-box .mentions-autocomplete-list li   {  
+  background: #fff;
+}
+
+.mentions-input-box .mentions-autocomplete-list li em {
+  font-weight: bold;
+  font-style: normal;
+}
+
+.mentions-input-box .mentions-autocomplete-list li:hover
+{
+  background-color:  #eceff8;
+}
+.mentions-input-box .mentions-autocomplete-list li.active {
+  background-color: #08C;
+}
+
+.mentions-input-box .mentions-autocomplete-list li b {
+  background: #ffff99;
+  font-weight: 400;
+}
+  
+.mentions-input-box .mentions-autocomplete-list li span.name	{  
+ color:#292f33;
+ font-weight: 700;
+  
+}
+
+.mentions-input-box .mentions-autocomplete-list li span.userid{
+   display:none;
+ 
+}
+.mentions-input-box .mentions-autocomplete-list li span.userid, 
+.mentions-input-box .mentions-autocomplete-list li div.additionalInfoRT,
+.mentions-input-box .mentions-autocomplete-list li div.additionalInfoLT{
+  color: #8899a6;
+  font-size: 14px; 
+  font-weight: 400;
+}
+
+.mentions-input-box .mentions > div > strong {
+  font-weight:normal;
+  background: #d8dfea;
+}
+
+
+.mentions-input-box .mentions-autocomplete-list li.active span,
+.mentions-input-box .mentions-autocomplete-list li.active div,
+.mentions-input-box .mentions,
+.mentions-input-box .mentions-autocomplete-list li.active:hover span,
+.mentions-input-box .mentions-autocomplete-list li.active:hover div.additionalInfoLT,
+.mentions-input-box .mentions > div,
+.tag-tile-selected {
+  color: #fff;
+}
+.mentions-input-box .mentions-autocomplete-list li:hover div.additionalInfoLT,
+.mentions-input-box .mentions-autocomplete-list li:hover span
+{
+  color: black;
+}
+.pi-matchtag {
+  color: #139148;
+  margin-right: 0;
+  font-size: 18px;
+}
+
+.mentions-input-box .mentions-autocomplete-list li {
+    padding: 2px 12px;
+    width: auto;
+    height: initial;
+    line-height: initial;
+    overflow: hidden;
+    cursor: pointer;
+    list-style: none;
+    white-space: nowrap;
+    border-bottom: 0px;
+    padding-left:7px;
+}
+.ie11 .mentions-input-box .mentions-autocomplete-list li
+{
+  line-height: normal;
+  
+}
+.ie11 .mentions-input-box .mentions-autocomplete-list li.mcategory {
+  height:30px !important;
+  
+}
+
+
+
+
+
+
+.mentions-input-box .mentions-autocomplete-list li div.ellipsesM{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.operator-image {
+  display:flex;
+}
+
+/* Override for the no feed */
+div[data-node-id='pyNoFeed']  .announcement_dataLabelRead{
+  color: RGBA(16, 19, 46, .66);
+  font-size: 18px;
+  line-height:24px;
+}
+div[data-node-id='pyNoFeed'] .pi {
+  font-size: 40px;
+}
+
+.flex.content.pulse-flex-all-items,
+.flex.content.pulse-flex-all-items > .flex.content-item {
+  flex:1;
+}
+
+/* Fix issue with pxFeed - the non auto section creates spacing at the top */
+div[node_name="pxFeed"] > span:first-child {
+  display:flex;
+}
+
+/* Override pulse for mobile */
+html.phone div[node_name="pxFeed"] div[data-node-id='pzFeed'], 
+html.phone div[data-node-id='pyPostActions'] {
+  background: #FFF;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, .25);
+  padding: 1px;
+  border-radius: 3px;
+  margin:0 7px;
+}
+
+html.phone div[node_name="pxFeed"] .select-post-type {
+  margin: 0;
+  border: none;
+}
+
+html.phone div[data-node-id='pzFeed'] > div {
+  margin:0;
+}
+
+html.phone div[data-node-id='pzFeed'] > div > div {
+  padding:0;
+}
+
+html.phone .feed-item div[data-node-id='pzFeedHeader'] {
+  padding: 0;
+}
+
+html.phone .feed-item.focused  div[data-node-id='pzFeedHeader'] {
+  padding: 0;
+}
+
+html.phone div[data-node-id='pzFeedHeader'] {
+  padding: 0;
+}
+
+/* avoid the min-height on the attachments */
+html.phone .harnessContent.focused > header {
+  display:none;
+}
+
+/* when using the overlay in a slideout - need to make sure that on focus we hide the overflow */
+html.phone .harnessContent.focused .workarea-view-scroll-wrapper div:not([node_name="pyPulseWrapper"]):not([node_name="PulseGadget"]) > span.inspector-span > div[node_name="pxFeed"] {
+  top:0!important;
+  overflow:hidden!important;
+  position: absolute!important;
+  left: 0!important;
+  bottom: 0!important;
+  right: 0!important;
+}
+
+html.phone .harnessContent.focused > .workarea-view-scroll-wrapper {
+  overflow:hidden;
+  padding-top: 0!important;
+}
+
+html.phone .flex.content.create-new-pulse > .flex.content-item.item-1 {
+  display:flex;
+}
+html.phone .flex.content.create-new-pulse.focused > .flex.content-item.item-1 {
+  display:none;
+}
+html.phone .flex.content.create-new-pulse.focused > .flex.content-item.item-2, 
+html.phone .flex.content.create-new-task-post.focused > .flex.content-item.item-2 {
+  padding:14px;
+}
+html.phone .flex.content.create-new-pulse > .flex.content-item.item-4 {
+    display: none;
+}
+html.phone .flex.content.create-new-pulse.focused > .item-2 > div,
+html.phone .flex.content.create-new-pulse.focused > .item-2 > div > div,
+html.phone .flex.content.create-new-pulse.focused > .item-2 > div > div > div {
+  height:100%;
+}
+html.phone .flex.content.create-new-task-post.focused > .item-2 > div,
+html.phone .flex.content.create-new-task-post.focused > .item-2 > div > div,
+html.phone .flex.content.create-new-task-post.focused > .item-2 > div > div > div {
+  height:100%;
+}
+html.phone .create-new-pulse textarea {
+  height:38px;
+}
+html.phone .create-new-pulse.focused textarea {
+  height:100%!important;
+}
+
+html.phone .create-new-pulse.focused .pulse-post-textarea,
+html.phone .create-new-pulse.focused .pulse-post-textarea > div,
+html.phone .create-new-pulse.focused .pulse-post-textarea > div > span,
+html.phone .create-new-pulse.focused  .pulse-post-textarea > div > span > span {
+  height:100% !important;
+}
+
+html.phone .layout-noheader-assignment_supporting {
+  background: #FFF;
+}
+
+html.phone .pulse-reply-comment.focused,
+html.phone .feed-item.focused,
+html.phone .create-new-pulse.focused,
+html.phone .create-new-task-post.focused{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    margin:0;
+    background: #E8EAED;
+    padding:0!important;
+    z-index:11;
+    flex-wrap:nowrap;
+}
+
+html.phone .feed-item.focused > .item-1 {
+  flex: 0 0 auto;
+}
+html.phone .feed-item.focused > .item-2 {
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+html.phone .feed-item.focused > .item-3 {
+  flex: 0 0 auto;
+  border-top: 1px solid #D3D3D3;
+}
+
+html.phone .pulse-reply-comment {
+  display:none;
+}
+html.phone .pulse-reply-comment.focused {
+  display:flex;
+  flex-direction:column;
+}
+html.phone .pulse-reply-comment.focused > div:first-child {
+  flex:1;
+}
+html.phone .flex.content>.flex.content-item.pulse-text-area {
+  flex:1;
+  padding: 14px;
+}
+html.phone .pulse-text-area > div,
+html.phone .pulse-text-area > span,
+html.phone .pulse-text-area > div > span,
+html.phone .pulse-text-area > span > span,
+html.phone .pulse-text-area > div > span > span {
+  height:100%;
+}
+html.phone .pulse-text-area textarea {
+  height: 100%!important;
+}
+
+/*  BUG-573788  -- pulse load issue for mobile screen flow cases */
+.phone .workarea-view-scroll-wrapper div:not([node_name="pyPulseWrapper"]) > span.inspector-span > div[node_name="pyCaseFeed"]    {
+  overflow:hidden!important;
+  position: absolute!important;
+  left: 0!important;
+  bottom: 0!important;
+  right: 0!important;
+  display:none;
+  top: 52px;
+    position: fixed;
+    right: -370px;
+    bottom: 0;
+    background: #fff;
+    z-index: 3;
+    transition: right .4s ease;
+    box-shadow: -2px 4px 7px rgba(0, 0, 0, .3);
+    overflow: auto;
+    display: none;
+}
+
+/* For BUG-568926 */
+
+html.phone .feed-item.focused {
+ background:#FFF;
+  z-index:3!important;
+}
+
+html.phone .feed-item .feed-header-mobile {
+ display:none;
+}
+html.phone .feed-item div[data-node-id='pyPostDetails'] {
+  margin:0;
+}
+html.phone .feed-item div[node_name="pyDisplayRepliesMobile"],
+html.phone .feed-item div[node_name="pyCommentsMobile"] {
+  display:none;
+}
+html.phone .feed-item.focused .feed-header-mobile {
+ display:block;
+}
+html.phone .feed-item.focused div[node_name="pyDisplayRepliesMobile"],
+html.phone .feed-item.focused div[node_name="pyCommentsMobile"] {
+  display:block;
+  padding: 14px 7px 0 14px;
+  border-top:1px solid #D3D3D3;
+}
+html.phone .feed-item.focused > .item-1 > div > div {
+ border-bottom: 1px solid #D3D3D3;
+ padding:7px;
+}
+html.phone .feed-item.focused .post-detail-footer {
+  display:none;
+}
+html.phone .flex.content.feed-item > .flex.content-item.item-3 {
+  display:none;
+}
+html.phone .flex.content.feed-item.focused > .flex.content-item.item-3 {
+  display:block;
+}
+
+html.phone .create-new-task-post.focused .mobile-task-post-field input, html.phone .create-new-task-post.focused .mobile-task-post-field textarea {
+  background-color: #E8EAED;
+  border-color: #bbbbbb;
+}
+html.phone .create-new-pulse.focused > .item-2, html.phone .create-new-task-post.focused > .item-2{
+  order:2;
+  flex:1;
+}
+html.phone .pulse-reply-comment.focused > .item-2 {
+  flex-grow:1
+}
+html.phone .create-new-pulse.focused > .item-3, html.phone .create-new-task-post.focused > .item-3{
+  border-bottom:1px solid #D3D3D3;
+  background:#FFF
+}
+html.phone .pulse-reply-comment .content-simple_list>.item-1 {
+  padding: 7px;
+  border-bottom:1px solid #D3D3D3;
+  background:#FFF
+}
+
+html.phone .flex.content.create-new-pulse.focused > .flex.content-item.item-4, html.phone .flex.content.create-new-task-post.focused > .flex.content-item.item-4{
+  display: block;
+  order: 3;
+}
+html.phone div[data-node-id='pyPostMessage'] > div:nth-child(1) {
+    border: none;
+    margin: 0;
+}
+/* hide the operator icon on expand */
+html.phone .create-new-pulse.focused > .item-2 > .content > .item-1 {
+  display:none;
+}
+/* Header for the create post */
+html.phone .create-new-pulse.focused > .item-3  div.pulse-post-bar {
+  padding: 7px;
+  display:flex;
+}
+html.phone .create-new-pulse.focused > .item-3 > .content > .item-1, 
+html.phone .create-new-task-post.focused > .item-3 > .content > .item-1 {
+  flex-grow:1;
+}
+html.phone .pulse-reply-comment .mentions-input-box {
+  background-color: #E8EAED;
+}
+html.phone div.mentions-input-box { 
+  position:relative;
+}
+html.phone .pulse-reply-comment.focused textarea,
+html.phone .pulse-reply-comment.focused textarea:active,
+html.phone .pulse-reply-comment.focused textarea:hover,
+html.phone .pulse-reply-comment.focused textarea:focus,
+html.phone .create-new-pulse.focused  textarea,
+html.phone .create-new-pulse.focused  textarea:active,
+html.phone .create-new-pulse.focused  textarea:hover,
+html.phone .create-new-pulse.focused  textarea:focus {
+  background-color: #E8EAED!important;
+  height:auto;
+  border:none!important;
+  outline:none!important;
+  box-shadow:none!important;
+}
+
+html.phone .create-new-pulse.focused .TextAreaContainer .textAreaExpandStyle TEXTAREA {
+  min-height:0;
+}
+
+html.phone .reply-to-comments-post {
+  padding:7px;
+}
+html.phone .reply-to-comments-post.flex > .flex.content-item.item-2 {
+  display:block;
+}
+html.phone .reply-to-comments-post textarea,
+html.phone .reply-to-comments-post textarea:active,
+html.phone .reply-to-comments-post textarea:hover,
+html.phone .reply-to-comments-post textarea:focus {
+  background-color: #FFF!important;
+  height:auto;
+  border:none!important;
+  outline:none!important;
+  box-shadow:none!important;
+  line-height:41px;
+}
+html.phone .pulse-reply-comment.focused button,
+html.phone .create-new-pulse.focused button,
+html.phone .create-new-pulse.focused button.pzhc > .pzbtn-rnd, 
+html.phone .create-new-pulse.focused button.pzhc > .pzbtn-rnd > .pzbtn-lft,
+html.phone .create-new-task-post.focused button,
+html.phone .create-new-task-post.focused button.pzhc > .pzbtn-rnd, 
+html.phone .create-new-task-post.focused button.pzhc > .pzbtn-rnd > .pzbtn-lft {
+  border:none;
+  min-width:0;
+  font-weight: 700;
+  text-transform: uppercase;
+  box-shadow: none;
+  height:44px;
+}
+
+html.phone div.pulse-inline-image-viewer-wrapper {
+  background:none;
+  box-shadow:none;
+  padding-bottom:7px;
+}
+html.phone .flex.pulse-postreply-attachment {
+  flex-direction:column;
+} 
+html.phone .flex.content.pulse-postreply-attachment > .flex.content-item {
+  margin: 7px 0 0;
+} 
+
+/* Details for the footer */
+html.phone .post-detail-footer {
+  border-top: 1px solid #ccc;
+  padding:7px 14px;
+}
+html.phone .post-detail-footer > div {
+  flex:1;
+}
+
+/* Separator item for comments and like */
+.content-item.pulse-item-separator > span {
+    display:flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    font-size:14px;
+}
+.content-item.pulse-item-separator > span:before {
+    content: '|';
+    margin-left: -2px;
+    margin-right: 4px;
+    line-height: 32px;
+}
+
+html.phone .content-item.item-separator-before:before {
+    content: '\2022';
+    margin-left: -3px;
+    margin-right: 5px;
+}
+html.phone .content-item.item-separator span:after {
+    content: '\2022';
+    margin-left: 5px;
+   /* margin-right: -3px; BUG-464303- to align comment count properly, it is not required */
+}
+
+/* styling changes for the filter feed overlay on mobile */
+html.phone div[data-node-id="pyDataSourceFilters"] .content-inline_middle {
+   border-bottom: 1px solid #ccc;
+   text-align: left;
+   padding: 14px 0 7px 0;
+}
+
+html.phone .feed-item.focused.flex.content > .flex.content-item.item-1 {
+    padding: 0;
+}
+
+html.phone div[data-node-id="pyDataSourceFilters"] .buttonMainTable td {
+  border:none;
+  min-width: 0;
+}
+
+html.phone div[data-node-id="pyDataSourceFilters"] .buttonMainTable td button {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
+  min-width: 0;
+  border:none;
+}
+
+html.phone .rdlWrapperDiv > .flex.content-stacked.display-replies > .flex.content-item {
+    padding: 0;
+  border:none;
+}
+
+html.phone div[data-node-id="pzAdvancedTextHelp"] {
+  margin-top:50px;
+  border-top: 1px solid #ccc;
+}
+
+html.phone .pulse-action-sheet_modal {
+  vertical-align:bottom;
+}
+
+html.phone .pulse-action-sheet_modal > .modal-wrapper {
+  display:block!important;
+}
+html.phone #modalOverlay .pulse-action-sheet_modal .modal-content .yui-resize-handle {
+  display:none;
+}
+
+div[data-node-id="pySelectPostTypeModal"] .container-close {
+  height:0!important;
+  width:0!important;
+}
+
+div[data-node-id="pySelectPostTypeModal"] > .layout {
+  margin-bottom:0;
+}
+
+html.phone  .menu-bar.menu-vertical {
+  width:100%;
+}
+html.phone  .menu-format-standard.menu-bar.menu-vertical > .menu-item.menu-item-active {
+  background: none;
+}
+
+/* Fixes for styling of the direct message multi-select */
+/* BUG-456383 categories in task multiselect fullscreen mask changes */
+html.phone .pulse-direct-to-list > .multiselect-fixed-top,
+html.phone .pulse-task-categories > .multiselect-fixed-top {
+  top:0;
+  bottom:0
+}
+
+html.phone .pulse-direct-to-list > .multiselect-fixed-top > a {
+  font-size:20px;
+}
+html.phone div.ms-mask {
+  position: static !important;
+}
+
+
+/* placeholder tile to create instance */
+
+.tile-add {
+ 
+  border: 2px solid #8AA7EA;
+  background-color: #FFFFFF;
+  margin : 0;
+}
+
+.tile-add-icon {
+  font-size: 32px;
+}
+
+.tile-add-text {
+  font-size: 15px;
+  font-weight: bold;
+  color: #295ED9;
+}
+
+/* BUG-377962 - pulse gadget restrict height for progressive load */
+div[data-node-id="pyPulseWidget"] div[node_name="pxFeed"] {
+  max-height: 800px;
+  overflow-y: auto;
+}
+
+.multiple-attachments-filename {
+    width: 182px !important;
+}
+
+
+.flex.content.block-layout,
+.flex.content.block-layout > .flex,
+.flex.content.block-layout > .flex > div,
+.flex.content.block-layout > .flex > div > .flex,
+.flex.content.block-layout > .flex > div > .flex > .flex {
+  display: block;
+}
+
+.btn-action button.Simple.pzbutton:not([disabled]) {
+    background: none;
+    border:none;
+    color: rgba(0,0,0,0.8);
+    padding:0;
+    min-width:0;
+}
+.btn-action button.Simple.pzbutton:not([disabled]):focus,
+.btn-action button.Simple.pzbutton:not([disabled]):active,
+.btn-action button.Simple.pzbutton:not([disabled]):hover {
+    background: none;
+    border:none;
+    color: #000;
+    outline:none;
+    min-width:0;
+}
+.btn-action button.Simple.pzbutton:not([disabled]):focus {
+    color: #295ED9;
+}
+.btn-action-active button.Simple.pzbutton:not([disabled]) {
+    background: none;
+    border:none;
+    color: #295ED9;
+    padding:0;
+    min-width:0;
+}
+.btn-action-active button.Simple.pzbutton:not([disabled]):focus,
+.btn-action-active button.Simple.pzbutton:not([disabled]):active,
+.btn-action-active button.Simple.pzbutton:not([disabled]):hover {
+    background: none;
+    border:none;
+    color: #1845AD;
+    outline:none;
+    min-width:0;
+}
+
+/* Edit pulse post css start */
+
+html.phone .edit-pulse-post .pulse-post-textarea {
+    display:flex !important;
+    width: 100% !important; 
+}
+
+html.phone .edit-pulse-post .pulse-post-textarea textarea{
+    overflow-y: auto !important;
+}
+
+.content-item.edit-pulse-item-separator:before {
+   content: '|';
+    margin-left: -2px;
+    margin-right: 4px;
+    color: #000000;
+   
+}
+.content-item.edit-pulse-item-separator {
+    display:flex;
+    flex-flow: row nowrap;
+    align-items: center !important;
+    color:rgba(97, 103, 112,1);
+   font-size: 12px;
+    font-weight: 400;
+    font-family: OpenSans,sans-serif;
+    line-height: 1.34;
+    box-sizing: border-box;
+}
+
+.pulse-edit-mode >.content-item{
+  width: 100% !important;
+   
+}
+
+.pulse-edit-mode   .edit-post-actions{
+  margin-top:5px !important;
+}
+
+.pulse-edit-mode .edit-pulse-textarea{
+  width: 80% !important;
+  border-bottom: 1px solid #C2C8CF;
+  padding-bottom: 3px !important;
+      margin-left: 6px !important;
+}
+
+.pulse-edit-mode .edit-pulse-textarea textarea,.pulse-edit-mode .edit-pulse-textarea textarea:focus{
+  border-top: 0px !important;
+  border-left: 0px !important;
+  border-right: 0px !important;
+  border-radius: 0px !important;
+    border-bottom: 0px !important;
+  outline:none !important;
+  min-height: 38px !important;
+  margin-left: 0px !important;
+  padding-left: 0px !important;
+      background-color: inherit !important;
+ 
+}
+
+.edited-post.pulse-reply-message{
+  padding-right:4px !important;
+    padding-left:4px !important;
+}
+
+ .pulse-reply-message .pulse-edit-mode .edit-pulse-textarea textarea{
+ background-color: inherit;
+   margin-top: -2px !important;
+    margin-left: 0px !important;
+     padding-top: 15px !important;
+     border-radius: 0px !important;
+} 
+
+.pulse-edit-mode .edit-pulse-textarea textarea{
+  padding-top: 16px !important;
+ 
+}
+
+.pulse-edit-mode .mentions-input-box{
+  background-color: inherit;
+}
+
+.pulse-reply-message .pulse-edit-mode .edit-pulse-textarea textAreaExpandStyle{
+  line-height: 36px !important;
+}
+
+.pulse-initial-post .discard-edit-pulse .pzbutton , 
+.pulse-initial-post .update-pulse  .pzbutton{
+  color:	#808080;
+}
+
+
+.pulse-reply-message .pulse-edit-mode .discard-edit-pulse .pzbutton ,
+.pulse-reply-message .pulse-edit-mode .update-pulse .pzbutton {
+  color:	#808080;
+}
+
+.pulse-edit-mode .edit-post-actions{
+  display: inline-flex;
+}
+
+  
+.pulse-initial-post .pulse-edit-mode{ 
+  background-color:RGBA(41,94,217,.1) !important;
+  border-radius:16px;
+}
+
+.pulse-reply-post .edited-post {
+  background-color:RGBA(41,94,217,.1) !important;
+}
+
+
+.pulse-edit-mode .item-2 .content-item{
+  margin-bottom: 0px !important;
+}
+
+/* Start BUG-527399 */
+
+#pegaSocialXpress .multiple-attachments-filename{
+  word-break: break-word;
+    padding-left: 1em !important;
+}
+
+/*End BUG-527399 */
+
+/* Edit pulse post css end */
+
+/* Start: Search - CSS */
+
+.pulse-search-icon{
+   position: absolute;
+    padding-top:5px !important;
+  padding-left:14px !important;
+}
+
+.space-search {
+   position: relative;
+}
+
+.clear-pulse-search{
+  position:absolute;
+  right: 2.5em;
+  padding-top: 5px !important;
+}
+
+
+html.phone .clear-pulse-search{
+  position: absolute;
+  right: 3em;
+  padding-top: 5px !important;
+}
+
+
+.clear-pulse-search-cosmos{
+  position:absolute;
+  right: 1.5em;
+  padding-top: 5px !important;
+}
+
+html.phone .clear-pulse-search-cosmos{
+  position: absolute;
+  right: 1.5em;
+  padding-top: 5px !important;
+}
+
+html.phone .advanced-search-options{
+  position: absolute;
+  left: 22em;
+  padding-top: 0.5px !important;;
+}
+
+html.phone advanced-search-options-cosmos{
+  position: absolute;
+  right: 0.0em;
+  padding-top: 0.5px !important;;
+
+}
+
+.advanced-search-options i {
+  font-size: 1.5em !important;
+}
+
+
+.pulse-search-bar{
+  margin-left:7px !important;
+  height:32px !important;
+}
+
+.pulse-search-bar input{
+  text-indent: 1.2em;
+  border-radius:21px !important;
+  border: 1px solid #ccc !important;
+}
+
+
+
+.pulse-search-results{
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    position:absolute;
+    top:0;
+}
+
+.pulse-search-options .select-users-list{
+  padding: 0 0 0 4px !important;
+  max-width:169px !important;
+ 
+}
+
+.pulse-search-options .pulse-direct-to-list .container-multiselect{
+   min-width:169px !important;
+}
+
+.contains .item-2{
+  padding-left:14px !important;
+}
+.pulse-search-options .during{
+  padding-bottom:10px !important;
+}
+
+.during >.item-1{
+padding-right: 26px !important;
+padding-top: 8px !important;
+}
+
+.during .item-2 .item-2,.during .item-2 .item-1{
+ margin-bottom:0px !important; 
+}
+
+.pulse-search-options input:active,.pulse-search-options input:hover,.pulse-search-options input:focus{
+outline-style: none !important;
+    outline-color: white !important;
+    background-color: white !important;
+}
+  
+.from .item-1{
+  padding-top:10px !important;
+}
+
+.contains .item-2 input,.pulse-search-options .select-users-list .container-multiselect,.during .item-2 input{
+    border-left: 0px !important;
+    border-right: 0px !important;
+    border-top: 0px !important;
+    border-radius: 0px !important;
+    border:1px solid #C2C8CF;
+}
+
+.search-overlay-actions .item-2{
+  float:right;
+}
+  
+.phone .flex.content-inline_middle>.content-item.pulse-search-action { 
+  margin: 0 -35px 0 0!important;
+}
+  
+.flex.content-inline_middle>.content-item.pulse-search-action {  
+  margin: 0 -35px 0 0;
+  z-index: 1;
+}
+
+.long-post-matched a{
+  color:#fda300;
+}
+
+.phone .pulse-search-action-mob {  
+  position: absolute;
+  left: 10px;
+  padding-top: 3px;
+  z-index: 1;
+}
+
+.phone .pulse-search-mobile-options{
+  margin: 0 -25px 0 -16px !important;
+  z-index: 1;
+  font-size: 26px;
+}
+
+.advanced-search-options {
+  position: relative;
+  padding-top: 0px !important;
+  right: 3.5em;
+  font-size: 1.2em;
+}
+
+.pulse-gadget-header .search-widget-infinity{
+  margin-right: -3em !important;
+}
+
+.advanced-search-options-cosmos{
+  position: absolute;
+  padding-top: 3px !important;
+  right: 0.0em;
+  font-size: 1.2em;
+}
+
+.clear-search-results{
+  position: relative;
+  right: 3.5em;
+}
+
+.clear-search-results-cosmos{
+  padding-top: 6px !important;
+  position: absolute;
+  right: 1.5em;
+}
+
+.pulse-options{
+  padding-left:10px !important;
+}
+
+.pulse-options .layout-noheader{
+   padding:0px !important;
+}
+
+.flex.content-inline_middle>.flex.content-item.pulse-search-cancel {
+    margin: 0 0 0 -45px;
+    z-index: 1;
+}
+
+.phone .pulse-search input[type='text'] {
+  padding-left: 14% !important; 
+   border-radius: 17px !important;
+  width: 100% !important;
+}
+
+.pulse-search input[type='text'] {
+  width: 27em !important;
+  padding-left: 10% !important; 
+  border-radius: 17px !important;
+  height:32px !important;
+}
+
+/*classs for serach highliting*/
+.pulse-post-search-text-highlight {
+  background: transparent;
+	background: linear-gradient(to right, #FAF693 50%, transparent 50%);
+	background-position: right bottom;
+	background-size: 200% 100%;
+	/* transition: all .5s ease; */
+}
+
+.pulse-post-search-text-animate {
+  background-position: left bottom;
+}
+
+.pulse-post-search-text-highlight-ie, .pulse-post-search-text-animate-ie {
+  background-color: #FAF693;
+}
+
+.matched-attachment{
+  border:3px solid #FAF693 !important;
+}
+
+.single-matched-attachment {
+  border:3px solid #FAF693 !important;
+}
+
+.matched-attachment-showAll {
+  border:3px solid #FAF693 !important;
+}
+
+.select-users-list{
+  padding: 12px !important;
+}
+
+/* End: Search - CSS */
+/* This CSS is used for pxOperatorImage and pxInitials controls for initial circles */
+
+/* Default sizes */
+
+.operatorWithImageParentDiv {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.operatorWithoutImage{
+ stroke:white;
+ stroke-width:2px; 
+}
+
+.operatorWithImage {
+    width:  30%;
+    height: 30%;
+    border-radius: 48%;
+    border: 1px solid #FFF;
+    position: absolute;
+    bottom: 4.5%;
+    left:  2.3%;
+}
+
+.operatorImage {
+  display: inline;
+  cursor: pointer;
+}
+
+.operatorNotExists {
+  cursor: default;
+}
+
+.icons.avatar {
+  width: 32px;
+  height: 32px;
+  font-style: normal !important;
+}
+
+.icons.avatar.team {
+  width: 120px;
+  height: 120px;
+}
+
+.icons.avatar.team-list {
+  width: 100px;
+  height: 100px;
+}
+
+.avatar > svg {
+  font-family: "OpenSans", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  max-width: 100%;
+  position: relative;
+}
+
+.avatar > svg > text{
+  font-size:42px;
+}
+
+/* one fill color per letter in the alphabet */
+
+.name-a circle {
+  fill: #2c97de;
+}
+
+.name-b circle {
+  fill: #2f7ac0;
+}
+
+.name-c circle {
+  fill: #0099aa;
+}
+
+.name-d circle {
+  fill: #00657c;
+}
+
+.name-e circle {
+  fill: #00aa66;
+}
+
+.name-f circle {
+  fill: #0b8953;
+}
+
+.name-g circle {
+  fill: #889900;
+}
+
+.name-h circle {
+  fill: #670;
+}
+
+.name-i circle {
+  fill: #e27100;
+}
+
+.name-j circle {
+  fill: #e94b35;
+}
+
+.name-k circle {
+  fill: #c23824;
+}
+
+.name-l circle {
+  fill: #ae58b7;
+}
+
+.name-m circle {
+  fill: #9933aa;
+}
+
+.name-n circle {
+  fill: #6459b5;
+}
+
+.name-o circle {
+  fill: #433d93;
+}
+
+.name-p circle {
+  fill: #2c97de;
+}
+
+.name-q circle {
+  fill: #2f7ac0;
+}
+
+.name-r circle {
+  fill: #0099aa;
+}
+
+.name-s circle {
+  fill: #00657c;
+}
+
+.name-t circle {
+  fill: #00aa66;
+}
+
+.name-u circle {
+  fill: #0b8953;
+}
+
+.name-v circle {
+  fill: #6459b5;
+}
+
+.name-w circle {
+  fill: #667700;
+}
+
+.name-x circle {
+  fill: #e27100;
+}
+
+.name-y circle {
+  fill: #e94b35;
+}
+
+.name-z circle {
+  fill: #ae58b7;
+}
+div.attachment-inline-preview-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(16, 19, 46, .90);
+  z-index: 200;
+}
+
+div.attachment-inline-preview-header {
+  display: flex;
+  font-size: 12px;
+  color: rgba(255, 255, 255, .55);
+  padding: 0 14px;
+}
+
+div.attachment-inline-preview-header-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  order: 1;
+}
+
+div.attachment-inline-preview-header-info-title {
+  color: #fff;
+}
+
+div.attachment-inline-preview-header-info-title > h1 {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: normal;
+  font-weight: normal;
+  font-size: 17px;
+}
+
+div.attachment-inline-preview-header-info-title > h1 > span {
+  display: none;
+}
+
+div.attachment-inline-preview-header-info-meta {
+  margin-top: -7px;
+}
+
+div.attachment-inline-preview-header-download-link,
+div.attachment-inline-preview-header-close-link {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+div.attachment-inline-preview-header-download-link {
+  margin-right: 14px;
+  order: 2;
+}
+
+div.attachment-inline-preview-header-close-link {
+  order: 3;
+}
+
+a.attachment-inline-preview-header-links-download {
+  color: #fff;
+}
+
+a.attachment-inline-preview-header-links-close {
+  color: #fff;
+  font-size: 18px;
+}
+
+div.attachment-inline-preview-content {
+  display: flex;
+  flex: 1;
+  margin: 14px 14px 14px 14px;
+  justify-content: center;
+  align-items: center;
+}
+
+div.attachment-inline-preview-content > span {
+  max-height: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+div.attachment-inline-preview-content > span > img.attachment-inline-preview-content-img {
+  /*max-height: 100%;
+  max-width: 100%; */
+  object-fit: contain;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, .3);
+  transition: transform 1s;
+}
+
+div.attachment-inline-preview-content > span > video.attachment-inline-preview-content-video {
+  /*max-height: 100%;*/
+  /*max-width: 100%;  	*/
+  object-fit: fill;
+  box-shadow: 0 3px 7px rgba(0, 0, 0, .3);
+  transition: transform 1s;
+}
+
+div.attachment-thumbnail-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+
+div.attachment-thumbnail-wrapper > div.attachment-thumbnail-video-play {    
+  display: flex;
+}
+
+div.attachment-thumbnail-video-overlay {    
+  display: none;
+  position: absolute;
+  top: 0;
+  background: rgb(204, 204, 204);
+  /* Fallback for older browsers without RGBA-support */
+  background: rgba(204, 204, 204, 0.5);
+  text-align: center;
+  font-size: x-large;
+  align-items: center;
+  justify-content: center;
+}
+
+div.attachment-thumbnail-video-overlay > a {
+  text-decoration: none;
+  margin-left: -8px;
+  margin-top: 1px;
+}
+
+div.attachment-thumbnail-video-overlay > a:focus {
+  outline: 0;
+}
+
+span.play-outer-circle-small {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(31, 37, 85, .8);
+  display: block;
+  border: 2px solid white;
+}
+
+span.play-inner-triangle-small {
+  display: block;
+  width: 0;
+  height: 0;
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+  border-left: 7px solid white;
+  margin-left: 4px;
+  margin-top: 3.5px;
+}
+
+div.attachment-inline-preview-error-msg {
+  height: 100%;
+  width: 100%; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: sans-serif; 
+  font-size: 14px;
+}
+
+@media screen and (min-width: 568px) and (max-width: 1080px) {
+  div.attachment-inline-preview-content > span {
+    /*max-width: 100%;  	*/
+    display: flex;
+  }    
+}
+
+@media screen and (min-width: 0px) and (max-width: 567px) {
+  div.attachment-inline-preview-content > span {
+    /*max-width: 100%;  	*/
+    display: inline;
+  }
+  /*div.attachment-inline-preview-header {
+  background: #4d4d4d;
+}*/
+  div.attachment-inline-preview-header-close-link {
+    order: 1;
+  }
+  div.attachment-inline-preview-header-info {
+    order: 2;
+    justify-content: center;
+  }
+  div.attachment-inline-preview-header-download-link {
+    margin-right: 0;
+    order: 3;
+  }
+  div.attachment-inline-preview-header-info-title {
+    text-align: center;
+  }
+  /*div.attachment-inline-preview-header-info-title > h1 > span{
+  display: inline;
+}*/
+  div.attachment-inline-preview-header-info-meta {
+    display: none;
+  }
+  div.attachment-inline-preview-header-download-link > a.attachment-inline-preview-header-links-download {
+    font-size: 18px;
+  }
+  div.attachment-inline-preview-header-download-link > a.attachment-inline-preview-header-links-download > span {
+    display: none;
+  }
+  div.attachment-inline-preview-content {
+    margin: 0;
+  }
+  div.attachment-inline-preview-content > span > img.zoom-in-inline-img {
+    -webkit-transform: scale(2, 2);
+    /* Safari */
+    transform: scale(2, 2);
+    /*transition: width .35s ease-in-out;*/
+  }
+
+  div.case-attachment-feed-description {
+    width: 210px;  
+  }
+
+  div.case-attachment-feed-description > a.Case_tools {     
+    max-width: 210px;
+  }
+}
+
+/* START: Email Triage entity mapping */
+div[data-node-id="pyMapEntitiesToCase"] .header-title-table {
+  float: none;
+  text-align: left;
+  line-height: 1.4;
+  font-size: 15px;
+  color: rgba(11,15,46,0.60);
+  padding-left: 10px;
+}
+
+div[data-node-id="pyMapEntitiesToCase"] th > div > div > div {
+  color: rgba(11,15,46,0.60);
+  font-size: 12px;
+}
+
+/* END: Email Triage entity mapping */
+
+/* START: Case attachment gadget > pyAttachmentFeedDescription*/
+div.case-attachment-feed-description {
+  width: 230px;  
+}
+
+div.case-attachment-feed-description > .subsidiary {
+  max-width:25ch;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+div.case-attachment-feed-description > a.Case_tools {
+  display: block;
+  margin-top: -7px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+  max-width: 230px;
+}
+div.case-attachment-feed-description > .subsidiary > p {
+  margin: 0 0;
+}
+/* END: Case attachment gadget > pyAttachmentFeddDescription*/
+
+/* START: Embedded preview styles */
+
+div.attach-embed-preview-wrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+}
+
+div.attachment-inline-preview-content-embed {
+  margin: 0 0;
+}
+
+div.attach-embed-preview-configuration {
+  position: absolute;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+  z-index: 10;
+}
+
+div.attach-embed-preview-header {
+  display: none;
+  flex-direction: row;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: 1px;
+  margin-top: 7px;
+}
+
+div.attach-embed-preview-header > span {
+  display: block;
+  background: #666699;
+  color: #fff;
+  padding: 7px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+div.attach-embed-preview-wrapper:hover div.attach-embed-preview-configuration div.attach-embed-preview-header{
+  display: flex;
+}
+
+div.attach-embed-preview-options {
+  float: right;
+  display: flex;
+  flex-direction: row;
+  margin-right: 7px;
+  margin-top: 7px;
+}
+
+div.attach-embed-preview-download-icon,
+div.attach-embed-preview-expand-icon {
+  width: 30px;
+  height: 30px;    
+  border-radius: 50%;    
+  background: #666699;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 7px;
+}
+
+div.attach-embed-preview-wrapper  div.attach-embed-preview-options > div.attach-embed-preview-download-icon > button.pzbutton {
+  color: #fff;
+  padding: 0 0;
+  height: auto;
+  font-size: 14px;
+  background: transparent;
+  min-width: 0;
+}
+
+div.attach-embed-preview-wrapper  div.attach-embed-preview-options > div.attach-embed-preview-expand-icon > button.pzbutton {
+  color: #fff;
+  padding: 0 0;
+  margin-top: 3px;
+  height: auto;
+  font-size: 14px;
+  background: transparent;
+  min-width: 0;
+}
+
+/* END: Embedded preview styles*/

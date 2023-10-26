@@ -1,0 +1,3053 @@
+﻿(function(){var B=Handlebars.template,A=Handlebars.templates=Handlebars.templates||{};A.AutoCompleteResults=B({"1":function(C,G,E,D,F){return'<ul style="list-style:none;padding:0px" role="listbox">'},"3":function(D,L,E,J,H,K,M){var C,F,N,I=D.lookupProperty||function(P,O){if(Object.prototype.hasOwnProperty.call(P,O)){return P[O]}return undefined},G='			<li tabindex="-1" role="option" class="ac-item" data-rowid='+((C=((F=(F=I(E,"index")||(H&&I(H,"index")))!=null?F:D.hooks.helperMissing),(typeof F==="function"?F.call(L!=null?L:(D.nullContext||{}),{name:"index",hash:{},data:H,loc:{start:{line:6,column:62},end:{line:6,column:74}}}):F)))!=null?C:"")+'><span class="ac-primary-option'+((C=(I(E,"ifCond")||(L&&I(L,"ifCond"))||D.hooks.helperMissing).call(L!=null?L:(D.nullContext||{}),(L!=null?I(L,"freeformOptionClass"):L),"!=","",{name:"ifCond",hash:{},fn:D.program(4,H,0,K,M),inverse:D.noop,data:H,loc:{start:{line:6,column:105},end:{line:6,column:186}}}))!=null?C:"")+'" style="width:'+((C=D.lambda((M[1]!=null?I(M[1],"colWidth"):M[1]),L))!=null?C:"")+'%">'+((C=((F=(F=I(E,"primary")||(L!=null?I(L,"primary"):L))!=null?F:D.hooks.helperMissing),(typeof F==="function"?F.call(L!=null?L:(D.nullContext||{}),{name:"primary",hash:{},data:H,loc:{start:{line:6,column:221},end:{line:6,column:234}}}):F)))!=null?C:"")+"</span>\n";C=((F=(F=I(E,"secondary")||(L!=null?I(L,"secondary"):L))!=null?F:D.hooks.helperMissing),(N={name:"secondary",hash:{},fn:D.program(6,H,0,K,M),inverse:D.noop,data:H,loc:{start:{line:7,column:3},end:{line:9,column:17}}}),(typeof F==="function"?F.call(L!=null?L:(D.nullContext||{}),N):F));if(!I(E,"secondary")){C=D.hooks.blockHelperMissing.call(L,C,N)}if(C!=null){G+=C}return G+((C=(I(E,"ifCond")||(L&&I(L,"ifCond"))||D.hooks.helperMissing).call(L!=null?L:(D.nullContext||{}),(L!=null?I(L,"lastOption"):L),"!=","",{name:"ifCond",hash:{},fn:D.program(8,H,0,K,M),inverse:D.noop,data:H,loc:{start:{line:10,column:3},end:{line:12,column:16}}}))!=null?C:"")+"</li> \n"},"4":function(C,J,G,D,H){var E,F,I=C.lookupProperty||function(L,K){if(Object.prototype.hasOwnProperty.call(L,K)){return L[K]}return undefined};return((E=((F=(F=I(G,"freeformOptionClass")||(J!=null?I(J,"freeformOptionClass"):J))!=null?F:C.hooks.helperMissing),(typeof F==="function"?F.call(J!=null?J:(C.nullContext||{}),{name:"freeformOptionClass",hash:{},data:H,loc:{start:{line:6,column:147},end:{line:6,column:172}}}):F)))!=null?E:"")},"6":function(D,J,E,H,F,I,K){var C,G=D.lookupProperty||function(M,L){if(Object.prototype.hasOwnProperty.call(M,L)){return M[L]}return undefined};return'				<span class="ac-secondary-option" style="width:'+((C=D.lambda((K[2]!=null?G(K[2],"colWidth"):K[2]),J))!=null?C:"")+'%">'+((C=D.lambda(J,J))!=null?C:"")+"</span>\n"},"8":function(D,K,E,I,G,J,L){var C,F,H=D.lookupProperty||function(N,M){if(Object.prototype.hasOwnProperty.call(N,M)){return N[M]}return undefined};return'<span class="ac-secondary-lastoption" style="width:'+((C=D.lambda((L[2]!=null?H(L[2],"colWidth"):L[2]),K))!=null?C:"")+'%">'+((C=((F=(F=H(E,"lastOption")||(K!=null?H(K,"lastOption"):K))!=null?F:D.hooks.helperMissing),(typeof F==="function"?F.call(K!=null?K:(D.nullContext||{}),{name:"lastOption",hash:{},data:G,loc:{start:{line:11,column:78},end:{line:11,column:94}}}):F)))!=null?C:"")+"</span>"},"10":function(C,G,E,D,F){return"</ul>"},"12":function(C,J,G,D,H){var E,F,I=C.lookupProperty||function(L,K){if(Object.prototype.hasOwnProperty.call(L,K)){return L[K]}return undefined};return"<span class='no-items'>"+((E=((F=(F=I(G,"NoResultsMsg")||(J!=null?I(J,"NoResultsMsg"):J))!=null?F:C.hooks.helperMissing),(typeof F==="function"?F.call(J!=null?J:(C.nullContext||{}),{name:"NoResultsMsg",hash:{},data:H,loc:{start:{line:19,column:25},end:{line:19,column:43}}}):F)))!=null?E:"")+"</span>"},compiler:[8,">= 4.3.0"],main:function(D,L,E,J,H,K,M){var C,F,N,I=D.lookupProperty||function(P,O){if(Object.prototype.hasOwnProperty.call(P,O)){return P[O]}return undefined},G='<div class="autocomplete-results" id="acresults_list">'+((C=(I(E,"ifCond")||(L&&I(L,"ifCond"))||D.hooks.helperMissing).call(L!=null?L:(D.nullContext||{}),((C=(L!=null?I(L,"results"):L))!=null?I(C,"length"):C),">",0,{name:"ifCond",hash:{},fn:D.program(1,H,0,K,M),inverse:D.noop,data:H,loc:{start:{line:2,column:1},end:{line:4,column:14}}}))!=null?C:"");C=((F=(F=I(E,"results")||(L!=null?I(L,"results"):L))!=null?F:D.hooks.helperMissing),(N={name:"results",hash:{},fn:D.program(3,H,0,K,M),inverse:D.noop,data:H,loc:{start:{line:5,column:1},end:{line:14,column:13}}}),(typeof F==="function"?F.call(L!=null?L:(D.nullContext||{}),N):F));if(!I(E,"results")){C=D.hooks.blockHelperMissing.call(L,C,N)}if(C!=null){G+=C}return G+((C=(I(E,"ifCond")||(L&&I(L,"ifCond"))||D.hooks.helperMissing).call(L!=null?L:(D.nullContext||{}),((C=(L!=null?I(L,"results"):L))!=null?I(C,"length"):C),">",0,{name:"ifCond",hash:{},fn:D.program(10,H,0,K,M),inverse:D.noop,data:H,loc:{start:{line:15,column:1},end:{line:17,column:14}}}))!=null?C:"")+((C=(I(E,"ifCond")||(L&&I(L,"ifCond"))||D.hooks.helperMissing).call(L!=null?L:(D.nullContext||{}),((C=(L!=null?I(L,"results"):L))!=null?I(C,"length"):C),"<=",0,{name:"ifCond",hash:{},fn:D.program(12,H,0,K,M),inverse:D.noop,data:H,loc:{start:{line:18,column:1},end:{line:20,column:14}}}))!=null?C:"")+"</div>"},useData:true,useDepths:true})})();if(!pega.control){pega.c=pega.namespace("pega.control")}else{pega.c=pega.control}pega.c.getAutoCompleteResults=function(C,J,M,A,E){var H={};var N=[];for(var G=0;G<C.length;G++){var I=C[G];if(I[2]=="true"){if(I[0].indexOf(".")==0){N.push(I[0].substr(1))}else{N.push(I[0])}}}var K=[];for(var D=0;D<J.length;D++){K[D]={};var L=J[D];K[D].primary=getColumnValueForAC(L,N[0]);K[D].secondary=[];K[D].lastOption="";if(E&&D==0){K[D].freeformOptionClass=" ac-freeform-option"}else{K[D].freeformOptionClass="";for(var B=1;B<N.length;B++){if(B==(N.length-1)){K[D].lastOption=getColumnValueForAC(L,N[B])}else{K[D].secondary[B-1]=getColumnValueForAC(L,N[B])}}}}var F=Math.floor(100/N.length);H.colWidth=F-1;H.results=K;H.colArray=N;H.NoResultsMsg=pega.u.d.fieldValuesList.get("NoResultsFound");if(!H.NoResultsMsg){H.NoResultsMsg="No results found"}return Handlebars.templates.AutoCompleteResults(H)};function filterResults(B,A){return A}function getColumnValueForAC(D,B){var I,E;var F=pega.ui.ChangeTrackerMap.getTracker();if(B.indexOf(".")==-1){I=D[B]}else{try{E=B.split(".");if(E.length==2&&typeof (D.pxPages)=="object"&&typeof (D.pxPages[E[0]])=="object"){I=D.pxPages[E[0]][E[1]]}else{I=D;for(var K=0;K<E.length;K++){var J=E[K];if(I&&typeof I[J]!="undefined"&&I[J]!=null){I=I[J]}else{var A=F.returnListOrGroupProp(J,true);if(I&&A!=J){var G=A.index;var C=A.key;if(!isNaN(G)){G-=1;I=I[C]?I[C][G]:I[C]}else{I=I[C]?I[C][G]:I[C]}}else{I=null;break}}}}}catch(H){}}return I};
+(function(p) {
+  p.c = p.namespace("pega.control");
+  p.u = p.namespace("pega.ui");
+  
+  p.u.AC_cache = new (function() {
+    var _cacheObject = new  pega.tools.Hashtable();
+    var _inprocessObject = new  pega.tools.Hashtable();
+    this.hasCache = function(url){
+      return _cacheObject.containsKey(url);
+    };
+    this.store = function(url, data){
+      _cacheObject.put(url, data);
+    },
+    this.retrieve = function(url) {
+      return _cacheObject.get(url);
+    };
+  })();
+
+  /* ITextArea Constructor */
+
+/*
+@constructor
+@protected - Constructor description goes here.
+@return $undefined$ - return description goes here.
+*/
+  p.c.IAutoCompleteAG = function() {
+    p.c.IAutoCompleteAG.superclass.constructor.call(this, "AutoCompleteAG");
+  };
+
+  /* Inherit form IUIElement */
+  p.lang.extend(p.c.IAutoCompleteAG, p.c.IUIElement);
+  
+  var AutoCompleteAG = new (function() {
+    var renderSingleId, 
+    maxDisplayResults,
+    allowScroll,
+    minSearchChars, 
+    listingWidth = 0, 
+    spinDelay = 2000,
+    timerObj,
+    strUrlSF,
+    postData,
+    urlParams,
+    prevValue = "",
+    isReqPending = false,
+    requestCount = 0,
+    asyncReq,
+    targetElement,
+    that = this,
+    timer,
+    isPOOpen = false,
+    isDownArrowPressed = false,
+    isPrintableChar = true,
+    params,
+    ac_prop_page,
+    spinObj,
+    acGridId,
+    tmpTimeOutFunc,
+    activePO = null,
+    isAccessible = false,
+    agLiveResultDiv = null,
+    isTouchAble = false,
+    isNoGrid = false,
+    fieldsList,
+    matchedRow = 1,
+    useParameterForSearch,
+    activeRowId,
+    visibleResults,
+    displayFullScreen,
+    matchStartOfString,
+    acCacheKey,
+    allowFreeFormInput,
+    matchAndHighlight,
+    processedResults,
+    
+
+    afterPOClose = function(){
+      activePO = null;
+      clearTimeout(tmpTimeOutFunc); 
+      try{
+        if (arguments && arguments[2] && arguments[2].associatedElement) {
+          
+         if(!$(arguments[2].associatedElement).is(":visible")) {
+            var name = arguments[2].associatedElement.getAttribute("name");
+            var refreshedElement = pega.ctx.dom.getElementsByName(name);
+            
+            if(refreshedElement && refreshedElement[0]) {
+              var datactrl = refreshedElement[0].getAttribute('data-ctl');
+              if(datactrl && datactrl ==='["AutoCompleteAG"]'){
+                refreshedElement[0].setAttribute("data-change-lazy", arguments[2].associatedElement.getAttribute("data-change-lazy")); 
+              refreshedElement[0].setAttribute("data-old-value", arguments[2].associatedElement.getAttribute("data-old-value"))
+              refreshedElement[0].setAttribute("value", arguments[2].associatedElement.value);
+              arguments[2].associatedElement = refreshedElement[0];
+              }
+            }
+          }
+          
+          p.c.eventController.setLazyOnchange(arguments[2].associatedElement, "false", true);
+          if ($(arguments[2].associatedElement).hasClass("ac-mobile-width")) {
+            that.resetInputPosition();
+          }
+        }
+
+                var button = arguments[2].associatedElement.nextSibling;
+                if(button.tagName=="I")button = button.nextSibling; // clear icon 
+                if(button.tagName=="BUTTON"){
+                    if(arguments[3] && (arguments[3] === button || arguments[3].parentNode === button)) button.dataset.active = "combo";
+                    else button.dataset.active = "false";
+                    setTimeout(function(){
+                      button.firstChild.className = "pi pi-caret-down";
+                    }, 0);
+                  if(arguments[2].associatedElement.value!="") AutoCompleteAG.addClearIcon(arguments[2].associatedElement,button);  
+                else if(arguments[2].associatedElement.value=="") AutoCompleteAG.removeClearIcon(); 
+                }
+              
+       
+        that.resetAutoComplete();             
+        isPOOpen = false;
+        activeRowId = -1;
+        visibleResults = [];
+                if (arguments && arguments[2] && arguments[2].associatedElement) {
+                    var inputElement = arguments[2].associatedElement;
+                    /* BUG-416306: if input element is not available on dom (due to reload section),
+                       we should update with available dom */
+                    if(!pega.util.Dom.inDocument(inputElement)) {
+                      inputElement = pega.ctx.dom.getElementsByName(inputElement.name)[0];
+                    }
+                  var _popOver = p.u.d.getPopOver(inputElement);
+                    if(_popOver){
+            /*BUG-228455:Removing the attributes node_name,node_type and id of popOverSection element*/
+                        var popOverSection = _popOver.getSectionElement();
+                        if(popOverSection){                          
+                          //popOverSection.setAttribute("node_type","");
+                          popOverSection.setAttribute("node_name","");  
+                            popOverSection.id = "";
+                        }                     
+                    }
+                    if(inputElement.getAttribute("tempvalidation")){
+                       inputElement.setAttribute("validationtype",inputElement.getAttribute("tempvalidation"));
+                       inputElement.removeAttribute("tempvalidation");
+                  }
+                    
+                }   
+                
+      }catch(e){}
+      pega.ui.EventsEmitter.publish("AutoCompleteResultsClose");
+      return true;
+    },
+
+    afterPOOpen = function(bFromDropdownButton){
+      isPOOpen = true;
+      AutoCompleteAG.updateLiveRegion(null, null, "Suggestions are available. Use up and down arrows to select");
+      p.c.eventController.setLazyOnchange(targetElement, "true");
+      /* BUG-297791: Added null check before access nextSibling */
+      if(!targetElement) { return; }
+      var  _popOver =  p.u.d.getPopOver(targetElement); 
+      // SE-54091  BUG-508092 Autocomplete in a list with Scroll issue
+      if(isNoGrid && targetElement && targetElement.value === "" && _popOver){
+        var containerEle = _popOver.getContentContainerElement();
+        if(containerEle && containerEle.scrollTop  != 0){
+          containerEle.scrollTop = 0;
+        }
+      }// SE-54091  BUG-508092 end
+      var _targetElement = targetElement;
+      var button = _targetElement.nextSibling; 
+      if(button.tagName=="I")button = button.nextSibling; // clear icon
+      if(button.tagName=="BUTTON"  && _targetElement.value!="" && isPOOpen){
+        button.firstChild.className = "pi pi-caret-up";
+        button.dataset.active = "true";
+        AutoCompleteAG.addClearIcon(_targetElement,button);     
+      }  else if (button.tagName=="BUTTON" && _targetElement.value=="") {
+        button.firstChild.className = "pi pi-caret-up";
+        button.dataset.active = "true";
+        AutoCompleteAG.removeClearIcon();
+      }
+  
+      if ((isNoGrid) || (pega.u.d.ServerProxy && pega.u.d.ServerProxy.isDestinationLocal())) {
+        var popOverContainerElem = AutoCompleteAG.mobileResultsDiv;
+        /*if (AutoCompleteAG.offlineResultsDiv != null) {
+          popOverContainerElem = AutoCompleteAG.offlineResultsDiv;
+          AutoCompleteAG.offlineResultsDiv = null;
+        }*/
+        popOverContainerElem = $(".autocomplete-main") ? $(".autocomplete-main").get(0) : null ;
+        var acresultsListElem = pega.util.Dom.getElementsById("acresults_list", popOverContainerElem);
+        var acCancelButton = $("a.ac-cancel");
+        activeRowId = -1;
+        pega.util.Event.addListener(acresultsListElem[0], "click", function(e) {
+          processAdditionalFields(e, _targetElement)
+        });
+              
+        pega.util.Event.addListener(acresultsListElem[0], "mouseover", function(e) {
+          resetActiveRow();
+          setActiveRow(getRowElemet(e));
+        });
+
+        var activeRowElem = null;
+        if(bFromDropdownButton && matchedRow && matchedRow > 0) {
+          activeRowElem = $(acresultsListElem).find('li.ac-item[data-rowid="'+matchedRow+'"]').get(0);
+          //SE-63572 added options in ScrollIntoview(), so that it will only scroll immediate parent
+           if(activeRowElem && $(activeRowElem).length > 0){
+            $(activeRowElem).get(0).scrollIntoView({block:'nearest'});
+          }
+        }
+        if (allowFreeFormInput === "true") {
+          setActiveRow(activeRowElem, false, isNoGrid?_targetElement:undefined, "Suggestions are available. Use up and down arrows to select");
+        } else if(_targetElement.value != "") {
+          setActiveRow(activeRowElem, false, null, "Suggestions are available. Use up and down arrows to select");
+        }
+      } else {
+        var secDiv = _popOver.getSectionElement();
+        var gridDiv = secDiv.firstChild;
+        pega.util.Event.addListener(gridDiv,"mousedown",gridMouseDownHandler);
+        while(gridDiv.getAttribute("bGrid")==null){
+          gridDiv = gridDiv.children[0];
+          var i = 1;
+          while(!gridDiv.getAttribute) {
+            gridDiv = gridDiv.children[i++];
+          }
+        }
+        tmpTimeOutFunc = setTimeout(function(){
+          selectFirstRowOfGrid(gridDiv);
+        },20);
+      }
+      pega.ui.EventsEmitter.publish("AutoCompleteResultsOpen");
+    },
+       
+    switchHarnessContextInACHandler = function(e) {
+
+        var activePO = AutoCompleteAG.getActivePO();
+        if (activePO) {
+          var popoverContainer = activePO.getContentContainerElement() && activePO.getContentContainerElement().parentNode;
+          var harnessID = popoverContainer && popoverContainer.getAttribute("data-harness-id");
+      
+          if(harnessID !== pega.ctx.pzHarnessID) {
+            pega.ctxmgr.setCurrentHarnessContext(harnessID);
+          }
+        } 
+    },
+
+    getRowElemet = function(e) {
+      var rowElem = pega.util.Event.getTarget(e);
+      var rowid = null;
+      if (rowElem) {
+        rowid = rowElem.getAttribute("data-rowid");
+        while (rowElem && (rowid == null || typeof (rowid) == "undefined")) {
+          rowElem = rowElem.parentNode;
+          if (rowElem && typeof(rowElem.getAttribute) === "function") rowid = rowElem.getAttribute("data-rowid");
+        }
+      }
+      return rowElem;
+    },
+
+    resetActiveRow = function() {
+      var activeRowObj = $("div#acresults_list li.active-row");
+      if (activeRowObj && activeRowObj.length >= 1) {
+        activeRowObj.removeClass("active-row");
+      }
+    },
+
+    setActiveRow = function(rowElem, prevRow, targetElem, _voiceOverText) {
+      _voiceOverText = _voiceOverText?_voiceOverText:"";
+      var _voiceOverHelperText = (_voiceOverText!=""?". Your current option is ":"");
+      try {
+        if (rowElem) {
+          var rowid = rowElem.getAttribute("data-rowid");
+          if (rowid != null && typeof (rowid) != "undefined") {
+            var activeRowObj = $("div#acresults_list .active-row");
+            if (activeRowObj && activeRowObj.length == 1) {
+              activeRowObj.removeClass("active-row");
+            }
+            $("div#acresults_list [data-rowid='" + rowid + "']").addClass("active-row");
+            try {
+              _voiceOverText += _voiceOverHelperText + $("div#acresults_list [data-rowid='" + rowid + "']")[0].textContent;
+            } catch(e) { }
+            activeRowId = parseInt(rowid);
+          }
+        } else {
+          if (activeRowId == -1) {
+            var firstRow = $("div#acresults_list [data-rowid='0']");
+            if (firstRow && firstRow.length >= 1) {
+              firstRow.addClass("active-row");
+              _voiceOverText += _voiceOverHelperText + firstRow[0].textContent;
+              activeRowId = 0;
+            }
+          } else {
+            var activeRowObj = $("div#acresults_list .active-row");
+            if (activeRowObj && activeRowObj.length == 1) {
+              var newActiveRowElem = null;
+              if (prevRow) {
+                newActiveRowElem = activeRowObj.prev();
+              } else {
+                newActiveRowElem = activeRowObj.next();
+              }
+              if (newActiveRowElem && newActiveRowElem.length == 1) {
+                activeRowObj.removeClass("active-row");
+                newActiveRowElem.addClass("active-row");
+                _voiceOverText = newActiveRowElem[0].textContent;
+                if (prevRow) {
+                  activeRowId--;
+                } else {
+                  activeRowId++;
+                }
+              } else {
+                if (prevRow) {
+                  _voiceOverText = "Reached the beginning of the list";
+                } else {
+                  _voiceOverText = "Reached the end of the list";
+                }
+              }
+            } else {
+              var firstRow = $("div#acresults_list [data-rowid='0']");
+              if (firstRow && firstRow.length >= 1) {
+                firstRow.addClass("active-row");
+                _voiceOverText += _voiceOverHelperText + firstRow[0].textContent;
+                activeRowId = 0;
+              }
+            }
+          }
+        }
+        AutoCompleteAG.updateLiveRegion(null, null, _voiceOverText);
+        setPlaceholderText(false, null);
+      } catch(e) { }
+    },
+    
+    setPlaceholderText = function(clearFlag,targetElem) {
+          var autoFillInput;
+            if(targetElem) {
+               autoFillInput = targetElem;
+            } else {
+               autoFillInput = document.getElementById("acAutoFillInput");
+            }
+      if (autoFillInput) {
+        if (clearFlag) {
+          autoFillInput.value = "";
+        } else if (activeRowId >= 0 && targetElement) {
+          var rowData = visibleResults[activeRowId];
+          var searchString = targetElement.value;
+          if (rowData) {
+            /* perform set value */
+            var columnName = fieldsList[0][0];
+            columnName = columnName.replace(/^\./g, "");
+            var colValue = getColumnValue(rowData, columnName);
+            if (searchString && searchString != "") {
+              colValue = colValue.replace((new RegExp(searchString, "i")), searchString);
+            }
+            autoFillInput.value = colValue;
+          } else {
+            autoFillInput.value = "";
+          }
+        } else {
+          autoFillInput.value = "";
+        }
+      }
+    },
+    
+    resetResultsDiv = function() {
+      clearTimeout(tmpTimeOutFunc);
+      if (AutoCompleteAG.mobileResultsDiv != null) {
+        AutoCompleteAG.mobileResultsDiv.className = "ac-mask-hide";
+        AutoCompleteAG.mobileResultsDiv.innerHTML = "";
+        if(pega.ctxmgr && typeof(pega.ctxmgr.unregisterContextSwitching) === "function" && AutoCompleteAG.mobileResultsDiv.getAttribute("data-harness-id").length>0) {
+          pega.ctxmgr.unregisterContextSwitching(AutoCompleteAG.mobileResultsDiv);
+        }
+      }else{
+                if(activePO){
+                  activePO.close();
+                }
+            }
+            activePO = null;
+      if((AutoCompleteAG.isMobilePhone() && displayFullScreen == "true") || (pega.u.d.ServerProxy && pega.u.d.ServerProxy.isDestinationLocal())){
+        that.resetInputPosition();
+        if (isPOOpen) { isPOOpen = false; }
+      }
+      that.resetAutoComplete();
+      isPOOpen = false;
+      activeRowId = -1;
+      visibleResults = [];
+    },
+    
+    processAdditionalFields = function(e, _targetElement) {
+      var rowid = null;
+      var rowElem = null;
+      if (e) {
+        rowElem = getRowElemet(e);
+        if (rowElem) { rowid = rowElem.getAttribute("data-rowid"); }
+      } else {
+        if (activeRowId != -1) {
+          rowid = activeRowId
+        } else {
+          window.setTimeout(resetResultsDiv, AutoCompleteAG.isMobilePhone()?500:0);
+          if(!this.isTabbedOutForFocus && !(pega.cl && pega.cl.isTouchAble())) {
+            _targetElement.focus();
+          }
+          return;
+        }
+      }
+      if (rowid != null && typeof(rowid) != "undefined") {
+        if (rowElem) { setActiveRow(rowElem); }
+        var rowData = visibleResults[rowid];
+        /* perform set value */
+        for (var idx = 0; idx < fieldsList.length; idx++) {
+          var columnName = fieldsList[idx][0];
+          var isSetValue = fieldsList[idx][3];
+          if (isSetValue == "true") {
+            var destProp = fieldsList[idx][4];
+            columnName = columnName.replace(/^\./g, "");
+            if (destProp == "Associated property" || destProp == "Associated Property") {
+              pega.u.d.setProperty(_targetElement.name, getColumnValue(rowData, columnName), "");
+              /*_targetElement.value = rowData[columnName];*/
+            } else {
+              var columnValue = getColumnValue(rowData, columnName);
+              pega.u.d.setProperty(destProp, columnValue !== undefined ? columnValue : "", "");
+            }
+          }
+        }
+        window.setTimeout(resetResultsDiv, AutoCompleteAG.isMobilePhone()?500:0);
+        // use isMobilePhone method instead of istouchable because desktop can be also be touchable
+        if(!this.isTabbedOutForFocus && !pega.u.d.isMobile()) {
+          _targetElement.focus();
+          // Trigger focus event so that gFocusElement will be set properly.
+          pega.util.Event.fireEvent(_targetElement, "focus");
+        }
+      }
+    },
+            
+        selectFirstRowOfGridWrap = function(gridDiv) {
+          selectFirstRowOfGrid(gridDiv, true);
+        },
+    
+    selectFirstRowOfGrid = function(gridDiv, skipSetTimeout){
+      acGridId = gridDiv.id;
+      if(Grids){
+        var gridobj = Grids.getGrid(acGridId);
+                if(!skipSetTimeout && (gridobj == null || typeof(gridobj) === "undefined")) {
+                  var _gridDiv = gridDiv;
+                  tmpTimeOutFunc = setTimeout(function() {
+                    selectFirstRowOfGridWrap(_gridDiv);
+                  }, 20);
+                }
+                if(gridobj) {
+          gridobj.isACGrid = true;
+          fixGridWidthIfRequired(gridobj);
+          pega.util.Event.addListener(gridobj.gridDiv,"click",switchHarnessContextInACHandler);
+                }
+      }   
+    },
+
+    fixGridWidthIfRequired = function(gridobj){
+      var _popOver = p.u.d.getPopOver(targetElement),
+      popOverContainerElem = _popOver.getContentContainerElement(),
+      adjustWidth = 2;
+      if (!popOverContainerElem) {
+        return;
+      }
+      var leftPadding = parseInt(pega.util.Dom.getStyle(popOverContainerElem, 'padding-left')),
+      rightPadding = parseInt(pega.util.Dom.getStyle(popOverContainerElem, 'padding-right'));
+      leftPadding = isNaN(leftPadding)?0:leftPadding;
+      rightPadding = isNaN(rightPadding)?0:rightPadding;
+      
+      var gridTblWidth = popOverContainerElem.offsetWidth - leftPadding - rightPadding;
+
+      var elemReq = gridobj.rightBodyTbl;
+      while(elemReq && elemReq.id != 'gridLayoutWrapper') {
+        elemReq  = elemReq.parentNode;
+      }
+          
+      if((elemReq.offsetWidth + adjustWidth) < gridTblWidth) {
+        popOverContainerElem.style.overflowX = "hidden";
+              /*BUG-290825*/
+                try
+                  {
+                    if($(elemReq).css("overflow-y")=="hidden")
+                      popOverContainerElem.style.overflowY = "auto";
+                  }
+                catch(e){}
+        var scrollBarWidth=gridobj.getScrollbarWidth();
+        if(gridobj.layoutWrapperDiv.scrollHeight > gridobj.layoutWrapperDiv.clientHeight) {
+          gridobj.rightBodyTbl.style.width =  (gridTblWidth-scrollBarWidth-adjustWidth) + "px";
+        }
+        else{
+          gridobj.rightBodyTbl.style.width =  gridTblWidth + "px";
+        }
+        var firstRow = gridobj.rightBodyTbl.getElementsByTagName('tr')[0];
+        var firstRowCells = firstRow.getElementsByTagName('td').length;
+        var lastCell = firstRow.getElementsByTagName('td')[firstRowCells-1];
+        lastCell.style.width = lastCell.offsetWidth+(gridTblWidth - gridobj.rightBodyTbl.offsetWidth)+"px";     
+        elemReq.style.width = gridTblWidth + "px";
+      }
+      else{ /*BUG-436306*/
+        try
+          {
+            if($(elemReq).css("overflow-y")=="hidden")
+              popOverContainerElem.style.overflowY = "auto";
+           }
+         catch(e){}
+      }
+    },
+    
+    getColumnValue = function(rowData, optionName) {
+      var optValue, optNameArray;
+        var ct = pega.ui.ChangeTrackerMap.getTracker()
+        if(optionName.indexOf(".") == -1){
+            optValue = rowData[optionName];
+        }else{  
+      try {
+              optNameArray = optionName.split(".");
+              if (optNameArray.length == 2 && typeof(rowData["pxPages"]) == "object" && typeof(rowData["pxPages"][optNameArray[0]]) == "object") {
+                  optValue = rowData["pxPages"][optNameArray[0]][optNameArray[1]]
+              }else{
+                optValue = rowData;
+                for(var propSplitIdx = 0; propSplitIdx < optNameArray.length; propSplitIdx++) {
+                    var currentProp = optNameArray[propSplitIdx];
+                    if(optValue && typeof optValue[currentProp] != 'undefined' && optValue[currentProp] != null) {
+                      optValue = optValue[currentProp];
+                    } else {
+                      var propDetails = ct.returnListOrGroupProp(currentProp,true);
+                      if(optValue && propDetails != currentProp){
+                          var index = propDetails.index;
+                          var keyNew = propDetails.key; 
+                          if(!isNaN(index)){
+                            index -= 1;
+                            optValue = optValue[keyNew] ? optValue[keyNew][index] : optValue[keyNew];
+                          }else{
+                            optValue = optValue[keyNew] ? optValue[keyNew][index] : optValue[keyNew];
+                          }
+                      } else {
+                          optValue = null;
+                          break;
+                      }              
+                  }
+          }
+        }
+      } catch(e) { }
+        }
+        return optValue;
+    },
+
+        loadResults = function(results, showAll, nRows, searchTerm, parsedArray, bFromDropdownButton,appendRemainingResults) {
+      var isFullMatch = false;
+      var addedCustomOption = false;
+            var _searchTerm = searchTerm;
+      if(bFromDropdownButton) {
+        showAll = true;
+      }
+      try {
+        if(parsedArray){
+          var resultsJSON = results;
+        }else{
+          var resultsJSON = JSON.parse(results);
+        }
+              var idx=0;
+              var matchCount = 0;
+                var matchCount1 = 0;
+        var acResults = [];
+                matchedRow = 1;
+                if(appendRemainingResults){
+                  idx = processedResults;
+                  matchCount1 = nRows;
+                  if( allowFreeFormInput === "true"){
+                    matchCount1++;
+                  }
+              }
+                var firstMatchSet = false;
+        if(!appendRemainingResults){
+            visibleResults = [];
+            processedResults=0;
+        }
+                for (idx; idx < resultsJSON.length; idx++) {
+          var rowData =  pega.u.d.extendObj({}, resultsJSON[idx]);
+          var isMatched = false;
+          for (var colIdx = 0; colIdx < fieldsList.length; colIdx++) {
+            var columnName = fieldsList[colIdx][0];
+            var useForSearch = fieldsList[colIdx][1];
+            columnName = columnName.replace(/^\./g, "");
+            var colValue = getColumnValue(rowData, columnName);
+            if (colValue != null && typeof(colValue) != "undefined") {
+              if(useParameterForSearch === "true") {
+                isMatched = true;
+              } else if (useForSearch == "true" && colValue.toLowerCase().indexOf(searchTerm.toLowerCase()) != -1 &&
+              (matchStartOfString==="false" || (matchStartOfString==="true" && colValue.toLowerCase().indexOf(searchTerm.toLowerCase()) == 0))) {
+                isMatched = true;
+                if(!firstMatchSet) {
+                  matchedRow = idx;
+                                    firstMatchSet = true;
+                }
+                if (colIdx == 0 && colValue.toLowerCase() == searchTerm.toLowerCase()) {
+                  isFullMatch = true;
+                }
+                                if(pega.ui.ControlTemplate && typeof(pega.ui.ControlTemplate.crossScriptingFilter) === "function") {
+                                  if(colValue.indexOf("<span class='match'>") == -1) {
+                                      colValue = pega.ui.ControlTemplate.crossScriptingFilter(colValue);
+                                  }
+                  _searchTerm = pega.ui.ControlTemplate.crossScriptingFilter(searchTerm);
+                } else {
+                                    _searchTerm = searchTerm;
+                                }
+                if (matchAndHighlight == "true" && colValue.indexOf("<span class='match'>") == -1) {
+                  var regex = new RegExp( '(' + _searchTerm + ')', 'i' );
+                  colValue = colValue.replace( regex, "<span class='match'>$1</span>" );
+                }
+                rowData[columnName] = colValue; 
+              } else if(pega.ui.ControlTemplate && typeof(pega.ui.ControlTemplate.crossScriptingFilter) === "function") {
+                                if(colValue.indexOf("<span class='match'>") == -1) {
+                                    colValue = pega.ui.ControlTemplate.crossScriptingFilter(colValue);
+                                }
+                rowData[columnName] = colValue;
+              }
+            }
+          }
+          if (isMatched || bFromDropdownButton) {
+            visibleResults[matchCount1] = resultsJSON[idx];
+            matchCount1++;
+             processedResults = idx + 1;
+            if((appendRemainingResults && matchCount1 > nRows) || !appendRemainingResults){
+              acResults[matchCount] = rowData;
+              matchCount++;
+            }
+          }
+                    if (!showAll && matchCount == nRows && !appendRemainingResults) {
+            break;
+          }
+        }
+      }catch(e){
+      }
+      /* If freeform text allowed and no matches found, display typed term as an option in results - START */
+            if (!isFullMatch && allowFreeFormInput === "true" && !appendRemainingResults) {
+        var rowData = {};
+        var _visibleRow = {};
+        var colValue = searchTerm;
+        for (var colIdx = 0; colIdx < fieldsList.length; colIdx++) {
+          var columnName = fieldsList[colIdx][0];
+          columnName = columnName.replace(/^\./g, "");
+          var isSetValue = fieldsList[colIdx][3];
+          if (isSetValue == "true") {
+            var destProp = fieldsList[colIdx][4];
+            if (destProp == "Associated property" || destProp == "Associated Property") {
+              _visibleRow[columnName] = colValue;
+              if (colValue == "") {
+                rowData[columnName] = "<span class='match'>" + pega.u.d.fieldValuesList.get("LeaveBlank") + "</span><span class=\"ac-secondary-lastoption\">&nbsp;</span>";
+              } else {
+                                if(pega.ui.ControlTemplate && typeof(pega.ui.ControlTemplate.crossScriptingFilter) === "function") {
+                  colValue = pega.ui.ControlTemplate.crossScriptingFilter(colValue);
+                  _searchTerm = pega.ui.ControlTemplate.crossScriptingFilter(searchTerm);
+                } else {
+                                    _searchTerm = searchTerm;
+                                }
+                if(!(pega.ui.ControlTemplate && typeof(pega.ui.ControlTemplate.crossScriptingFilter) === "function")){
+                  colValue = crossScriptingFilter(colValue);
+                }
+                if (matchAndHighlight == "true") {
+                  var regex = new RegExp( '(' + _searchTerm + ')', 'i' );
+                  colValue = colValue.replace( regex, "<span class='match'>$1</span>" );
+                }
+                rowData[columnName] = pega.u.d.fieldValuesList.get("Use") + " \"" + colValue + "\"";
+              }
+            } else if(rowData[columnName] == null || typeof(rowData[columnName]) == "undefined") {
+              rowData[columnName] = "";
+              _visibleRow[columnName] = "";
+            }
+          } else if(rowData[columnName] == null || typeof(rowData[columnName]) == "undefined") {
+            rowData[columnName] = "";
+            _visibleRow[columnName] = "";
+          }
+        }
+        if (acResults.length == 0) {
+          visibleResults[0] = _visibleRow;
+          acResults[0] = rowData;
+          addedCustomOption = true;
+        } else if (acResults.length >= 1) {
+          visibleResults.unshift(_visibleRow);
+          acResults.unshift(rowData);
+                    matchedRow++;
+          addedCustomOption = true;
+        }
+      }
+      /* If freeform text allowed and no matches found, display typed term as an option in results - END */
+          var resultsDiv = document.createElement('DIV');
+          if(!appendRemainingResults){
+      var acResultsMarkup = pega.control.getAutoCompleteResults(fieldsList, acResults, nRows, searchTerm, addedCustomOption);
+      resultsDiv.className = 'autocomplete-main';
+      resultsDiv.innerHTML = acResultsMarkup;
+          } else {
+            var numberOfResults = resultsJSON.length - nRows;
+            var remainingResultsMarkup = pega.control.getAutoCompleteResults(fieldsList, acResults, numberOfResults, searchTerm, addedCustomOption);
+            resultsDiv.innerHTML = remainingResultsMarkup;
+            var liElements = resultsDiv.getElementsByTagName("li");
+            for(var rowIdx =0;rowIdx<liElements.length;rowIdx++){
+                var rowIdxValue = liElements[rowIdx].getAttribute("data-rowid");
+                var finalValue = +rowIdxValue + nRows ;
+                if(allowFreeFormInput === "true"){
+                     finalValue++;
+                   }
+                liElements[rowIdx].setAttribute("data-rowid",finalValue);
+            }
+          }
+      return resultsDiv;      
+    },
+    crossScriptingFilter = function(strValue, escapeQuote) {
+      var XSSCharMapping = {
+        "=": "&#61;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;",
+        "%": "&#37;",
+        ";": "&#59;",
+        "(": "&#40;",
+        ")": "&#41;",
+        "+": "&#43;",
+        "&": "&amp;"
+      };
+      var _newStrValue = "";
+      //BUG-499080-Replace try...catch with if...else
+      if(strValue && typeof strValue == "string") {
+        for (var idx=0; idx < strValue.length; idx++) {
+          var _charAtIdx = strValue[idx];
+          if(typeof(XSSCharMapping[_charAtIdx]) != "undefined") {
+            if((_charAtIdx == "\"" || _charAtIdx == "'") && escapeQuote) {
+              _newStrValue += "&#92;" + XSSCharMapping[_charAtIdx];
+            } else if((_charAtIdx == "+" && ((idx == 0) || (strValue[idx - 1] == 'e' || strValue[idx - 1] == 'E')))) {
+              /* character '+' is ok if it is simply the sign (1st character), e.g. +1.5 */
+              /* or value is double with exponent, e.g. 1.25e+5 */
+              _newStrValue += _charAtIdx;
+            } else {
+              _newStrValue += XSSCharMapping[_charAtIdx];
+            }
+          } else {
+            _newStrValue += _charAtIdx;
+          }
+        }
+      } else {
+        _newStrValue = strValue;
+      }
+      return _newStrValue;
+    }, 
+    success = function(res, bUseObject, isLDP, showInPopover, bFromDropdownButton){
+      if (timerObj) clearTimeout(timerObj);
+      clearReqPending(this);
+      if(!targetElement || res.argument != targetElement.name){
+        return;
+      }     
+
+
+      /* BUG-189019: We are ignoring the previous ajax request response when there is another request is in process. */
+      if (requestCount >= 1) { return; }
+
+      /* call remove request */
+      var tempElem = document.createElement("div");
+      var parsedArray = false;
+      var callBackFunc2 = function(){
+        var tempElem2 = document.createElement("div");
+        if ((isNoGrid) || showInPopover) {
+          if(isLDP){
+            var responseText = JSON.parse(res.responseText.getJSON());
+            res.responseText = responseText.pxResults;
+            parsedArray = true;
+          }else if(bUseObject){
+            var listLegth = 0;
+            var resultCount = res.responseText.get("pxResultCount");
+            if(resultCount){
+              try{
+                listLegth = parseInt(resultCount.getValue());
+              }catch(e){
+                listLegth = 0;
+              }
+            }
+            else if(resultCount==null && res.responseText.get("pxResults").size() >=0){
+              try{
+								resultCount = res.responseText.get("pxResults").size();
+                listLegth = resultCount;
+							}catch(e){
+								listLegth = 0;
+							}
+            }
+            var resultsStr = "[";
+            for(var i=1; i<=listLegth; i++){
+              if(i>1){
+                resultsStr += ",";
+              }
+              resultsStr += res.responseText.get("pxResults(" + i + ")").getJSON()
+            }
+            resultsStr += "]";
+            res.responseText = resultsStr;
+          }
+          if ((!(pega.u.d.ServerProxy && pega.u.d.ServerProxy.isDestinationLocal())) && acCacheKey != null && !pega.ui.AC_cache.hasCache(acCacheKey)) {
+            pega.ui.AC_cache.store(acCacheKey, res.responseText);
+            acCacheKey = null;
+          }
+        }
+
+        var executeAfterPOOpen = true;
+        if(!allowScroll){
+          maxDisplayResults = 8;     /* SE-32037*/
+        }
+        if (isTouchAble && isNoGrid) {
+          if(!AutoCompleteAG.isMobilePhone() || displayFullScreen == "false") {
+            if (AutoCompleteAG.mobileResultsDiv == null) {
+              var mobileResultsDiv = document.createElement('DIV');
+              mobileResultsDiv.className = "ac-results-main";
+              mobileResultsDiv.setAttribute("id", "autocompleAG_resultsMain");
+              document.body.appendChild(mobileResultsDiv);
+              AutoCompleteAG.mobileResultsDiv = mobileResultsDiv;
+            } else {
+              AutoCompleteAG.mobileResultsDiv.className = "ac-results-main";
+            }
+          }
+
+          var tempDivElem = $("div.ac-fixed-top");
+          if (tempDivElem && tempDivElem[0]) {
+            var offsetHeight = tempDivElem[0].offsetHeight;
+            if (offsetHeight && !isNaN(offsetHeight)) {
+              if (offsetHeight < 75) {
+                offsetHeight = 75; 
+              }
+              if(navigator.userAgent.toLowerCase().indexOf("iphone") > 0) {
+                offsetHeight -= 1;  
+              }
+              if(AutoCompleteAG.mobileResultsDiv != null){
+                AutoCompleteAG.mobileResultsDiv.setAttribute("style", "top:" + (offsetHeight + 3) + "px !important;");
+              }
+            }
+          }
+          if(AutoCompleteAG.mobileResultsDiv != null){
+            AutoCompleteAG.mobileResultsDiv.innerHTML = "";
+            if(maxDisplayResults ==null || maxDisplayResults =="0")
+                AutoCompleteAG.mobileResultsDiv.appendChild(loadResults(res.responseText, true, maxDisplayResults, targetElement.value, parsedArray,false,false));
+            else
+              AutoCompleteAG.mobileResultsDiv.appendChild(loadResults(res.responseText, false, maxDisplayResults, targetElement.value, parsedArray,false,false));
+          }
+        } else {
+          if (isNoGrid || showInPopover) {
+              if(maxDisplayResults ==null || maxDisplayResults =="0")
+                    AutoCompleteAG.offlineResultsDiv = loadResults(res.responseText, true, maxDisplayResults, targetElement.value, parsedArray, bFromDropdownButton,false);
+              else
+                AutoCompleteAG.offlineResultsDiv = loadResults(res.responseText, false, maxDisplayResults, targetElement.value, parsedArray, bFromDropdownButton,false);
+            tempElem2.appendChild(AutoCompleteAG.offlineResultsDiv);
+          } else {
+            pega.u.d.gIsScriptsLoading = false;
+            var expandTableList = pega.util.Dom.getElementsById("EXPAND-OUTERFRAME", tempElem );
+            var dispElem = expandTableList;
+            if (expandTableList){
+              for(var i=0;i<expandTableList.length;i++){
+                dispElem = expandTableList[i];
+                if(expandTableList[i].getAttribute("PARAM_NAME")==renderSingleId) {
+                  break;
+                }
+              }
+            }
+            if(dispElem && dispElem.parentNode && dispElem.parentNode.tagName == 'SPAN') {
+              dispElem = dispElem.parentNode;
+            }       
+            var noResultsRowObj = pega.util.Dom.getElementsById("Grid_NoResults", dispElem);
+            if(noResultsRowObj && noResultsRowObj.length >=1){
+                hidePopoverElement(targetElement);
+                /* BUG-212677: re-setting lazy on change flag and skipping fire change event */
+                p.c.eventController.setLazyOnchange(targetElement, "false", false);
+                return;   
+            }         
+            var secDiv = pega.u.d.getSectionDiv(dispElem).cloneNode(false);
+            // secDiv.setAttribute("style","display:inline;");
+            secDiv.appendChild(dispElem);
+            tempElem2.appendChild(secDiv);
+          }
+
+          var _popOver = p.u.d.getPopOver(targetElement);
+          pega.u.d.noScrollContainer = _popOver;
+          
+          // Set acPopoverStyle to the user-defined AutoComplete skin style, if present in the target pxAutoComplete input.
+          // Ignore "autocomplete_input", which is the default/fallback style.
+          var acPopoverStyle = '';
+                    if (targetElement && targetElement.className === "autocomplete_input" && isNoGrid) {
+            acPopoverStyle = ' popover_ac_'
+          } else {
+                      var classList = targetElement && targetElement.className.split(/\s+/g);
+                      for (var i = 0; i < classList.length; i++) {
+                          if ("autocomplete_input" != classList[i]) {
+                              acPopoverStyle = ' popover_' + classList[i];
+                              break;
+                          }
+                      }
+                    }
+
+          if (AutoCompleteAG.mobileResultsDiv != null) {
+            AutoCompleteAG.mobileResultsDiv.className = "ac-mask-hide";
+          } else {
+            var mobileResultsDiv = document.getElementById("autocompleAG_resultsMain");
+            if (mobileResultsDiv != null) {
+              mobileResultsDiv.className = "ac-mask-hide";
+            }
+          }
+          var targetElemOffsetWidth = targetElement && targetElement.offsetWidth;
+                  
+                    var _popoverConfigObj = {
+                      content : {
+                        type : 'domElement',
+                        element : tempElem2
+                      },
+                      buttons : {
+                        ok : false,
+                        cancel : false
+                      },
+                      bindings : {
+                        associatedElement : targetElement
+                      },
+                      visual : {
+                        displayLoader : false,
+                        contentClass : 'autocompleteAG lookupPO' + acPopoverStyle
+                      },
+                      position : {
+                        fieldAttach : 'leftBottom',
+                        popOverAttach : 'leftTop',
+                        size : {
+                          min : {
+                            x : Math.max(targetElemOffsetWidth, listingWidth), 
+                            y : 20
+                          }
+                        }
+                      },
+                      extraParams : {
+                        refresh : true,
+                        hideVScroll : (bFromDropdownButton || allowScroll)?false:true
+                      },
+                      callbacks : {
+                        onBeforeClose : afterPOClose
+                      }
+                    };
+
+          /* BUG-270606 : AC inside page view Inner harness on iphone which is css3 flex based has a timing issue between input going up and results call being made. */
+                 if ($("div#HARNESS_CONTENT") && $("div#HARNESS_CONTENT").css("display") === "flex" && navigator.userAgent.toLowerCase().indexOf("iphone") > 0) {
+                  executeAfterPOOpen = false;
+                  setTimeout(function () {
+                    _popOver.open(_popoverConfigObj);
+          pega.u.d.noScrollContainer = null;
+          activePO = _popOver;
+                    afterPOOpen(bFromDropdownButton);
+                  }, 300);
+                 } else {
+                  _popOver.open(_popoverConfigObj);
+                  pega.u.d.noScrollContainer = null;
+                  activePO = _popOver;
+                 }
+        }
+              var isComboBox = targetElement && targetElement.parentElement && targetElement.parentElement.className;
+              if(allowScroll && ! (isComboBox==("combo-box")) &&  maxDisplayResults!=0){
+              //if(allowScroll){
+              var remainingResultsDiv;
+              if (isTouchAble && isNoGrid) {
+                var targetElemValue = targetElement && targetElement.value;
+                remainingResultsDiv = loadResults(res.responseText, false, maxDisplayResults, targetElemValue, parsedArray, bFromDropdownButton,true);
+                var liRemainingResults = remainingResultsDiv.getElementsByTagName("li");
+                var liRemainingResultslength = liRemainingResults.length;
+                var mobileAutoCompleteresultsDiv = AutoCompleteAG.mobileResultsDiv.getElementsByClassName("autocomplete-results");
+                var mobileAutoCompleteoffSetheight = mobileAutoCompleteresultsDiv[0].offsetHeight;
+                mobileAutoCompleteresultsDiv[0].style.height = mobileAutoCompleteoffSetheight+"px";
+                mobileAutoCompleteresultsDiv[0].style.overflowY = "auto";
+                var ulStructure = mobileAutoCompleteresultsDiv[0].getElementsByTagName("ul")[0];
+                for(var i = 0;i<liRemainingResultslength;i++){ 
+                     ulStructure.appendChild(liRemainingResults[0]);
+                }
+                } else {
+                  if (isNoGrid || showInPopover) {
+                    var _popOver = p.u.d.getPopOver(targetElement);
+                    var targetElemValue = targetElement && targetElement.value;
+                    remainingResultsDiv = loadResults(res.responseText, false, maxDisplayResults, targetElemValue, parsedArray, bFromDropdownButton,true);
+                    var liRemainingResults = remainingResultsDiv.getElementsByTagName("li");
+                    var liRemainingResultslength = liRemainingResults.length;
+                    var containerElem = _popOver.getContentContainerElement();
+                    containerElem.style.height = containerElem.offsetHeight+"px";
+                    containerElem.style.overflowY = "auto";
+                    var autocompleteResultsDiv = containerElem.getElementsByClassName("autocomplete-results");
+                    var ulStructure = autocompleteResultsDiv[0].getElementsByTagName("ul")[0];
+                    for(var i = 0;i<liRemainingResultslength;i++){ 
+                      ulStructure.appendChild(liRemainingResults[0]);
+                      }
+                  } 
+              }
+              }
+              if(AutoCompleteAG.mobileResultsDiv != null){
+                if((AutoCompleteAG.isMobilePhone() && displayFullScreen == "true") || (pega.u.d.ServerProxy && pega.u.d.ServerProxy.isDestinationLocal())){
+                  AutoCompleteAG.mobileResultsDiv.setAttribute("data-harness-id", pega.ctx.pzHarnessID);
+                  if(pega.ctxmgr && typeof(pega.ctxmgr.registerContextSwitching) === "function") {
+                    pega.ctxmgr.registerContextSwitching(AutoCompleteAG.mobileResultsDiv);
+                  }
+                }
+              }
+              if(executeAfterPOOpen){
+                  afterPOOpen(bFromDropdownButton);
+              }
+      };
+      if ((isNoGrid) || showInPopover) {
+        callBackFunc2();
+      } else {
+        /*removing lazy load spans if added as part of this response*/
+        var lazyElem = $('#lazyLoadInfo');
+        while(lazyElem && lazyElem.length && lazyElem.length > 0 ){
+          lazyElem.remove();
+          lazyElem = $('#lazyLoadInfo');
+        }
+                /* handle only once as the logic not available in asyncRequest call back */
+        try {
+          if (res.responseText.indexOf("PegaOnlyOnce") != -1){
+            var __newDiv = document.createElement("div");
+            __newDiv.innerHTML = res.responseText;
+            var onlyOnceEle = pega.util.Dom.getElementsById("PegaOnlyOnce", __newDiv);
+            if (onlyOnceEle && onlyOnceEle[0]) {
+              pega.u.d.handleOnlyOnce(onlyOnceEle[0]);
+            }
+          }
+        } catch(e) { }
+        pega.u.d.loadDOMObject(tempElem, res.responseText, callBackFunc2 );
+      }
+    },
+    failure = function() {
+      clearReqPending(this);
+    }, 
+    
+        gridMouseDownHandler = function(event){
+          var target = pega.util.Event.getTarget(event);
+          var level = pega.u.d.getPopOverLevel(target);
+          var inputField = "";
+          if (level >= 0) {           
+        inputField = pega.u.d.getPopOver(level).getAssociatedElement(); 
+          }else{
+              inputField = target;
+              
+          }                        
+          inputField.setAttribute("tempvalidation",inputField.getAttribute("validationtype"));
+          inputField.removeAttribute("validationtype");
+        },
+    
+    renderResults = function(target, checkMinSearchCount, showResultsInPoover, bFromDropdownButton){
+      var dataConfigStr = null,
+      dataConfig = null, dataPageParamPage=null;
+      useParameterForSearch = "false";
+      if (target) {
+        dataConfigStr = target.getAttribute("data-config");
+        try {
+          dataConfig = JSON.parse(dataConfigStr);
+        } catch(e) { }
+      }
+       if (dataConfig) {
+        if (dataConfig[0] == "datapage") {
+          fieldsList = dataConfig[2];
+          if(dataConfig.length > 6){
+            dataPageParamPage = dataConfig[6];
+          }
+          if(dataConfig.length > 7){
+            useParameterForSearch = dataConfig[7];
+          }
+          matchAndHighlight = (dataConfig[3]?dataConfig[3]:"true");
+          matchStartOfString = (dataConfig[4]?dataConfig[4]:"true");
+          allowFreeFormInput = (dataConfig[5]?dataConfig[5]:"true");
+        }else{
+          return;
+        }
+        isNoGrid = true;
+      }
+      var sourceDP = dataConfig[1][0];
+      var onSuccess = function(dataPage){
+        success({ responseText: dataPage, argument: target.name  }, true, true, showResultsInPoover, bFromDropdownButton);
+      };
+      var onFailure = function(err,errmsg){
+              if(typeof console != "undefined" && console){
+                  console.error("AutoComplete is unable to load its Source "+sourceDP+" .Error Details:- "+err+" : "+errmsg);
+                   
+              }
+            };
+      if(sourceDP){
+        if(pega.ui.ClientCache.isLargeDatapage(sourceDP)){
+          var _serachTerm = (target.value)?target.value:"";
+          if (minSearchChars && _serachTerm.length < minSearchChars) {
+            success({ responseText: "[]", argument: target.name  }, false, false, showResultsInPoover);
+            return;
+          }
+          var paramsMap = {};
+          if(dataPageParamPage){
+            for(var paramPage=0; paramPage < dataPageParamPage.length; paramPage++){
+              var pyName = dataPageParamPage[paramPage][0];
+              var pyValue = dataPageParamPage[paramPage][1];
+              if(pyValue){
+                pyValue = pega.ui.template.DataBinder.resolveIndex(pyValue);
+                pyValue = pega.c.eventParser.replaceTokensWrapper(pyValue, "", "", false, true);      
+              } else{
+                pyValue = "";
+              }
+              paramsMap[pyName] = pyValue;
+              if(pega.clientTools){
+                pega.clientTools.getParamPage().put(pyName,pyValue);
+              }
+            }
+          }
+          /* US-111485: Adding control specific parameters.
+            1) search start of string/contains
+            2) sending search term in case of
+               non-parametrized data page. In this case "user for search" set to primary display column.
+               (or)
+               with parametrized data page which does not set "Search using data page parameter".
+
+              In These cases we are not considering search on multiple columns now. This search term only used against Primary column.
+          */
+          paramsMap["pxControlMetadata-matchStartOfString"] = ((matchStartOfString==="true")?"true":"false");
+          if (useParameterForSearch === "false") {
+            paramsMap["pxControlMetadata-searchTerm"] = target.value;
+          }
+          pega.ui.ClientCache.findPageAsync(sourceDP,paramsMap,onSuccess, onFailure, function(){});
+        } else {
+          var _serachTerm = (target.value)?target.value:"";
+          if (checkMinSearchCount && minSearchChars && _serachTerm.length < minSearchChars) {
+            return;
+          }
+                    if(dataPageParamPage){
+            for(var paramPage=0; paramPage < dataPageParamPage.length; paramPage++){
+              var pyName = dataPageParamPage[paramPage][0];
+              var pyValue = dataPageParamPage[paramPage][1];
+              if(pyValue){
+                pyValue = pega.ui.template.DataBinder.resolveIndex(pyValue);
+                pyValue = pega.c.eventParser.replaceTokensWrapper(pyValue, "", "", false, true);      
+              } else{
+                pyValue = "";
+              }
+              if(pega.clientTools){
+                pega.clientTools.getParamPage().put(pyName,pyValue);
+              }
+            }
+          }
+          var dataPage = pega.ui.ClientCache.find(sourceDP);
+          success({ responseText: dataPage, argument: target.name  }, true, false, showResultsInPoover);
+        }
+      }
+    },
+    
+    clearReqPending = function(){
+      if(requestCount >= 1) { 
+        requestCount--; 
+      }
+      isReqPending = false;
+      if(requestCount == 0 && spinObj && spinObj.spin && spinObj.stop){
+        spinObj.stop(); 
+                spinObj = undefined;
+          }
+    },
+    
+    abortRequest = function() {
+      if(asyncReq){
+        if(isReqPending) {
+          p.u.d.decrementAsyncRequestCount();
+        }
+        try {
+          // Aborting previous requests since they are on stale search terms
+          //asyncReq.conn.abort();
+                    if(asyncReq.conn){
+                      pega.util.Connect.abort(asyncReq);
+                      /* BUG-116819: Failure callback is not getting called in case of abort requests, So added code to abort the request : START*/
+                      pega.u.d.decrementAsyncRequestCount();        
+                      if (pega.c && pega.c.actionSequencer && !pega.u.d.gIsScriptsLoading && !pega.u.d.isAjaxInProgress()) {
+                          pega.c.actionSequencer.resume();
+                      }
+                    }
+          /* BUG-116819: Failure callback is not getting called in case of abort requests, So adde code to abort the request : END */
+        } catch(ex) {
+        }
+      }
+    },
+    
+    sendRequest = function(target, bFromDropdownButton){
+      requestCount++;
+      if(isReqPending) {
+        /* BUG-189019: using current request count,  instead of aborting previous request,
+          which causing change tracker update in aborted request response not processing. */
+        /* abortRequest(); */
+      } else {
+        isReqPending = true;
+        var opts = {
+          lines: 11, // The number of lines to draw
+          length: 3, // The length of each line
+          width: 2, // The line thickness
+          radius: 3, // The radius of the inner circle
+          color: '#006DFF', // #rbg or #rrggbb
+          speed: 1, // Rounds per second
+          trail: 66, // Afterglow percentage
+          shadow: false // Whether to render a shadow
+        };
+        var targets = pega.util.Dom.getElementsById("acspin",target.parentNode,"div");
+        if(targets && targets.length>0){
+          var targetspin = targets[0];
+                    if(!spinObj){
+            spinObj = new Spinner(opts);
+                    }
+          timerObj = window.setTimeout(function() { if (spinObj) spinObj.spin(targetspin); }, spinDelay);
+          
+        }
+
+      }
+      var successWrapper = function(res) {
+        success(res, null, null, null, bFromDropdownButton);
+      }
+      asyncReq = p.u.d.asyncRequest("POST", strUrlSF, {success  : successWrapper, failure:failure, argument: targetElement.name},postData);
+    };
+    
+    this.indexOf = function(array, value) {
+
+        if(!Array.prototype.indexOf){
+          var len = array.length >>> 0;
+          var from = 0;
+
+          for (; from < len; from++)
+          {
+            if (from in array &&  array[from] === value)
+            return from;
+          }
+          return -1;
+        } else {
+          return array.indexOf(value);
+        }
+    };
+    this.isMobilePhone = function(){      
+      if(navigator.userAgent.toLowerCase().indexOf("iphone") > 0 || navigator.userAgent.toLowerCase().indexOf("ipod") > 0 || (navigator.userAgent.toLowerCase().indexOf("android") > 0 && navigator.userAgent.toLowerCase().indexOf("mobile") > 0) || navigator.userAgent.toLowerCase().indexOf("windows phone") > 0){
+        return true;
+      } else{
+        return false;
+      }
+      
+    };
+    this.convertArrayToJsonObj = function(arrayObj){
+      var paramJSONObj = {};
+        for(var paramIdx = 0; paramIdx < arrayObj.length; paramIdx++){
+          var pyName = arrayObj[paramIdx][0];
+          var pyValue = arrayObj[paramIdx][1];
+          if(pyValue){
+            pyValue = pega.ui.template.DataBinder.resolveIndex(pyValue);
+          } else {
+            pyValue = "";
+          }
+          paramJSONObj[pyName] = pyValue;
+        }
+        return paramJSONObj;
+    };
+    this.replaceParamsTokens = function(paramStr,elem){
+      var gridRowRef = "";
+      var locGargs = "";
+      if (typeof(Grids) != 'undefined') {
+        var temp_gridObj = Grids.getElementsGrid(elem);
+        if(temp_gridObj){
+          var rowDetails = pega.u.d.getRowAndEntryHandle(elem); 
+          gridRowRef = p.u.property.toReference(rowDetails.rowEntryHandle);
+          if(rowDetails && rowDetails.row){
+            var gridRow = rowDetails.row;
+            var gargs = gridRow.getAttribute('data-gargs');
+            if(gargs){
+              locGargs = pega.lang.trim(gargs);
+              locGargs = locGargs.replace(/\'/g,"\\\'");
+              locGargs = JSON.parse(locGargs);
+            }
+          }
+        }
+      }
+      paramStr = pega.c.eventParser.replaceTokensWrapper(paramStr,gridRowRef, locGargs, true);
+      return paramStr;
+    };
+    this.separateStaticDynamicParams = function(paramsJson, postDataString, urlObj, elem){
+      var dynamicParamsObj={};
+        var staticParamsObj={};
+        Object.keys(paramsJson).forEach(function(key) {
+          if(paramsJson[key].match(/(#|\^)~([^#~\^]+)~(#|\^)/gi)){
+              dynamicParamsObj[key] = AutoCompleteAG.replaceParamsTokens(paramsJson[key], elem);
+          }
+          else{
+              staticParamsObj[key] = paramsJson[key];
+          }
+      });
+      urlObj.put("dynamic"+postDataString, JSON.stringify(dynamicParamsObj));
+      urlObj.put("static"+postDataString, JSON.stringify(staticParamsObj));
+  };
+    this.setSafeURL = function(e, _target) {
+      var target = pega.util.Event.getTarget(e);
+      if (_target) {
+        target = _target;
+      }
+      var dataConfigStr = null,
+        dataConfig = null;
+      if (target) {
+        dataConfigStr = target.getAttribute("data-config");
+        try {
+          dataConfig = JSON.parse(dataConfigStr);
+        } catch(exp) { }
+      }
+      strUrlSF = SafeURL_createFromURL(p.u.d.url);
+            strUrlSF.put("UITemplatingStatus", "N");
+            postData=new SafeURL();
+      if ( dataConfig) {
+        strUrlSF.put("pyActivity", "pzGetACData");
+        strUrlSF.put("pyListSource", dataConfig[0]);
+                strUrlSF.put("BaseReference", urlParams["BaseReference"]);
+        if (dataConfig[0] == "datapage") {
+          strUrlSF.put("pySourceName", dataConfig[1][0]);
+        } else if(dataConfig[0] == "pageList") {
+          strUrlSF.put("pySourceName", dataConfig[1][0]);
+          if(dataConfig[1].length > 1) {
+            var _PreDT = dataConfig[1][1];
+            if (_PreDT != "") {
+              strUrlSF.put("PreDT", _PreDT);
+            }
+            var _PreActivity = dataConfig[1][3];
+            if (_PreActivity != "") {
+              strUrlSF.put("PreActivity", _PreActivity);
+            }
+          }
+        } else if(dataConfig[0] == "reportdefinition") {
+          strUrlSF.put("pySourceName", dataConfig[1][0]);
+          strUrlSF.put("pyAppliesTo", dataConfig[1][1]);
+        } else if(dataConfig[0] == "associated") {
+          var entryHandle = target.getAttribute("name");
+          strUrlSF.put("Name", p.u.property.toReference(entryHandle));
+          strUrlSF.put("EntryName", entryHandle);
+        }
+        fieldsList = dataConfig[2];
+        if(dataConfig.length > 7){
+          useParameterForSearch = dataConfig[7];
+        } else {
+          useParameterForSearch = "false";
+        }
+        isNoGrid = true;
+        acCacheKey = null;
+        matchAndHighlight = (dataConfig[3]?dataConfig[3]:"true");
+        matchStartOfString = (dataConfig[4]?dataConfig[4]:"true");
+        allowFreeFormInput = (dataConfig[5]?dataConfig[5]:"true");
+      } else {
+        isNoGrid = false;
+        strUrlSF.put("pyActivity", "ReloadSection");
+        strUrlSF.put("StreamClass", "Rule-HTML-Section");
+        strUrlSF.put("bClientValidation", "true");
+        strUrlSF.put("ReadOnly", "0");
+        strUrlSF.put("StreamName", urlParams["StreamName"]);
+        strUrlSF.put("RenderSingle", urlParams["RenderSingle"]);
+        strUrlSF.put("AC_PropPage", urlParams["AC_PropPage"]);
+        strUrlSF.put("BaseReference", urlParams["BaseReference"]);
+      }
+    }
+
+    this.initAutoComplete = function(e, skipPrevValue) {
+      var target = pega.util.Event.getTarget(e),
+      dataAttr = target.getAttribute("data-attributes");
+      // data-attributes : RS ID, Min Search Characters, Listing Width
+      if (!dataAttr) {
+        return;
+      }
+      if (!skipPrevValue) {
+        prevValue = p.c.PlaceHolder.getValue(target);
+      }
+      var dataArr = JSON.parse(dataAttr),
+      secDiv = p.u.d.getSectionDiv(target);
+      /* BUG-385623: START */
+      if (secDiv == null) { return; }
+      /* BUG-385623: END */
+      var sectionName = secDiv.getAttribute("node_name");
+      targetElement = target;
+      renderSingleId = dataArr[0];
+      minSearchChars = dataArr[1]; 
+      if(typeof(dataArr[5])  != "undefined"){
+        maxDisplayResults = dataArr[5];
+      }
+      if(typeof(dataArr[6])  != "undefined"){
+        allowScroll = dataArr[6];
+      }
+      listingWidth = dataArr[2] || 0;
+      params = dataArr[3];
+      ac_prop_page= dataArr[4];
+      urlParams = {};
+      urlParams["StreamName"] = sectionName;
+      urlParams["RenderSingle"] = "InitialRender_"+renderSingleId;
+      urlParams["AC_PropPage"] = ac_prop_page;
+      urlParams["BaseReference"] = p.u.d.getBaseRef(target, e);
+      if(pega.u && pega.u.d) {
+        isAccessible = pega.u.d.isAccessible;
+      }
+      isTouchAble = false;
+      displayFullScreen = targetElement.getAttribute("data-displayFullScreen");
+            if(AutoCompleteAG.isMobilePhone() && displayFullScreen == "true"){
+        isTouchAble = true;
+            }
+      if (navigator.userAgent.toLowerCase().indexOf("outlook") != -1) {
+        this.isOutlookPlugin = true;
+            }
+    };
+    
+    this.resetAutoComplete = function(e,skipAbort) {
+      //afterPOClose();
+            if(!skipAbort) {
+        abortRequest();
+            }
+      requestCount = 0;
+      clearReqPending();
+      clearTimeout(timer);
+      renderSingleId = minSearchChars = strUrlSF = urlParams = targetElement = asyncReq = timer = undefined;
+      prevValue = "";
+      listingWidth = 0;
+      this.isKeyDown = false;
+      this.isTabbedOut = false;
+      this.isEnterKey = false;
+      this.isOutlookPlugin = false;
+      isDownArrowPressed = false;
+      isPrintableChar = true;
+      //Bug-158722 setting isTabbedOutForFocus to false
+      this.isTabbedOutForFocus = false;
+      AutoCompleteAG.updateLiveRegion(null, null, "");
+      if (navigator.userAgent.toLowerCase().indexOf("outlook") != -1) {
+        this.isOutlookPlugin = true;
+            }
+            matchedRow = 1;
+    };
+
+    this.setDummyOnchange = function(e, addOnchange, onblur) {
+      var target = pega.util.Event.getTarget(e);
+      if (target) {
+        var dataDummyOnchange = target.getAttribute("data-skip-ac");
+        var dataChange = target.getAttribute("data-change");
+        if (dataDummyOnchange == "yes") {
+          if (addOnchange &&  (typeof(dataChange) == "undefined" || dataChange == null || dataChange == "")) {
+            target.setAttribute("data-change", "[]");
+          } else if (!addOnchange && dataChange == "[]") {
+            target.removeAttribute("data-change");
+            if(onblur && !this.isTabbedOut && !this.isEnterKey) {
+              try {
+                /* check relatedTarget of mouse click, 
+                if relatedTarget not inside results overlay, fire applyconditions explicitly */
+                var relatedTarget = e.relatedTarget;
+                if(!relatedTarget) { /* for firefox */
+                  relatedTarget = e.explicitOriginalTarget;
+                }
+                if(!relatedTarget) { /* for chrome */
+                  relatedTarget = e.currentTarget;
+                }
+                if (relatedTarget) {
+                  var fireApplyConditions = true;
+                  if (isPOOpen) {
+                                      fireApplyConditions = false;
+                    while (fireApplyConditions && relatedTarget && relatedTarget.tagName &&
+                      relatedTarget.tagName.toLowerCase() != "body") {
+                      if (relatedTarget.tagName.toLowerCase() === "div" && relatedTarget.id === "_popOversContainer") {
+                        fireApplyConditions = false;
+                                              break;
+                      }
+                                           else if(!fireApplyConditions){
+                                            fireApplyConditions=true;
+                                          }
+                                          
+                      relatedTarget = relatedTarget.parentNode;
+                                        }
+                  }
+
+                  if (fireApplyConditions) {
+                    /* click away */
+                    p.c.Changes.fireApplyConditions(e);
+                  }
+                }
+              } catch (e) { }
+            }
+          }
+        }
+      }
+    };
+
+    this.updateParams = function(strUrlSF, currValue, target,isGrid) {
+      if (isNoGrid && target) {
+        try {
+          var dataConfigStr = target.getAttribute("data-config");
+          var dataConfig = JSON.parse(dataConfigStr);
+          var paramsObj = undefined;
+          if (dataConfig != null && typeof(dataConfig) != "undefined") {
+            if (dataConfig[0] == "datapage" || dataConfig[0] == "reportdefinition") {
+              if(dataConfig.length > 6 && dataConfig[6] != null && typeof(dataConfig[6]) != "undefined") {
+                paramsObj = this.convertArrayToJsonObj(dataConfig[6]);
+                  if((dataConfig[0]=="datapage")){
+                    this.separateStaticDynamicParams(paramsObj,"DPParams",postData,target);
+                  }else{
+                    this.separateStaticDynamicParams(paramsObj,"RDParams",postData,target);
+                  }
+                //postData.put(((dataConfig[0]=="datapage")?"DPParams":"RDParams"), this.replaceParamsTokens(dataConfig[6], target))
+              }
+            } else if(dataConfig[0] == "pageList") {
+              if(dataConfig[1].length > 1) {
+                if (dataConfig[1][1] != "" && dataConfig[1][2] && dataConfig[1][2] != "") {
+                  paramsObj = this.convertArrayToJsonObj(dataConfig[1][2]);
+                  this.separateStaticDynamicParams(paramsObj,"DTParams",postData,target);
+                  //postData.put("DTParams", this.replaceParamsTokens(dataConfig[1][2], target));
+                }
+                if (dataConfig[1][3] != "" && dataConfig[1][4] && dataConfig[1][4] != "") {
+                  paramsObj = this.convertArrayToJsonObj(dataConfig[1][4]);
+                  this.separateStaticDynamicParams(paramsObj,"ActParams",postData,target);
+                  //postData.put("ActParams", this.replaceParamsTokens(dataConfig[1][4], target));
+                }
+              }
+            }
+          }
+        } catch (e) { }
+                return;
+      } else {
+              if(isGrid)
+                strUrlSF.put("AC_Grid_FilterParamValue", currValue);
+              else
+                postData.put("AC_Grid_FilterParamValue", currValue);
+      }
+      if(params) {
+        var values = {}, hasParams = false;
+        for(var key in params) {
+          var fullRef = params[key];
+          if(fullRef.indexOf("Literal_") === 0){
+            values[key] = fullRef.substring(8);
+          }
+          else {                  
+          if(fullRef.indexOf(".")===0){
+            fullRef  = ac_prop_page + fullRef;
+          }
+          var propVal = p.u.d.getProperty(fullRef);
+          if(propVal === undefined) {
+            propVal = pega.ui.ChangeTrackerMap.getTracker().getPropertyValue(fullRef);
+          }
+          values[key] = propVal;
+          } 
+          hasParams = true;
+        }
+        if(hasParams){
+                    var AC_SrcParams = JSON.stringify(values);
+                    postData.put("AC_SrcParams", AC_SrcParams);
+                  if(isGrid){
+                    strUrlSF.put("AC_SrcParams", AC_SrcParams);
+                  }
+        }
+      }
+    };
+    this.checkIfPOOpen = function() {
+      if(isPOOpen){
+        return true;
+      }else{
+        return false;
+      }
+    }
+    this.getActivePO = function() {
+      return activePO;
+    }
+    var hidePopoverElement = function(target) {
+      var _popOver = p.u.d.getPopOver(target);
+      var popOverContainerElem = _popOver.getContentContainerElement();
+        
+      if(popOverContainerElem != null) {
+        popOverContainerElem.style.visibility = "hidden"; 
+        isPOOpen = false;
+        var button = target.nextSibling;
+        if(button && button.firstChild && button.firstChild.className === "pi pi-caret-up") {
+          button.firstChild.className = "pi pi-caret-down";
+        }
+        if(popOverContainerElem.className.indexOf("smartInfoContainer") !== -1){
+          popOverContainerElem.className = "pz-po-c";
+          _popOver.setState('inactive');
+        } 
+      }
+            
+      /*BUG-173776:below code causing on change event firing two times on autocomplete*/
+      /*p.c.eventController.setLazyOnchange(target, "false");*/
+    };
+
+    var processKey = function(target, bFromDropdownButton) {
+      //  HFIX-53425 Adding a delay to OOTB autocomplete control
+      var delay = pega.u.d.autocompleteDelay || 250; // #250ms was default delay
+      var currValue = p.c.PlaceHolder.getValue(target);
+      if(currValue  !== prevValue || !isPOOpen || (AutoCompleteAG.isMobilePhone() && currValue == "" && minSearchChars == 0) ){
+        if(isDownArrowPressed || (isPrintableChar && currValue.length >= minSearchChars)){
+          if(isDownArrowPressed) isDownArrowPressed = false;
+          AutoCompleteAG.updateParams(strUrlSF, currValue, target);
+          acCacheKey = null;
+          if (isNoGrid) {
+            //here
+            var url = strUrlSF.toURL();
+            acCacheKey = url;
+            if (postData && typeof(postData.toURL) === "function") {
+              acCacheKey += postData.toURL();
+            }
+            if ((!(pega.u.d.ServerProxy && pega.u.d.ServerProxy.isDestinationLocal()))&& pega.ui.AC_cache.hasCache(url)) {
+              success({ responseText: pega.ui.AC_cache.retrieve(url), argument: target.name  }, undefined, undefined, undefined, bFromDropdownButton);
+            } else if(pega.u.d.ServerProxy && pega.u.d.ServerProxy.isDestinationLocal()){
+              renderResults(target, false, false, bFromDropdownButton);
+            }else {
+              if(timer) {
+                clearTimeout(timer);
+                timer = setTimeout(function() { sendRequest(target, bFromDropdownButton); timer = undefined; }, delay);
+              } else {
+                sendRequest(target, bFromDropdownButton);           
+                timer = setTimeout(function() { timer = undefined; }, delay);
+              }
+            }
+          } else {
+            /* For IPAD and Nexus7, we won't display full screen auto complete
+               Populate result in using template and add display it in pop over  */
+            if (pega.u.d.ServerProxy && pega.u.d.ServerProxy.isDestinationLocal()) {
+              renderResults(target, true, true);
+            } else {
+              if(timer) {
+                clearTimeout(timer);
+                timer = setTimeout(function() { sendRequest(target); timer = undefined; }, delay);
+              } else {
+                sendRequest(target);            
+                timer = setTimeout(function() { timer = undefined; }, delay);
+              }
+            }
+          }
+        } else if(pega.u.d.ServerProxy && pega.u.d.ServerProxy.isDestinationLocal()) {
+                    if (isNoGrid) {
+            renderResults(target, true, false);
+          } else {
+            renderResults(target, true, true);
+          }
+        }else {
+          clearTimeout(timer);
+                    /*HFIX-25694: when a non printable character is typed,previous request is getting aborted and its change tracker's response is not processed*/
+          /* abortRequest(); */
+          clearReqPending();
+          hidePopoverElement(target);
+          //_popOver.close("Cancel");/*Bug-108358: popover close shifts the focus away from AC control*/  
+        }
+      }else if(AutoCompleteAG.isMobilePhone() && currValue.length < minSearchChars && AutoCompleteAG.mobileResultsDiv && AutoCompleteAG.mobileResultsDiv != null){ 
+        AutoCompleteAG.mobileResultsDiv.innerHTML = ""; 
+      } 
+      prevValue = currValue;
+    };
+
+    this.hidePopover = function(e) {
+      if(isPOOpen) {
+        var _popOver = p.u.d.getPopOver(p.util.Event.getTarget(e));
+        _popOver.close("Cancel");
+      }
+    };
+
+    this.hidePopoverElement = function(target){
+      hidePopoverElement(target);
+    };
+    this.setFocusToInput = function(e){
+      /* For touchable devices removed re-focussing to input field
+        as it leads to opening mobile key pad again after selecting the item from results list */
+      if(!this.isTabbedOutForFocus && !(pega.cl && pega.cl.isTouchAble())){
+        var target = pega.util.Event.getTarget(e),
+        level = pega.u.d.getPopOverLevel(target);
+                var inputField = target;
+        if (level >= 0) {
+          inputField = pega.u.d.getPopOver(level).getAssociatedElement();         
+          if(pega.util.Dom.inDocument(inputField)) {
+            pega.u.d.focusDomElement(inputField, pega.control.PlaceHolder.getValue(inputField).length);
+          } else {
+            /* Bug-158722 uncommented the else part to get focus in case of post value configured */
+            inputField = pega.ctx.dom.getElementsByName(inputField.name)[0];
+            pega.u.d.focusDomElement(inputField, pega.control.PlaceHolder.getValue(inputField).length);
+          }
+        }
+                if(inputField.getAttribute("tempvalidation")){
+                  inputField.setAttribute("validationtype",inputField.getAttribute("tempvalidation"));
+                inputField.removeAttribute("tempvalidation");
+                }
+      }
+      this.isTabbedOutForFocus = false;
+                        
+    };
+    this.updateLiveRegion = function(gridobj, index, customMessage) {
+            /* BUG-219314 | ARIA tags not generated for Auto-complete control. Removed if condition. Made the autocomplete feature accessibility-checkbox independent */
+        var messageText = "";
+        var xssFilterDone = false;
+        if (typeof(customMessage) != "undefined" && customMessage != null) {
+          messageText = customMessage;
+        } else if(gridobj && index) {
+          var row = gridobj.rightBodyTbl.rows[gridobj.getIndex(index)];
+          if(!row) return;
+          var rowid = row.id;
+          if(!rowid) {
+            return;
+          }
+          messageText = row.textContent;
+          try {
+            var tdObjs = row.getElementsByTagName("TD");
+            var msgSpan = document.createElement('SPAN');
+            for (var idx = 0; idx < tdObjs.length; idx++) {
+              var spanObj = document.createElement('SPAN');
+              //BUG-431993 - Escape the content to avoid xss issue - executes for autocomplete-table
+              spanObj.innerHTML = crossScriptingFilter(tdObjs[idx].textContent);
+              xssFilterDone = true;
+              msgSpan.appendChild(spanObj);
+            }
+            messageText = msgSpan.innerHTML;
+            /* remove temp span from dom */
+            document.body.appendChild(msgSpan);
+            document.body.removeChild(msgSpan);
+          } catch(e) { }
+        }
+
+        var liveResultDiv = document.getElementById("autocompleAG_live");
+        if (liveResultDiv == null || typeof(liveResultDiv) == "undefined") {
+          liveResultDiv = document.createElement('DIV');
+          liveResultDiv.className = "autocomplete-resultpopupstatus";
+          liveResultDiv.setAttribute("aria-live","polite");
+          liveResultDiv.setAttribute("aria-atomic","true");
+          liveResultDiv.setAttribute("id","autocompleAG_live");
+          document.body.appendChild(liveResultDiv);
+          AutoCompleteAG.agLiveResultDiv = liveResultDiv;
+          AutoCompleteAG.agLiveResultDiv.innerHTML = "";
+        }
+            
+          document.body.setAttribute("role","application");
+            
+            liveResultDiv.innerHTML = "";
+      /* BUG-417209- If the messageText is assigned to innerText instead of innerHTML, 
+         screenReader reads irrelevant text */
+      /*BUG-496371 Escape the content if not escaped - executes for autocomplete-list*/
+        liveResultDiv.innerHTML = xssFilterDone ? messageText : crossScriptingFilter(messageText);
+    };
+    this.changeGridSelectionOnKeyDown = function(keyDownEvent){
+      var keyCode = keyDownEvent.keyCode;
+          var target = p.util.Event.getTarget(keyDownEvent);
+      if(isPOOpen){
+        if( keyCode === 40){
+          if (isNoGrid) {
+            setActiveRow(null, false, target);
+                      var popOverCont = pega.u.d.getPopOver();
+                      var popOverActiveElement = popOverCont.getActivePopOverElement();
+                      if(popOverActiveElement){
+                      var popOverActiveElementRec = popOverActiveElement.getBoundingClientRect();
+                      var resultsPopoverRowRec = $("div#acresults_list .active-row").get(0).getBoundingClientRect();
+                     if(!(resultsPopoverRowRec.top >= popOverActiveElementRec.top && resultsPopoverRowRec.left >= popOverActiveElementRec.left && resultsPopoverRowRec.bottom <= popOverActiveElementRec.bottom && resultsPopoverRowRec.right <= popOverActiveElementRec.right )){
+                        $("div#acresults_list .active-row").get(0).scrollIntoView(); 
+                      }
+                      }
+                      pega.util.Event.preventDefault(keyDownEvent);
+          } else {
+            if(Grids){
+             Grids.setActiveGrid(acGridId);
+             var gridobj = Grids.getGrid(acGridId);
+             var index;
+                          if(gridobj){
+                            index = gridobj.getActiveRowIndex();
+                          }
+                          if(!index && gridobj){
+                if(gridobj.bCategorizedGrid)
+               gridobj.setActiveRow(null,null, 2);
+                else
+               gridobj.setActiveRow(null,null, 1);
+              gridobj.selectRow(1, true);
+              AutoCompleteAG.updateLiveRegion(gridobj, 1);
+             }
+                
+              //Grids.setActiveGrid(acGridId);          
+              //var gridobj = Grids.getGrid(acGridId);
+                            
+              var gridElemXY;
+                    if(gridobj)             
+                      gridElemXY = pega.util.Dom.getXY(gridobj.getNextGridRow(gridobj.getRightRow(index)));
+            if(index){
+              if(gridElemXY){
+                index++;  
+                var Rowindex = gridobj.getIndex(index);
+                gridobj.setActiveRow(null,null, Rowindex);
+                gridobj.selectRow(index, true);
+                              /*BUG-290825*/
+                                try{
+                                  var gridobjRow = gridobj.getRow(Rowindex)[0];
+                                  var popOverCont = pega.u.d.getPopOver();
+                                  var popOverActiveElement = popOverCont.getActivePopOverElement();
+                                  var popOverActiveElementRec = popOverActiveElement.getBoundingClientRect();
+                                 var gridobjRowRec = gridobjRow.getBoundingClientRect();
+                                  if(!(gridobjRowRec.top >= popOverActiveElementRec.top && gridobjRowRec.left >= popOverActiveElementRec.left && gridobjRowRec.bottom <= popOverActiveElementRec.bottom && gridobjRowRec.right <= popOverActiveElementRec.right )){
+                                   gridobj.getRow(Rowindex)[0].scrollIntoView(); 
+                                  }
+                                }
+                                catch(e){}
+                AutoCompleteAG.updateLiveRegion(gridobj, index);
+              }           
+                            /* BUG-219314 */
+              else            
+                AutoCompleteAG.updateLiveRegion(null, null, "Reached the end of the list");
+            }
+                          if(gridobj){
+              var elemReq = gridobj.rightBodyTbl;
+                while(elemReq!=null && elemReq!=undefined&&elemReq.id != 'gridLayoutWrapper')
+                elemReq  = elemReq.parentNode;
+              if(elemReq!=null && elemReq!=undefined){
+                var acDivEndY = pega.util.Dom.getXY(elemReq)[1]+elemReq.offsetHeight;
+                if(gridElemXY&&(gridElemXY[1]+gridobj.rowHeight > acDivEndY)){
+                  //gridobj.getNextGridRow(gridobj.getRightRow(index-1)).scrollIntoView(false);
+                  gridobj.layoutWrapperDiv.scrollTop+=gridobj.rowHeight*1;
+                }     
+
+
+                if(!gridElemXY){              
+                  gridobj.avoidFocusOnProgressiveLoad = true;
+                  gridobj.numRows = numRows;
+                  gridobj.layoutWrapperDiv.scrollTop+=gridobj.rowHeight*1;                  
+                }
+                pega.util.Event.preventDefault(keyDownEvent);
+              }           
+                          }
+              
+            }
+          }
+        }
+        if( keyCode === 38){
+          if (isNoGrid) {
+            setActiveRow(null, true, target);
+                       var popOverCont = pega.u.d.getPopOver();
+                      var popOverActiveElement = popOverCont.getActivePopOverElement();
+                      if(popOverActiveElement){
+                      var popOverActiveElementRec = popOverActiveElement.getBoundingClientRect();
+                       var resultsPopoverRowRec = $("div#acresults_list .active-row").get(0).getBoundingClientRect();
+                       if(!(resultsPopoverRowRec.top >= popOverActiveElementRec.top && resultsPopoverRowRec.left >= popOverActiveElementRec.left && resultsPopoverRowRec.bottom <= popOverActiveElementRec.bottom && resultsPopoverRowRec.right <= popOverActiveElementRec.right )){
+                        $("div#acresults_list .active-row").get(0).scrollIntoView();
+                       }
+                      }
+                        pega.util.Event.preventDefault(keyDownEvent);
+                    } else {
+                        if(Grids){
+                            Grids.setActiveGrid(acGridId);
+                            var gridobj = Grids.getGrid(acGridId);
+                            var index = gridobj.getActiveRowIndex();                        
+                            var gridElemXY = pega.util.Dom.getXY(gridobj.getPreviousGridRow(gridobj.getRightRow(index)));
+                        if(index){
+                            if(gridElemXY){
+                                index--;    
+                                var Rowindex = gridobj.getIndex(index);
+                                gridobj.setActiveRow(null,null, Rowindex);
+                                gridobj.selectRow(index, true);
+                              /*BUG-290825*/
+                                try{                                  
+                                  var gridobjRow = gridobj.getRow(Rowindex)[0];
+                                  var popOverCont = pega.u.d.getPopOver();
+                                  var popOverActiveElement = popOverCont.getActivePopOverElement();
+                                  var popOverActiveElementRec = popOverActiveElement.getBoundingClientRect();
+                                 var gridobjRowRec = gridobjRow.getBoundingClientRect();
+                                  if(!(gridobjRowRec.top >= popOverActiveElementRec.top && gridobjRowRec.left >= popOverActiveElementRec.left && gridobjRowRec.bottom <= popOverActiveElementRec.bottom && gridobjRowRec.right <= popOverActiveElementRec.right )){
+                                   gridobj.getRow(Rowindex)[0].scrollIntoView(); 
+                                  }
+                                }
+                                catch(e){}
+                AutoCompleteAG.updateLiveRegion(gridobj, index);
+              }
+                            /* BUG-219314 */
+              else
+                                AutoCompleteAG.updateLiveRegion(null, null, "Reached the beginning of the list");
+            }
+              
+              var elemReq = gridobj.rightBodyTbl;
+                while(elemReq!=null && elemReq!=undefined&&elemReq.id != 'gridLayoutWrapper')
+                  elemReq  = elemReq.parentNode;
+              if(elemReq!=null && elemReq!=undefined){
+                var acDivY = pega.util.Dom.getY(elemReq);               
+                if(gridElemXY&&(gridElemXY[1]< acDivY)){
+                  gridobj.layoutWrapperDiv.scrollTop-=gridobj.rowHeight*1;
+                }
+                if(!gridElemXY){
+                  gridobj.avoidFocusOnProgressiveLoad = true;
+                  gridobj.numRows = numRows;
+                  gridobj.layoutWrapperDiv.scrollTop-=gridobj.rowHeight*1;                  
+                }
+                pega.util.Event.preventDefault(keyDownEvent);
+               }
+
+              
+            }
+          }
+        }
+        if( keyCode === 34){
+          if(Grids){  
+            Grids.setActiveGrid(acGridId);          
+            var gridobj = Grids.getGrid(acGridId);
+            var index = gridobj.getActiveRowIndex();              
+            
+            var elemReq = gridobj.rightBodyTbl;
+              while(elemReq!=null && elemReq!=undefined&&elemReq.id != 'gridLayoutWrapper')
+                  elemReq  = elemReq.parentNode;
+              if(elemReq!=null && elemReq!=undefined){
+              var numRows = Math.floor(elemReq.offsetHeight/gridobj.rowHeight);             
+              var numRowsTop = Math.floor(pega.util.Dom.getY(gridobj.getRightRow(index))/gridobj.rowHeight) - 2;
+              var loadedendindex = gridobj.getIndex(gridobj.rightBodyTbl.rows.length - 1);
+              if(gridobj.totalRecords >= index+numRows ){             
+                if(index + numRows > loadedendindex ) {
+                  var hr =  index + numRows;
+                  gridobj.AC_BCK_First_Index = gridobj.getFirstLoadedRowIndex();        
+                  gridobj.AC_Index_To_Highlight = hr;               
+                }
+                else{
+                  gridobj.setActiveRow(null,null, gridobj.getIndex(index + numRows));
+                  gridobj.selectRow(index + numRows, true);
+                  AutoCompleteAG.updateLiveRegion(gridobj, index + numRows);
+                }
+                gridobj.avoidFocusOnProgressiveLoad = true;
+                gridobj.numRows = numRows;
+                gridobj.eventKeyKode = keyCode;
+                gridobj.layoutWrapperDiv.scrollTop+= (gridobj.rowHeight * numRows);   
+
+                
+              } 
+              pega.util.Event.preventDefault(keyDownEvent);
+               }              
+          }
+        }
+
+        if( keyCode === 33){
+          if(Grids){  
+            Grids.setActiveGrid(acGridId);          
+            var gridobj = Grids.getGrid(acGridId);
+            var index = gridobj.getActiveRowIndex();              
+            var elemReq = gridobj.rightBodyTbl;
+              while(elemReq!=null && elemReq!=undefined&&elemReq.id != 'gridLayoutWrapper')
+                  elemReq  = elemReq.parentNode;
+              if(elemReq!=null && elemReq!=undefined){
+              var numRows = Math.floor(elemReq.offsetHeight/gridobj.rowHeight); 
+                var numRowsTop = Math.floor(pega.util.Dom.getY(gridobj.getRightRow(index))/gridobj.rowHeight) - 2;              
+                // var scrollindex = index-numRowsTop-1;            
+                var plIndex = parseInt(gridobj.getRightRow(index).getAttribute("PL_INDEX"));
+                var loadedstartindex = gridobj.rightBodyTbl.rows[1].getAttribute("PL_INDEX");
+                if(plIndex && plIndex>=0){              
+                if(index - numRows < 1) {
+                  gridobj.AC_Index_To_Highlight = index - numRows ;                         
+                  gridobj.AC_BCK_First_Index = gridobj.getFirstLoadedRowIndex();
+                }
+                else if(index - numRows > 0){
+                  gridobj.setActiveRow(null,null, gridobj.getIndex(index - numRows));
+                  gridobj.selectRow(index - numRows, true);
+                  AutoCompleteAG.updateLiveRegion(gridobj, index);
+                }
+                gridobj.avoidFocusOnProgressiveLoad = true;
+                gridobj.numRows = numRows;
+                gridobj.eventKeyKode = keyCode;
+                gridobj.layoutWrapperDiv.scrollTop-=(gridobj.rowHeight * numRows ); 
+                  
+              } 
+              pega.util.Event.preventDefault(keyDownEvent);
+              }
+                        
+                        
+          }
+        }
+        
+      }
+
+    };
+    this.avoidKeyPress = function(e){
+      var avoidableKeyCodes = [16,18,19,20,35,36,37,39,45,112,113,114,115,117,118,119,120,121,122,123,144,145];
+      var keyCode = e.keyCode;
+      if(AutoCompleteAG.indexOf(avoidableKeyCodes,keyCode) != -1){
+        return false;
+      }else{
+        return true;
+              }
+
+    };
+    this.processKeyEvent = function(e, bFromDropdownButton){
+      if(!strUrlSF ) {
+        this.initAutoComplete(e, true);
+        this.setSafeURL(e);
+      }
+      var target = p.util.Event.getTarget(e);
+      var button = target.nextSibling;    
+            if(button.tagName=="I")button = button.nextSibling; // clear icon     
+                
+      var keyCode = e.keyCode;
+      switch(keyCode) {
+        case 27 : /* escape key */
+          clearTimeout(timer);
+          abortRequest();
+          clearReqPending();
+          var _popOver = p.u.d.getPopOver(target);
+          _popOver.close("Cancel");
+          break;
+        case 13 : /* enter key */
+          if(isPOOpen) {
+            if (isNoGrid) {
+              AutoCompleteAG.processSetValue(e, target, true);
+            } else {
+              if(Grids){
+                Grids.setActiveGrid(acGridId);
+                var gridobj = Grids.getGrid(acGridId);
+                var gridRow = gridobj.getRightRow();
+                if (gridRow) {
+                                    gridMouseDownHandler(e);
+                  pega.control.eventController.fireEventHandler(gridRow, "click");
+                } else if (isTouchAble) {
+                  try {
+                    AutoCompleteAG.resetInputPositionWrap(e);
+                    var _popOver = p.u.d.getPopOver(target);
+                    if (_popOver) {
+                      _popOver.close("Cancel");
+                    }
+                  } catch(e) { }
+                }
+              }
+            }
+          } else if (isTouchAble) {
+            try {
+              AutoCompleteAG.resetInputPositionWrap(e);
+              var _popOver = p.u.d.getPopOver(target);
+              if (_popOver) {
+                _popOver.close("Cancel");
+              }
+            } catch(e) { }
+          }
+          if(button.tagName=="BUTTON" && target.value!=""){ //popover has already been closed at this point   
+                     AutoCompleteAG.addClearIcon(target,button);    
+                }
+          break;
+        case 9 : /* tab key */
+          if(isPOOpen){
+            if (isNoGrid) {
+              processAdditionalFields(null, target);
+            } else {
+              if(Grids){
+                Grids.setActiveGrid(acGridId);
+                var gridobj = Grids.getGrid(acGridId);
+                var gridRow ;
+                if(gridobj) {
+                  gridRow = gridobj.getRightRow();
+                }
+                if (gridRow) { 
+                                    gridMouseDownHandler(e);
+                  pega.control.eventController.fireEventHandler(gridRow, "click");
+                }
+              }
+            }
+            if(button.tagName=="BUTTON" && target.value!=""){ //popover has already been closed at this point   
+                      AutoCompleteAG.addClearIcon(target,button);   
+                  }  
+          }
+          break;
+        case 38 : /* Up arrow */
+        case 40 : /* Down arrow */
+          if(isPOOpen)          
+              break;
+          isDownArrowPressed = true;
+        default :
+          isPrintableChar = this.avoidKeyPress(e);
+          processKey(target, bFromDropdownButton);
+          if(button.tagName=="BUTTON" && target.value!="" && isPOOpen){   
+                  button.firstChild.className = "pi pi-caret-up";   
+                    button.dataset.active = "true";   
+                        AutoCompleteAG.addClearIcon(target,button);   
+                }     
+                else if(button.tagName=="BUTTON" && target.value=="") {   
+            AutoCompleteAG.removeClearIcon(target,button);    
+                }  
+          break;
+      }
+    };
+    this.isKeyDown = false;
+    this.isTapped = false;
+    this.tappedSameTarget = false;
+    this.isFocused = false;
+    this.focusedTarget = null;
+    this.focusedOutTarget = null;
+    this.maskDivObj = null;
+    this.mobileResultsDiv = null;
+    this.activeACParentObj = null;
+    this.offlineResultsDiv = null;
+    this.isClearIconClicked = false;
+    /* this.acOKButton = null; */
+    this.clearIconObj = null;
+    if (pega.u.NavigateTopHandler) {
+      this.bckTopPosition = "44px";
+      this.screenLayoutElem = null;
+    }
+    this.resetAutoCompleteMask = function(eventObj) {
+      if(pega.cl && pega.cl.isTouchAble()) {
+        try {
+          /* check relatedTarget of mouse click, 
+          if relatedTarget not inside results overlay, fire applyconditions explicitly */
+          var relatedTarget = eventObj.relatedTarget;
+          if(!relatedTarget) { /* for firefox */
+            relatedTarget = eventObj.explicitOriginalTarget;
+          }
+          if(!relatedTarget) { /* for chrome */
+            relatedTarget = eventObj.currentTarget;
+          }
+          if (relatedTarget) {
+            if (relatedTarget.tagName && relatedTarget.tagName.toLowerCase() === "body") {
+              return;
+            }
+            var resetAutoCompleteMask = true;
+            var closePopOverContainer = true;
+            if (isPOOpen) {
+              while (relatedTarget && relatedTarget.tagName &&
+                relatedTarget.tagName.toLowerCase() != "body") {
+                if (relatedTarget.tagName.toLowerCase() === "div" && relatedTarget.id === "_popOversContainer") {
+                  resetAutoCompleteMask = false;
+                  closePopOverContainer = false;
+                }
+                relatedTarget = relatedTarget.parentNode;
+              }
+            } else {
+              closePopOverContainer = false;
+              if (relatedTarget.tagName && relatedTarget.tagName.toLowerCase() === "div" && relatedTarget.className === "ac-mask") {
+                resetAutoCompleteMask = false;
+              }
+            }
+            if (resetAutoCompleteMask) {
+              AutoCompleteAG.resetInputPosition();
+            }
+            if (closePopOverContainer) {
+              AutoCompleteAG.hidePopoverElement(pega.util.Event.getTarget(eventObj));
+            }
+          }
+        } catch (e) { }
+      }
+    };
+    this.resetInputPositionWrap = function(evt) {
+      if (AutoCompleteAG.mobileResultsDiv != null) {
+        AutoCompleteAG.mobileResultsDiv.className = "ac-mask-hide";
+        AutoCompleteAG.mobileResultsDiv.innerHTML = "";
+      }
+      AutoCompleteAG.resetInputPosition();
+      if (isPOOpen) { isPOOpen = false; }
+      /* setting focus to document body in order to remove focus from field */
+      try { document.body.focus(); } catch(e) { }
+      pega.util.Event.preventDefault(evt);
+      pega.util.Event.stopPropagation(evt);
+    };
+    this.setFocusPrevious = function(evt){
+      var dummyInput1 = pega.util.Event.getTarget(evt);
+      var inputs = $(dummyInput1).closest('body').find(':input');
+      var prevElem = inputs.eq( inputs.index(dummyInput1)- 1 );
+      if(prevElem){
+        if(!isNoGrid) { AutoCompleteAG.resetInputPositionWrap(evt); }
+        AutoCompleteAG.isTapped = true;
+        prevElem.focus();
+        prevElem.focus();
+      }
+      if(isNoGrid) { AutoCompleteAG.processSetValue(evt, this, false); }
+    };
+    this.setFocusNext = function(evt){
+      var dummyInput2 = pega.util.Event.getTarget(evt);
+      var inputs = $(dummyInput2).closest('body').find(':input');
+      var nextElem = inputs.eq( inputs.index(dummyInput2)+ 2 );
+      if(nextElem){
+        if(!isNoGrid) { AutoCompleteAG.resetInputPositionWrap(evt); }
+        AutoCompleteAG.isTapped = true;
+        nextElem.focus();
+        nextElem.focus();
+      }
+      if(isNoGrid) { AutoCompleteAG.processSetValue(evt, this, false); }
+    };
+    this.addClearIcon = function(target, button){
+          var clearIconObj = document.getElementById("autocompleAG_Clear_Icon");
+      if (!clearIconObj) {
+        clearIconObj = document.createElement('i');
+        clearIconObj.setAttribute("class", "ac-clear");
+                clearIconObj.setAttribute("class", "pi iconClose ac-clear");
+        clearIconObj.setAttribute("id", "autocompleAG_Clear_Icon");
+        button.parentNode.appendChild(clearIconObj);
+        pega.util.Event.removeListener(clearIconObj, "click", AutoCompleteAG.clearInput, target, true);
+        pega.util.Event.addListener(clearIconObj, "click", AutoCompleteAG.clearInput, target, true);
+                AutoCompleteAG.showClearIcon(target);
+        this.clearIconObj = clearIconObj;
+      } else {
+        this.clearIconObj = clearIconObj;
+      }               
+        };     
+        this.removeClearIcon = function(){
+            var clearIconObj = document.getElementById("autocompleAG_Clear_Icon");
+      if (clearIconObj) {
+        pega.util.Event.removeListener(clearIconObj, "click", this.clearInput);
+        clearIconObj.parentNode.removeChild(clearIconObj);
+        this.clearIconObj = null;
+      }
+        };
+    this.showClearIcon = function(targetElem) {
+      if (AutoCompleteAG.clearIconObj && targetElem && $(targetElem).hasClass("ac-mobile-width")) {
+        if (targetElem.value != "") {
+          if (!($(AutoCompleteAG.clearIconObj).hasClass("iconClose"))) {
+            $(AutoCompleteAG.clearIconObj).addClass("iconClose");
+          }
+        } else {
+          $(AutoCompleteAG.clearIconObj).removeClass("iconClose");
+        }
+      }
+    };
+    this.clearInput = function(evt) {
+      AutoCompleteAG.isClearIconClicked = true;
+      this.value = "";
+      this.focus();
+      if(!strUrlSF ) { AutoCompleteAG.setSafeURL(evt, this); }
+      setPlaceholderText(true,isNoGrid?targetElement:undefined);
+            if(AutoCompleteAG.isMobilePhone()) {
+                isDownArrowPressed = true;
+                processKey(targetElement);
+            }
+      if (AutoCompleteAG.clearIconObj) { $(AutoCompleteAG.clearIconObj).removeClass("iconClose"); }
+      pega.util.Event.preventDefault(evt);
+      pega.util.Event.stopPropagation(evt);
+    };
+    this.cancelSelectionWrapper = function(evt){
+            if(pega.mobile && pega.mobile.nativenav){
+              $(document.activeElement).blur();
+              pega.mobile.nativenav.removeFromHistory(me.nativeNavId); // @deltatouch US-198762
+          }
+          
+      AutoCompleteAG.cancelSelection(evt, this);
+    };
+    this.processSetValue = function(evt, targetElem, fireOnchange) {
+      targetElem = targetElem?targetElem:this;
+      if(!AutoCompleteAG.isMobilePhone()) {
+        if (targetElem.value != "" && activeRowId == -1) {
+          AutoCompleteAG.cancelSelection(evt, targetElem);
+        } else {
+          processAdditionalFields(null, targetElem);
+        }
+      } else {
+        if (allowFreeFormInput == "true") {
+          AutoCompleteAG.resetInputPositionWrap(evt);
+          /* BUG-229756: calling setProperty is to fire on-change on auto-complete input */
+          if (fireOnchange) {
+            /* BUG-366706: adding flag to skip showing full screen autocomplete */
+            var addSkipFullScreen = targetElem.getAttribute("data-change") != null || targetElem.getAttribute("data-keydown") != null || false;
+            if (addSkipFullScreen && AutoCompleteAG.mobileResultsDiv != null) {
+              AutoCompleteAG.mobileResultsDiv.setAttribute("data-skip-fullscreen", "true");
+            }
+            pega.u.d.setProperty(targetElem.name, targetElem.value, "");
+          }
+        } else {
+          setPlaceholderText(true,isNoGrid?targetElement:undefined);
+          if (targetElem.value != "" && activeRowId == -1) {
+            AutoCompleteAG.cancelSelection(evt, targetElem);
+          } else {
+            processAdditionalFields(null, targetElem);
+          }
+          
+        }
+      }
+    };
+    this.cancelSelection = function(evt, _targetElement) {
+      if (AutoCompleteAG.mobileResultsDiv != null) {
+        AutoCompleteAG.mobileResultsDiv.className = "ac-mask-hide";
+        AutoCompleteAG.mobileResultsDiv.innerHTML = "";
+      }
+      if (isPOOpen) { 
+              if(!isNoGrid){
+                var _popOver = p.u.d.getPopOver(_targetElement);
+        if(_popOver){
+          _popOver.close();
+        }
+              }
+              isPOOpen = false;
+            }
+      setPlaceholderText(true,isNoGrid?_targetElement:undefined);
+      pega.u.d.setProperty(_targetElement.name, (typeof(AutoCompleteAG.undoValue)!="undefined"?AutoCompleteAG.undoValue:""), "");
+      window.setTimeout(resetResultsDiv, 501);
+            
+            if(evt){
+              pega.util.Event.preventDefault(evt);
+              pega.util.Event.stopPropagation(evt);
+          }
+    };
+    
+    var me = this; // @deltatouch US-198762
+    this.nativeNavId = null;
+    /* BUG-400878: When field have no label, add a dummy label to fix cancel button position */
+    this.addDivWhenNoLabel = function(targetParentEle, acCancelButton) {
+      var isAutocompleteInsideTable = pega.u.d.findParentTable(this.acInput);
+      if(($(targetParentEle).hasClass("content-inner") || isAutocompleteInsideTable) && targetParentEle.querySelector("label") == null) {
+        var acDummyLabel = document.createElement('LABEL');
+        acDummyLabel.setAttribute("class", "field-caption");
+        acDummyLabel.setAttribute("id", "ac-dummy-label");
+        if(isAutocompleteInsideTable){
+            acDummyLabel.innerHTML = "&nbsp";
+        }
+        targetParentEle.insertBefore(acDummyLabel, acCancelButton);
+      }
+    };
+
+    this.addFullScreenACElements = function(targetElem) {
+      var targetParentEle = targetElem.parentNode;
+      if(targetParentEle.hasAttribute("nowrap") && targetParentEle.hasAttribute("data-ctl"))
+        targetParentEle = targetParentEle.parentNode;
+      var acCancelButton = $("a.ac-cancel");
+      if (!(acCancelButton && acCancelButton.length >=1)) {
+        acCancelButton = document.createElement('A');
+        acCancelButton.setAttribute("class", "ac-cancel");
+        acCancelButton.setAttribute("href", "#");
+        acCancelButton.setAttribute("onclick", "pd(event);");
+        acCancelButton.innerHTML = pega.u.d.fieldValuesList.get("Cancel");
+        if (targetParentEle && targetParentEle.parentNode && targetParentEle.parentNode.insertBefore) {
+          if(targetParentEle.id=="CT"){
+                    targetParentEle.insertBefore(acCancelButton, targetParentEle.childNodes[0]);
+                  }else {
+                   if(targetParentEle.tagName =="SPAN" && targetParentEle.getAttribute("nowrap")==""){
+                     var parentOfTargetParent = targetParentEle.parentNode;
+                      if(parentOfTargetParent)
+                        parentOfTargetParent.parentNode.insertBefore(acCancelButton, parentOfTargetParent);  
+                    } else {
+                      targetParentEle.parentNode.insertBefore(acCancelButton, targetParentEle);
+                      this.addDivWhenNoLabel(targetParentEle.parentNode, acCancelButton);
+                    } 
+                  }
+        }
+        pega.util.Event.removeListener(acCancelButton, "click", this.cancelSelectionWrapper, targetElem, true);
+        pega.util.Event.addListener(acCancelButton, "click", this.cancelSelectionWrapper, targetElem, true);
+              
+                // @deltatouch US-198762
+                if(pega.mobile.nativenav){
+                  me.nativeNavId = pega.mobile.nativenav.addToHistoryAndBlock(me.cancelSelectionWrapper, targetElem);
+                }
+              
+        this.acCancelButton = acCancelButton;
+      } else {
+        this.acCancelButton = acCancelButton[0];
+      }
+      
+      var clearIconObj = document.getElementById("autocompleAG_Clear_Icon");
+      if (!clearIconObj) {
+        var acIconDiv = pega.util.Dom.getElementsById("acspin", targetParentEle, "div");
+        if(acIconDiv && acIconDiv.length >= 1){
+          var acIconDivObj = acIconDiv[0];
+          clearIconObj = document.createElement('a');
+          clearIconObj.setAttribute("class", "ac-clear");
+          clearIconObj.setAttribute("id", "autocompleAG_Clear_Icon");
+          acIconDivObj.parentNode.appendChild(clearIconObj);
+          pega.util.Event.removeListener(clearIconObj, "click", this.clearInput, targetElem, true);
+          pega.util.Event.addListener(clearIconObj, "click", this.clearInput, targetElem, true);
+          this.clearIconObj = clearIconObj;
+        }
+      } else {
+        this.clearIconObj = clearIconObj;
+      }
+      
+      var fieldItemObj = $("div.ac-fixed-top div.field-item");
+      if (fieldItemObj && fieldItemObj.length >= 1 && !fieldItemObj.hasClass("ac-field-item")) {
+        fieldItemObj.addClass("ac-field-item");
+      }
+      
+      var autoFillInput = document.getElementById("acAutoFillInput");
+      if (!autoFillInput && matchStartOfString === "true" && fieldsList) {
+        var addPlaceholderInput = false;
+        for (var colIdx = 0; colIdx < fieldsList.length; colIdx++) {
+          var useForSearch = fieldsList[colIdx][1];
+          if (!addPlaceholderInput && useForSearch == "true") {
+            addPlaceholderInput = true;
+          } else if (addPlaceholderInput && useForSearch == "true") {
+            addPlaceholderInput = false;
+            break;
+          }
+        }
+        
+        if (addPlaceholderInput && fieldItemObj && fieldItemObj.length >= 1) {
+          autoFillInput = document.createElement('INPUT');
+          autoFillInput.setAttribute("class", "ac-autofill-input");
+          autoFillInput.setAttribute("type", "text");
+          autoFillInput.setAttribute("disabled", "disabled");
+          autoFillInput.setAttribute("id", "acAutoFillInput");
+          fieldItemObj.append(autoFillInput);
+        }
+      }
+
+      var dummyInput1 = document.getElementById("acDummyInput1");
+      if (!dummyInput1) {
+        dummyInput1 = document.createElement('INPUT');
+        dummyInput1.setAttribute("class", "ac-hidden-input");
+        dummyInput1.setAttribute("type", "text");
+        dummyInput1.setAttribute("id", "acDummyInput1");
+        targetElem.parentNode.insertBefore(dummyInput1, targetElem);
+        pega.util.Event.removeListener(dummyInput1, "focus", this.setFocusPrevious, targetElem, true);
+        pega.util.Event.addListener(dummyInput1, "focus", this.setFocusPrevious, targetElem, true);
+      }
+      
+      var dummyInput2 = document.getElementById("acDummyInput2");
+      if (!dummyInput2) {
+        dummyInput2 = document.createElement('INPUT');
+        dummyInput2.setAttribute("class", "ac-hidden-input");
+        dummyInput2.setAttribute("type", "text");
+        dummyInput2.setAttribute("id", "acDummyInput2");
+        targetElem.parentNode.appendChild(dummyInput2);
+        pega.util.Event.removeListener(dummyInput2, "focus", this.setFocusNext, targetElem, true);
+        pega.util.Event.addListener(dummyInput2, "focus", this.setFocusNext, targetElem, true);
+      }
+      p.c.eventController.setLazyOnchange(targetElem, "true");
+
+    };
+    
+    this.removeFullScreenACElements = function() {
+      var autoFillInput = document.getElementById("acAutoFillInput");
+      var autoCompleteInput = this.acInput;
+      if (autoFillInput) { autoFillInput.parentNode.removeChild(autoFillInput); }
+      var acCancelButton = $("a.ac-cancel");
+      if (acCancelButton && acCancelButton.length >= 1) {
+        acCancelButton = acCancelButton[0];
+        acCancelButton.parentNode.removeChild(acCancelButton);
+        this.acCancelButton = null;
+      }
+      var acDummyLabel = $("label#ac-dummy-label");
+      if (acDummyLabel && acDummyLabel.length >= 1) {
+        acDummyLabel = acDummyLabel[0];
+        acDummyLabel.parentNode.removeChild(acDummyLabel);
+      }
+      
+      this.removeClearIcon();
+      var dummyInput1 = document.getElementById("acDummyInput1");
+      if (dummyInput1) {
+        pega.util.Event.removeListener(dummyInput1, "focus", this.setFocusPrevious);
+        dummyInput1.parentNode.removeChild(dummyInput1);
+      }
+      
+      var dummyInput2 = document.getElementById("acDummyInput2");
+      if (dummyInput2) {
+        pega.util.Event.removeListener(dummyInput2, "focus", this.setFocusNext);
+        dummyInput2.parentNode.removeChild(dummyInput2);
+      }
+       if ($("div#HARNESS_CONTENT").hasClass("acautocompleteag")) {
+          $("div#HARNESS_CONTENT").addClass("harness-content-workarea-view");
+          $("div#HARNESS_CONTENT").removeClass("acautocompleteag");
+        }
+      if (navigator.userAgent.toLowerCase().indexOf("iphone") > 0 && pega.u.d.bModalDialogOpen && document.getElementById("modalOverlay")) {
+      var modalDialogHeader = $("#modaldialog_hd", document.getElementById("modalOverlay")).get(0) || $(".header", document.getElementById("modalOverlay")).get(0);
+        if(modalDialogHeader && $(modalDialogHeader).hasClass("display-none")){
+            $(modalDialogHeader).removeClass("display-none");
+        }
+      }
+      if (isPOOpen) { isPOOpen = false; }
+            if(autoCompleteInput){
+        p.c.eventController.setLazyOnchange(autoCompleteInput, "false", true);
+            }
+    };
+      
+    this.resetInputPosition = function() {
+      if(pega.cl && pega.cl.isTouchAble()) {
+                if(pega.mobile && pega.mobile.nativenav){
+          $(document.activeElement).blur();
+          pega.mobile.nativenav.removeFromHistory(me.nativeNavId); // @deltatouch US-198762
+        }
+              
+        if (this.maskDivObj != null) {
+          this.maskDivObj.className = "ac-mask-hide";
+        }
+        if (this.mobileResultsDiv != null) {
+          this.mobileResultsDiv.className = "ac-mask-hide";
+          this.mobileResultsDiv.innerHTML = "";
+        }
+        this.removeFullScreenACElements();
+        /* BUG-270606 : AC inside page view Inner harness on iphone which is css3 flex based has issue with z-index positioning of mask div and header. */
+                if ($("div#HARNESS_CONTENT").hasClass("ac-flex-overrite") && navigator.userAgent.toLowerCase().indexOf("iphone") > 0) {
+          $("div#HARNESS_CONTENT").removeClass("ac-flex-overrite")
+          //$("div#HARNESS_CONTENT").css("display","flex");
+                    this.maskDivObj.removeAttribute("style");
+          $("header.workarea-view-header").removeClass("display-none");
+        }
+        if ($("div#PEGA_HARNESS").hasClass("ac-overflow-scrolling")) {
+          $("div#PEGA_HARNESS").removeClass("ac-overflow-scrolling");
+          $("div#PEGA_HARNESS").css("-webkit-overflow-scrolling","touch");
+        }else if($(".screen-layout-region-main.screen-layout-region-main-middle.not-nav").hasClass("ac-overflow-scrolling")){
+          $(".screen-layout-region-main.screen-layout-region-main-middle.not-nav").removeClass("ac-overflow-scrolling ");
+          $(".screen-layout-region-main.screen-layout-region-main-middle.not-nav").css("-webkit-overflow-scrolling","touch");
+        }
+        
+        if($("div.workarea-view-scroll-wrapper").hasClass("ac-overflow-scrolling")){
+	        $("div.workarea-view-scroll-wrapper").removeClass("ac-overflow-scrolling");
+          $("div.workarea-view-scroll-wrapper").css("-webkit-overflow-scrolling","touch");
+        }  
+        
+        if($("section.workarea-view-content.workarea-view-content-enable-scroll").hasClass("ac-overflow-scrolling")){
+	        $("section.workarea-view-content.workarea-view-content-enable-scroll").removeClass("ac-overflow-scrolling ");
+          $("section.workarea-view-content.workarea-view-content-enable-scroll").css("-webkit-overflow-scrolling","touch");
+        }  
+        if (pega.u.d.bModalDialogOpen) {
+          var mOverlay = document.getElementById("modalOverlay");
+          if (mOverlay) {
+            try {
+              var modalDialogContent = $("div.modal-scroll-panel")
+              var modalDialogBody = document.getElementById("modalContent");
+              var modalDialogContent = $("#modaldialog_con", document.getElementById("modaldialog")).get(0);
+              if(modalDialogContent) {
+                while(modalDialogContent.parentNode.nodeName != "DIV"){
+                  modalDialogContent = modalDialogContent.parentNode;
+                }
+                modalDialogContent = modalDialogContent.parentNode;
+              } else {
+                modalDialogContent = modalDialogBody;
+              }
+              modalDialogContent = $("#" + modalDialogContent.id);
+              if (modalDialogContent.hasClass("modal-scroll-panel") && modalDialogContent.css("-webkit-overflow-scrolling") === "auto") {
+                modalDialogContent.css("-webkit-overflow-scrolling","touch");
+              }
+              var _modalContentObj = $("#modalOverlay div.yui-resize");
+              if (_modalContentObj && _modalContentObj.css("zIndex") == "111") {
+                _modalContentObj.css("zIndex", "");
+              }
+            } catch(e) { }
+          }
+        }
+        if (this.activeACParentObj != null) {
+          var className = this.activeACParentObj.className;
+          if (className.indexOf("ac-fixed-top") != -1) {
+            className = className.replace("ac-fixed-top","");
+            if (AutoCompleteAG.focusedTarget != null && $(AutoCompleteAG.focusedTarget).hasClass("ac-mobile-width")) {
+              $(AutoCompleteAG.focusedTarget).removeClass("ac-mobile-width");
+            } else if ($(".ac-mobile-width")){
+              $(".ac-mobile-width").removeClass("ac-mobile-width");
+            }
+            this.activeACParentObj.className = className;
+            this.activeACParentObj.scrollIntoView(true);
+            this.activeACParentObj = null;
+          }
+        }
+        if (pega.u.NavigateTopHandler) {
+          if(this.screenLayoutElem){
+            this.screenLayoutElem.style.top = this.bckTopPosition;
+            this.bckTopPosition = "44px;"
+            this.screenLayoutElem = null;
+          }
+        }
+      }
+    };
+
+    this.placeInputOnTop = function(eventObj) {
+      if (this.maskDivObj) {
+        this.maskDivObj.className = "ac-mask";
+        if (this.mobileResultsDiv != null) {
+          this.mobileResultsDiv.className = "ac-results-main";
+        }
+        var targetElem = pega.util.Event.getTarget(eventObj);
+        this.acInput = targetElem;
+        this.undoValue = targetElem.value;
+        /* BUG-270606 : AC inside page view Inner harness on iphone which is css3 flex based has issue with z-index positioning of mask div and header. */
+                if ($("div#HARNESS_CONTENT").css("display") === "flex" && navigator.userAgent.toLowerCase().indexOf("iphone") > 0 ) {
+          $("div#HARNESS_CONTENT").addClass("ac-flex-overrite")
+          //$("div#HARNESS_CONTENT").css("display","block");
+                    this.maskDivObj.setAttribute("style", "z-index:-9;");
+          $("header.workarea-view-header").addClass("display-none");
+        }
+        if ($("div#PEGA_HARNESS").css("-webkit-overflow-scrolling") === "touch") {
+          $("div#PEGA_HARNESS").addClass("ac-overflow-scrolling ");
+          $("div#PEGA_HARNESS").css("-webkit-overflow-scrolling","auto");
+        }else if($(".screen-layout-region-main.screen-layout-region-main-middle.not-nav").css("-webkit-overflow-scrolling") === "touch"){
+          $(".screen-layout-region-main.screen-layout-region-main-middle.not-nav").addClass("ac-overflow-scrolling ");
+          $(".screen-layout-region-main.screen-layout-region-main-middle.not-nav").css("-webkit-overflow-scrolling","auto");
+        }
+        if ($("div#HARNESS_CONTENT").hasClass("harness-content-workarea-view")) {
+					$("div#HARNESS_CONTENT").removeClass("harness-content-workarea-view");
+        $("div#HARNESS_CONTENT").addClass("acautocompleteag");
+      }
+        if($("div.workarea-view-scroll-wrapper").css("-webkit-overflow-scrolling") === "touch"){
+          $("div.workarea-view-scroll-wrapper").addClass("ac-overflow-scrolling ");
+          $("div.workarea-view-scroll-wrapper").css("-webkit-overflow-scrolling","auto");
+        }
+        if($("section.workarea-view-content.workarea-view-content-enable-scroll").css("-webkit-overflow-scrolling") === "touch"){
+	      $("section.workarea-view-content.workarea-view-content-enable-scroll").addClass("ac-overflow-scrolling ");
+        $("section.workarea-view-content.workarea-view-content-enable-scroll").css("-webkit-overflow-scrolling","auto");
+       }
+        if (pega.u.d.bModalDialogOpen) {
+          var mOverlay = document.getElementById("modalOverlay");
+          if (mOverlay) {
+            try {
+              if(navigator.userAgent.toLowerCase().indexOf("iphone") > 0){
+              var modalDialogHeader = $("#modaldialog_hd",mOverlay).get(0) || $(".header", mOverlay).get(0);
+              if(modalDialogHeader && !$(modalDialogHeader).hasClass("display-none")){
+                $(modalDialogHeader).addClass("display-none");
+                }
+              }
+              var modalDialogBody = document.getElementById("modalContent");
+              var modalDialogContent = $("#modaldialog_con", document.getElementById("modaldialog")).get(0);
+              if(modalDialogContent) {
+                while(modalDialogContent.parentNode.nodeName != "DIV"){
+                  modalDialogContent = modalDialogContent.parentNode;
+                }
+                modalDialogContent = modalDialogContent.parentNode;
+              } else {
+                modalDialogContent = modalDialogBody;
+              }
+              if(modalDialogContent.id){
+                modalDialogContent = $("#" + modalDialogContent.id);
+              }else{
+                modalDialogContent = $(modalDialogContent);
+              }
+              if (modalDialogContent.hasClass("modal-scroll-panel") && modalDialogContent.css("-webkit-overflow-scrolling") === "touch") {
+                modalDialogContent.css("-webkit-overflow-scrolling","auto");
+              }
+              var _modalContentObj = $("#modalOverlay div.yui-resize");
+              if (_modalContentObj && _modalContentObj.css("zIndex") == "0") {
+                _modalContentObj.css("zIndex", "111");
+              }
+            } catch(e) { }
+          }
+        }
+        var isInGrid = false;
+        var gridObj = null;
+        if (eventObj && typeof (Grids) != 'undefined') {
+          gridObj = Grids.getActiveGrid(eventObj);
+          if (gridObj != null && !gridObj.threadProcessing && gridObj.gridcontDiv && pega.util.Dom.isAncestor(gridObj.gridcontDiv,targetElem)) { //Check if source is in Sequoia
+            isInGrid = true;
+          }
+        }
+        var targetParentEle = targetElem.parentNode;
+        if (typeof targetParentEle != 'undefined' && targetParentEle != null) {
+          while (targetParentEle.tagName && !(targetParentEle.tagName.toLowerCase() == "td" || targetParentEle.tagName.toLowerCase() == "th" || pega.util.Dom.hasClass(targetParentEle, "field-item") || pega.util.Dom.hasClass(targetParentEle, "content-item"))) {
+            if (isInGrid && targetParentEle.tagName.toLowerCase() == "div" &&
+              (targetParentEle.className.indexOf("cellIn") != -1 || targetParentEle.className.indexOf("oflowDiv") != -1)) {
+              var parentElem = targetParentEle.parentNode;
+              if (typeof parentElem != 'undefined' && parentElem != null
+                 && parentElem.tagName &&  parentElem.tagName.toLowerCase() == "li" && parentElem.className.indexOf("gridColumn") != -1) {
+                break;
+              }
+            }
+            targetParentEle = targetParentEle.parentNode;
+            if (typeof targetParentEle == 'undefined' || targetParentEle == null) {
+              break;
+            }
+          }
+          if (typeof targetParentEle != 'undefined' && targetParentEle != null) {
+            /* show the label of the autocomplete field */
+            if ($(targetParentEle).hasClass("field-item")) {
+              var _targetParentEle = targetParentEle.parentNode;
+              if (typeof _targetParentEle != 'undefined' && _targetParentEle != null && ($(_targetParentEle).hasClass("content-inner") || $(_targetParentEle).hasClass("flex"))) {
+                targetParentEle = _targetParentEle;
+              }
+            }
+            if (targetParentEle.className.indexOf("ac-fixed-top") == -1) {
+              targetParentEle.className += " ac-fixed-top";
+              if ($(targetElem).css("width") !== "100%" && !($(targetElem).hasClass("ac-mobile-width"))) {
+                $(targetElem).addClass("ac-mobile-width");
+              }
+            }
+            if(!strUrlSF ) {
+              this.initAutoComplete(eventObj, true);
+              this.setSafeURL(eventObj);
+            }
+            this.addFullScreenACElements(targetElem);
+            this.showClearIcon(targetElem);
+            this.activeACParentObj = targetParentEle;
+            if (pega.u.NavigateTopHandler) {
+              var screenParent = $(targetParentEle).parents(".screen-layout-region-content");
+              if(screenParent && screenParent.length>0 && screenParent[0].parentNode){
+                this.bckTopPosition = screenParent[0].parentNode.style.top;
+                this.screenLayoutElem = screenParent[0].parentNode;
+                screenParent[0].parentNode.style.top = 0;
+              }
+              targetParentEle.scrollIntoView(true);
+            }
+          }
+        }
+        
+        try {
+          if (typeof (minSearchChars) == "undefined") {
+            this.initAutoComplete(eventObj, true);
+          }
+          if (minSearchChars == "" || minSearchChars == 0) {
+            isDownArrowPressed = true;
+            if(!strUrlSF ) {
+              this.setSafeURL(eventObj);
+            }
+            processKey(targetElem);
+          }
+        } catch(e) {}
+      }
+    };
+    this.setUndoValue = function(targetElem) {
+      if (!AutoCompleteAG.isMobilePhone() && targetElem && targetElem.getAttribute("data-config")) {
+        var dataConfigStr = targetElem.getAttribute("data-config");
+        try {
+          var dataConfig = JSON.parse(dataConfigStr);
+          /* checking allowFreeFormInput option value */
+          if(dataConfig.length > 4 && dataConfig[5] && dataConfig[5] !== "true") {
+            AutoCompleteAG.undoValue = targetElem.value;
+          }
+        } catch(e) {}
+      }
+    };
+        this.checkForDataConfig = function(targetElem) {
+          var dataConfigCheck = null;     
+          dataConfigCheck = targetElem.getAttribute("data-config");
+          if(dataConfigCheck){
+            isNoGrid = true;
+          }
+        };
+    this.mobileFocusHandler = function(e) {
+            var targetElem = pega.util.Event.getTarget(e);
+            displayFullScreen = targetElem.getAttribute("data-displayFullScreen");
+            if(!AutoCompleteAG.isMobilePhone() || displayFullScreen == "false"){
+              return;
+            }
+      this.checkForDataConfig(targetElem);
+      
+      var maskDiv = document.getElementById("autocompleAG_mask");
+      if (maskDiv == null) { 
+        AutoCompleteAG.maskDivObj = null; 
+      } else {
+        AutoCompleteAG.maskDivObj = maskDiv;
+      }
+      var mobileResultsDiv = null;
+      
+      if (isNoGrid) {
+        mobileResultsDiv = document.getElementById("autocompleAG_resultsMain");
+        if (mobileResultsDiv == null) { 
+          AutoCompleteAG.mobileResultsDiv = null; 
+        } else {
+          AutoCompleteAG.mobileResultsDiv = mobileResultsDiv;
+        }
+      }
+      
+      if(AutoCompleteAG.mobileResultsDiv != null && AutoCompleteAG.mobileResultsDiv.getAttribute("data-skip-fullscreen") == "true") {
+        AutoCompleteAG.mobileResultsDiv.removeAttribute("data-skip-fullscreen");
+        return;
+      }
+      
+      if (AutoCompleteAG.maskDivObj == null || typeof(AutoCompleteAG.maskDivObj) == "undefined") {
+        maskDiv = document.createElement('DIV');
+        maskDiv.className = "ac-mask-hide";
+        maskDiv.setAttribute("id", "autocompleAG_mask");
+        document.body.appendChild(maskDiv);
+        AutoCompleteAG.maskDivObj = maskDiv;
+        
+        if (isNoGrid) {
+          mobileResultsDiv = document.createElement('DIV');
+          mobileResultsDiv.className = "ac-mask-hide";
+          mobileResultsDiv.setAttribute("id", "autocompleAG_resultsMain");
+          document.body.appendChild(mobileResultsDiv);
+          AutoCompleteAG.mobileResultsDiv = mobileResultsDiv;
+        }
+      }
+      
+      /* BUG-228239: when overlay launched from modal dialog */
+      var isInputInsideOverlay = false;
+      var popOverContrainer = document.getElementById("_popOversContainer");
+      if (popOverContrainer && targetElem && pega.util.Dom.isAncestor(popOverContrainer, targetElem)) {
+        isInputInsideOverlay = true;
+      }
+      if (pega.u.d.bModalDialogOpen && !isInputInsideOverlay) {
+        var mOverlay = document.getElementById("modalOverlay");
+        if (mOverlay) {
+          mOverlay.appendChild(maskDiv);
+          if (mobileResultsDiv != null) {
+            mOverlay.appendChild(mobileResultsDiv);
+          }
+          /* removing anim and anim-show classes which has webkit-transform properties, causing autocomplete not visible in the full screen mode */
+          if ($("div.anim")) {
+            $("div.anim").removeClass("anim-show");
+            $("div.anim").removeClass("anim-bottom");
+            $("div.anim").removeClass("anim-top");
+            $("div.anim").removeClass("anim");
+          }
+        }
+      } else {
+        if (isInputInsideOverlay) {
+          var divArray = popOverContrainer.getElementsByTagName("DIV");
+          if (divArray && divArray.length > 0) {
+            for(var idx = 0; idx < divArray.length; idx++) {
+              var poDivObj = divArray[idx];
+              if (poDivObj && pega.util.Dom.isAncestor(poDivObj, targetElem)) {
+                poDivObj.appendChild(maskDiv);
+                if (mobileResultsDiv != null) {
+                  poDivObj.appendChild(mobileResultsDiv);
+                }
+                break;
+              }
+            }
+          }
+          /* removing anim and anim-show classes which has webkit-transform properties, causing autocomplete not visible in the full screen mode */
+          if ($("div.anim")) {
+            $("div.anim").removeClass("anim-show");
+            $("div.anim").removeClass("anim-bottom");
+            $("div.anim").removeClass("anim-top");
+            $("div.anim").removeClass("anim");
+          }
+        } else {
+          if (pega.u.NavigateTopHandler) {
+            pega.ctx.dom.getElementById("PEGA_HARNESS").append(maskDiv);
+            if (mobileResultsDiv != null) {
+              pega.ctx.dom.getElementById("PEGA_HARNESS").append(mobileResultsDiv);
+            }
+          }
+          else{
+            var parentElem = maskDiv.parentNode;
+            if (parentElem && parentElem.tagName && parentElem.tagName.toLowerCase() !== "body") {
+              document.body.appendChild(maskDiv);
+              if (mobileResultsDiv != null) {
+                document.body.appendChild(mobileResultsDiv);
+              }
+            }
+          }
+        }
+      }
+      /* Move auto complete input to the top of the page in touchable devices */
+      if(AutoCompleteAG.activeACParentObj == null) {
+        var _maskDiv = AutoCompleteAG.maskDivObj;
+        AutoCompleteAG.placeInputOnTop(e);
+        if (window.parent && window.parent.document && window.parent.document.body){
+                   var parentBody = window.parent.document.body;
+                   parentBody.style.overflow = "auto";
+                    parentBody.scrollTop = 0;
+            }
+      }
+    };
+    
+    this.acChangeHandler = function(e) {
+      // stop browser default change handler to propagate to body
+      var currentValue = e.target.value;
+      var dataOldValue = e.target.getAttribute("data-old-value");
+      var oldValue = dataOldValue === null ? currentValue : dataOldValue;
+      if(currentValue === oldValue) {
+        pega.util.Event.stopPropagation(e);
+      }
+    }
+    
+    this.setChange = function(targetElem) {
+      var dataControl = targetElem.getAttribute("data-ctl");
+      if(dataControl && dataControl.indexOf("AutoCompleteAG") !== -1) {
+        pega.util.Event.removeListener(targetElem, "change", AutoCompleteAG.acChangeHandler);
+        pega.util.Event.addListener(targetElem, "change", AutoCompleteAG.acChangeHandler);
+      }
+    }
+  })();
+
+  p.c.IAutoCompleteAG.prototype.isElementInsideAutoComPO = function(e, targetElement) {
+    var elemInsidePO = false;
+    if (AutoCompleteAG.checkIfPOOpen()) {
+      var activePO = AutoCompleteAG.getActivePO();
+      if (activePO) {
+        var popOverContainerElem = activePO.getContentContainerElement();
+        if (popOverContainerElem != null) {
+          var targetElem =  (e !=null && pega.util.Event.getTarget(e)) || targetElement;
+          elemInsidePO = pega.util.Dom.isAncestor(popOverContainerElem, targetElem);
+        }
+      }
+    }
+    return elemInsidePO;
+  };
+    
+  p.c.IAutoCompleteAG.prototype.focus = function(e) {
+    var targetElem = pega.util.Event.getTarget(e);
+    AutoCompleteAG.setChange(targetElem);
+    AutoCompleteAG.resetAutoComplete(e,true);
+    AutoCompleteAG.initAutoComplete(e);
+    if(pega.cl && pega.cl.isTouchAble()) {
+      /* BUG-224044 - START: We should skip mobileFocusHandler in case set value action executing on the input */
+      if (pega.u.d.fromSetValue) { 
+        pega.u.d.fromSetValue = false;
+        return;
+      }
+      /* BUG-224044 - END */
+      if (AutoCompleteAG.isTapped) {
+        AutoCompleteAG.isTapped = false;
+        AutoCompleteAG.mobileFocusHandler(e);
+      } else if (AutoCompleteAG.focusedOutTarget != null) {
+        if (AutoCompleteAG.focusedOutTarget != targetElem) {
+          /* AutoCompleteAG.resetAutoCompleteMask(e); */
+          /* AutoCompleteAG.mobileFocusHandler(e); */
+        }
+      } else {
+        AutoCompleteAG.mobileFocusHandler(e);
+      }
+      AutoCompleteAG.focusedOutTarget = null;
+    } else  {
+          AutoCompleteAG.checkForDataConfig(targetElem);
+    }
+    AutoCompleteAG.isFocused = true;
+    AutoCompleteAG.focusedTarget = targetElem;
+    AutoCompleteAG.hidePopoverElement(targetElem);
+    p.c.PlaceHolder.focusHandler(targetElem);
+    if (targetElem.getAttribute("data-old-value") == null) {
+      targetElem.setAttribute("data-old-value", targetElem.value);
+    }
+    /* setting undoValue if allowFreeFormInput is false */
+    AutoCompleteAG.setUndoValue(targetElem);
+  };
+
+  p.c.IAutoCompleteAG.prototype.tap = function(e) {
+    AutoCompleteAG.isTapped = true;
+    AutoCompleteAG.tappedSameTarget = false;
+    var currentTarget = pega.util.Event.getTarget(e);
+    AutoCompleteAG.focusedOutTarget = null;
+    if (AutoCompleteAG.isFocused && AutoCompleteAG.focusedTarget != null && AutoCompleteAG.focusedTarget == currentTarget) {
+      AutoCompleteAG.tappedSameTarget = true;
+      AutoCompleteAG.mobileFocusHandler(e);
+    }
+  };
+
+  p.c.IAutoCompleteAG.prototype.blur = function(e) {
+    var targetElem = pega.util.Event.getTarget(e);
+    p.c.PlaceHolder.blurHandler(targetElem);
+    AutoCompleteAG.focusedOutTarget = targetElem;
+    setTimeout(function() {
+      try {
+        if (AutoCompleteAG.focusedOutTarget != null) {
+          AutoCompleteAG.focusedOutTarget = null; 
+        }
+      } catch(e) {}
+    }, 500);
+    AutoCompleteAG.setDummyOnchange(e, false, true);
+    AutoCompleteAG.resetAutoComplete(e,true);
+    /* AutoCompleteAG.resetAutoCompleteMask(e); */
+    AutoCompleteAG.isFocused = false;
+    AutoCompleteAG.focusedTarget = null;
+    if (AutoCompleteAG.isTapped && AutoCompleteAG.tappedSameTarget) {
+      AutoCompleteAG.isTapped = false;
+      AutoCompleteAG.tappedSameTarget = false;
+      pega.u.d.focusDomElement(targetElem, pega.control.PlaceHolder.getValue(targetElem).length);
+    }
+    // if the input value is cleared using cross icon then fire the change event when focusout
+    if(AutoCompleteAG.isClearIconClicked){
+      pega.control.eventController.fireEventHandler(AutoCompleteAG.focusedOutTarget, "change");
+      AutoCompleteAG.isClearIconClicked = false;
+    }
+  };
+
+  p.c.IAutoCompleteAG.prototype.keyup = function(e) {
+    if(e.keyCode === 16) { return; }
+    /* BUG-211547: Added check for shift key which causing issue */
+    if(e.keyCode != 16 && AutoCompleteAG.isKeyDown ){ 
+      AutoCompleteAG.isKeyDown = false;
+      AutoCompleteAG.processKeyEvent(e);
+      if (pega.cl && pega.cl.isTouchAble()) {
+        AutoCompleteAG.showClearIcon(pega.util.Event.getTarget(e));
+      }
+    } else if(e.keyCode === 40) {
+      /*
+      @protected BUG-160537: In some use cases key down event not firing.
+         Down arrow pressed case, we don't required any checking for key down.
+          */
+
+      AutoCompleteAG.processKeyEvent(e);
+    }
+  };
+  
+  /*SE-67517: new input handler for ios mobile*/
+  p.c.IAutoCompleteAG.prototype.input = function(e) {
+    if(e.data || e.target.value){
+      var isMobile =  navigator.userAgent.match(/iPhone|iPad|iPod/i);
+      if(isMobile && jQuery("html").hasClass("iOS")){
+        e.keyCode = 229;
+        AutoCompleteAG.isKeyDown = false;
+        AutoCompleteAG.processKeyEvent(e);
+        if (pega.cl && pega.cl.isTouchAble()) {
+          AutoCompleteAG.showClearIcon(pega.util.Event.getTarget(e));
+        }
+      }
+    }
+  };
+
+  p.c.IAutoCompleteAG.prototype.keydown = function(e) {
+        if(e.keyCode === 16) { return; }
+    AutoCompleteAG.isKeyDown = true;
+    var targetElem = pega.util.Event.getTarget(e);
+    if (targetElem && targetElem.getAttribute("data-old-value") == null) {
+      targetElem.setAttribute("data-old-value", targetElem.value);
+    }
+    if(e.keyCode === 9) {
+      AutoCompleteAG.isTabbedOut = true;
+      AutoCompleteAG.isTabbedOutForFocus = true;
+      AutoCompleteAG.setDummyOnchange(e, true, false);
+      AutoCompleteAG.isKeyDown = false;
+      AutoCompleteAG.isOutlookPlugin = false;
+      AutoCompleteAG.processKeyEvent(e);
+      AutoCompleteAG.hidePopover(e);
+    } else {
+      if(e.keyCode === 13) {
+        AutoCompleteAG.isEnterKey = true;
+        if(AutoCompleteAG.checkIfPOOpen()){
+          pega.util.Event.preventDefault(e);
+        }
+                AutoCompleteAG.processKeyEvent(e);
+      } else {
+        AutoCompleteAG.isEnterKey = false;
+        AutoCompleteAG.isTabbedOut = false;
+        if(AutoCompleteAG.isOutlookPlugin) {
+          pega.c.AutoCompleteAG.keyup(e);
+        }
+      }
+      AutoCompleteAG.setDummyOnchange(e, true, false);
+    }
+    try {
+      if (pega.cl && pega.cl.isTouchAble() && !($(pega.util.Event.getTarget(e)).hasClass("ac-mobile-width"))) {
+        AutoCompleteAG.mobileFocusHandler(e);
+      }
+    } catch(e) { }
+    AutoCompleteAG.changeGridSelectionOnKeyDown(e);
+  };
+  
+  p.c.IAutoCompleteAG.prototype.updateParams = function(strUrlSF, currValue, target,isGrid) {
+    AutoCompleteAG.updateParams(strUrlSF, currValue, target,isGrid);
+  };
+  p.c.IAutoCompleteAG.prototype.setFocusToInput = function(e) {
+    AutoCompleteAG.setFocusToInput(e);
+  };
+  p.c.IAutoCompleteAG.prototype.updateTemplateOOName = function() {
+    if (pega.ui.onlyOnce) {
+      var ooNamesObj = pega.ui.onlyOnce.getAllNamesObject();
+      if (ooNamesObj["pzAutocompleteTemplateInclude"] === "pzAutocompleteTemplateInclude") {
+        pega.ui.onlyOnce.mergeNewNames(["pzAutoCompleteAGIncludes"]);
+      }
+    }
+  };
+  p.c.IAutoCompleteAG.prototype.searchWithComboBox = function() {
+        try{ 
+                       
+            var e = pega.control.Actions.prototype.runScript.caller.arguments[0]; 
+            var button = e.target; // user clicked on button
+            if(button.tagName!="BUTTON") button = e.srcElement.parentElement; //user clicked on icon within button
+                
+            if(button.dataset.active == "false"){
+              e.keyCode = 40; // launch overla            
+                e.target = button.previousSibling;
+                if (button.firstChild.className === "pi pi-caret-up") {
+                  if(!AutoCompleteAG.checkIfPOOpen()) {
+                        /* BUG-297441: resetting dropdown icon classname when results not displayed */
+                    button.firstChild.className = "pi pi-caret-down";
+                  } 
+                  return;
+                }
+        button.firstChild.className = "pi pi-caret-up";
+              if(e.target.tagName=="I")e.target=e.target.previousSibling; // check to make sure clear icon is not previous sibling
+                e.target.focus();
+              AutoCompleteAG.processKeyEvent(e, true);
+                
+            }
+            else button.dataset.active = false;
+           
+        } catch(e){}                                                                
+  };
+  
+
+  /* Instantiate IAutoCompleteAG */
+  p.c.AutoCompleteAG = new p.c.IAutoCompleteAG();
+
+  /* BUG-153667: updating an epic in PMF crashing IE
+     This is not reproducible in all cases. We observed that issue exists only in IE10 when a section having AutoComplete control.
+     if we do any dummy dom manipulation, it is fixing the issue. Not sure about the route cause behind this.
+     Might be a sporadic IE10 issue
+  */
+  if (pega.util.Event.isIE && pega.util.Event.isIE === 10) {
+    pega.control.AutoCompleteAG.attachAndRemoveDummySpan = function() {
+      var autocomplete_span = $("span.autocomplete_span");
+      if (autocomplete_span && autocomplete_span.length >= 1) {
+        for (var idx = 0; idx < autocomplete_span.length; idx++) {
+          try {
+            var newTempDiv = document.createElement("span");
+            newTempDiv.innerHTML = "&nbsp;"
+            autocomplete_span[idx].appendChild(newTempDiv);
+            autocomplete_span[idx].removeChild(newTempDiv);
+          } catch (e) { }
+        }
+      }
+    };
+    if(p.u && p.u.d) {
+      p.u.d.attachOnload(pega.control.AutoCompleteAG.attachAndRemoveDummySpan, true);
+    } else {
+      p.util.Event.addListener(window, "load", pega.control.AutoCompleteAG.attachAndRemoveDummySpan);
+    }
+  }
+
+  if(p.u && p.u.d) {
+    p.u.d.attachOnload(pega.control.AutoCompleteAG.updateTemplateOOName, true);
+  } else {
+    p.util.Event.addListener(window, "load", pega.control.AutoCompleteAG.updateTemplateOOName);
+  }
+})(pega);
+//static-content-hash-trigger-NON

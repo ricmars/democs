@@ -1,0 +1,753 @@
+﻿var $pNamespace = pega.namespace;
+$pNamespace("pega.screen");
+pega.screen.api = (function() {
+    var top_win = top;
+    var top_doc = top_win.document;
+    var top_body = top_doc.body;
+    var fbbusyIndicator = new pega.ui.busyIndicator("", true, top_body, 0);
+    var capturedContent = "";
+    /*var isVideoCaptureInProgress = false;
+      var stopOnly = false;*/
+    var onExtensionAddCallback = function() {};
+    var publicAPI = {
+        eventsLoaded: false,
+        init: function(callback) {
+            if (typeof callback === "function") {
+                onExtensionAddCallback = callback;
+            }
+        },
+        captureSnapshot: function(event, onStartCallback, onCancelCallback, onCompleteCallback,
+            activityClass, activityName, activityParams) {
+            this.clearCallbacks();
+            var activityDetails = utility.startup(onStartCallback, activityClass, activityName,
+                activityParams);
+            utility.showScreenCaptureOverlay(onCancelCallback, onCompleteCallback, activityDetails);
+        },
+        captureInit: function(onCompleteCallback, activityDetails) {
+            snapshot.capture(onCompleteCallback, activityDetails)
+        },
+        captureCompleted: function(eventFromExtension) {
+            snapshot.captureCompleted(eventFromExtension);
+        },
+        recordVideo: function(event, onStartCallback, onCancelCallback, onCompleteCallback, activityClass,
+            activityName, activityParams) {
+            this.clearCallbacks();
+            var activityDetails = utility.startup(onStartCallback, activityClass, activityName,
+                activityParams);
+            video.recordInit(onCancelCallback, onCompleteCallback, activityDetails);
+        },
+        onCancelCallback: function(mediaType) {
+            if (mediaType === "video") {
+                video.onCancelCallback();
+            }
+        },
+        clearCallbacks: function() {
+            this.onCancelCallback = function(mediaType) {
+                if (mediaType === "video") {
+                    video.onCancelCallback();
+                }
+            };
+            snapshot.onCompleteCallback = function() {};
+            video.onCompleteCallback = function() {};
+            video.onCancelCallback = function() {};
+            snapshot.activityDetails = "";
+            video.activityDetails = "";
+            capturedContent = "";
+        },
+        getRecordingTime: function() {
+            return video.recordingTime;
+        },
+        setRecordingTime: function(curTime) {
+            video.recordingTime = curTime;
+        },
+        showRecordingCtrlDlg: function(eventFromExtension) {
+            if (eventFromExtension.details) {
+                video.showRecordingCtrlDlg(eventFromExtension.detail);
+            } else {
+                video.showRecordingCtrlDlg(eventFromExtension);
+            }
+        },
+        startRecording: function(eventFromExtension) {
+            video.showStartRecordCountdown(eventFromExtension);
+        },
+        recordCompleted: function(eventFromExtension) {
+            video.recordCompleted(eventFromExtension);
+        },
+        stopRecording: function(overtime) {
+            if (!overtime) {
+                overtime = true;
+            }
+            video.stopRecording(overtime);
+        },
+        restartRecording: function() {
+            video.restartRecording();
+        },
+        extensionInstalled: function() {
+            this.checkForIncognito();
+        },
+        attachPluginEventResponse: function() {
+            if (this.eventsLoaded === true) {
+                return;
+            }
+            var extensionInstalled = function(eventFromExtension) {
+                pega.screen.api.extensionInstalled(eventFromExtension);
+            };
+            top_doc.addEventListener('Event_extensionInstalled', extensionInstalled);
+            var captureCompleted = function(eventFromExtension) {
+                pega.screen.api.captureCompleted(eventFromExtension);
+            };
+            top_doc.addEventListener('Event_screenCaptureCompleted', captureCompleted);
+            //top_doc.addEventListener('Event_repaintSCD', repaintSCD);
+            var showRecordingCtrlDlg = function(eventFromExtension) {
+                pega.screen.api.showRecordingCtrlDlg(eventFromExtension);
+            };
+            top_doc.addEventListener('Event_repaintVCD', showRecordingCtrlDlg);
+            var startRecording = function(eventFromExtension) {
+                pega.screen.api.startRecording(eventFromExtension);
+            };
+            top_doc.addEventListener('Event_startRecording', startRecording);
+            var recordCompleted = function(eventFromExtension) {
+                pega.screen.api.recordCompleted(eventFromExtension);
+            };
+            top_doc.addEventListener('Event_videoCaptureCompleted', recordCompleted);
+            this.eventsLoaded = true;
+        },
+        handleDragStart: function(event) {
+            utility.handleDragStart(event);
+        },
+        addOrMoveMarker: function(event, x, y) {
+            utility.addOrMoveMarker(event, x, y);
+        },
+        addMaskedArea: function(event) {
+            utility.addMaskedArea();
+        },
+        cleanUpAllEvents: function() {
+            utility.cleanUpAllEvents();
+        },
+        cleanUpAll: function() {
+            utility.cleanUpAll();
+        },
+        getCapturedContent: function() {
+            return capturedContent;
+        },
+        checkForIncognito: function() {
+            var fs = top_win.RequestFileSystem || top_win.webkitRequestFileSystem;
+            if (!fs || typeof fs !== "function") {
+                utility.postExtensionInfo(true);
+                return;
+            }
+            fs(0, 0, function() {
+                utility.postExtensionInfo(false);
+            }, function() {
+                utility.postExtensionInfo(true);
+            });
+        }
+    };
+    var snapshot = {
+        onCompleteCallbackDefault: function(imgSrc) {
+            var imgDiv = utility.getPreviewContainer(imgSrc, "screenshot.png");
+            imgDiv.innerHTML = '<img src="' + imgSrc + '"/>';
+        },
+        onCompleteCallback: function() {},
+        activityDetails: '',
+        capture: function(onCompleteCallback, activityDetails) {
+            if (onCompleteCallback) {
+                this.onCompleteCallback = onCompleteCallback;
+            } else {
+                this.onCompleteCallback = this.onCompleteCallbackDefault;
+            }
+            if (activityDetails) {
+                this.activityDetails = activityDetails;
+            }
+            top_doc.getElementById("feedbackCaptureDlg").setAttribute("style",
+                "display: none !important");
+            var evt = new CustomEvent('Event_screenCaptureInit');
+            top_doc.dispatchEvent(evt);
+        },
+        captureCompleted: function(eventFromExtension) {
+            var detail = eventFromExtension.detail;
+            fbbusyIndicator.show(true);
+            if (detail !== 'PEGA-SCREEN-CAPTURE-FAIL') {
+                capturedContent = detail;
+                if (this.activityDetails.activityName) {
+                    var oSafeURL = utility.getURL("image", this.activityDetails);
+                    utility.postAction(oSafeURL);
+                } else {
+                    try {
+                        this.onCompleteCallback(detail);
+                    } catch (err) {
+                        console.error("Error in callback execution - " + err);
+                    }
+                }
+                utility.cleanUpMarkers();
+            } else {
+                alert(pega.u.d.fieldValuesList.get("pzCaptureScreenFailed"));
+                top_doc.getElementById("feedbackCaptureDlg").setAttribute("style",
+                    "display: block !important");
+            }
+            fbbusyIndicator.hide();
+        }
+    };
+    var video = {
+        flags: {
+            "isVideoCaptureInProgress": false,
+            "stopOnly": false
+        },
+        /*isVideoCaptureInProgress: false,
+            stopOnly: false,*/
+        recordingTime: 1,
+        onCompleteCallbackDefault: function(vidSrc) {
+            var vidDiv = utility.getPreviewContainer(vidSrc, "recording.webm");
+            vidDiv.innerHTML = '<video controls src="' + vidSrc + '"></video>';
+        },
+        onCompleteCallback: function() {},
+        onCancelCallback: function() {},
+        activityDetails: '',
+        recordInit: function(onCancelCallback, onCompleteCallback, activityDetails) {
+            this.flags.isVideoCaptureInProgress = true;
+            //top_doc.isVideoCaptureInProgress = true;
+            if (onCompleteCallback) {
+                this.onCompleteCallback = onCompleteCallback;
+            } else {
+                this.onCompleteCallback = this.onCompleteCallbackDefault;
+            }
+            if (onCancelCallback) {
+                this.onCancelCallback = onCancelCallback;
+            }
+            if (activityDetails) {
+                this.activityDetails = activityDetails;
+            }
+            var refreshEvt = new CustomEvent('Event_clearFlagsForRefresh', {
+                bubbles: true,
+                cancelable: false
+            });
+            top_doc.dispatchEvent(refreshEvt);
+            var startRecordEvt = new CustomEvent('Event_startAudioVideoCapture', {
+                bubbles: true,
+                cancelable: true
+            });
+            top_doc.dispatchEvent(startRecordEvt);
+        },
+        showRecordingCtrlDlg: function(startTime) {
+            var startMinutes = parseInt((startTime - 1) / 60, 10);
+            var startSeconds = parseInt((startTime - 1) % 60, 10);
+            startMinutes = startMinutes < 10 ? "0" + startMinutes : startMinutes;
+            startSeconds = startSeconds < 10 ? "0" + startSeconds : startSeconds;
+            var dialogueElem = top_doc.createElement("div");
+            dialogueElem.setAttribute("id", "feedbackRecorderDlg");
+            dialogueElem.setAttribute("class", "recorddialogue");
+            dialogueElem.setAttribute("draggable", "true");
+            dialogueElem.innerHTML =
+                '<div><button id="fbRestart" class="recorderButtonsRestart" title="' + pega.u.d.fieldValuesList
+                .get("pzRecorderDlgRestart") +
+                '" ></button><button id="fbStop" class="recorderButtonsStop"  title="' + pega.u.d.fieldValuesList
+                .get("pzRecorderDlgStop") +
+                '"></button><div class="timerText"><span id="recordingTime" class="feedbackVedieoCaptureTimer">' +
+                startMinutes + ':' + startSeconds +
+                '</span>/03:00</div><button id="closeFBDlg" class="recorderButtonsClose" title="' + pega
+                .u.d.fieldValuesList.get("pzRecorderDlgClose") + '" ></button></div>';
+            top_body.appendChild(dialogueElem);
+            var close = function(event) {
+                pega.screen.api.onCancelCallback("video");
+                pega.screen.api.cleanUpAll();
+                event.stopPropagation();
+            };
+            top_doc.getElementById("closeFBDlg").addEventListener("click", close);
+            top_doc.getElementById("fbStop").addEventListener("click", pega.screen.api.stopRecording);
+            top_doc.getElementById("fbRestart").addEventListener("click", pega.screen.api.restartRecording);
+            utility.addDndOnCaptureDlg("feedbackRecorderDlg", ["closeFBDlg", "fbStop", "fbRestart"]);
+            this.startRecording(startTime);
+        },
+        stopRecording: function(overTime) {
+            fbbusyIndicator.show(true);
+            clearInterval(this.timerInterval);
+            utility.removeElement(top_doc.getElementById("feedbackRecorderDlg"));
+            var Event_stopAudioVideoCapture = new CustomEvent("Event_stopAudioVideoCapture", {
+                detail: overTime,
+                bubbles: true,
+                cancelable: true
+            });
+            top_doc.dispatchEvent(Event_stopAudioVideoCapture);
+        },
+        restartRecording: function() {
+            setTimeout(function() {
+                top_doc.getElementById("fbStop").focus();
+            }, 100);
+            clearInterval(this.timerInterval);
+            this.recordingTime = 1;
+            var evt = new CustomEvent("Event_restartAudioVideoCapture", {
+                bubbles: true,
+                cancelable: true
+            });
+            top_doc.dispatchEvent(evt);
+            this.setTimerInterval();
+        },
+        startRecording: function(startTime) {
+            /*top_doc.getElementById("fbResume").style.display = "none";*/
+            this.recordingTime = startTime;
+            this.setTimerInterval();
+        },
+        clearScreenRecordingOnClose: function() {
+            if (this.flags.isVideoCaptureInProgress == true) {
+                var evt = new CustomEvent("Event_stopAudioVideoCapture", {
+                    detail: "stopOnly",
+                    bubbles: true,
+                    cancelable: true
+                });
+                top_doc.dispatchEvent(evt);
+                this.flags.stopOnly = true;
+                this.flags.isVideoCaptureInProgress = false;
+                clearInterval(this.timerInterval);
+                utility.cleanUpAll();
+            }
+        },
+        timerInterval: "",
+        setTimerInterval: function() {
+            this.timerInterval = setInterval(function() {
+                var curTime = pega.screen.api.getRecordingTime();
+                var minutes = parseInt(curTime / 60, 10);
+                var seconds = parseInt(curTime % 60, 10);
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                if (top_doc.getElementById("recordingTime")) {
+                    top_doc.getElementById("recordingTime").innerText = minutes + ":" + seconds;
+                    curTime++;
+                    pega.screen.api.setRecordingTime(curTime);
+                    if (curTime > (3 * 60)) {
+                        pega.screen.api.stopRecording(true);
+                    }
+                } else {
+                    clearInterval(this.timerInterval);
+                }
+            }, 1000);
+        },
+        setCountDownInterval: function(seconds) {
+            var countDownInterval = setInterval(function() {
+                var timerElement = top_doc.getElementById("videoCountdownTimerText");
+                if (timerElement) {
+                    timerElement.innerText = seconds;
+                }
+                if (seconds-- <= 0) {
+                    clearInterval(countDownInterval);
+                    var timerBackground = top_doc.getElementById("videoCountdownTimer");
+                    if (timerBackground) {
+                        timerBackground.parentNode.removeChild(timerBackground);
+                    }
+                    pega.screen.api.showRecordingCtrlDlg(1);
+                }
+            }, 1000);
+        },
+        showStartRecordCountdown: function(eventFromExtension) {
+            if (top_doc.getElementById("videoCountdownTimer")) {
+                return;
+            }
+            var videoCountdownTimerElem = top_doc.createElement("div");
+            videoCountdownTimerElem.setAttribute("id", "videoCountdownTimer");
+            videoCountdownTimerElem.setAttribute("class", "videoCountdownTimer");
+            videoCountdownTimerElem.innerHTML =
+                '<div id="videoCountdownTimerText" style="margin:auto">3</div>';
+            top_body.appendChild(videoCountdownTimerElem);
+            this.setCountDownInterval(2);
+        },
+        recordCompleted: function(eventFromExtension) {
+            var detail = eventFromExtension.detail;
+            fbbusyIndicator.hide();
+            fbbusyIndicator.show(true);
+            utility.removeElement(top_doc.getElementById("feedbackRecorderDlg"));
+            this.stopVideoSharing();
+            if (detail == 'PEGA-SCREEN-CAPTURE-FAIL') {
+                alert(pega.u.d.fieldValuesList.get("pzRecordVideoFailed"));
+                this.onCancelCallback();
+            } else if (!this.flags.stopOnly) {
+                if (detail != 'data:') {
+                    capturedContent = detail;
+                    try {
+                        this.onCompleteCallback(detail);
+                    } catch (err) {
+                        console.error("Error in callback execution - " + err);
+                    }
+                    if (this.activityDetails.activityName) {
+                        var oSafeURL = utility.getURL("video", this.activityDetails);
+                        utility.postAction(oSafeURL);
+                    }
+                    utility.cleanUpMarkers();
+                } else {
+                    alert(pega.u.d.fieldValuesList.get("pzRecordVideoFailed"));
+                }
+            }
+            fbbusyIndicator.hide();
+            this.flags.stopOnly = false;
+            this.flags.isVideoCaptureInProgress = false;
+        },
+        stopVideoSharing: function() {
+            utility.removeElement(top_doc.getElementById("feedbackRecorderDlg"));
+            utility.removeElement(top_doc.getElementById("videoCountdownTimer"));
+            clearInterval(this.timerInterval);
+        },
+    };
+    var utility = {
+        hasExtension: false,
+        isIncognito: false,
+        startup: function(onStartCallback, activityClass, activityName, activityParams) {
+            if (typeof onStartCallback === "function") {
+                try {
+                    onStartCallback();
+                } catch (e) {
+                    console.error("Start callback isn't a function");
+                }
+            }
+            var activityDetails = null;
+            if (activityName !== "" && activityClass !== "") {
+                activityDetails = {
+                    "activityName": activityName,
+                    "activityClass": activityClass,
+                    "activityParams": activityParams
+                };
+            }
+            return activityDetails;
+        },
+        getURL: function(mediaType, activityDetails) {
+            var oSafeURL = new SafeURL(activityDetails.activityClass + "." + activityDetails.activityName);
+            oSafeURL.put("fileType", (mediaType == "image") ? "png" : "webm");
+            oSafeURL.put("pzPrimaryPageName", activityDetails.primaryPage);
+            var activityParams = activityDetails.activityParams;
+            activityParams.forEach(function(element) {
+                oSafeURL.put(element.paramName, element.paramValue);
+            });
+            return oSafeURL;
+        },
+        postAction: function(targetURL) {
+            var uploadSuccess = function(result) {
+                console.log("Post activity execution successful.");
+            };
+            var uploadFailure = function(result) {
+                console.log("Post activity execution failed.");
+            };
+            var uploadCallback = {
+                success: uploadSuccess,
+                failure: uploadFailure,
+                argument: null
+            };
+            pega.u.d.asyncRequest('POST', targetURL, uploadCallback, null);
+        },
+        postExtensionInfo: function(isIncognito) {
+            this.isIncognito = isIncognito;
+            var dummyElement = top_doc.getElementById('PEGA_SCREEN_CAPTURE_ELEMENT_DUMMY');
+            this.hasExtension = (dummyElement) ? true : false;
+            if (navigator.userAgent.indexOf("Chrome") > -1) {
+                var oSafeURL = new SafeURL("Pega-Agile-SmartFeedback.pzSetExtensionInstalled");
+                oSafeURL.put("isIncognito", isIncognito);
+                oSafeURL.put("extensionInstalled", this.hasExtension);
+                oSafeURL.put("pzPrimaryPageName", "D_pzAgileSmartFeedback");
+                pega.u.d.asyncRequest('GET', oSafeURL, {
+                    success: onExtensionAddCallback,
+                    failure: onExtensionAddCallback
+                }, null, {
+                    bAsync: false
+                });
+            }
+        },
+        getPreviewContainer: function(downloadFileSource, downloadFileNameWithExtension) {
+            var previewDiv = top_doc.createElement("div");
+            previewDiv.setAttribute("class", "screen-api-media-preview");
+            top_body.appendChild(previewDiv);
+            //previewDiv = top_doc.querySelector(".screen-api-media-preview")
+            previewDiv.innerHTML =
+                '<div class="screen-api-media-preview-header"><a class="screen-api-media-preview-download" href="#"><i class="pi pi-download"></i></a><a class="screen-api-media-preview-close" href="#"><i class="pi pi-close"></i></a></div><div class="screen-api-media-preview-content"></div>';
+            var downloadLink = previewDiv.querySelector(
+                ".screen-api-media-preview-header > .screen-api-media-preview-download");
+            downloadLink.setAttribute("href", downloadFileSource);
+            downloadLink.setAttribute("download", downloadFileNameWithExtension);
+            top_doc.querySelector(".screen-api-media-preview-close").addEventListener('click', function() {
+                utility.removeElement(top_doc.querySelector(".screen-api-media-preview"));
+            });
+            top_doc.querySelector(".screen-api-media-preview-close").addEventListener('keypress',
+                function(event) {
+                    if (event.which === 13 || event.keyCode === 13) {
+                        utility.removeElement(top_doc.querySelector(".screen-api-media-preview"));
+                    }
+                });
+            return previewDiv.querySelector(".screen-api-media-preview-content");
+        },
+        showScreenCaptureOverlay: function(onCancelCallback, onCompleteCallback, activityDetails) {
+            if (top_doc.querySelector("#feedbackCaptureDlg")) {
+                top_doc.querySelector("#feedbackCaptureDlg").style.display = "block !important";
+                return;
+            }
+            var overlayElem = top_doc.createElement("div");
+            overlayElem.setAttribute("id", "feedbackCaptureDlg");
+            overlayElem.setAttribute("class", "dialogue");
+            overlayElem.setAttribute("draggable", "true");
+            overlayElem.innerHTML = '<div class="boldText">' + pega.u.d.fieldValuesList.get(
+                    "pzShowUsWhere") +
+                '</div><button id="closeFBDlg" class="iconClose closeFBDlg"></button><div id="dragPin"  draggable=true class="dragPin" ><div class="iconOpenRule"></div></div><div class="helperText">' +
+                pega.u.d.fieldValuesList.get("pzShowUsWhereDrag") +
+                '</div><button id="captureButton" class="Strong pzhc pzbutton">' + pega.u.d.fieldValuesList
+                .get("pzCaptureBtn_GI") +
+                ' </button><input type="hidden" id="hiddenDraggableId" value="">';
+            top_body.appendChild(overlayElem);
+            var dragStart = function(event) {
+                pega.screen.api.handleDragStart(event);
+                event.stopPropagation();
+            };
+            top_doc.querySelector("#dragPin").addEventListener("dragstart", dragStart);
+            var capture = function(event) {
+                pega.screen.api.captureInit(onCompleteCallback, activityDetails);
+                event.stopPropagation();
+            };
+            top_doc.querySelector("#captureButton").addEventListener("click", capture);
+            var close = function(event) {
+                if (onCancelCallback) {
+                    try {
+                        onCancelCallback();
+                    } catch (err) {
+                        console.error("Error in callback execution - " + err);
+                    }
+                }
+                pega.screen.api.cleanUpAll();
+                event.stopPropagation();
+            };
+            top_doc.querySelector("#closeFBDlg").addEventListener("click", close);
+            this.addDndOnCaptureDlg("feedbackCaptureDlg", ["dragPin"]);
+        },
+        handleDragStart: function(event) {
+            top_doc.querySelector("#hiddenDraggableId").value = event.target.id;
+            event.dataTransfer.effectAllowed = 'move';
+            this.addDropArea();
+        },
+        addDropArea: function() {
+            this.cleanUpAllEvents();
+            this.addMaskedArea();
+            var drop_body = top_body;
+            drop_body.addEventListener("drop", this.dropCallback);
+            drop_body.addEventListener("dragover", this.dragoverCallback);
+            drop_body.addEventListener("dragenter", this.dragenterCallback);
+            drop_body.addEventListener("dragleave", this.dragleaveCallback);
+        },
+        dropCallback: function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            pega.screen.api.addOrMoveMarker(event, event.pageX, event.pageY);
+            pega.screen.api.cleanUpAllEvents();
+        },
+        dragoverCallback: function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        },
+        dragenterCallback: function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            pega.screen.api.addMaskedArea();
+        },
+        dragleaveCallback: function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            if (event.target.id == "maskedDiv") {
+                var maskedElem = top_doc.querySelector("#maskedDiv");
+                if (maskedElem) {
+                    maskedElem.parentElement.removeChild(maskedElem);
+                }
+            }
+        },
+        addOrMoveMarker: function(event, x, y) {
+            var markers = top_doc.querySelectorAll(".feedback-marker");
+            var count = markers.length;
+            /*max number of pins */
+            if (count >= 3) {
+                return;
+            }
+            var draggableId = top_doc.querySelector("#hiddenDraggableId").value;
+            if (draggableId === "") {
+                return;
+            }
+            var markerNumb = 1;
+            var marker = null;
+            if (draggableId === "dragPin") {
+                if (count > 0) {
+                    markerNumb = count + 1;
+                }
+                count++;
+                var markerDivElem = top_doc.createElement("div");
+                markerDivElem.setAttribute("id", "feedback-marker-" + markerNumb);
+                markerDivElem.setAttribute("class", "feedback-marker");
+                markerDivElem.setAttribute("draggable", "true");
+                markerDivElem.innerHTML = '<div class="feedback-marker-round" >' + markerNumb +
+                    '</div><div id="feedback-marker-close-' + markerNumb +
+                    '" class="iconClose"></div><div class="feedbackTextPosition"><textarea class="feedbackText" maxlength="128"></textarea></div>';
+                top_body.appendChild(markerDivElem);
+                top_doc.querySelector(".feedbackText").focus();
+                var markerTextArea = top_body.querySelector("#feedback-marker-" + markerNumb).querySelector(
+                    ".feedbackText");
+                markerTextArea.addEventListener("input", function(event) {
+                    var textBoxElem = event.currentTarget;
+                    if (textBoxElem) {
+                        textBoxElem.style.height = (textBoxElem.scrollHeight) + "px";
+                    }
+                }, false);
+                marker = top_doc.querySelector("#feedback-marker-" + markerNumb);
+                /*add drag function*/
+                marker.addEventListener("dragstart", pega.screen.api.handleDragStart);
+                /* add delete functionality*/
+                var markerClose = top_doc.querySelector("#feedback-marker-close-" + markerNumb);
+                markerClose.addEventListener("click", function(event) {
+                    event.stopPropagation();
+                    /* remove drag pin's draggability*/
+                    if (top_doc.querySelectorAll(".feedback-marker").length === 3) {
+                        var dragPinElem = top_doc.querySelector("#dragPin");
+                        dragPinElem.setAttribute('draggable', 'true');
+                        dragPinElem.classList.remove("notDraggable");
+                    }
+                    /* remove and reset the numbers */
+                    var currentNumber = this.parentElement.getAttribute("id").slice(-1);
+                    this.parentElement.parentElement.removeChild(this.parentElement);
+                    for (var i = 3; i > 1 && currentNumber < i; i--) {
+                        var markerInLoop = top_doc.querySelector("#feedback-marker-" + (i));
+                        if (markerInLoop) {
+                            markerInLoop.querySelector(".feedback-marker-round").innerText = (i -
+                                1);
+                            markerInLoop.setAttribute("id", "feedback-marker-" + (i - 1));
+                            markerInLoop.querySelector(".iconClose").setAttribute("id",
+                                "feedback-marker-close-" + (i - 1));
+                        }
+                    }
+                });
+                if (count === 3) {
+                    var dragPinElem = top_doc.querySelector("#dragPin");
+                    dragPinElem.removeAttribute('draggable');
+                    dragPinElem.classList.add("notDraggable");
+                }
+            } else {
+                markerNumb = draggableId.slice(-1);
+                marker = top_doc.querySelector("#feedback-marker-" + markerNumb);
+            }
+            /* regardless what is dragged ,move the marker*/
+            x = x - parseInt(marker.offsetWidth) / 2;
+            y = y - parseInt(marker.offsetHeight) / 2;
+            marker.style.left = x + "px";
+            marker.style.top = y + "px";
+            /* clean up id */
+            top_doc.querySelector("#hiddenDraggableId").value = "";
+        },
+        cleanUpAllEvents: function() {
+            /* the clean up of the events on the body */
+            var drop_body = top_body;
+            drop_body.removeEventListener("drop", this.dropCallback);
+            drop_body.removeEventListener("dragover", this.dragoverCallback);
+            drop_body.removeEventListener("dragenter", this.dragenterCallback);
+            drop_body.removeEventListener("dragleave", this.dragleaveCallback);
+            utility.removeElement(top_doc.querySelector('#maskedDiv'));
+        },
+        cleanUpAll: function() {
+            var elemsToRemove = top_doc.querySelectorAll(".feedback-marker");
+            for (var i = 0; i < elemsToRemove.length; i++) {
+                this.removeElement(elemsToRemove[i]);
+            }
+            /* remove the screen capture layout */
+            this.removeElement(top_doc.getElementById("feedbackCaptureDlg"));
+            /* clean up the recorder layout*/
+            this.removeElement(top_doc.getElementById("feedbackRecorderDlg"));
+            /* the clean up of the events on the body and Iframe etc*/
+            this.cleanUpAllEvents();
+            video.clearScreenRecordingOnClose();
+        },
+        removeElement: function(elemToRemove) {
+            if (elemToRemove) {
+                elemToRemove.parentNode.removeChild(elemToRemove);
+            }
+        },
+        addMaskedArea: function() {
+            //create the transparent div across the view port and add events 
+            if (top_doc.querySelector("#maskedDiv")) {} else {
+                var dropAreaElem = top_doc.createElement("div");
+                dropAreaElem.setAttribute("id", "maskedDiv");
+                dropAreaElem.setAttribute("class", "maskedDropArea");
+                top_body.appendChild(dropAreaElem);
+            }
+        },
+        addDndOnCaptureDlg: function(dlgId, stopElementArray) {
+            var capturedlg = "#" + dlgId;
+            var capturedlgElem = top_doc.querySelector(capturedlg);
+            if (capturedlgElem) {
+                moveElement(capturedlgElem);
+            }
+
+            function moveElement(elmnt) {
+                var pos1 = 0,
+                    pos2 = 0,
+                    pos3 = 0,
+                    pos4 = 0;
+                elmnt.onmousedown = dragMouseDown;
+
+                function dragMouseDown(e) {
+                    e.preventDefault();
+                    // get the mouse cursor position at startup:
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    var drop_doc = (pega.u.d.portalName === "pxExpress") ? pega.ui.composer.getCurrentComposerWindow()
+                        .document : top_doc;
+                    drop_doc.onmouseup = closeDragElement;
+                    // call a function whenever the cursor moves:
+                    drop_doc.onmousemove = elementDrag;
+                }
+
+                function elementDrag(e) {
+                    e.preventDefault();
+                    // calculate the new cursor position:
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    // set the element's new position:
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                }
+
+                function closeDragElement() {
+                    /* stop moving when mouse button is released:*/
+                    var drop_doc = (pega.u.d.portalName === "pxExpress") ? pega.ui.composer.getCurrentComposerWindow()
+                        .document : top_doc;
+                    drop_doc.onmouseup = null;
+                    drop_doc.onmousemove = null;
+                }
+            }
+            var stopit = function(event) {
+                event.stopPropagation();
+            }
+            if (stopElementArray) {
+                for (var i = 0; i < stopElementArray.length; i++) {
+                    var element = "#" + stopElementArray[i];
+                    top_doc.querySelector(element).addEventListener("mousedown", stopit);
+                    top_doc.querySelector(element).addEventListener("mousemove", stopit);
+                    top_doc.querySelector(element).addEventListener("mousedown", stopit);
+                }
+            }
+        },
+        cleanUpMarkers: function() {
+            var elemsToRemove = top_doc.querySelectorAll(".feedback-marker");
+            for (var i = 0; i < elemsToRemove.length; i++) {
+                this.removeElement(elemsToRemove[i]);
+            }
+            /* remove the screen capture layout */
+            this.removeElement(top_doc.getElementById("feedbackCaptureDlg"));
+            /* clean up the recorder layout*/
+            this.removeElement(top_doc.getElementById("feedbackRecorderDlg"));
+            /* the clean up of the events on the body and Iframe etc*/
+            this.cleanUpAllEvents();
+            //Clean up or stop video recording when AW is closed
+            //clearScreenRecordingOnClose();
+        },
+    };
+    return publicAPI;
+}());
+if (navigator.userAgent.indexOf("Chrome") > -1) {
+    pega.screen.api.attachPluginEventResponse();
+}
+//static-content-hash-trigger-NON
+var $pNamespace=pega.namespace;$pNamespace("pega.ui");pega.ui.gapidentifier=(function(){var K={};var I=document;var V=$("[data-ui-meta*=\"'type':'Harness'\"]",I).first();if(V.length===0){V=$("[data-portalharnessinsname]",I).first()}var H=pega.desktop.support.getDesktopWindow();var B=400;var T=false;var A;var a=0;var L=333;var R="linear";var E="<div class='runtime-control-gapidentifier-tab'></div><div class='runtime-control-gapidentifier-resize ui-resizable-handle ui-resizable-w'></div><div class='pz-gap-panel-body'><div>";function G(){if(!T){T=true;pega.ui.gapidentifier.toggle();setTimeout(function(){T=false},L*2)}}function M(b){var c=$(b,I);if(c.length!==0){if(b!==".pi-potion"){c.find("a").attr("disabled",true).addClass("disabledStyle").children("i").attr("disabled",true).addClass("disabledStyle");c.find("button").attr("disabled",true).addClass("disabledStyle");c.attr("disabled",true);c.find("i").removeAttr("data-click")}else{c.parent().attr("disabled",true).addClass("disabledStyle")}}}function U(b){var c=$(b,I);if(c.length!==0){if(b!==".pi-potion"){c.find("a").removeAttr("disabled").removeClass("disabledStyle").children("i").removeAttr("disabled").removeClass("disabledStyle");c.find("button").removeAttr("disabled").removeClass("disabledStyle");c.removeAttr("disabled");c.find("i").attr("data-click",'[["runScript", ["pega.ui.inspector.toggle()"]]]')}else{c.parent().removeAttr("disabled",true).removeClass("disabledStyle")}}}function F(){if(window!==H){return }if($(".gapid_icon").length<1){var c=document.createElement("DIV");c.setAttribute("class","pz-gap-tool");c.setAttribute("data-test-id","GapIdentifierInspectorButton");c.setAttribute("tabindex","0");c.setAttribute("aria-label","Agile Workbench");c.innerHTML="<div class='toggle-runtime-gapidentifier-mask'></div><div unselectable='on' class='gapid_icon'><span  unselectable='on' class='pzbtn-img'><icon class='pi pi-bolt'/></span>"+pega.u.d.fieldValuesList.get("pzAgileWorkbench")+" </div>";$(c).appendTo(document.body);c.addEventListener("click",G,true);c.addEventListener("keypress",function(f){var d=f.which||f.keyCode;if(d===13){G()}},true);var b=function(f){a++;if(a>5){if(!$(c).hasClass("noClick")){$(c).addClass("noClick")}var d=$(".pz-gap-tool",I).outerWidth();var i=$(".pz-gap-tool",I).outerHeight();var h=f.clientX-(d/2);var g=f.clientY-(i/2);if(f.clientX<0||f.clientY<0||f.clientX>$(window).width()||f.clientY>$(window).height()){a=0;$(".ui-gapidentifier-tree-mask",I).remove();window.removeEventListener("mousemove",b,true);$(".pz-gap-tool",I).removeClass("noClick");return K.handleSupression(f)}if(h<0){h=0}if(g<0){g=0}if(h>($(window).width()-d)){h=($(window).width()-d)}if(g>($(window).height()-i)){g=($(window).height()-i)}$(".pz-gap-tool",I).css({position:"fixed",top:g,left:h})}return K.handleSupression(f)};c.addEventListener("mousedown",function(d){if(!$(c).hasClass("noClick")){if($(".ui-gapidentifier-tree-mask",I).length===0){$(document.body,I).append("<div class='ui-gapidentifier-tree-mask'></div>")}window.addEventListener("mousemove",b,true)}return K.handleSupression(d)},true);window.addEventListener("mouseup",function(d){if($(".ui-gapidentifier-tree-mask",I).length>0){a=0;$(".ui-gapidentifier-tree-mask",I).remove();window.removeEventListener("mousemove",b,true)}},true);window.addEventListener("resize",function(){if($(".pz-gap-tool").css("top")!=="auto"){var f=$(".pz-gap-tool");var h=f.offset();var e=h.top;var g=h.left;var k=$(window).height()-f.height();var d=$(window).width()-f.width();var i=$(window).scrollTop();var j=$(window).scrollLeft();if(e<0){f.css({top:"0px"})}else{if((e-i)>k){f.css({top:(k+"px")})}}if(g<0){f.css({left:"0px"})}if((g-j)>d){f.css({left:(d+"px")})}}},true)}}K.initialize=function(){var b=document.createElement("DIV");b.className="pz-gap-panel gapidentifier-hidden";b.innerHTML=E;if($(document.body).find("div.pz-gap-panel").length>0){$(document.body).find("div.pz-gap-panel").replaceWith($(b))}else{$(b).appendTo(document.body)}return K.loadSectionIntoDom("pzGapIdentifier_Panel","@baseclass",$(".pz-gap-panel-body > div")[0])};K.loadSectionIntoDom=function(c,b,d,e){d.className="sectionDivStyle";d.id="RULE_KEY";d.setAttribute("node_type","MAIN_RULE");d.setAttribute("version","1");d.setAttribute("objclass","Rule-HTML-Section");if(pega.ctx.isUITemplatized===true){d.setAttribute("data-template","")}d.setAttribute("name","BASE_REF");d.setAttribute("id","RULE_KEY");d.setAttribute("class","sectionDivStyle");d.setAttribute("node_name",c);d.setAttribute("data-node-id",c);d.setAttribute("pyclassname",b);if(e&&e!==""){d.setAttribute("BASE_REF",e)}F()};K.isAgileWorkBenchOpen=function(){var c=false;var b=$(".pz-gap-panel",I);if(b&&b.hasClass("showing")){c=true}return c};K.show=function(f,e,b){K.checkExtensionInfo();if(b){b=b}else{b=""}if(e){e=e}else{e="pzInitGapPanel"}var c=$(".pz-gap-panel",I);var d=$(".pz-gap-panel-body > div",I);if(d.length!==0){pega.u.d.reloadSection(d[0],e,b,false,false,-1,false,null,null,null,f)}c.removeClass("gapidentifier-hidden");$(".pz-gap-panel-body").removeClass("gapidentifier-hidden");$(".runtime-control-gapidentifier-resize",I).css("display","");$(".gapid_icon",I).toggleClass("active");if($("#js-toggle-runtime-editor",I).length!==0){$("#js-toggle-runtime-editor",I).attr("disabled",true)}M(".ui-inspector");M(".accessibility-toggle");M(".localization-toggle");M(".pi-potion");B=400;N();Y("show");f()};function N(e){var d=document.querySelector("div[data-node-id='pzRuntimeToolsTopBar']");if(d){d.classList.add("disable-slide")}V.css({position:"absolute",left:"0",right:"0","min-width":"0"});var c;var b;if(B>V.width()){c=V.width()-(100)+"px";b=V.width()-(100)}else{if(B<10){c="10px";b=10}else{c=B+"px";b=B}}if(A){c="0px";b="0"}V.animate({right:c},L,R,function(){});if(A){$(".runtime-control-gapidentifier-tab").addClass("runtime-control-gapidentifier-tab-min")}else{$(".runtime-control-gapidentifier-tab").addClass("runtime-control-gapidentifier-tab-max")}$(".pz-gap-panel").animate({width:b+"px"},L,R,function(){$(".pz-gap-panel").addClass("showing");if(!$(".pz-gap-panel").hasClass("ui-resizable")){Z()}setTimeout(function(){$(".pz-gap-panel").addClass("pz-gap-panel-active")},250)})}function Y(c){var b=document.querySelector(".gapid_icon a");if(b){if(c==="show"){b.classList.add("gapid_icon_active")}else{b.classList.remove("gapid_icon_active")}}}function S(c){if($(".screen-layout").hasClass("flex")){var f,e,b;var d=$(window).width();b=$(".screen-layout-region-main-sidebar1").outerWidth()||0;f=$(".screen-layout-region-main-sidebar2").outerWidth()||0;e=b+f+parseInt(c);$(".screen-layout-region-main-middle").css({width:(d-e)+"px"})}}K.hide=function(c){if($("#js-toggle-runtime-editor",I).length!==0){$("#js-toggle-runtime-editor",I).removeAttr("disabled")}$(".gapid_icon").toggleClass("active");$(".screen-layout-region-main-middle").css({width:""});Y("hide");U(".ui-inspector");U(".accessibility-toggle");U(".localization-toggle");U(".pi-potion");var b=$(".pz-gap-panel",I);state=false;V.animate({right:"0px"},L,R,function(){b.removeClass("showing");b.addClass("gapidentifier-hidden");$(".runtime-control-gapidentifier-resize",I).css("display","none");var d=document.querySelector("div[data-node-id='pzRuntimeToolsTopBar']");if(d){d.classList.remove("disable-slide")}});$(".runtime-control-gapidentifier-tab",I).removeClass("runtime-control-gapidentifier-tab-min");$(".runtime-control-gapidentifier-tab",I).removeClass("runtime-control-gapidentifier-tab-max");V.removeAttr("_isPanelMinimized");b.animate({width:"0px"},L,R,function(){$(".pz-gap-panel",I).removeClass("pz-gap-panel-active");c()})};K.handleSupression=function(b){if(b.preventDefault){b.preventDefault()}b.cancelBubble=true;if(b.stopPropagation){b.stopPropagation()}return false};K.minimizeToggle=function(b){if(pega.u.d.portalName==="pxExpress"){pega.ui.awPanelExpress.toggleOnCaptureOrRecord();return }if(V.attr("_isPanelMinimized")==="true"){D()}else{X()}};K.maximizeToggle=function(b){if(pega.u.d.portalName==="pxExpress"){if(b==="PEGA-SCREEN-CAPTURE-FAIL"){if(!pega.ui.awPanelExpress.isAgileWBPanelOpen()){pega.ui.awPanelExpress.toggleOnCaptureOrRecord()}}else{pega.ui.awPanelExpress.toggleOnCaptureOrRecord()}return }D()};function D(){V.css({position:"absolute",left:"0"});if(V.attr("_isPanelMinimized")==="true"){if(B>$(window).width()-100){B=$(window).width()-100}V.css("right",B+"px");$(".runtime-control-gapidentifier-tab",I).removeClass("runtime-control-gapidentifier-tab-min");$(".runtime-control-gapidentifier-tab",I).addClass("runtime-control-gapidentifier-tab-max");$(".pz-gap-panel",I).css("width",B+"px");$(".pz-gap-panel-body",I).removeClass("gapidentifier-hidden");$(".runtime-control-guide-tab",I).removeClass("runtime-control-guide-tab-min");$(".runtime-control-guide-tab",I).addClass("runtime-control-guide-tab-max");$(".pz-guide-panel",I).css("width",B+"px");$(".pz-guide-panel-body",I).removeClass("guide-hidden");V.attr("_isPanelMinimized",false);S(B)}}function X(){V.css({position:"absolute",left:"0"});if(V.attr("_isPanelMinimized")!=="true"){V.attr("_isPanelMinimized",true);var b=0;V.css("right",b+"px");$(".runtime-control-gapidentifier-tab",I).addClass("runtime-control-gapidentifier-tab-min");$(".runtime-control-gapidentifier-tab",I).removeClass("runtime-control-gapidentifier-tab-max");$(".pz-gap-panel",I).css("width",b+"px");$(".pz-gap-panel-body",I).addClass("gapidentifier-hidden");$(".runtime-control-guide-tab",I).addClass("runtime-control-guide-tab-min");$(".runtime-control-guide-tab",I).removeClass("runtime-control-guide-tab-max");$(".pz-guide-panel",I).css("width",b+"px");$(".pz-guide-panel-body",I).addClass("guide-hidden");$(".screen-layout-region-main-middle").css({width:""})}}function Z(){var b=$(".pz-gap-panel");var c=b.outerWidth();b.css({right:"0",left:""});desktopWindowCSSPosition=V.css("position");V.css({position:"absolute",left:"0",right:c+"px","min-width":"0"});S(c);var d=function(f){window.removeEventListener("mouseup",d,true);return };$(".runtime-control-gapidentifier-resize")[0].addEventListener("mouseup",d,true);_windowOuterWidth=$(window).outerWidth();$(".pz-gap-panel").css({right:"0",left:""});$(".pz-gap-panel",I).resizable({handles:{w:".runtime-control-gapidentifier-resize"},resize:function(g,h){var e=h.element;var f=e.width();e.css({right:"0",left:""});if(f>_windowOuterWidth-100){f=_windowOuterWidth-100;e.css({width:f+"px"})}V.css({right:f+"px"});S(f)},start:function(e,f){V.css({position:"absolute",left:"0","min-width":"0"});$(document.body).append("<div class='ui-gapidentifier-tree-mask'></div>")},stop:function(e,f){var g=$(".pz-gap-panel");g.queue(function(){$(".pz-gap-panel").dequeue()});B=g.outerWidth();A=false;$(".ui-gapidentifier-tree-mask").remove()}});$(".runtime-control-gapidentifier-tab").click(function(){K.minimizeToggle(true)})}K.toggle=function(c){if(pega&&pega.offline){return }if(pega.ui&&pega.ui.composer&&pega.ui.composer.isActive()&&pega.ui.composer.toggleAgileWorkbench){pega.ui.composer.toggleAgileWorkbench(c);return }if($(".pz-gap-tool").hasClass("noClick")){$(".pz-gap-tool").removeClass("noClick");return false}var d=function(){var e=SafeURL_createFromURL(pega.u.d.url);var f=new SafeURL();e.put("pyActivity","pzClearGapIdentifierPages");var g=function(){};return pega.u.d.asyncRequest("POST",e,g,f)};var b=function(){var e=I.querySelector('div[node_name="pzAssetFooter"]');if(e){pega.u.d.reloadSection(e,null,null,false,false,-1,false,null,null,null,null)}};if($(".pz-gap-panel-active",I).length!==0){K.hide(d)}else{if($(".runtime-control-panel-active",I).length===0){K.show(b)}}};K.hideOnExport=function(){if(pega&&pega.offline){return }if($(".pz-gap-tool").hasClass("noClick")){$(".pz-gap-tool").removeClass("noClick");return false}var b=function(){var c=SafeURL_createFromURL(pega.u.d.url);var d=new SafeURL();c.put("pyActivity","pzClearGapIdentifierPages");var e=function(){};return pega.u.d.asyncRequest("POST",c,e,d)};if($(".pz-gap-panel-active",I).length!==0){K.hide(b)}};K.checkExtensionInfo=function(){if(pega.screen){pega.screen.api.extensionInstalled()}};K.checkAndPrepareAWRefresh=function(c){var g=new SafeURL("Pega-Agile-Work.pzCheckAndPrepareAWRefresh");g.put("pzPrimaryPageName","D_pzAgileWorkbench");g.put("itemInfo",c);var e=pega.ctxmgr.getCurrentHarnessContext();pega.ctxmgr.setRootDocumentContext();var f=function(h){if(h.responseText==="true"){var i="";if(pega.u.d.portalName==="pxExpress"){i=$("div[node_name='pzGapIdentifier_Panel']",document)}else{i=$(".pz-gap-panel-body > div",I)}if(i.length!==0){K.checkExtensionInfo();pega.u.d.reloadSection(i[0],"","",false,false,-1,false,null,null,null,null)}}pega.ctxmgr.setContext(e)};var d=function(h){pega.ctxmgr.setContext(e)};var b={success:f,failure:d};pega.u.d.asyncRequest("POST",g,b)};K.showItemFromAppMgmtView=function(e,g,f,d){var h="&ItemID="+e+"&FeatureID="+g+"&AppInsName="+f+"&FeatureName="+d;var i=function(){};if(pega&&pega.offline){return }if(pega.ui.guide.isApplicationGuideOpen()){pega.ui.guide.toggle()}if(K.isAgileWorkBenchOpen()){var c=$(".pz-gap-panel-body > div",I);if(c.length!==0){K.checkExtensionInfo();pega.u.d.reloadSection(c[0],"pzShowWorkItem",h,false,false,-1,false,null,null,null,i)}if(V.attr("_isPanelMinimized")==="true"){K.maximizeToggle(true)}return }var b=function(){};K.checkExtensionInfo();K.show(b,"pzShowWorkItem",h);return };K.createItemFromAppMgmtView=function(i,f,e,d){var g="&ItemType="+i+"&AppInsName="+f+"&FeatureID="+e+"&FeatureName="+d;var h=function(){};if(pega&&pega.offline){return }if(K.isAgileWorkBenchOpen()){var c=$(".pz-gap-panel-body > div",I);if(c.length!==0){K.checkExtensionInfo();pega.u.d.reloadSection(c[0],"pzCreateWorkItemWrapper",g,false,false,-1,false,null,null,null,h)}if(V.attr("_isPanelMinimized")==="true"){K.maximizeToggle(true)}return }var b=function(){};K.checkExtensionInfo();K.show(b,"pzCreateWorkItemWrapper",g);return };K.refreshAppMgmtView=function(){if(pega.u.d.portalName==="pxExpress"){this.refreshAppMgmtViewExp()}else{var e=$("iframe");for(var c=0;c<e.length;c++){var g=e[c].id;var f=$("#"+g).contents().find("div[node_name='pzLPApplicationOverview']");if(f.length!==0){var d=e[c];var b=d.contentDocument||d.contentWindow.document;d.contentWindow.pega.application.features.refreshAppMgmtViewForFeature(b)}}}};K.refreshAppMgmtViewExp=function(){var d=document.querySelectorAll("div[node_name='pzLPApplicationOverview']");if(d.length!==0){var c=pega.ctxmgr.getCurrentHarnessContext();pega.ctxmgr.setRootDocumentContext();var b=pega.ctxmgr.getDCSPAContext();pega.application.features.refreshAppMgmtViewForFeature(document,c,b)}};K.refreshAWOnDragDrop=function(d){var c=function(){};var b=$("div[node_name='pzFeaturesOverviewLeftLayout']",document);if(b.length!==0){pega.u.d.reloadSection(b[0],"pzRefreshAppOverview","",false,false,-1,false,null,null,null,c)}};K.showItemsByFeatureFromAppMgmtView=function(e,b){var f="&FeatureInsKey="+e+"&Tab="+b;var g=function(){};if(pega&&pega.offline){return }if(K.isAgileWorkBenchOpen()){var d=$(".pz-gap-panel-body > div",I);if(d.length!==0){K.checkExtensionInfo();pega.u.d.reloadSection(d[0],"pzShowWorkItemByFeature",f,false,false,-1,false,null,null,null,g)}if(V.attr("_isPanelMinimized")==="true"){K.maximizeToggle(true)}return }var c=function(){};K.checkExtensionInfo();K.show(c,"pzShowWorkItemByFeature",f);return };K.toggleGIFromIframe=function(b){I=document;K.toggle()};K.toggleCompleteRejectItem=function(c){var d=c.target||c.srcElement;var b=$(d).parents(".pz-gap-item-row");if(b.hasClass("visible")){b.removeClass("visible");b.children(".item-2").children("div").css("right","")}else{b.parents("div[node_name='pzAssetContent']").find(".pz-gap-item-row.visible").each(function(){$(this).removeClass("visible");$(this).children(".item-2").children("div").css("right","")});b.addClass("visible");b[0].offsetHeight;b.children(".item-2").children("div").css("right","0")}ev.preventDefault();ev.stopPropagation();return false};var Q=function(){var b=pega.mobile.hybrid.getLaunchBox();return(b&&b.DocumentViewer)};var W=function(){return/Android|webOS|iPhone|iPad|iPod|IEMobile|BlackBerry/i.test(navigator.userAgent)};var P=function(g,b,j,h){var e=j?g:window.location.protocol+"//"+window.location.host+g;var i=new pega.ui.busyIndicator("",true,null);var f=getSourceElem(b);if(f){i.setTargetElement(f)}i.show();var c=function(k,l){if(l){return function(){console.debug("Attachment opened successfully"+k);i.hide();if(k){pega.u.d.ServerProxy.setDestination(pega.u.d.ServerProxy.DESTINATION.LOCAL)}}}else{return function(m){console.error("Failed to open attachment: "+m.description);i.hide();if(k){pega.u.d.ServerProxy.setDestination(pega.u.d.ServerProxy.DESTINATION.LOCAL)}}}};var d={onSuccess:c(h,true),onProgress:function(){},onFailure:c(h)};pega.mobile.hybrid.getLaunchBox().DocumentViewer.open(e,{},d)};var O=function(h,d){var g="resizable=yes,scrollbars=yes,status=yes";var i="ATTACHMENT-DATA";var b=function(){var j=document.createElement("iframe");j.id=i;j.style.display="none";document.body.appendChild(j);return j};try{if(Q()){P(h,d)}else{if(W()){window.openUrlInWindow(h,"Attachment",g)}else{if(document.addEventListener){var c=C().document.getElementById(i);if(null==c){c=document.getElementById(i)}if(null==c){c=b()}c.src=h}else{window.open(h,"Attachment",g)}}}}catch(f){console.error("Error displaying attachment: ",h,f);if(document.all[i]){document.getElementById(i).src=h}else{var e=b();e.src=h}}};K.processInlineImageAW=function(i,o,h,j,c,m,d,v,t,q,z,s,e){i=J(i);o=J(o);h=J(h);j=J(j);c=J(c);d=J(d);v=J(v);t=J(t);q=J(q);z=J(z);s=J(s);m.attachKey=c;if(v==="true"){var w=[];w.activityName=(t==="External")?"GetAttachmentReference":"DisplayAttachFile";w.activityClass="Work-";w.activityParams=[];if((t==="External")){w.activityParams.push({paramName:"linkInsHandle",paramValue:j})}else{w.activityParams.push({paramName:"LinkedRefTo",paramValue:c})}m.displayActivityJSON=w}var b=q;var p=(d==="png"||d==="jpg"||d==="jpeg"||d==="bmp"||d==="gif");var u=(d==="webm"||d==="mp4"||d==="ogg"||d==="ogv"||d==="m4v");if((p||u)&&v==="true"){b=SafeURL_createFromURL(pega.u.d.url);if(t==="External"){b.put("pyActivity","Work-.GetAttachmentReference");b.put("linkInsHandle",j)}else{b.put("pyActivity","Work-.DisplayAttachFile");b.put("LinkedRefTo",c)}pega.u.d.convertToRunActivityAction(b);b=b.toURL()}if(d==="tif"||d==="tiff"){p=true}var y=document.getElementById("img"+e);var k="cursor: pointer; display: inline; width: 150px; height: 130px;";var n=function(AA){pega.ui.HarnessActions.doAttachmentSingleClick(i,o,h,j,null,null,c,v,m)};if(y){var l=b.substring(b.lastIndexOf(".")+1,b.length);var r=(l.toLowerCase()==="svg"?b+"#svgView(preserveAspectRatio(none))":b);if(v==="true"){if(u){var x=d;if(x==="ogv"){x="ogg"}if(x==="m4v"){x="mp4"}y.innerHTML='<video width="150px" height="130px" style="object-fit:fill" preload="metadata" > <source src="'+b+' "type="video/'+x+'"></video>';y.children[0].onclick=n;var f=document.getElementById("gapAttachmentOverlayForVideo"+e);f.style.display="flex";f.onclick=n}else{y.innerHTML='<img class="attach_Icon" style="'+k+'" src="'+r+'" alt="'+z+'" onError="replaceBrokenPoster(this)"/>';y.children[0].onclick=n}}else{y.innerHTML='<img class="attach_Icon" style="'+k+'" src="'+r+'" alt="'+z+'"/>';y.children[0].onclick=function(AA){pega.ui.HarnessActions.doAttachmentSingleClick(i,o,h,j,null,null,c)}}}var g=document.getElementById("attachNameLink"+e);if(g){g.innerHTML='<a href="#" style="word-break: break-all;overflow: hidden;display: inline-block;" title="'+s+'">'+z+"</a>";if(v==="true"&&(p||u||d==="pdf")){g.children[0].onclick=n}else{g.children[0].onclick=function(AA){pega.ui.HarnessActions.doAttachmentSingleClick(i,o,h,j,null,null,c)}}}};K.processInlineImageAW_Integrated=function(n,u,e,d,w,s,p,z,r,AA,t,f){d=J(d);w=J(w);p=J(p);z=J(z);r=J(r);var i="";if(e==="Data-WorkAttach-URL"){i=AA}var c=p;var o=(d==="png"||d==="jpg"||d==="jpeg"||d==="bmp"||d==="gif");var v=(d==="webm"||d==="mp4"||d==="ogg"||d==="ogv"||d==="m4v");if(o&&(s!=="true")&&w==="true"){c="data:image/"+d+";base64,"+t.trim()}if(v&&(s!=="true")&&w==="true"){c="data:video/"+d+";base64,"+t.trim()}if(d==="tif"||d==="tiff"){o=true}var y=document.getElementById("img"+f);if(n){n.doNotUseEV="true"}var k=function(AB){pega.ui.gapidentifier.downloadPMAttachment(AB,u,false)};var m=function(AB){pega.ui.gapidentifier.downloadPMAttachment(AB,u,true,n)};var b=function(AB){pega.ui.gapidentifier.openURLPMAttachment(i)};var l=c.substring(c.lastIndexOf(".")+1,c.length);var q=(l==="svg"?c+"#svgView(preserveAspectRatio(none))":c);if(y){var j="cursor: pointer; display: inline; width: 150px; height: 130px;";y.innerHTML='<img class="attach_Icon" style="'+j+'" src="'+q+'" alt="'+z+'"/>';if(s==="true"){y.children[0].onclick=k}else{if((o||d==="pdf")&&w==="true"){y.children[0].onclick=m}else{if(v&&w==="true"){var x=d;if(x==="ogv"){x="ogg"}if(x==="m4v"){x="mp4"}y.innerHTML='<video width="150px" height="130px" style="object-fit:fill" preload="metadata" > <source src="'+c+' "type="video/'+x+'"></video>';y.children[0].onclick=m;var g=document.getElementById("gapAttachmentOverlayForVideo"+f);g.style.display="flex";g.onclick=m}else{if(e==="Data-WorkAttach-URL"){y.innerHTML='<img class="attach_Icon" style="'+j+'" src="'+q+'" alt="'+z+'"/>';y.children[0].onclick=function(AB){pega.ui.gapidentifier.openURLPMAttachment(i)}}else{y.children[0].onclick=k}}}}}var h=document.getElementById("attachNameLink"+f);if(h){var j="word-break: break-all;overflow: hidden;display: inline-block;";if(e==="Data-WorkAttach-URL"){h.innerHTML='<a href="#" style="'+j+'" title="'+r+'">'+z+"</a>";h.children[0].onclick=b}else{if((o||v||d==="pdf")&&w==="true"){h.innerHTML='<a href="#" style="'+j+'" title="'+r+'">'+z+"</a>";h.children[0].onclick=m}else{h.innerHTML='<a href="#" style="'+j+'" title="'+r+'">'+z+"</a>";h.children[0].onclick=k}}}};function J(b){if(b!==null){return b.trim()}else{return null}}var C=function(){var b=pega.desktop.support.getDesktopWindow();return(b?b:window)};K.downloadPMAttachment=function(e,b,c,d){var f=SafeURL_createFromURL(pega.u.d.url);f.put("pyActivity","Pega-Agile-Work.pyDownloadAttachment");f.put("pzPrimaryPageName",b);pega.u.d.convertToRunActivityAction(f);pega.c.AttachUtil.checkTokenAndDisplayAttachment_pegaSocial_inline(e,d,f.toURL(),c,f.toURL())};K.openURLPMAttachment=function(b){window.open(b)};return K})();window.addEventListener("load",function(){if(pega.u.d.portalName!=="pxExpress"&&pega.u.d.isAgileWorkbenchEnabled===true){pega.ui.gapidentifier.initialize()}});
+var $pNamespace=pega.namespace;$pNamespace("pega.screen");
+pega.screen.attachment_client=function(){function d(){return"pxExpress"===pega.u.d.portalName?pega.ui.composer.getCurrentComposerWindow():pega.desktop.support.getDesktopWindow()}return{capture_invokedFrom:"NA",busyThrobber:new pega.ui.busyIndicator("",!0,pega.desktop.support.getDesktopWindow().document.body,0),createCase:"",caseType:"",initScreenAPI:function(){pega.screen.api.init(function(){var a;(a=pega.u.d.getSectionByName("pzAssetFooter"))&&pega.u.d.reloadSection(a,"","",!1,!1,"-1",!1)})},captureScreenshot:function(a,
+b,c){this.createCase=b;this.caseType=c;b=d();b.pega.screen?b.pega.screen.api.captureSnapshot(a,function(){pega.screen.attachment_client.minimizeParentPanel()},function(){pega.screen.attachment_client.maximizeParentPanel()},function(){pega.screen.attachment_client.uploadContent(pega.screen.api.getCapturedContent(),"png")}):console.error("Screen capture script is missing")},recordVideo:function(a,b,c){this.createCase=b;this.caseType=c;b=d();b.pega.screen?b.pega.screen.api.recordVideo(a,function(){pega.screen.attachment_client.minimizeParentPanel()},
+function(){pega.screen.attachment_client.maximizeParentPanel()},function(){pega.screen.attachment_client.uploadContent(pega.screen.api.getCapturedContent(),"webm")}):console.error("Record video script is missing")},maximizeParentPanel:function(){"ag"===this.getParentPanel()?pega.ui.guide.maximizeToggle():pega.ui.gapidentifier.maximizeToggle();this.capture_invokedFrom="NA"},minimizeParentPanel:function(){"ag"===this.getParentPanel()?pega.ui.guide.minimizeToggle():pega.ui.gapidentifier.minimizeToggle()},
+getParentPanel:function(){var a=this.capture_invokedFrom;if(void 0===a||"NA"===a)if("pxExpress"===pega.u.d.portalName){var b=pega.ui.composer.getCurrentComposerWindow().pega.ui.agPanelExpress;b&&b.isShowing()&&(a="ag")}else(a=pega.desktop.support.getDesktopWindow().document.querySelector('div[node_name\x3d"pzApplicationGuidesWrapper"] div[node_name\x3d"pzUserStoryWrapperForAppGuide"]'))&&(a="ag");return this.capture_invokedFrom=a},uploadContent:function(a,b){this.busyThrobber.show();var c=SafeURL_createFromEncryptedURL(pega.u.d.url);
+c.put("pyActivity","Pega-Agile-SmartFeedback.pzAttachFeedbackFile");c.put("pzPrimaryPageName","D_pzAgileSmartFeedback");c.put("fileType",b);c.put("value",a);c.put("CreateCase",this.createCase);this.caseType&&c.put("CaseTypeClass",this.caseType);var d=function(){pega.screen.attachment_client.busyThrobber.hide();pega.screen.attachment_client.maximizeParentPanel()};pega.u.d.asyncRequest("POST",c,{success:function(a){d();if("Success"===a.responseText){a=pega.screen.attachment_client.createCase;var b;
+if(b=pega.u.d.getSectionByName("true"==a?"pzGapIdentifierWrapper":"pzGapIdentifierAttachments"))pega.u.d.reloadSection(b,"","",!1,!1,"-1",!1),"true"==a&&pega.ui.gapidentifier.refreshAppMgmtView()}else alert(a.responseText)},failure:function(a){d();alert(a.responseText)},argument:null},null)}}}();
