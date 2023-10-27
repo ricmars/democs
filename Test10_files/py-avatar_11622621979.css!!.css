@@ -1,0 +1,167 @@
+﻿/* This CSS is used for pxOperatorImage and pxInitials controls for initial circles */
+
+/* Default sizes */
+
+.operatorWithImageParentDiv {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.operatorWithoutImage{
+ stroke:white;
+ stroke-width:2px; 
+}
+
+.operatorWithImage {
+    width:  30%;
+    height: 30%;
+    border-radius: 48%;
+    border: 1px solid #FFF;
+    position: absolute;
+    bottom: 4.5%;
+    left:  2.3%;
+}
+
+.operatorImage {
+  display: inline;
+  cursor: pointer;
+}
+
+.operatorNotExists {
+  cursor: default;
+}
+
+.icons.avatar {
+  width: 32px;
+  height: 32px;
+  font-style: normal !important;
+}
+
+.icons.avatar.team {
+  width: 120px;
+  height: 120px;
+}
+
+.icons.avatar.team-list {
+  width: 100px;
+  height: 100px;
+}
+
+.avatar > svg {
+  font-family: "OpenSans", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  max-width: 100%;
+  position: relative;
+}
+
+.avatar > svg > text{
+  font-size:42px;
+}
+
+/* one fill color per letter in the alphabet */
+
+.name-a circle {
+  fill: #2c97de;
+}
+
+.name-b circle {
+  fill: #2f7ac0;
+}
+
+.name-c circle {
+  fill: #0099aa;
+}
+
+.name-d circle {
+  fill: #00657c;
+}
+
+.name-e circle {
+  fill: #00aa66;
+}
+
+.name-f circle {
+  fill: #0b8953;
+}
+
+.name-g circle {
+  fill: #889900;
+}
+
+.name-h circle {
+  fill: #670;
+}
+
+.name-i circle {
+  fill: #e27100;
+}
+
+.name-j circle {
+  fill: #e94b35;
+}
+
+.name-k circle {
+  fill: #c23824;
+}
+
+.name-l circle {
+  fill: #ae58b7;
+}
+
+.name-m circle {
+  fill: #9933aa;
+}
+
+.name-n circle {
+  fill: #6459b5;
+}
+
+.name-o circle {
+  fill: #433d93;
+}
+
+.name-p circle {
+  fill: #2c97de;
+}
+
+.name-q circle {
+  fill: #2f7ac0;
+}
+
+.name-r circle {
+  fill: #0099aa;
+}
+
+.name-s circle {
+  fill: #00657c;
+}
+
+.name-t circle {
+  fill: #00aa66;
+}
+
+.name-u circle {
+  fill: #0b8953;
+}
+
+.name-v circle {
+  fill: #6459b5;
+}
+
+.name-w circle {
+  fill: #667700;
+}
+
+.name-x circle {
+  fill: #e27100;
+}
+
+.name-y circle {
+  fill: #e94b35;
+}
+
+.name-z circle {
+  fill: #ae58b7;
+}
