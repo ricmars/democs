@@ -710,10 +710,6 @@
   <script type="text/javascript" src="./pzpega_ui_redux_1220725820!!.js.download"></script>
   <script type="text/javascript" src="./pzpega_ui_harness_deferred_before_13336715906!!.js.download"></script>
   <script type="text/javascript" src="./pega_ui_harness_deferred_11419665946!!.js.download"></script>
-  <style type="text/css"></style>
-  <style type="text/css"></style>
-  <style type="text/css"></style>
-  <style type="text/css"></style>
   <script type="text/javascript" src="./pzpega_ui_harness_deferred_ts_11619267483!!.js.download"></script>
   <script type="text/javascript"
     src="./pega_validators_11661331873.js!input_formatter_190949282.js!!.js.download"></script>
@@ -726,106 +722,6 @@
   <script type="text/javascript" src="./pzsurvey_ui_userscript_13079088246.js!!.js.download"></script>
   <script type="text/javascript" src="./pzpega_fingerprint_1225378887!!.js.download"></script>
   <script type="text/javascript" src="./pzpega_ui_jittemplate_14200183794.js!!.js.download"></script>
-  <script>pega.ctx.configure_rule_obj_validate = function () { };</script>
-  <script>
-
-
-    /* Rule-Edit-Validate: crmValidatePhoneNumber */
-    var ruleEditValidate_crmValidatePhoneNumber = new validation_ValidationType("crmvalidatephonenumber", ruleEditValidate_crmValidatePhoneNumberJSImpl);
-    ruleEditValidate_crmValidatePhoneNumber.addEventFunction("onchange", ruleEditValidate_crmValidatePhoneNumberJSImpl);
-
-    //=====================CRMVALIDATEPHONENUMBER=============================
-
-    /*
-    @public- Validation function for crmValidatePhoneNumber Rule-Edit-Validate
-    This function returns the validation error object if the field is not a valid phone number.  
-    @param $object$object- The object which represents the input field
-    @return $object$validation_Error - Validation Error object
-    */
-
-    function ruleEditValidate_crmValidatePhoneNumberJSImpl(object) {
-
-      var x = pega.control.PlaceHolder.getValue(object);
-
-      if (null == x || "" == x) {
-        return;
-      }
-
-      // Regular expression for phone number
-      var nonPhoneNumbersMatch = /[^0-9-x,X().]/g;
-
-      var illegalChars = x.match(nonPhoneNumbersMatch);
-
-      if (null != illegalChars) {
-        return display_getValidationError(object, ruleEditValidate_isValidPhoneNumberMsgStr, "", true);
-      }
-
-    }
-
-  </script>
-  <style>
-    .layout-group-tab>.error-table {
-      display: none !important;
-    }
-
-    .layout-group-dashboard>.error-table {
-      display: none !important;
-    }
-
-    a[accesskey]:after,
-    button[accesskey]:after,
-    input[accesskey]:after,
-    label[accesskey]:after,
-    legend[accesskey]:after,
-    textarea[accesskey]:after {
-      margin-left: 0;
-      content: "";
-    }
-
-    .dc-header .headerTabsList {
-      visibility: visible !important;
-    }
-  </style>
-  <style>
-    .content-inner>.field-item>span>span:empty:after {
-      content: '\00a0\00a0' !important;
-    }
-
-    .gridTable .dataValueRead span>span:empty:after {
-      content: '\00a0\00a0' !important;
-    }
-
-    .gridTable .dataValueRead span:empty:after {
-      content: '\00a0\00a0' !important;
-    }
-  </style>
-  <style>
-    div#_popOversContainer>div.pz-po-c-display-vertical-scrollbar-height625 {
-      height: 625px;
-      overflow-y: auto;
-    }
-  </style>
-  <link rel="stylesheet" type="text/css"
-    href="./pzharnessv2_perform85e6f22dc296c7abe1adc6f5277a8120_full_12539513442.css!!.css">
-
-
-
-  <script type="text/javascript" id="inline_yui-gen0">  </script>
-  <script type="text/javascript"
-    id="inline_yui-gen1"> $(document).ready(function () { var dialog = "CAInitialProcessTask"; if (dialog !== "") { $(".pi.pi-script.hidden").removeClass("hidden"); } var dialogText = getDialogText().trim(); if (typeof oChatTabEventHandler != "undefined") { /*oChatTabEventHandler.setChatPlaceHolderText(getDialogText());*/ if (dialogText && dialogText.startsWith("<verbatim>")) { /* in case this is not a voice interaction, remove the verbatim tags */ dialogText = dialogText.substring(10, dialogText.length - 11).trim(); } pega.chat.ChatComponentEventHandler.publishChatEvents("SetDialogPlaceholder", dialogText); } var shell = $('*[data-mdc-id="acprimary"]:visible', window.document); if (shell.length === 0) { shell = $('*[data-mdc-id="acprimary"]', window.document); } window.parent.pega.cs.voiceai.verifyDialog(shell, 0); }); function operatorClick() { var dialogText = getDialogText().replace(/[\s\n\r]+/g, ' ').replace(/&nbsp;/gi, ''); var pushData = { "dialogText": dialogText }; pega.chat.ChatComponentEventHandler.publishEvent("CHAT COMPOSER EVENT", "PUSH DIALOG", pushData); } function getDialogText() { var container, shown = document.getElementsByClassName("show"); if (shown.length == 0) { container = document; } else { container = shown[0]; } return (container.querySelector("[id='DialogContent']").innerHTML); } var actionSection = 'pyCaseActionArea'; document.actionForm = document.main; if (document.actionForm) { var newURL = SafeURL_createFromEncryptedURL(document.actionForm.action); if (newURL) { newURL.put("pyActivity", "FinishAssignment"); document.actionForm.action = newURL.toURL(); } } pega.util.Event.removeListener(document, "keypress", checkEnterKeyNoSubmit); pega.util.Event.addListener(document, "keypress", checkEnterKeyNoSubmit);   /*8/12/2022: This script is no longer required to set role=button to collapsible headers within dynamic layouts. After upgrading to Pega 8.7, the collapsible heading now has a role=button OOTB. See <div role=”button” class=dl-accordion-btn” </div> in DOM*/ function setButtonRole() { /*fixes to div containing header*/ /*$(".collapsible").find('.header-bar').attr("role", "button").removeAttr("aria-label").removeAttr("aria-level").closest('div.collapsible').removeAttr("aria-live");*/ /*fixes to icon that comes with collapsible header*/ /*$(".collapsible").find('.header-bar').find('i.icon').attr("aria-hidden", "true").closest('div').removeAttr("title");*/ } /*window.onload=setButtonRole();*/  pega.ctx.gDirtyOverride = false; $('.layout-group-tablist-menu-nav').each(function () { if ($(this).closest('[data-lg-repeatsource="pyWorkPage.CompositeIndividuals"]').length > 0) { $(this).attr('aria-label', 'View Opened Customer Composite Tabs'); } }); if (pega) { if (pega.u) { if (pega.u.d) { pega.u.d.attachOnload(function () { pega.ui.HarnessContextMgr.set("gDirtyOverride", false); }, true); } } }   </script>
-  <script type="text/javascript"
-    id="inline_yui-gen2"> initializeTasksMenu(); function removeTabindexInAddTaskModal() { var tasksMenuRdls = $('.cs-tasks-menu-rdl'); tasksMenuRdls.each(function () { if ($(this).attr('tabindex') === "0") { $(this).removeAttr('tabindex'); } }) } /*delay in calling function to account for delay in rendering of RDLs in UI */ setTimeout(removeTabindexInAddTaskModal, 1000); function removeGridRoleFromAddTaskModal() { $('div[node_name="CPMTakeActionMenu_GridLayoutOuter"]').find('div[role="grid"]').each(function () { $(this).removeAttr('role').removeAttr('aria-describedby').removeAttr('aria-label'); $(this).find('[role="row"]').removeAttr('role'); $(this).find('[role="gridcell"]').removeAttr('role').removeAttr('aria-hidden').removeAttr('tabindex'); $(this).find('.cs-tasks-menu-rdl').removeAttr('aria-hidden'); }); } setTimeout(removeGridRoleFromAddTaskModal, 1000); function isDialogVisible(dialog) { return $(dialog).css('visibility') === "visible"; } function setFocusFirstHeadingInDialog(dialog) { var firstHeaderInDialog = $(dialog).find(':header').first(); var ootbModalDialogHeading = $(dialog).find('#modaldialog_hd_title'); var dialogHasErrorMessageContainer = $(dialog).find('.modal-error-list-container').length > 0 || $(dialog).find('.error-list-container').length > 0; if (dialogHasErrorMessageContainer) { /*do nothing*/ } else if (ootbModalDialogHeading.length > 0) { ootbModalDialogHeading.attr('tabindex', '-1').focusin(function () { this.style.border = "2px solid black"; }).focusout(function () { this.style.border = ""; }).focus(); } else if (firstHeaderInDialog.length > 0) { firstHeaderInDialog.attr('tabindex', '-1').focusin(function () { this.style.border = "2px solid black"; }).focusout(function () { this.style.border = ""; }).focus(); } } function setIntervalForDialogHeadingFocus() { var counter = 0; var checkForVisibleDialog = setInterval(function () { counter++; $('div[role="dialog"]:visible').each(function () { if (isDialogVisible(this)) { clearInterval(checkForVisibleDialog); setFocusFirstHeadingInDialog(this); } else if (counter === 20) { clearInterval(checkForVisibleDialog); } }) }, 500); } setIntervalForDialogHeadingFocus(); </script>
-  <script type="text/javascript"
-    id="inline_yui-gen3"> (function () { var inputTxt = $(".advanced-search-wrapper > .item-1 > span > input[type='text']"); inputTxt.each(function () { var elem = $(this); if (typeof handleAdvancedSearch !== "undefined") { elem.on("input", handleAdvancedSearch); } }); })(); function cskmHandleSearch() { var cskmInput = $(".cskm-search-wrapper input[type='text']"); var cskmSearch = $(".cskm-search-wrapper >.item-2"); var cskmCloseIcon = $(".cskm-search-wrapper >.item-3"); var dInput = cskmInput.val(); if (dInput) { cskmSearch.css("display", "none"); cskmCloseIcon.css("display", "block"); } else { cskmSearch.css("display", "block"); cskmCloseIcon.css("display", "none"); } } cskmHandleSearch(); $(function () { var cskmInput = $(".cskm-search-wrapper input[type='text']"); cskmInput.on("input", cskmHandleSearch); });   </script>
-  <script type="text/javascript" id="inline_yui-gen4">  </script>
-  <script type="text/javascript" id="inline_yui-gen5">  </script>
-  <script type="text/javascript" id="inline_yui-gen6">  </script>
-  <script type="text/javascript" id="inline_yui-gen7">  </script>
-  <script type="text/javascript" id="inline_yui-gen8">  </script>
-  <script type="text/javascript" id="inline_yui-gen9">  </script>
-  <script> try { /* BUG-595353 : workaround to fix IE bug */ function isIE() { if (navigator.appName === 'Microsoft Internet Explorer') { return true; } else if (navigator.appName === 'Netscape' && /Trident/.test(navigator.userAgent)) { /* IE 11 */ return true; } return false; } if (isIE()) { window.onstorage = function (e) { /* Leave this empty */ }; } } catch (e) { } var initialVars = { "dynamic_context": { "pzHarnessID": "HIDED55B97095C10F3BFB1799F19A388A6D", "assign_RDL": "eval('if(!pega.ctx.RDL)pega.ctx.RDL={};')", "DesktopUserSessionInfo_gStrOperatorId": "624706", "bEnableUniqueId": "true", "AppDynamicsAppKey": "", "gStrWindowName": "", "gStrWinNameDefault": "Composite_H4MXOKA5H5EC8VYWNK73CD26JA06BPFY7A", "strHarnessMode": "ACTION", "inDeveloperDesktop": "false", "pyPerformThreadWindowCheck": "true", "gIsMashupContent": "", "bIsPreGeneratedMashup": "", "topHarness": "", "isDesignViewIframe": "", "bFlowAction": "", "strPyID": "ACC-327003", "strPyLabel": "Accommodations", "desktopAvailableSpacesList": "Work,", "bClientValidation": "", "bExpressionCalculation": "true", "isUITemplatized": true, "bReadOnly": "-1", "confirm_harness_loaded": false, "strPrimaryPage": "pyWorkPage" }, "pega.d": { "pyUID": "624706", "activeCSRFToken": "3e6c9b81dbd47f9c5dc0384d38af5732", "obfuscateKey": "354dd538ab3c262b210427096cac6ea3", "globalobfuscateKey": "dad83fe2fb5d7672f958b22fcc7d704a", "pxReqURI": "/prweb/PRAuth/app/TEDDevR8/LPuB4vZ9OMeB9DNoFEtNn5xJWNSK0dN6*/!PS2__TABTHREAD1/ACPRIMARY_1", "pxHelpURI": "https://community.pega.com/help_v87", "desktopSubType": "Composite", "portalName": "CPMInteractionPortal", "portalCategory": "", "pzUnitTestPKey": "CPMInteractionPortal", "KeepPageMessages": "false" } }; var deferredVars = { "pega.desktop": { "pyRequestorToken": "6", "pxClientSession": "H4MXOKA5H5EC8VYWNK73CD26JA06BPFY7A", "pzProcessApplicationSwitch": 'pzuiactionzzz=CXtycX1mZTNmNDY5YjMwMWM3MTE2OWRkODRiMTNiNGMxNzg2MzYwOGJlM2M3YmExMWZjZDUzMWY3NTZiYWIwMTQzZDJlOGZiZTgwMjEwYWYxNDE4YjY0ODA5MDkyMzYyOGVkNWQ2OGQzZDUwY2Q0MTg2OWM3NDc5MTZhYjdkMjFmMDAxMw%3D%3D*', "showDesktop": 'pzuiactionzzz=CXtycX03NzQzYTEzNWUwODVjYTc3YzY1MGUxMDNlZTM4NGI1ZTRhYjMwOWUyZTc3ZGYwZGQ2NjFhMmViMjViOGIxMzM3ODNjMjcyZDg0MGY2NmJlZGI4YTI2MjIxNmU2NzgzMGI%3D*', "pzProcessPortalSwitch": 'pzuiactionzzz=CXtycX03NzQzYTEzNWUwODVjYTc3YzY1MGUxMDNlZTM4NGI1ZTY5NzI2ZDA4ZjcxMzQ4ZDNlYzUwNThiMDE5YjQ4OTZiMDBhOTE0ZDEyZjhiZDA2YWJjZTNiZDNiYTBkNWI1MmU%3D*', "pzLoadHelpFromFlowAction": 'pzuiactionzzz=CXtycX04YzIzOGQwN2RlZDAzNzliY2NiMjY4YWY4NTdmZjE0YTZmNTJlYWMwNTc0NjdmOGNkZWNiODBkMzNjNTNlMzNmY2E0YjdlODc5NGZiYTU2OGEwNTk1Y2Q2OWZjYzgxNDI%3D*', "pzLoadHelpInstruction": 'pzuiactionzzz=CXtycX1lMjJlMGY2ODVjZWJlYmYzY2VhZWJhNmJiMTQwMzhkNDM4MTdiMjUxNDhlYzg2ODAzODBmMDVhYmQ0NmNiODhl*' }, "pega.u.d": { "pyPreventXSSInLabel": false, "acName": "acprimary", "recordId": "acprimary_1", "isMDC": true, "isACContext": true, "mdcName": "acprimary", "acName": "acprimary", "recordId": "acprimary_1", "iconPath": "cmicons/pycase.svg", "pyHarnessShortDesc": "", "documentTitle": "", "url": "/prweb/PRAuth/app/TEDDevR8/LPuB4vZ9OMeB9DNoFEtNn5xJWNSK0dN6*/!PS2__TABTHREAD1/ACPRIMARY_1?&pzTransactionId=14a950b2bf7c5544a460554074c1f0db&pzFromFrame=pyWorkPage&pzPrimaryPageName=pyWorkPage", "gClearExpressionData": false, "pushservice_transport": "websocket", "pushservice_fallback": "long-polling", "pushservice_requestorID": "CXtwZH1BQUFBRURTUHJ5aXZvMEkxVE51YWhlMU9OMTdxdG5ld0hvb3NXb0RKc2M1MzlJN3pnZHZER0hnczR5Z3FHWEh5bDA5RThBPT0%3D", "pushservice_requestorContextPath": "/prweb", "pushservice_pushServletPath": "/PRPushServlet/app/TEDDevR8/!@07fc03be6fde591756278169f0f18fd1!", "pushservice_portalName": "CPMInteractionPortal", "skipEmptyCaption": null, "displayFieldNameInValidationMsg": null, "primaryPageName": "pyWorkPage", "last": "value" } }; </script>
-  <link rel="stylesheet" type="text/css"
-    href="./pzharnessv2_tabbedscreenflow7a888871458affd100ef913230cd164fd_full_13378252034.css!!.css">
   <script type="text/javascript"
     src="./pega_cpm_eventManager_11465657302!copyssn_1401506472.js!setperformfocusorder_13201338137.js!ssa508utilities_starter_11078245593.js!refreshcpmportalharness_13561964044.js!accessibilitys.download"></script>
   <script type="text/javascript"
