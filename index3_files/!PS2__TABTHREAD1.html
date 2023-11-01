@@ -3556,7 +3556,8 @@
                                                                                                               aria-hidden="true"
                                                                                                               class="pi pi-close-box"
                                                                                                               data-click="."></i></button>
-                                                                                                        </span></div>
+                                                                                                        </span>
+                                                                                                      </div>
                                                                                                     </div>
                                                                                                   </div>
                                                                                                 </div>
@@ -4437,7 +4438,8 @@
                                                                                                       name="pyNoFeed_D_pzFeed_385e4d86-6d9a-4457-85ca-68209b445f4f"
                                                                                                       alt="No posts">
                                                                                                   </i>
-                                                                                                </span></div>
+                                                                                                </span>
+                                                                                              </div>
                                                                                             </div>
                                                                                           </div>
                                                                                         </div>
@@ -4473,7 +4475,8 @@
                                                                                                   data-test-id="201806130521080910492a1188-9af1-4d03-9cc4-555fce15aa64419"
                                                                                                   class="supporting_text">Be
                                                                                                   the first to
-                                                                                                  post!</span></div>
+                                                                                                  post!</span>
+                                                                                              </div>
                                                                                             </div>
                                                                                           </div>
                                                                                         </div>
@@ -4699,7 +4702,8 @@
                                                                                                       name="pyNoFeed_D_pzFeed_385e4d86-6d9a-4457-85ca-68209b445f4f"
                                                                                                       alt="No posts">
                                                                                                   </i>
-                                                                                                </span></div>
+                                                                                                </span>
+                                                                                              </div>
                                                                                             </div>
                                                                                           </div>
                                                                                         </div>
@@ -4735,7 +4739,8 @@
                                                                                                   data-test-id="201806130521080910492a1188-9af1-4d03-9cc4-555fce15aa64419"
                                                                                                   class="supporting_text">Be
                                                                                                   the first to
-                                                                                                  post!</span></div>
+                                                                                                  post!</span>
+                                                                                              </div>
                                                                                             </div>
                                                                                           </div>
                                                                                         </div>
@@ -5353,7 +5358,8 @@
                                                                                       class="Strong pzhc pzbutton cancelCSRAssistantButton"
                                                                                       title="Interrupt the Assistant and resume regular chat"
                                                                                       onclick="cancelAutoPrompt()">Cancel
-                                                                                      Assistant </button> </div>
+                                                                                      Assistant </button>
+                                                                                  </div>
                                                                                   <script> var CSRAssistantAvailable = false; /* whether or not the Assistant should be offered (for now, whether we are in a chat) */ var assistantButton = null; var assistantCancelButton = null; $(document).ready(function () { initializeAssistant(); }); function initializeAssistant() { if (!pega.cs.notificationmanager.isCurrentDCTabInFocus()) { /* we need to look for visible fields, so if agent has switched to another tab then try again in half a second */ window.setTimeout(initializeAssistant, 500); return; } /* determine whether to show the CSR Assistant button */ if (!$("[node_name=CPMContactVerified]").is(':visible') && (!$("[node_name=CACancel]").is(':visible')) && (!$("[node_name=OutboundEmailContent]").is(':visible'))) { /* Assistant is not available on the CPMContactVerified, Send Email or Cancel This Work screen */ CSRAssistantAvailable = (typeof (autoPrompt) == "function"); /* autoPrompt() is defined in the chat form */ } if (CSRAssistantAvailable) { /* see if there are any fields that can be passed; if not, don't show the button */ var buttons = document.querySelectorAll("[name$=CSRAssistantButtonLocator]"); if (buttons.length > 0) { /* should always be the case; get the newest one */ assistantButton = buttons[buttons.length - 1]; } if (assistantButton) { var allPromptsObj = generateChatPrompts(); CSRAssistantAvailable = false; for (var i = 0; i < allPromptsObj.length; i++) { var item = allPromptsObj[i]; if (!item.disabled) { /* found a field that can be passed */ CSRAssistantAvailable = true; break; } } } } var _keepPageMessages = pega.u.d.KeepPageMessages; pega.u.d.KeepPageMessages = "true"; pega.api.ui.actions.refreshSection({ section: 'CSRAssistantButton', dataTransform: { name: "setCSRAssistantAvailable", parameters: [{ name: "value", value: CSRAssistantAvailable ? "AVAILABLE" : "" }] } }); pega.u.d.KeepPageMessages = _keepPageMessages; } $(window).on("beforeunload", assistantBeforeUnload); /* called when the CSR refreshes, to cancel the Assistant if it's in flight */ function assistantBeforeUnload() { if ((typeof (inAutoPrompt) === "function") && inAutoPrompt()) { cancelAutoPrompt(); } } /* called when the Assistant button is clicked, to note which button it was (in case there are multiple cases open) -- we also put the field information into a page list for use by the generated section that presents the fields to the CSR */ function registerAssistantButton(event) { assistantButton = event.target; /* find the corresponding cancel button */ var element = assistantButton.parentElement; while (element) { var buttons = element.getElementsByClassName("cancelCSRAssistantButton"); if (buttons.length > 0) { assistantCancelButton = buttons[0]; break; } element = element.parentElement; } /* generate a list of Embed-PegaCA-Assistant-Field pages so we can present the list in an autogenerated section */ var prompts = generateChatPrompts(); /* for some reason, if an option contains &amp; it breaks pega.api.ui.actions.runActivity; since we don't need options for this form, just remove the options */ for (var p = 0; p < prompts.length; p++) { var prompt = prompts[p]; if (prompt.options) { delete prompt.options; /* for (var op = prompt.options.length - 1; op >= 0; op--) { var option = prompt.options[op]; if ((option.value.indexOf("&amp;") > -1) || (option.text.indexOf("&amp;") > -1)) { prompts[p].options.splice(op, 1); } } */ } } var strParam = encodeURIComponent(JSON.stringify(prompts)); var activityParams = { name: "AssistantPageList", parameters: [{ name: "fieldObj", value: strParam }], contextPage: "" }; /*Code for registration...*/  /*Code for registration--ENd of code*/ pega.api.ui.actions.runActivity(activityParams); } /* go through this section and build an object with information about all the fields */ function generateChatPrompts() { var result = []; var node = {}; if (assistantButton == null) { var buttons = document.querySelectorAll("[name$=CSRAssistantButtonLocator]"); if (buttons.length > 0) { assistantButton = buttons[0]; } } var container = null; if (assistantButton) { container = assistantButton.closest("section"); } if (!container) { console.log("Error: button container not found. Button is ", assistantButton); alert("There was an error trying to load the Assistant -- please try again."); return {}; } var fields = container.getElementsByTagName("*"); var labels = container.getElementsByTagName("LABEL"); radioNodes = []; var dateRangeNodes = {}; for (var i = 0; i < fields.length; i++) { var field = fields[i]; if (field.style.display == "hidden") { continue; } /* we don't support date ranges; so we show them unselectable on the list */ if (field.getAttribute("data-ctl") == '["DateRange"]' && field.tagName == "INPUT" && field.type == "hidden") { var id = field.id; if (!dateRangeNodes["id_" + id]) { dateRangeNodes["id_" + id] = true; node = {}; node.disabled = true; node.prompt = "[Date range not passable]"; result.push(node); } } if ((field.tagName == "INPUT" || field.tagName == "SELECT" || field.tagName == "CHECKBOX" || field.tagName == "TEXTAREA") && field.type != "hidden" && field.id != "" && $(field).is(":visible") && !$(field).prop("disabled")) { if (field.type == "radio") { var radioGroup = field.parentElement; while (radioGroup && radioGroup.getAttribute("role") != "radiogroup") { radioGroup = radioGroup.parentElement; } node = getRadioNode(radioGroup); /* if this is part of a new radio group, retrieve a node that looks like a dropdown */ if (field.getAttribute("validationtype") && field.getAttribute("validationtype").indexOf("required") > -1) { if (node) { node.sending = true; } } if (node) { if (node.prompt == "") { node.prompt = "Unidentified radio"; node.disabled = true; node.sending = false; } else { node.disabled = false; } result.push(node); } } else { /* not a radio button */ node = {}; node.disabled = false; if (field.getAttribute("validationtype") && field.getAttribute("validationtype").indexOf("required") > -1) { node.sending = true; } /* for some required fields we can only tell from a containing div's "required" class */ if (!node.sending) { var container = field.parentElement; while (container) { if (container.className.indexOf("required") > -1) { node.sending = true; break; } container = container.parentElement; } } node.id = field.id; node.name = field.name; node.title = field.title; if (field.type == "checkbox") { node.prevValue = field.checked ? "true" : "false"; } else { node.prevValue = field.value; } node.type = field.type; node.placeholder = field.placeholder; node.prompt = node.title; if (field.options) { node.options = []; for (var j = 0; j < field.options.length; j++) { node.options[j] = { value: field.options[j].value, text: field.options[j].innerHTML }; } } for (var j = 0; j < labels.length; j++) { /* find the label */ if (labels[j].htmlFor == node.id) { if (labels[j].innerHTML != "") { var kid = labels[j]; while (kid.children.length > 0) { /*skip the check mark and cancel as these are added for the review of AI autopopulated fields. We need the main element's text and not of these children.*/ if (kid.children[0].id.startsWith("ACC") || kid.children[0].id.startsWith("REJ")) break; /* the text we want is in the innermost element */ kid = kid.children[0]; } node.prompt = kid.innerText; } } } /* prompt is the backup tooltip and vice versa */ if (node.title == "") { node.title = node.prompt; } /* for fields without prompts (e.g., checkboxes in repeating grids), look for relevant information */ if (node.prompt == "") { var tr = field.closest("tr"); if (tr) { var tds = tr.getElementsByTagName("td"); for (var t = 0; t < tds.length; t++) { var text = tds[t].innerText; if (text != "") { if (node.prompt != "") { node.prompt += " | "; } node.prompt += text; } } } } if (node.prompt == "") { console.log("Unidentified field: ", field); node.prompt = "Unidentified " + node.type; node.disabled = true; node.sending = false; } result.push(node); } } } return result; } var radioNodes = []; function getRadioNode(radioGroup) { var node = null; var labels = document.getElementsByTagName("LABEL"); for (var i = 0; i < radioNodes.length; i++) { if (radioNodes[i] == radioGroup.innerHTML) { /* we have already processed this group */ return node; } } /* keep track of the groups we have processed */ radioNodes.push(radioGroup.innerHTML); node = {}; node.id = "RADIO"; /* no ID; we will use the button's ID to apply the selection */ node.title = radioGroup.getAttribute("aria-label"); node.prompt = node.title; node.type = "radio"; node.prevValue = ""; node.options = []; var buttons = radioGroup.getElementsByTagName("input"); for (var b = 0; b < buttons.length; b++) { var button = buttons[b]; if (button.type == "radio") { var displayText = button.value; /* default label */ for (var j = 0; j < labels.length; j++) { /* if we can find the corresponding label, that's what we will use */ if (labels[j].htmlFor == button.id) { if (labels[j].innerHTML != "") { var kid = labels[j]; while (kid.children.length > 0) { /* the text we want is in the innermost element */ kid = kid.children[0]; } displayText = kid.innerText; } } } node.options[b] = { value: button.id, text: displayText }; if (button.checked) { node.prevValue = button.id; } } } return node; } var chatPromptObj = []; </script>
                                                                                 </div>
                                                                                 <div
@@ -6195,7 +6201,8 @@
                                                                                                           type="hidden"
                                                                                                           name="PSelectedAccommodationPActiveStandardAccommodations2colWidthGBL"
                                                                                                           id="PSelectedAccommodationPActiveStandardAccommodations2colWidthGBL"
-                                                                                                          value=""></td>
+                                                                                                          value="">
+                                                                                                      </td>
                                                                                                       <td valign="top"
                                                                                                         class="mainGridTableCell">
                                                                                                         <input
@@ -8074,48 +8081,44 @@
                                                                                                                             class="content-item content-field item-1 remove-left-spacing remove-right-spacing   dataValueWrite flex flex-row "
                                                                                                                             string_type="field"
                                                                                                                             reserve_space="false">
-                                                                                                                            <div
-                                                                                                                              id="CT"
-                                                                                                                              rcw=".AccommodationIdentifier"
-                                                                                                                              rc=".AccommodationIdentifier Changes"
-                                                                                                                              cellid="7">
-                                                                                                                              <select
-                                                                                                                                data-ctl="[&quot;Dropdown&quot;]"
-                                                                                                                                data-test-id="202105111603240678402129"
-                                                                                                                                class="standard"
-                                                                                                                                id="a277b38f"
-                                                                                                                                name="$PpyWorkPage$pAccommodations$pSelectedAccommodation$pActiveStandardAccommodations$l11$pImpairmentTypeIdentifier"
-                                                                                                                                validationtype="integer"
-                                                                                                                                data-change="[[&quot;refresh&quot;, [&quot;otherSection&quot;,&quot;StandardAccommodationDetails&quot;, &quot;&quot;, &quot;=&quot;, &quot;&quot;, &quot;UpdateChangeFlag,ListSubscript=#~pyWorkPage.Accommodations.SelectedAccommodation.ActiveStandardAccommodations(11).pxListSubscript~#&quot;,&quot;:event&quot;,&quot;&quot;,[&quot;pzuiactionzzz=CXt0cn17UFMyX19UQUJUSFJFQUQxL0FDUFJJTUFSWV8xfWY3YjI0NWZlOWY5MWU5ZWNiNWRlYTdkZGE0MGQzMWUzZWIzYjBiYWFhMzgxOTI2Mjc3Nzg1MzIxODFlMjZlYjAxY2RkNzBhZmEwMGUwMzc4NTNhMWRkNzYyZjkwZGQwYjQyNjgyNWI1NTdjZDc3ZmRhOTYxMTY1YjdjOWRkZmE2ODU4YzRkMjMxYTk4NDMxYWRkNzZhZWZiMmI3YWZhNjA4YTBkODYwYjM2OTE3MWQxMWY5ZjAwYTRmMzQ2MjAwMmI3M2EzN2YyNDkwNmVmZjg5NDg0MzdjZGM0YzhhYmFkMDA0MzQ0MjdjMzU1NTM2YWI1MDFkNWQ2MDFkMzY4ZmNmZDk2OGY3NDMwM2NhZjQ0YzljZjkzZTY2ZjcyZTNkZA%3D%3D*&quot;,{},{&quot;Type&quot;:&quot;Standard&quot;}],&quot;pyWorkPage.Accommodations.SelectedAccommodation.ActiveStandardAccommodations(11)&quot;]]]"
-                                                                                                                                title="Impairment Type for Handwritten notes"
-                                                                                                                                style="width:238px">
-                                                                                                                                <option
-                                                                                                                                  value="3">
-                                                                                                                                  Cognitive
-                                                                                                                                  or
-                                                                                                                                  Learning
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  selected=""
-                                                                                                                                  value="1">
-                                                                                                                                  Deaf
-                                                                                                                                  or
-                                                                                                                                  Hard
-                                                                                                                                  of
-                                                                                                                                  Hearing
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  value="5">
-                                                                                                                                  Psychological
-                                                                                                                                  or
-                                                                                                                                  Emotional
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  value="6">
-                                                                                                                                  Other
-                                                                                                                                </option>
-                                                                                                                              </select>
-                                                                                                                            </div>
+
+                                                                                                                            <select
+                                                                                                                              data-ctl="[&quot;Dropdown&quot;]"
+                                                                                                                              data-test-id="202105111603240678402129"
+                                                                                                                              class="standard"
+                                                                                                                              id="a277b38f"
+                                                                                                                              name="$PpyWorkPage$pAccommodations$pSelectedAccommodation$pActiveStandardAccommodations$l11$pImpairmentTypeIdentifier"
+                                                                                                                              validationtype="integer"
+                                                                                                                              data-change="[[&quot;refresh&quot;, [&quot;otherSection&quot;,&quot;StandardAccommodationDetails&quot;, &quot;&quot;, &quot;=&quot;, &quot;&quot;, &quot;UpdateChangeFlag,ListSubscript=#~pyWorkPage.Accommodations.SelectedAccommodation.ActiveStandardAccommodations(11).pxListSubscript~#&quot;,&quot;:event&quot;,&quot;&quot;,[&quot;pzuiactionzzz=CXt0cn17UFMyX19UQUJUSFJFQUQxL0FDUFJJTUFSWV8xfWY3YjI0NWZlOWY5MWU5ZWNiNWRlYTdkZGE0MGQzMWUzZWIzYjBiYWFhMzgxOTI2Mjc3Nzg1MzIxODFlMjZlYjAxY2RkNzBhZmEwMGUwMzc4NTNhMWRkNzYyZjkwZGQwYjQyNjgyNWI1NTdjZDc3ZmRhOTYxMTY1YjdjOWRkZmE2ODU4YzRkMjMxYTk4NDMxYWRkNzZhZWZiMmI3YWZhNjA4YTBkODYwYjM2OTE3MWQxMWY5ZjAwYTRmMzQ2MjAwMmI3M2EzN2YyNDkwNmVmZjg5NDg0MzdjZGM0YzhhYmFkMDA0MzQ0MjdjMzU1NTM2YWI1MDFkNWQ2MDFkMzY4ZmNmZDk2OGY3NDMwM2NhZjQ0YzljZjkzZTY2ZjcyZTNkZA%3D%3D*&quot;,{},{&quot;Type&quot;:&quot;Standard&quot;}],&quot;pyWorkPage.Accommodations.SelectedAccommodation.ActiveStandardAccommodations(11)&quot;]]]"
+                                                                                                                              title="Impairment Type for Handwritten notes"
+                                                                                                                              style="width:238px">
+                                                                                                                              <option
+                                                                                                                                value="3">
+                                                                                                                                Cognitive
+                                                                                                                                or
+                                                                                                                                Learning
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                selected=""
+                                                                                                                                value="1">
+                                                                                                                                Deaf
+                                                                                                                                or
+                                                                                                                                Hard
+                                                                                                                                of
+                                                                                                                                Hearing
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                value="5">
+                                                                                                                                Psychological
+                                                                                                                                or
+                                                                                                                                Emotional
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                value="6">
+                                                                                                                                Other
+                                                                                                                              </option>
+                                                                                                                            </select>
+
                                                                                                                           </div>
                                                                                                                         </div>
                                                                                                                       </div>
@@ -8539,7 +8542,8 @@
                                                                                                           type="hidden"
                                                                                                           name="PSelectedAccommodationPLocalAccommodations2colWidthGBL"
                                                                                                           id="PSelectedAccommodationPLocalAccommodations2colWidthGBL"
-                                                                                                          value=""></td>
+                                                                                                          value="">
+                                                                                                      </td>
                                                                                                       <td valign="top"
                                                                                                         class="mainGridTableCell">
                                                                                                         <input
@@ -8814,34 +8818,30 @@
                                                                                                                             class="content-item content-field item-1 remove-left-spacing remove-right-spacing   dataValueWrite flex flex-row "
                                                                                                                             string_type="field"
                                                                                                                             reserve_space="false">
-                                                                                                                            <div
-                                                                                                                              id="CT"
-                                                                                                                              rcw=".AccommodationIdentifier"
-                                                                                                                              rc=".AccommodationIdentifier Changes"
-                                                                                                                              cellid="7">
-                                                                                                                              <select
-                                                                                                                                data-ctl="[&quot;Dropdown&quot;]"
-                                                                                                                                data-test-id="202105111603240678402129"
-                                                                                                                                class="standard"
-                                                                                                                                id="753a634a"
-                                                                                                                                name="$PpyWorkPage$pAccommodations$pSelectedAccommodation$pLocalAccommodations$l1$pImpairmentTypeIdentifier"
-                                                                                                                                validationtype="integer"
-                                                                                                                                data-change="[[&quot;refresh&quot;, [&quot;otherSection&quot;,&quot;LocalAccommodationDetails&quot;, &quot;&quot;, &quot;=&quot;, &quot;&quot;, &quot;UpdateChangeFlag,ListSubscript=#~pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(1).pxListSubscript~#&quot;,&quot;:event&quot;,&quot;&quot;,[&quot;pzuiactionzzz=CXt0cn17UFMyX19UQUJUSFJFQUQxL0FDUFJJTUFSWV8xfWY3YjI0NWZlOWY5MWU5ZWNiNWRlYTdkZGE0MGQzMWUzZWIzYjBiYWFhMzgxOTI2Mjc3Nzg1MzIxODFlMjZlYjAxY2RkNzBhZmEwMGUwMzc4NTNhMWRkNzYyZjkwZGQwYjQyNjgyNWI1NTdjZDc3ZmRhOTYxMTY1YjdjOWRkZmE2ODU4YzRkMjMxYTk4NDMxYWRkNzZhZWZiMmI3YWZhNjA4YTBkODYwYjM2OTE3MWQxMWY5ZjAwYTRmMzQ2MjAwMmI3M2EzN2YyNDkwNmVmZjg5NDg0MzdjZGM0YzhhYmFkMDA0MzQ0MjdjMzU1NTM2YWI1MDFkNWQ2MDFkMzY4ZmNkMmUyYWU0ZGJmMTRhMGExNzQyZDUwODJkNDQ3NzlmMQ%3D%3D*&quot;,{},{&quot;Type&quot;:&quot;Local&quot;}],&quot;pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(1)&quot;]]]"
-                                                                                                                                title="Impairment Type for Bariatric chair"
-                                                                                                                                style="width:238px">
-                                                                                                                                <option
-                                                                                                                                  selected=""
-                                                                                                                                  value="4">
-                                                                                                                                  Mobility
-                                                                                                                                  or
-                                                                                                                                  Physical
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  value="6">
-                                                                                                                                  Other
-                                                                                                                                </option>
-                                                                                                                              </select>
-                                                                                                                            </div>
+
+                                                                                                                            <select
+                                                                                                                              data-ctl="[&quot;Dropdown&quot;]"
+                                                                                                                              data-test-id="202105111603240678402129"
+                                                                                                                              class="standard"
+                                                                                                                              id="753a634a"
+                                                                                                                              name="$PpyWorkPage$pAccommodations$pSelectedAccommodation$pLocalAccommodations$l1$pImpairmentTypeIdentifier"
+                                                                                                                              validationtype="integer"
+                                                                                                                              data-change="[[&quot;refresh&quot;, [&quot;otherSection&quot;,&quot;LocalAccommodationDetails&quot;, &quot;&quot;, &quot;=&quot;, &quot;&quot;, &quot;UpdateChangeFlag,ListSubscript=#~pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(1).pxListSubscript~#&quot;,&quot;:event&quot;,&quot;&quot;,[&quot;pzuiactionzzz=CXt0cn17UFMyX19UQUJUSFJFQUQxL0FDUFJJTUFSWV8xfWY3YjI0NWZlOWY5MWU5ZWNiNWRlYTdkZGE0MGQzMWUzZWIzYjBiYWFhMzgxOTI2Mjc3Nzg1MzIxODFlMjZlYjAxY2RkNzBhZmEwMGUwMzc4NTNhMWRkNzYyZjkwZGQwYjQyNjgyNWI1NTdjZDc3ZmRhOTYxMTY1YjdjOWRkZmE2ODU4YzRkMjMxYTk4NDMxYWRkNzZhZWZiMmI3YWZhNjA4YTBkODYwYjM2OTE3MWQxMWY5ZjAwYTRmMzQ2MjAwMmI3M2EzN2YyNDkwNmVmZjg5NDg0MzdjZGM0YzhhYmFkMDA0MzQ0MjdjMzU1NTM2YWI1MDFkNWQ2MDFkMzY4ZmNkMmUyYWU0ZGJmMTRhMGExNzQyZDUwODJkNDQ3NzlmMQ%3D%3D*&quot;,{},{&quot;Type&quot;:&quot;Local&quot;}],&quot;pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(1)&quot;]]]"
+                                                                                                                              title="Impairment Type for Bariatric chair"
+                                                                                                                              style="width:238px">
+                                                                                                                              <option
+                                                                                                                                selected=""
+                                                                                                                                value="4">
+                                                                                                                                Mobility
+                                                                                                                                or
+                                                                                                                                Physical
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                value="6">
+                                                                                                                                Other
+                                                                                                                              </option>
+                                                                                                                            </select>
+
                                                                                                                           </div>
                                                                                                                         </div>
                                                                                                                       </div>
@@ -10274,48 +10274,44 @@
                                                                                                                             class="content-item content-field item-1 remove-left-spacing remove-right-spacing   dataValueWrite flex flex-row "
                                                                                                                             string_type="field"
                                                                                                                             reserve_space="false">
-                                                                                                                            <div
-                                                                                                                              id="CT"
-                                                                                                                              rcw=".AccommodationIdentifier"
-                                                                                                                              rc=".AccommodationIdentifier Changes"
-                                                                                                                              cellid="7">
-                                                                                                                              <select
-                                                                                                                                data-ctl="[&quot;Dropdown&quot;]"
-                                                                                                                                data-test-id="202105111603240678402129"
-                                                                                                                                class="standard"
-                                                                                                                                id="86ad204b"
-                                                                                                                                name="$PpyWorkPage$pAccommodations$pSelectedAccommodation$pLocalAccommodations$l10$pImpairmentTypeIdentifier"
-                                                                                                                                validationtype="integer"
-                                                                                                                                data-change="[[&quot;refresh&quot;, [&quot;otherSection&quot;,&quot;LocalAccommodationDetails&quot;, &quot;&quot;, &quot;=&quot;, &quot;&quot;, &quot;UpdateChangeFlag,ListSubscript=#~pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(10).pxListSubscript~#&quot;,&quot;:event&quot;,&quot;&quot;,[&quot;pzuiactionzzz=CXt0cn17UFMyX19UQUJUSFJFQUQxL0FDUFJJTUFSWV8xfWY3YjI0NWZlOWY5MWU5ZWNiNWRlYTdkZGE0MGQzMWUzZWIzYjBiYWFhMzgxOTI2Mjc3Nzg1MzIxODFlMjZlYjAxY2RkNzBhZmEwMGUwMzc4NTNhMWRkNzYyZjkwZGQwYjQyNjgyNWI1NTdjZDc3ZmRhOTYxMTY1YjdjOWRkZmE2ODU4YzRkMjMxYTk4NDMxYWRkNzZhZWZiMmI3YWZhNjA4YTBkODYwYjM2OTE3MWQxMWY5ZjAwYTRmMzQ2MjAwMmI3M2EzN2YyNDkwNmVmZjg5NDg0MzdjZGM0YzhhYmFkMDA0MzQ0MjdjMzU1NTM2YWI1MDFkNWQ2MDFkMzY4ZmNkMmUyYWU0ZGJmMTRhMGExNzQyZDUwODJkNDQ3NzlmMQ%3D%3D*&quot;,{},{&quot;Type&quot;:&quot;Local&quot;}],&quot;pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(10)&quot;]]]"
-                                                                                                                                title="Impairment Type for CapTel service"
-                                                                                                                                style="width:238px">
-                                                                                                                                <option
-                                                                                                                                  value="3">
-                                                                                                                                  Cognitive
-                                                                                                                                  or
-                                                                                                                                  Learning
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  selected=""
-                                                                                                                                  value="1">
-                                                                                                                                  Deaf
-                                                                                                                                  or
-                                                                                                                                  Hard
-                                                                                                                                  of
-                                                                                                                                  Hearing
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  value="5">
-                                                                                                                                  Psychological
-                                                                                                                                  or
-                                                                                                                                  Emotional
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  value="6">
-                                                                                                                                  Other
-                                                                                                                                </option>
-                                                                                                                              </select>
-                                                                                                                            </div>
+
+                                                                                                                            <select
+                                                                                                                              data-ctl="[&quot;Dropdown&quot;]"
+                                                                                                                              data-test-id="202105111603240678402129"
+                                                                                                                              class="standard"
+                                                                                                                              id="86ad204b"
+                                                                                                                              name="$PpyWorkPage$pAccommodations$pSelectedAccommodation$pLocalAccommodations$l10$pImpairmentTypeIdentifier"
+                                                                                                                              validationtype="integer"
+                                                                                                                              data-change="[[&quot;refresh&quot;, [&quot;otherSection&quot;,&quot;LocalAccommodationDetails&quot;, &quot;&quot;, &quot;=&quot;, &quot;&quot;, &quot;UpdateChangeFlag,ListSubscript=#~pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(10).pxListSubscript~#&quot;,&quot;:event&quot;,&quot;&quot;,[&quot;pzuiactionzzz=CXt0cn17UFMyX19UQUJUSFJFQUQxL0FDUFJJTUFSWV8xfWY3YjI0NWZlOWY5MWU5ZWNiNWRlYTdkZGE0MGQzMWUzZWIzYjBiYWFhMzgxOTI2Mjc3Nzg1MzIxODFlMjZlYjAxY2RkNzBhZmEwMGUwMzc4NTNhMWRkNzYyZjkwZGQwYjQyNjgyNWI1NTdjZDc3ZmRhOTYxMTY1YjdjOWRkZmE2ODU4YzRkMjMxYTk4NDMxYWRkNzZhZWZiMmI3YWZhNjA4YTBkODYwYjM2OTE3MWQxMWY5ZjAwYTRmMzQ2MjAwMmI3M2EzN2YyNDkwNmVmZjg5NDg0MzdjZGM0YzhhYmFkMDA0MzQ0MjdjMzU1NTM2YWI1MDFkNWQ2MDFkMzY4ZmNkMmUyYWU0ZGJmMTRhMGExNzQyZDUwODJkNDQ3NzlmMQ%3D%3D*&quot;,{},{&quot;Type&quot;:&quot;Local&quot;}],&quot;pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(10)&quot;]]]"
+                                                                                                                              title="Impairment Type for CapTel service"
+                                                                                                                              style="width:238px">
+                                                                                                                              <option
+                                                                                                                                value="3">
+                                                                                                                                Cognitive
+                                                                                                                                or
+                                                                                                                                Learning
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                selected=""
+                                                                                                                                value="1">
+                                                                                                                                Deaf
+                                                                                                                                or
+                                                                                                                                Hard
+                                                                                                                                of
+                                                                                                                                Hearing
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                value="5">
+                                                                                                                                Psychological
+                                                                                                                                or
+                                                                                                                                Emotional
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                value="6">
+                                                                                                                                Other
+                                                                                                                              </option>
+                                                                                                                            </select>
+
                                                                                                                           </div>
                                                                                                                         </div>
                                                                                                                       </div>
@@ -10452,48 +10448,44 @@
                                                                                                                             class="content-item content-field item-1 remove-left-spacing remove-right-spacing   dataValueWrite flex flex-row "
                                                                                                                             string_type="field"
                                                                                                                             reserve_space="false">
-                                                                                                                            <div
-                                                                                                                              id="CT"
-                                                                                                                              rcw=".AccommodationIdentifier"
-                                                                                                                              rc=".AccommodationIdentifier Changes"
-                                                                                                                              cellid="7">
-                                                                                                                              <select
-                                                                                                                                data-ctl="[&quot;Dropdown&quot;]"
-                                                                                                                                data-test-id="202105111603240678402129"
-                                                                                                                                class="standard"
-                                                                                                                                id="e8213b0a"
-                                                                                                                                name="$PpyWorkPage$pAccommodations$pSelectedAccommodation$pLocalAccommodations$l11$pImpairmentTypeIdentifier"
-                                                                                                                                validationtype="integer"
-                                                                                                                                data-change="[[&quot;refresh&quot;, [&quot;otherSection&quot;,&quot;LocalAccommodationDetails&quot;, &quot;&quot;, &quot;=&quot;, &quot;&quot;, &quot;UpdateChangeFlag,ListSubscript=#~pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(11).pxListSubscript~#&quot;,&quot;:event&quot;,&quot;&quot;,[&quot;pzuiactionzzz=CXt0cn17UFMyX19UQUJUSFJFQUQxL0FDUFJJTUFSWV8xfWY3YjI0NWZlOWY5MWU5ZWNiNWRlYTdkZGE0MGQzMWUzZWIzYjBiYWFhMzgxOTI2Mjc3Nzg1MzIxODFlMjZlYjAxY2RkNzBhZmEwMGUwMzc4NTNhMWRkNzYyZjkwZGQwYjQyNjgyNWI1NTdjZDc3ZmRhOTYxMTY1YjdjOWRkZmE2ODU4YzRkMjMxYTk4NDMxYWRkNzZhZWZiMmI3YWZhNjA4YTBkODYwYjM2OTE3MWQxMWY5ZjAwYTRmMzQ2MjAwMmI3M2EzN2YyNDkwNmVmZjg5NDg0MzdjZGM0YzhhYmFkMDA0MzQ0MjdjMzU1NTM2YWI1MDFkNWQ2MDFkMzY4ZmNkMmUyYWU0ZGJmMTRhMGExNzQyZDUwODJkNDQ3NzlmMQ%3D%3D*&quot;,{},{&quot;Type&quot;:&quot;Local&quot;}],&quot;pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(11)&quot;]]]"
-                                                                                                                                title="Impairment Type for Real-time Court Reporting"
-                                                                                                                                style="width:238px">
-                                                                                                                                <option
-                                                                                                                                  value="3">
-                                                                                                                                  Cognitive
-                                                                                                                                  or
-                                                                                                                                  Learning
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  selected=""
-                                                                                                                                  value="1">
-                                                                                                                                  Deaf
-                                                                                                                                  or
-                                                                                                                                  Hard
-                                                                                                                                  of
-                                                                                                                                  Hearing
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  value="5">
-                                                                                                                                  Psychological
-                                                                                                                                  or
-                                                                                                                                  Emotional
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  value="6">
-                                                                                                                                  Other
-                                                                                                                                </option>
-                                                                                                                              </select>
-                                                                                                                            </div>
+
+                                                                                                                            <select
+                                                                                                                              data-ctl="[&quot;Dropdown&quot;]"
+                                                                                                                              data-test-id="202105111603240678402129"
+                                                                                                                              class="standard"
+                                                                                                                              id="e8213b0a"
+                                                                                                                              name="$PpyWorkPage$pAccommodations$pSelectedAccommodation$pLocalAccommodations$l11$pImpairmentTypeIdentifier"
+                                                                                                                              validationtype="integer"
+                                                                                                                              data-change="[[&quot;refresh&quot;, [&quot;otherSection&quot;,&quot;LocalAccommodationDetails&quot;, &quot;&quot;, &quot;=&quot;, &quot;&quot;, &quot;UpdateChangeFlag,ListSubscript=#~pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(11).pxListSubscript~#&quot;,&quot;:event&quot;,&quot;&quot;,[&quot;pzuiactionzzz=CXt0cn17UFMyX19UQUJUSFJFQUQxL0FDUFJJTUFSWV8xfWY3YjI0NWZlOWY5MWU5ZWNiNWRlYTdkZGE0MGQzMWUzZWIzYjBiYWFhMzgxOTI2Mjc3Nzg1MzIxODFlMjZlYjAxY2RkNzBhZmEwMGUwMzc4NTNhMWRkNzYyZjkwZGQwYjQyNjgyNWI1NTdjZDc3ZmRhOTYxMTY1YjdjOWRkZmE2ODU4YzRkMjMxYTk4NDMxYWRkNzZhZWZiMmI3YWZhNjA4YTBkODYwYjM2OTE3MWQxMWY5ZjAwYTRmMzQ2MjAwMmI3M2EzN2YyNDkwNmVmZjg5NDg0MzdjZGM0YzhhYmFkMDA0MzQ0MjdjMzU1NTM2YWI1MDFkNWQ2MDFkMzY4ZmNkMmUyYWU0ZGJmMTRhMGExNzQyZDUwODJkNDQ3NzlmMQ%3D%3D*&quot;,{},{&quot;Type&quot;:&quot;Local&quot;}],&quot;pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(11)&quot;]]]"
+                                                                                                                              title="Impairment Type for Real-time Court Reporting"
+                                                                                                                              style="width:238px">
+                                                                                                                              <option
+                                                                                                                                value="3">
+                                                                                                                                Cognitive
+                                                                                                                                or
+                                                                                                                                Learning
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                selected=""
+                                                                                                                                value="1">
+                                                                                                                                Deaf
+                                                                                                                                or
+                                                                                                                                Hard
+                                                                                                                                of
+                                                                                                                                Hearing
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                value="5">
+                                                                                                                                Psychological
+                                                                                                                                or
+                                                                                                                                Emotional
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                value="6">
+                                                                                                                                Other
+                                                                                                                              </option>
+                                                                                                                            </select>
+
                                                                                                                           </div>
                                                                                                                         </div>
                                                                                                                       </div>
@@ -10630,48 +10622,44 @@
                                                                                                                             class="content-item content-field item-1 remove-left-spacing remove-right-spacing   dataValueWrite flex flex-row "
                                                                                                                             string_type="field"
                                                                                                                             reserve_space="false">
-                                                                                                                            <div
-                                                                                                                              id="CT"
-                                                                                                                              rcw=".AccommodationIdentifier"
-                                                                                                                              rc=".AccommodationIdentifier Changes"
-                                                                                                                              cellid="7">
-                                                                                                                              <select
-                                                                                                                                data-ctl="[&quot;Dropdown&quot;]"
-                                                                                                                                data-test-id="202105111603240678402129"
-                                                                                                                                class="standard"
-                                                                                                                                id="5bb516c9"
-                                                                                                                                name="$PpyWorkPage$pAccommodations$pSelectedAccommodation$pLocalAccommodations$l12$pImpairmentTypeIdentifier"
-                                                                                                                                validationtype="integer"
-                                                                                                                                data-change="[[&quot;refresh&quot;, [&quot;otherSection&quot;,&quot;LocalAccommodationDetails&quot;, &quot;&quot;, &quot;=&quot;, &quot;&quot;, &quot;UpdateChangeFlag,ListSubscript=#~pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(12).pxListSubscript~#&quot;,&quot;:event&quot;,&quot;&quot;,[&quot;pzuiactionzzz=CXt0cn17UFMyX19UQUJUSFJFQUQxL0FDUFJJTUFSWV8xfWY3YjI0NWZlOWY5MWU5ZWNiNWRlYTdkZGE0MGQzMWUzZWIzYjBiYWFhMzgxOTI2Mjc3Nzg1MzIxODFlMjZlYjAxY2RkNzBhZmEwMGUwMzc4NTNhMWRkNzYyZjkwZGQwYjQyNjgyNWI1NTdjZDc3ZmRhOTYxMTY1YjdjOWRkZmE2ODU4YzRkMjMxYTk4NDMxYWRkNzZhZWZiMmI3YWZhNjA4YTBkODYwYjM2OTE3MWQxMWY5ZjAwYTRmMzQ2MjAwMmI3M2EzN2YyNDkwNmVmZjg5NDg0MzdjZGM0YzhhYmFkMDA0MzQ0MjdjMzU1NTM2YWI1MDFkNWQ2MDFkMzY4ZmNkMmUyYWU0ZGJmMTRhMGExNzQyZDUwODJkNDQ3NzlmMQ%3D%3D*&quot;,{},{&quot;Type&quot;:&quot;Local&quot;}],&quot;pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(12)&quot;]]]"
-                                                                                                                                title="Impairment Type for UbiDuo face-to-face communicator"
-                                                                                                                                style="width:238px">
-                                                                                                                                <option
-                                                                                                                                  value="3">
-                                                                                                                                  Cognitive
-                                                                                                                                  or
-                                                                                                                                  Learning
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  selected=""
-                                                                                                                                  value="1">
-                                                                                                                                  Deaf
-                                                                                                                                  or
-                                                                                                                                  Hard
-                                                                                                                                  of
-                                                                                                                                  Hearing
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  value="5">
-                                                                                                                                  Psychological
-                                                                                                                                  or
-                                                                                                                                  Emotional
-                                                                                                                                </option>
-                                                                                                                                <option
-                                                                                                                                  value="6">
-                                                                                                                                  Other
-                                                                                                                                </option>
-                                                                                                                              </select>
-                                                                                                                            </div>
+
+                                                                                                                            <select
+                                                                                                                              data-ctl="[&quot;Dropdown&quot;]"
+                                                                                                                              data-test-id="202105111603240678402129"
+                                                                                                                              class="standard"
+                                                                                                                              id="5bb516c9"
+                                                                                                                              name="$PpyWorkPage$pAccommodations$pSelectedAccommodation$pLocalAccommodations$l12$pImpairmentTypeIdentifier"
+                                                                                                                              validationtype="integer"
+                                                                                                                              data-change="[[&quot;refresh&quot;, [&quot;otherSection&quot;,&quot;LocalAccommodationDetails&quot;, &quot;&quot;, &quot;=&quot;, &quot;&quot;, &quot;UpdateChangeFlag,ListSubscript=#~pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(12).pxListSubscript~#&quot;,&quot;:event&quot;,&quot;&quot;,[&quot;pzuiactionzzz=CXt0cn17UFMyX19UQUJUSFJFQUQxL0FDUFJJTUFSWV8xfWY3YjI0NWZlOWY5MWU5ZWNiNWRlYTdkZGE0MGQzMWUzZWIzYjBiYWFhMzgxOTI2Mjc3Nzg1MzIxODFlMjZlYjAxY2RkNzBhZmEwMGUwMzc4NTNhMWRkNzYyZjkwZGQwYjQyNjgyNWI1NTdjZDc3ZmRhOTYxMTY1YjdjOWRkZmE2ODU4YzRkMjMxYTk4NDMxYWRkNzZhZWZiMmI3YWZhNjA4YTBkODYwYjM2OTE3MWQxMWY5ZjAwYTRmMzQ2MjAwMmI3M2EzN2YyNDkwNmVmZjg5NDg0MzdjZGM0YzhhYmFkMDA0MzQ0MjdjMzU1NTM2YWI1MDFkNWQ2MDFkMzY4ZmNkMmUyYWU0ZGJmMTRhMGExNzQyZDUwODJkNDQ3NzlmMQ%3D%3D*&quot;,{},{&quot;Type&quot;:&quot;Local&quot;}],&quot;pyWorkPage.Accommodations.SelectedAccommodation.LocalAccommodations(12)&quot;]]]"
+                                                                                                                              title="Impairment Type for UbiDuo face-to-face communicator"
+                                                                                                                              style="width:238px">
+                                                                                                                              <option
+                                                                                                                                value="3">
+                                                                                                                                Cognitive
+                                                                                                                                or
+                                                                                                                                Learning
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                selected=""
+                                                                                                                                value="1">
+                                                                                                                                Deaf
+                                                                                                                                or
+                                                                                                                                Hard
+                                                                                                                                of
+                                                                                                                                Hearing
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                value="5">
+                                                                                                                                Psychological
+                                                                                                                                or
+                                                                                                                                Emotional
+                                                                                                                              </option>
+                                                                                                                              <option
+                                                                                                                                value="6">
+                                                                                                                                Other
+                                                                                                                              </option>
+                                                                                                                            </select>
+
                                                                                                                           </div>
                                                                                                                         </div>
                                                                                                                       </div>
@@ -11038,7 +11026,8 @@
                                                                                                           type="hidden"
                                                                                                           name="PSelectedAccommodationPOtherLocalAccommodations3colWidthGBL"
                                                                                                           id="PSelectedAccommodationPOtherLocalAccommodations3colWidthGBL"
-                                                                                                          value=""></td>
+                                                                                                          value="">
+                                                                                                      </td>
                                                                                                       <td valign="top"
                                                                                                         class="mainGridTableCell">
                                                                                                         <input
@@ -11752,7 +11741,8 @@
                                                                                                           type="hidden"
                                                                                                           name="PSelectedAccommodationPNonStandardAccommodations3colWidthGBL"
                                                                                                           id="PSelectedAccommodationPNonStandardAccommodations3colWidthGBL"
-                                                                                                          value=""></td>
+                                                                                                          value="">
+                                                                                                      </td>
                                                                                                       <td valign="top"
                                                                                                         class="mainGridTableCell">
                                                                                                         <input
@@ -13675,7 +13665,8 @@
                                                                                                           Social
                                                                                                           Security</span>
                                                                                                         Account
-                                                                                                        Information</h4>
+                                                                                                        Information
+                                                                                                      </h4>
                                                                                                     </div>
                                                                                                     <div
                                                                                                       class="header-right">
@@ -19060,7 +19051,8 @@
                                                                                                             class="cursordefault"
                                                                                                             name="pyLoadingMessage_D_Interaction_pa43744161966410pz.AssociatedIndividuals(1)_3">
                                                                                                         </i>
-                                                                                                      </span></div>
+                                                                                                      </span>
+                                                                                                    </div>
                                                                                                   </div>
                                                                                                 </div>
                                                                                               </div>
@@ -19095,7 +19087,8 @@
                                                                                           class="layout-group-item-title">
                                                                                           <i
                                                                                             class="icon icon-openclose"></i>Customer
-                                                                                          History</h3>
+                                                                                          History
+                                                                                        </h3>
                                                                                       </div>
                                                                                       <div section_index="60"
                                                                                         class="layout-body clearfix  "
@@ -19153,7 +19146,8 @@
                                                                                                             class="cursordefault"
                                                                                                             name="pyLoadingMessage_D_Interaction_pa43744161966410pz.AssociatedIndividuals(1)_3">
                                                                                                         </i>
-                                                                                                      </span></div>
+                                                                                                      </span>
+                                                                                                    </div>
                                                                                                   </div>
                                                                                                 </div>
                                                                                               </div>
@@ -19188,7 +19182,8 @@
                                                                                           class="layout-group-item-title">
                                                                                           <i
                                                                                             class="icon icon-openclose"></i>General
-                                                                                          Assistance</h3>
+                                                                                          Assistance
+                                                                                        </h3>
                                                                                       </div>
                                                                                       <div section_index="67"
                                                                                         class="layout-body clearfix  "
@@ -19246,7 +19241,8 @@
                                                                                                             class="cursordefault"
                                                                                                             name="pyLoadingMessage_D_Interaction_pa43744161966410pz.AssociatedIndividuals(1)_3">
                                                                                                         </i>
-                                                                                                      </span></div>
+                                                                                                      </span>
+                                                                                                    </div>
                                                                                                   </div>
                                                                                                 </div>
                                                                                               </div>
@@ -19781,7 +19777,8 @@
                                                                               <input type="hidden"
                                                                                 name="D_KMFASuggestedContentPpxResults1colWidthGBL"
                                                                                 id="D_KMFASuggestedContentPpxResults1colWidthGBL"
-                                                                                value=""></td>
+                                                                                value="">
+                                                                            </td>
                                                                             <td valign="top" class="mainGridTableCell">
                                                                               <input type="hidden"
                                                                                 name="D_KMFASuggestedContentPpxResults1colWidthGBR"
@@ -19987,7 +19984,8 @@
                                                                                                     Form for Allegations
                                                                                                     of Program
                                                                                                     Discrimination by
-                                                                                                    the SSA</span></div>
+                                                                                                    the SSA</span>
+                                                                                                </div>
                                                                                               </div>
                                                                                             </div>
                                                                                           </div>
@@ -20259,7 +20257,8 @@
                                                                                                   <span
                                                                                                     data-test-id="20161115063414045860323">Guidelines
                                                                                                     for Service
-                                                                                                    Case</span></div>
+                                                                                                    Case</span>
+                                                                                                </div>
                                                                                               </div>
                                                                                             </div>
                                                                                           </div>
@@ -21339,7 +21338,8 @@
                             </div>
                             <span style="display: none;" uitype="Rule-HTML-Section" id="pzFlowActionUITypeRef"
                               uiref="CPMTaskListMenu"></span>
-                          </span> </div>
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
