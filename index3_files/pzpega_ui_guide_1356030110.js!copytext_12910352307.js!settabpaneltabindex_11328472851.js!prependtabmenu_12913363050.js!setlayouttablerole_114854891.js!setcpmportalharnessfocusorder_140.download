@@ -1,0 +1,111 @@
+﻿var $pNamespace=pega.namespace;$pNamespace("pega.ui");pega.ui.guide=(function(){var M={};var L=document;var H=$("[data-ui-meta*=\"'type':'Harness'\"]",L).first();if(H.length===0){H=$("[data-portalharnessinsname]",L).first()}var G=pega.desktop.support.getDesktopWindow();var A=400;var C=false;var F;var E=0;var D=333;var K="linear";var N="<div class='runtime-control-guide-tab'></div><div class='runtime-control-guide-resize ui-resizable-handle ui-resizable-w'></div><div class='pz-guide-panel-body'><div>";function I(){if(!C){C=true;pega.ui.guide.toggle();setTimeout(function(){C=false},D*2)}}M.initialize=function(){var P=document.createElement("DIV");P.className="pz-guide-panel guide-hidden";P.innerHTML=N;if($(document.body).find("div.pz-guide-panel").length>0){$(document.body).find("div.pz-guide-panel").replaceWith($(P))}else{$(P).appendTo(document.body)}return M.loadSectionIntoDom("pzApplicationGuide_Panel","@baseclass",$(".pz-guide-panel-body > div")[0])};M.loadSectionIntoDom=function(Q,P,R,S){R.className="sectionDivStyle";R.id="RULE_KEY";R.setAttribute("node_type","MAIN_RULE");R.setAttribute("version","1");R.setAttribute("objclass","Rule-HTML-Section");if(pega.ctx.isUITemplatized===true){R.setAttribute("data-template","")}R.setAttribute("name","BASE_REF");R.setAttribute("id","RULE_KEY");R.setAttribute("class","sectionDivStyle");R.setAttribute("node_name",Q);R.setAttribute("data-node-id",Q);R.setAttribute("pyclassname",P);if(S&&S!==""){R.setAttribute("BASE_REF",S)}};M.show=function(V){if(pega&&pega.ui&&pega.ui.gapidentifier&&pega.ui.gapidentifier.isAgileWorkBenchOpen()){pega.ui.gapidentifier.toggle()}var R=$(".pz-guide-panel");var S=$(".pz-guide-panel-body > div");if(S.length!==0){pega.u.d.reloadSection(S[0],"pzInitAppGuidePanelWrapper","",false,false,-1,false,null,null,null,V)}R.removeClass("guide-hidden");$(".pz-guide-panel-body").removeClass("guide-hidden");$(".runtime-control-tree").addClass("loading");$(".runtime-control-guide-resize").css("display","");var Q=$(".runtime-control-tree");while(Q.length!==0&&!Q.hasClass("pz-guide-panel")){Q.css("height","100%");Q=Q.parent()}if($("#js-toggle-runtime-editor").length!==0){$("#js-toggle-runtime-editor").attr("disabled",true)}var P=$(".ui-inspector",L);if(P.length!==0){P.find("a").attr("disabled",true).addClass("disabledStyle").children("i").attr("disabled",true).addClass("disabledStyle");P.find("button").attr("disabled",true).addClass("disabledStyle");P.attr("disabled",true)}var U=$(".gapid_icon",L).filter(function(W){return !($(this).hasClass("no-padding"))});if(U.length!==0){if(U.find("a").children("i")){U.find("a").attr("disabled",true).addClass("disabledStyle").children("i").attr("disabled",true).addClass("disabledStyle");U.attr("disabled",true);U.find("button").attr("disabled",true).addClass("disabledStyle");U.find("i").removeAttr("data-click")}}var T=document.querySelector("div[data-node-id='pzRuntimeToolsTopBar']");if(T){T.classList.add("disable-slide")}A=400;J();V()};M.isApplicationGuideOpen=function(){var Q=false;var P=$(".pz-guide-panel",L);if(P&&P.hasClass("showing")){Q=true}return Q};function J(R){H.css({position:"absolute",left:"0",right:"0","min-width":"0"});var Q;var P;if(A>H.width()){Q=H.width()-(100)+"px";P=H.width()-(100)}else{if(A<10){Q="10px";P=10}else{Q=A+"px";P=A}}if(F){Q="0px";P="0"}H.animate({right:Q},D,K,function(){});if(F){$(".runtime-control-guide-tab").addClass("runtime-control-guide-tab-min")}else{$(".runtime-control-guide-tab").addClass("runtime-control-guide-tab-max")}$(".pz-guide-panel").animate({width:P+"px"},D,K,function(){$(".pz-guide-panel").addClass("showing");if(!$(".pz-guide-panel").hasClass("ui-resizable")){O()}setTimeout(function(){$(".pz-guide-panel").addClass("pz-guide-panel-active")},250)})}function B(Q){if($(".screen-layout").hasClass("flex")){var T,S,P;var R=$(window).width();P=$(".screen-layout-region-main-sidebar1").outerWidth()||0;T=$(".screen-layout-region-main-sidebar2").outerWidth()||0;S=P+T+parseInt(Q);$(".screen-layout-region-main-middle").css({width:(R-S)+"px"})}}M.hide=function(S){if($("#js-toggle-runtime-editor",L).length!==0){$("#js-toggle-runtime-editor",L).removeAttr("disabled")}$(".screen-layout-region-main-middle").css({width:""});var P=$(".ui-inspector",L);if(P.length!==0){P.find("a").removeAttr("disabled").removeClass("disabledStyle").children("i").removeAttr("disabled").removeClass("disabledStyle");P.find("button").removeAttr("disabled").removeClass("disabledStyle");P.removeAttr("disabled")}var R=$(".gapid_icon",L).filter(function(T){return !($(this).hasClass("no-padding"))});if(R.length!==0){R.find("a").removeAttr("disabled").removeClass("disabledStyle").children("i").removeAttr("disabled").removeClass("disabledStyle");R.removeAttr("disabled");R.find("button").removeAttr("disabled").removeClass("disabledStyle");R.find("i").attr("data-click",'[["runScript", ["checkForExtension_GI()"]],["runScript", ["pega.ui.gapidentifier.toggle()"]]]')}var Q=$(".pz-guide-panel",L);state=false;H.animate({right:"0px"},D,K,function(){Q.removeClass("showing");Q.addClass("guide-hidden");$(".runtime-control-guide-resize",L).css("display","none");var T=document.querySelector("div[data-node-id='pzRuntimeToolsTopBar']");if(T){T.classList.remove("disable-slide")}});$(".runtime-control-guide-tab",L).removeClass("runtime-control-guide-tab-min");$(".runtime-control-guide-tab",L).removeClass("runtime-control-guide-tab-max");Q.animate({width:"0px"},D,K,function(){$(".pz-guide-panel",L).removeClass("pz-guide-panel-active");S()})};M.handleSupression=function(P){if(P.preventDefault){P.preventDefault()}P.cancelBubble=true;if(P.stopPropagation){P.stopPropagation()}return false};M.minimizeToggle=function(){if(pega.u.d.portalName==="pxExpress"){pega.ui.agPanelExpress.toggleOnCaptureOrRecord();return }H.css({position:"absolute",left:"0"});if(H.attr("_isPanelMinimized")==="true"){if(A>$(window).width()-100){A=$(window).width()-100}H.css("right",A+"px");$(".runtime-control-guide-tab",L).removeClass("runtime-control-guide-tab-min");$(".runtime-control-guide-tab",L).addClass("runtime-control-guide-tab-max");$(".pz-guide-panel",L).css("width",A+"px");$(".pz-guide-panel-body",L).removeClass("guide-hidden");H.attr("_isPanelMinimized",false)}else{H.attr("_isPanelMinimized",true);var P=0;H.css("right",P+"px");$(".runtime-control-guide-tab",L).addClass("runtime-control-guide-tab-min");$(".runtime-control-guide-tab",L).removeClass("runtime-control-guide-tab-max");$(".pz-guide-panel",L).css("width",P+"px");$(".pz-guide-panel-body",L).addClass("guide-hidden");$(".screen-layout-region-main-middle").css({width:""})}};M.maximizeToggle=function(){if(pega.u.d.portalName==="pxExpress"){pega.ui.agPanelExpress.toggleOnCaptureOrRecord();return }H.css({position:"absolute",left:"0"});if(A>$(window).width()-100){A=$(window).width()-100}H.css("right",A+"px");$(".runtime-control-guide-tab",L).removeClass("runtime-control-guide-tab-min");$(".runtime-control-guide-tab",L).addClass("runtime-control-guide-tab-max");$(".pz-guide-panel",L).css("width",A+"px");$(".pz-guide-panel-body",L).removeClass("guide-hidden");H.attr("_isPanelMinimized",false);B(A)};function O(){var P=$(".pz-guide-panel");var Q=P.outerWidth();P.css({right:"0",left:""});desktopWindowCSSPosition=H.css("position");H.css({position:"absolute",left:"0",right:Q+"px","min-width":"0"});B(Q);var R=function(S){window.removeEventListener("mouseup",R,true);return };$(".runtime-control-guide-resize")[0].addEventListener("mouseup",R,true);_windowOuterWidth=$(window).outerWidth();$(".pz-guide-panel").css({right:"0",left:""});$(".pz-guide-panel",L).resizable({handles:{w:".runtime-control-guide-resize"},resize:function(U,V){var S=V.element;var T=S.width();S.css({right:"0",left:""});if(T>_windowOuterWidth-100){T=_windowOuterWidth-100;S.css({width:T+"px"})}H.css({right:T+"px"});B(T)},start:function(S,T){H.css({position:"absolute",left:"0","min-width":"0"});$(document.body).append("<div class='ui-guide-tree-mask'></div>")},stop:function(S,T){var U=$(".pz-guide-panel");U.queue(function(){$(".pz-guide-panel").dequeue()});A=U.outerWidth();F=false;$(".ui-guide-tree-mask").remove()}});$(".runtime-control-guide-tab").click(function(){M.minimizeToggle(true)})}M.toggle=function(){if(pega&&pega.offline){return }if(pega.ui&&pega.ui.composer&&pega.ui.composer.isActive()&&pega.ui.composer.toggleGuide){window.parent.pega.ui.composer.toggleGuide();return }if($(".pz-guide-tool").hasClass("noClick")){$(".pz-guide-tool").removeClass("noClick");return false}var Q=function(){};var P=function(){};if($(".pz-guide-panel-active",L).length!==0){M.hide(Q)}else{if($(".runtime-control-panel-active",L).length===0){M.show(P)}}};M.toggleAGFromIframe=function(){if(pega.ui&&pega.ui.composer&&pega.ui.composer.isActive()&&pega.ui.composer.toggleGuide){pega.ui.composer.toggleGuide()}else{L=document;M.toggle()}};M.toggleCompleteRejectItem=function(Q){var R=Q.target||Q.srcElement;var P=$(R).parents(".pz-guide-item-row");if(P.hasClass("visible")){P.removeClass("visible");P.children(".item-2").children("div").css("right","")}else{P.parents("div[node_name='pzAssetContent']").find(".pz-guide-item-row.visible").each(function(){$(this).removeClass("visible");$(this).children(".item-2").children("div").css("right","")});P.addClass("visible");P[0].offsetHeight;P.children(".item-2").children("div").css("right","0")}ev.preventDefault();ev.stopPropagation();return false};return M})();window.addEventListener("load",function(){pega.ui.guide.initialize()});
+function fallbackCopyTextToClipboard(text) {
+        var textArea = document.createElement("textarea_link");
+        textArea.value = text;
+
+        // Avoid scrolling to bottom
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.position = "fixed";
+
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+            console.log('Fallback: Copying text command was ' + msg);
+        } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err);
+        }
+
+        document.body.removeChild(textArea);
+    }
+    function copyTextToClipboard(text) {
+      console.log("in copyTestfn");
+        if (!navigator.clipboard) {
+            fallbackCopyTextToClipboard(text);
+            return;
+        }
+        navigator.clipboard.writeText(text).then(function() {
+            console.log('Async: Copying to clipboard was successful!');
+        }, function(err) {
+            console.error('Async: Could not copy text: ', err);
+        });
+    }
+
+//static-content-hash-trigger-NON
+var tabPanelObserver;window.onload=setTimeout(setTabIndexHelper,1E3);function setTabIndexHelper(){tabPanelObserver&&tabPanelObserver.disconnect();for(i=0;20>i;i++)if(isIframeVisible()){var a=getVisibleTabPanel(),b=a[0];a.attr("tabindex","-1");setTabPanelObserver(b,setTabIndexHelper);break}else setTimeout(setTabIndexHelper,1E3)}function isIframeVisible(){return $(".dc-main").find("iframe").is(":visible")}
+function getVisibleTabPanel(){return $(".dc-main").find("iframe:visible").closest("[role\x3d'tabpanel'][style\x3d'display: block;']")}function setTabPanelObserver(a,b){tabPanelObserver=new MutationObserver(b);tabPanelObserver.observe(a,{attributes:!0,attributeFilter:["tabindex","style"]})};
+window.onload=setTimeout(prependTabMenu,1E3);function prependTabMenu(){for(i=0;10>i;i++)if(isVisibleDcMain()){var b=$("main").find("a#TABANCHOR"),c=b.attr("id");$("#"+c).on("keydown",function(a){if(13==a.which){a=$("div.menuBarSub");var c=a.find("td#ItemMiddle")[0];b.has(a).length?(a.remove(),b.focus()):(a.prependTo(b),c.focus())}});break}else setTimeout(isVisibleDcMain,1E3)}function isVisibleDcMain(){return $(".dc-main").is(":visible")};
+window.onload=setTimeout(setLayoutTableRoleCpmHarness,1E3);function setLayoutTableRoleCpmHarness(){var a=$("table"),c=$("th");$.each(a,function(a,b){$(b).has(c).length||$(b).attr("role","presentation")})};
+/*********** Focus to new Interaction tab D-45168 - START ****************/
+/*********** Insert div containing all customer header alerts in order for the screen reader to announce all alerts to the user D-34170 - START ****************/
+
+
+function delayCheckForBusyIndicatorAndSetFocusToTab() {
+   setTimeout(checkForBusyIndicatorAndThenSetFocusToTab,3500);
+}
+
+function checkForBusyIndicatorAndThenSetFocusToTab() {
+    var counter = 0;
+    var checkForPegaBusyIndicator = setInterval(function () {
+        
+        counter++;
+        var isBusyIndicatorVisible = $('.dc-main').find('iframe:visible').contents().find('#pega_ui_load').is(':visible');
+
+        if (!pega.ui.statetracking.getState().busy) {
+            clearInterval(checkForPegaBusyIndicator);
+            setFocusSelectedTab();
+            insertDivContainingCustomerHeaderAlerts();
+        } else if (counter >= 15 && !isBusyIndicatorVisible) {
+            clearInterval(checkForPegaBusyIndicator);
+            setFocusSelectedTab(); 
+            insertDivContainingCustomerHeaderAlerts();
+        } else if (counter === 40){
+            clearInterval(checkForPegaBusyIndicator);
+        }
+
+    }, 2000);
+}
+
+function setFocusSelectedTab() {
+    var selectedTab = $('[role="tab"]:visible.selected');
+    $(selectedTab[0]).focus();
+}
+
+function insertDivContainingCustomerHeaderAlerts() {
+    /*insert div*/
+    var harnessElement = $('.dc-main').find('iframe:visible').contents().find('#PEGA_HARNESS:visible');
+    var divContainerForAlerts = $(`<div id="customerHeaderAlertsDiv" style="left: -999px; position: absolute;"></div>`);
+    $(divContainerForAlerts).insertAfter(harnessElement);
+
+    /*concatenate all alerts displayed on the customer header*/
+    setTimeout(function () {
+        var customerHeaderAlerts = '';
+        harnessElement.find('.customer-header-alerts:visible').find('div.header-content:visible, div.dataLabelRead:visible').each(function () {
+            if ($(this).text().length > 0) {
+                var individualAlert = $(this).text();
+                customerHeaderAlerts = customerHeaderAlerts + " " + individualAlert;
+            }
+        });
+
+        /*append string of customer header alerts to inserted div with aria-live = polite*/
+        harnessElement.next('#customerHeaderAlertsDiv').append(customerHeaderAlerts).attr('aria-live', 'polite');
+
+        /*remove customer header alerts*/
+        setTimeout(removeCustomerHeaderAlertsDiv, 5000, harnessElement);
+
+    }, 3000);
+}
+
+function removeCustomerHeaderAlertsDiv(harnessElement) {
+    harnessElement.next('#customerHeaderAlertsDiv').remove();
+    harnessElement = null;
+}
+
+/*********** Focus to new Interaction tab D-45168 - END ****************/
+/*********** Insert div containing all customer header alerts in order for the screen reader to announce all alerts to the user D-34170 - END ****************/
+
+//static-content-hash-trigger-GCC

@@ -1,0 +1,72 @@
+﻿var showFeedbackTooltip = function(event) {
+   console.log("called");
+   console.log(event);
+   $('#feedbackicon').remove();
+   $('<div id="feedbackicon" role="tooltip" style="background-color: #555;color: #fff;padding: 2px;border-radius: 3px;	position: absolute; z-index:100;">Collect Feedback</div>')
+     .appendTo('body');
+   changeTooltipPosition(event,'.ssa-feedback-icon','#feedbackicon');
+   $(document).keydown (function(){
+        	$("#feedbackicon").remove();
+   });
+  $(document).click (function(){
+        	$("#feedbackicon").remove();
+   });
+}
+var changeTooltipPosition = function(event,cls,inc) {
+	var tooltipX = $(cls).offset().left;
+	var tooltipY = $(cls).offset().top+40;
+	$(inc).css({top: tooltipY, left: tooltipX});
+};
+
+//static-content-hash-trigger-NON
+
+var showResourceTooltip = function(event) {
+   console.log("called");
+   console.log(event);
+   $('#resourceicon').remove();
+   $('<div id="resourceicon" role="tooltip" style="background-color: #555;color: #fff;padding: 2px;border-radius: 3px;	position: absolute;  z-index:100;">Resources Menu</div>')
+     .appendTo('body');
+   changeTooltipPosition(event,'.ssa-feedback-icon','#resourceicon');
+   $(document).keydown (function(){
+        	$("#resourceicon").remove();
+   });
+  $(document).click (function(){
+        	$("#resourceicon").remove();
+   });
+}
+
+var showUserMenuTooltip = function(event) {
+   console.log("called");
+   console.log(event);
+   $('#usericon').remove();
+   $('<div id="usericon" role="tooltip" style="background-color: #555;color: #fff;padding: 2px;border-radius: 3px;	position: absolute; z-index:100;">User Menu</div>')
+     .appendTo('body');
+   changeTooltipPosition(event,'.ssa-feedback-icon','#usericon');
+   $(document).keydown (function(){
+        	$("#usericon").remove();
+   });
+  $(document).click (function(){
+        	$("#usericon").remove();
+   });
+}
+var showGuidedTourTooltip = function(event) {
+   console.log("called");
+   console.log(event);
+   $('#usericon').remove();
+   $('<div id="guidedtouricon" role="tooltip" style="background-color: #555;color: #fff;padding: 2px;border-radius: 3px;	position: absolute; z-index:100;">Guided Tour</div>')
+     .appendTo('body');
+   changeTooltipPosition(event,'.ssa-feedback-icon','#guidedtouricon');
+   $(document).keydown (function(){
+        	$("#guidedtouricon").remove();
+   });
+  $(document).click (function(){
+        	$("#guidedtouricon").remove();
+   });
+}
+//static-content-hash-trigger-NON
+function setResourcesMenuLinksTitleAttr(){$(".menu-panel-wrapper").find('ul[role\x3d"menu"]:visible').find("a").each(function(){var a=$(this).find("img:visible").is('[src*\x3d"IEBrowserIcon"]'),b=$(this).find("img:visible").is('[src*\x3d"IEChromeIcon"]'),c=$(this).find("img:visible").is('[src*\x3d"EdgeChromeIcon"]');a?$(this).attr("title","Opens in IE only"):b?$(this).attr("title","Opens in IE and Chrome"):c&&$(this).attr("title","Opens in Edge and Chrome")})};
+function menuTabs(){return $('li.tab-li[role\x3d"tab"]:visible')}function setTabAndCloseButtonAriaLabel(){menuTabs().each(function(){var a=$($(this).find("table td")[1]).find(".cs-dc-tab").find("span").text();$(this).attr("aria-label",a);$(this).find("span#close").attr("aria-label","Close "+a+" tab")})}function setSpanRole(){menuTabs().each(function(){$(this).find("span#TABSPAN").attr("role","application")})}function tabMenu508fixes(){setTabAndCloseButtonAriaLabel();setSpanRole()}
+$(document).on("focusin",".tab-li",function(){setTimeout(tabMenu508fixes,800)});$(document).ready(tabMenu508fixes);
+function removeAltLabelsFromNonImages(){$(":focusable").not('img, input[type\x3d"image"], area').each(function(){var a=$(this).attr("alt");"undefined"!==typeof a&&!1!==a&&$(this).attr("alt","")})}$(document).ready(removeAltLabelsFromNonImages);
+function skipToBanner(){var a=$('[role\x3d"banner"]');$(a).attr("tabindex","-1").focus().focusout(function(){$(a).removeAttr("tabindex")})}
+function cpm_skipToContentCustom(a){var b=$("#PEGA_TABBED0").find(".iframe-wrapper").filter(function(){return"block"===$(this).css("display")}).find("iframe")[0];if(b){var b=b.contentWindow,d="[data-skip-target\x3d'"+a+"']",c;"main"===a?c=$(d)[0]:"search"===a?$(d).find(":tabbable").first().focus():b&&"navigation"===a&&(c=b.$(d)[0]);if(c){c.setAttribute("tabindex","-1");try{c.focus()}catch(e){}}}};
