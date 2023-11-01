@@ -1,8 +1,6 @@
 ﻿
 
-#PEGA_GRID_CONTENT,.cellCont .gridCell,th.cellCont,.gridDefault .oflowDivM,ul.rowContent,.gridDefault .oflowDiv,#gridBody_left,#gridBody_right,ul.gridNode {
-    margin: 0;
-    padding: 0;
+.gridDefault .oflowDivM {
     overflow: hidden
 }
 
